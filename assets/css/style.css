@@ -265,11 +265,29 @@ main#dynamic-content-area {
   margin: 0 !important;
   padding: 0 !important;
   user-select: none;
+
+  /* Absolute Center */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* MAXIMIZED SIZE: Increased to fill available viewport */
+  max-height: 85vh !important;
+  max-width: 90vw !important;
+
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  box-shadow: none;
+  border: 1px solid #e0e0e0;
+  z-index: 1;
 }
 
 /* Navigation Arrows - Base Styles */
 .prev-next {
-  position: absolute;
+  position: fixed; /* Fixed to viewport edges */
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -284,7 +302,7 @@ main#dynamic-content-area {
   transform: translateY(-50%) scale(1.1);
 }
 
-/* Scale arrows down by 25% (Base size was 50px, new target ~37.5px) */
+/* Scale arrows down by 25% */
 .prev-next img {
   width: 38px;
   height: auto;
@@ -416,28 +434,29 @@ fieldset {
 }
 
 /* ============================================= */
-/* 8. Animations                                 */
+/* 8. Animations (UPDATED: Pure Opacity)         */
 /* ============================================= */
 
 .fade-out {
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 300ms ease-in, transform 300ms ease-in;
+  transition: opacity 300ms ease-in;
+  /* Removed transform to stop "sliding up" */
 }
+
 .fade-in {
   opacity: 0;
-  transform: translateY(10px);
   animation: fadeInAnim 400ms forwards ease-out;
 }
+
 @keyframes fadeInAnim {
   to {
     opacity: 1;
-    transform: translateY(0);
   }
+  /* Removed transform to stop "sliding up" */
 }
 
 /* ============================================= */
-/* 9. SLIDESHOW PAGE OVERRIDES (Visual Update)   */
+/* 9. SLIDESHOW PAGE OVERRIDES                   */
 /* ============================================= */
 
 /* Hide Hamburger */
@@ -467,7 +486,7 @@ body.slideshow-active .hero .sub-title {
   z-index: 101;
 }
 
-/* Category Name - Top Right */
+/* Category Name - Top Right (Dynamic) */
 body.slideshow-active .hero .page-title {
   display: block; /* Visible on slideshow */
   position: fixed;
@@ -482,12 +501,13 @@ body.slideshow-active .hero .page-title {
   margin: 0;
 }
 
-/* --- Arrows --- */
+/* --- Arrows: Pushed to Extremes --- */
+/* Fixed positioning guarantees they are at the viewport edge */
 body.slideshow-active .previous {
-  left: 4vw;
+  left: 10px;
 }
 body.slideshow-active .next {
-  right: 4vw;
+  right: 10px;
 }
 
 /* --- Caption: Bottom Right --- */
@@ -508,29 +528,6 @@ body.slideshow-active .caption {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted);
-}
-
-/* --- Slideshow Image: Maximized --- */
-body.slideshow-active .slide {
-  /* Absolute Center */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  /* Maximize Size without occluding header/footer text */
-  /* Calc logic: 100vh minus ~150px top header and ~150px bottom footer space */
-  max-height: 70vh !important;
-  max-width: 80vw !important;
-
-  /* Styling */
-  width: auto;
-  height: auto;
-  display: block;
-  objectfit: contain;
-  box-shadow: none;
-  border: 1px solid #e0e0e0; /* Thin subtle border */
-  z-index: 1; /* Below text/arrows */
 }
 
 /* ============================================= */
@@ -565,15 +562,15 @@ body.slideshow-active .slide {
   }
 
   body.slideshow-active .slide {
-    max-height: 50vh !important;
-    max-width: 90vw !important;
+    max-height: 60vh !important;
+    max-width: 95vw !important;
   }
 
   .previous {
-    left: 1rem;
+    left: 5px;
   }
   .next {
-    right: 1rem;
+    right: 5px;
   }
   .return-arrow-container {
     left: 1rem;
@@ -581,6 +578,6 @@ body.slideshow-active .slide {
   }
   body.slideshow-active .caption {
     right: 1rem;
-    bottom: 4rem; /* Move up slightly on mobile */
+    bottom: 4rem;
   }
 }
