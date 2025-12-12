@@ -166,67 +166,104 @@
           },
           "headers": [
             { "tag": "h3", "text": "Quick Contact" },
-            { "tag": "h4", "text": "Contact us today, and get a reply within 24 hours!" }
+            {
+              "tag": "h4",
+              "text": "Contact us today, and get reply with in 24 hours!"
+            }
+          ],
+          "fields": [
+            {
+              "tag": "fieldset",
+              "children": [
+                {
+                  "tag": "input",
+                  "attributes": {
+                    "name": "name",
+                    "placeholder": "Your name",
+                    "type": "text",
+                    "tabindex": "1",
+                    "required": true,
+                    "autofocus": true
+                  }
+                }
+              ]
+            },
+            {
+              "tag": "fieldset",
+              "children": [
+                {
+                  "tag": "input",
+                  "attributes": {
+                    "name": "email",
+                    "placeholder": "Your Email Address",
+                    "type": "email",
+                    "tabindex": "2",
+                    "required": true
+                  }
+                }
+              ]
+            },
+            {
+              "tag": "fieldset",
+              "children": [
+                {
+                  "tag": "input",
+                  "attributes": {
+                    "name": "phone",
+                    "placeholder": "Your Phone Number",
+                    "type": "tel",
+                    "tabindex": "3",
+                    "required": true
+                  }
+                }
+              ]
+            },
+            {
+              "tag": "fieldset",
+              "children": [
+                {
+                  "tag": "input",
+                  "attributes": {
+                    "name": "website",
+                    "placeholder": "Your Web Site starts with http://",
+                    "type": "url",
+                    "tabindex": "4",
+                    "required": true
+                  }
+                }
+              ]
+            },
+            {
+              "tag": "fieldset",
+              "children": [
+                {
+                  "tag": "textarea",
+                  "attributes": {
+                    "name": "message",
+                    "placeholder": "Type your Message Here....",
+                    "tabindex": "5",
+                    "required": true
+                  }
+                }
+              ]
+            },
+            {
+              "tag": "fieldset",
+              "children": [
+                {
+                  "tag": "button",
+                  "text": "Submit",
+                  "attributes": {
+                    "name": "submit",
+                    "type": "submit",
+                    "id": "contact-submit",
+                    "data-submit": "...Sending"
+                  }
+                }
+              ]
+            }
           ]
-        },
-        "fields": [
-          {
-            "tag": "input",
-            "wrapperTag": "fieldset",
-            "attributes": {
-              "name": "name",
-              "placeholder": "Your Name",
-              "type": "text",
-              "required": true,
-              "autofocus": true
-            }
-          },
-          {
-            "tag": "input",
-            "wrapperTag": "fieldset",
-            "attributes": {
-              "name": "email",
-              "placeholder": "Your Email Address",
-              "type": "email",
-              "required": true
-            }
-          },
-          {
-            "tag": "input",
-            "wrapperTag": "fieldset",
-            "attributes": {
-              "name": "phone",
-              "placeholder": "Your Phone Number",
-              "type": "tel",
-              "required": true
-            }
-          },
-          {
-            "tag": "input",
-            "wrapperTag": "fieldset",
-            "attributes": {
-              "name": "website",
-              "placeholder": "Your Website (http:// or https://)",
-              "type": "url",
-              "required": true
-            }
-          },
-          {
-            "tag": "textarea",
-            "wrapperTag": "fieldset",
-            "attributes": {
-              "name": "message",
-              "placeholder": "Type your Message Here...",
-              "required": true
-            }
-          },
-          {
-            "tag": "button",
-            "text": "Submit",
-            "wrapperTag": "fieldset",
-            "attributes": { "name": "submit", "type": "submit", "id": "contact-submit" }
-          }
-        ]
+        }
       }
     }
   }
