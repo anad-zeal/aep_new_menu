@@ -272,48 +272,82 @@ main#dynamic-content-area {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  /* MAXIMIZED SIZE: Increased to fill available viewport */
-  max-height: 85vh !important;
-  max-width: 90vw !important;
-
-  width: auto;
-  height: auto;
-  display: block;
+  /* FORCE SCALING UP */
+  /* This creates a box 85% of the screen height */
+  height: 85vh !important;
+  /* This ensures the width matches the container */
+  width: 100% !important;
+  /* This ensures the image stretches to fill that box while keeping aspect ratio */
   object-fit: contain;
-  box-shadow: none;
-  border: 1px solid #e0e0e0;
+
+  display: block;
   z-index: 1;
 }
 
-/* Navigation Arrows - Base Styles */
-.prev-next {
-  position: fixed; /* Fixed to viewport edges */
+/* ============================================= */
+/* 6. Navigation Arrows (Refactored)             */
+/* ============================================= */
+
+/* Wrapper: Fixed to Viewport Edges */
+.prev-arrow,
+.next-arrow {
+  position: fixed !important; /* Force out of flow */
   top: 50%;
   transform: translateY(-50%);
-  background: none;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prev-arrow {
+  left: 10px !important;
+}
+.next-arrow {
+  right: 10px !important;
+}
+
+/* Button Styling */
+.prev-arrow button,
+.next-arrow button {
+  background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 50;
-  padding: 20px;
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: transform 0.2s ease;
 }
 
-.prev-next:hover {
-  transform: translateY(-50%) scale(1.1);
+.prev-arrow button:hover,
+.next-arrow button:hover {
+  transform: scale(1.1);
 }
 
-/* Scale arrows down by 25% */
-.prev-next img {
-  width: 38px;
+/* Image Styling */
+.prev-arrow img,
+.next-arrow img {
+  width: 100%;
   height: auto;
+  opacity: 0.7;
+  transition: opacity 0.3s;
   display: block;
+}
+
+.prev-arrow img:hover,
+.next-arrow img:hover {
+  opacity: 1;
 }
 
 /* Return Arrow */
 .return-arrow-container {
   position: fixed;
   bottom: 3rem;
-  left: 4vw; /* Aligned with header text */
+  left: 4vw;
   z-index: 60;
 }
 .return-arrow-container img {
@@ -325,7 +359,7 @@ main#dynamic-content-area {
 }
 
 /* ============================================= */
-/* 6. Contact Form                               */
+/* 7. Contact Form                               */
 /* ============================================= */
 
 .contact-page-active main#dynamic-content-area {
@@ -418,7 +452,7 @@ fieldset {
 }
 
 /* ============================================= */
-/* 7. Footer                                     */
+/* 8. Footer                                     */
 /* ============================================= */
 
 .site-footer {
@@ -434,13 +468,12 @@ fieldset {
 }
 
 /* ============================================= */
-/* 8. Animations (UPDATED: Pure Opacity)         */
+/* 9. Animations (Pure Opacity)                  */
 /* ============================================= */
 
 .fade-out {
   opacity: 0;
   transition: opacity 300ms ease-in;
-  /* Removed transform to stop "sliding up" */
 }
 
 .fade-in {
@@ -452,11 +485,10 @@ fieldset {
   to {
     opacity: 1;
   }
-  /* Removed transform to stop "sliding up" */
 }
 
 /* ============================================= */
-/* 9. SLIDESHOW PAGE OVERRIDES                   */
+/* 10. SLIDESHOW PAGE OVERRIDES                  */
 /* ============================================= */
 
 /* Hide Hamburger */
@@ -471,7 +503,7 @@ body.slideshow-active .site-header {
   left: 0;
   width: 100%;
   padding: 0;
-  height: 0; /* Zero height to prevent layout push */
+  height: 0;
   z-index: 100;
 }
 
@@ -501,19 +533,10 @@ body.slideshow-active .hero .page-title {
   margin: 0;
 }
 
-/* --- Arrows: Pushed to Extremes --- */
-/* Fixed positioning guarantees they are at the viewport edge */
-body.slideshow-active .previous {
-  left: 10px;
-}
-body.slideshow-active .next {
-  right: 10px;
-}
-
 /* --- Caption: Bottom Right --- */
 body.slideshow-active .caption {
   position: fixed;
-  bottom: 3rem; /* Align horizontally with return arrow */
+  bottom: 3rem;
   right: 4vw;
   text-align: right;
   width: auto;
@@ -523,7 +546,7 @@ body.slideshow-active .caption {
 
 #caption-text {
   font-family: var(--font-thin);
-  font-weight: 100; /* Thin */
+  font-weight: 100;
   font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -531,7 +554,7 @@ body.slideshow-active .caption {
 }
 
 /* ============================================= */
-/* 10. Responsive Adjustments                    */
+/* 11. Responsive Adjustments                    */
 /* ============================================= */
 
 @media (max-width: 900px) {
@@ -562,16 +585,9 @@ body.slideshow-active .caption {
   }
 
   body.slideshow-active .slide {
-    max-height: 60vh !important;
-    max-width: 95vw !important;
+    height: 60vh !important;
   }
 
-  .previous {
-    left: 5px;
-  }
-  .next {
-    right: 5px;
-  }
   .return-arrow-container {
     left: 1rem;
     bottom: 1rem;
