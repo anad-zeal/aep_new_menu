@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderPageContent(data, pageName) {
     if (history.state?.page) scrollMemory[history.state.page] = window.scrollY;
     clearSlideshow();
-    document.title = `${data.title} | Alexis Elza`;
+    document.title = `${data.title} | The Life of an Artist`;
 
     // Toggle Classes
     if (data.slideshowTemplate) body.classList.add('slideshow-active');
@@ -339,7 +339,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Toggle Header Texts
     const subTitleEl = document.querySelector('.hero .sub-title');
     if (subTitleEl)
-      subTitleEl.textContent = data.slideshowTemplate ? 'The Life of an Artist' : 'Alexis Elza';
+      subTitleEl.textContent = data.slideshowTemplate
+        ? 'The Life of an Artist'
+        : 'The Life of an Artist';
 
     const pageTitleEl = document.querySelector('.hero .page-title');
     if (pageTitleEl) pageTitleEl.textContent = data.slideshowTemplate ? data.title : '';
