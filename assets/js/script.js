@@ -315,25 +315,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderSlideshow(template, pageTitle, gallerySource) {
     const htmlContent = `
-      <div class="slideshow" style="width:100%; height: 60vh; position: relative;">
+      <div class="slideshow">
            <div class="loading-msg" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%)">Loading Gallery...</div>
       </div>
+
+      <!-- Nav Arrows -->
       <div class="previous">
         <button id="prev-slide" class="prev-next" aria-label="Previous">
-          <img src="${template.previousButton.imgSrc}" width="40" alt="<">
+          <img src="${template.previousButton.imgSrc}" width="50" alt="<">
         </button>
       </div>
       <div class="next">
         <button id="next-slide" class="prev-next" aria-label="Next">
-          <img src="${template.nextButton.imgSrc}" width="40" alt=">">
+          <img src="${template.nextButton.imgSrc}" width="50" alt=">">
         </button>
       </div>
+
+      <!-- Caption -->
       <div class="caption">
         <p id="caption-text"></p>
       </div>
-      <div style="text-align:center; margin-top:2rem;">
-        <a href="/artworks" data-page="artworks" style="color:var(--brand); text-decoration:none;">
-            <img src="${template.rtnArrow.imgSrc}" width="30" alt="Return">
+
+      <!-- Return Arrow (Targeted via CSS class) -->
+      <div class="return-arrow-container">
+        <a href="/artworks" data-page="artworks">
+            <img src="${template.rtnArrow.imgSrc}" width="40" alt="Return">
         </a>
       </div>
     `;
