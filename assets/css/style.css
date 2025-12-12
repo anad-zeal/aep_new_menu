@@ -56,6 +56,9 @@ body {
   text-align: center;
   z-index: 100;
 }
+.hero {
+  background-color: #8b0000;
+}
 
 .hero .sub-title {
   font-family: var(--font-script);
