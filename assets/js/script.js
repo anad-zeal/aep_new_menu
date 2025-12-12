@@ -1,54 +1,37 @@
-/**
+/*
  * assets/js/script.js
  * Combined Router, Page Renderer, and Cross-Fading Slideshow
  */
 
 const DEBUG = true;
-const log = (...args) => DEBUG && console.log("[AEP]", ...args);
+const log = (...args) => DEBUG && console.log('[AEP]', ...args);
 
-/** Stores scroll positions by page */
 const scrollMemory = {};
-
-/** Global references for slideshow cleanup */
 let slideshowTimer = null;
-let slideshowState = {
-  current: 0,
-  slides: [],
-  isPaused: false,
-};
+let slideshowState = { current: 0, slides: [], isPaused: false };
 
-// ---------------------------------------------------------------------------
-//  Helper: Transition / DOM Swap with Height Locking
-// ---------------------------------------------------------------------------
-
+// --- Transitions ---
 function fadeSwap(element, newContentCallback) {
-  // 1. Lock the container height to prevent layout shifting/collapsing
   const currentHeight = element.offsetHeight;
   element.style.minHeight = `${currentHeight}px`;
-
-  // 2. Start Fade Out
-  element.classList.add("fade-out");
+  element.classList.add('fade-out');
 
   setTimeout(() => {
-    // 3. Update the DOM (Swap Content)
     newContentCallback();
+    element.classList.remove('fade-out');
+    element.classList.add('fade-in');
 
-    // 4. Fade back in
-    element.classList.remove("fade-out");
-    element.classList.add("fade-in");
+    // Scroll to top of container if needed
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // 5. Cleanup: Remove fade class and release height lock
     setTimeout(() => {
-      element.classList.remove("fade-in");
-      element.style.minHeight = ""; // Release height lock so it can grow/shrink naturally
+      element.classList.remove('fade-in');
+      element.style.minHeight = '';
     }, 300);
   }, 300);
 }
 
-// ---------------------------------------------------------------------------
-//  Slideshow Logic
-// ---------------------------------------------------------------------------
-
+// --- Slideshow ---
 function clearSlideshow() {
   if (slideshowTimer) {
     clearInterval(slideshowTimer);
@@ -59,11 +42,10 @@ function clearSlideshow() {
 
 function initSlideshow(jsonFilename) {
   log(`Initializing slideshow with source: ${jsonFilename}`);
-
-  const slideshowContainer = document.querySelector(".slideshow");
-  const caption = document.getElementById("caption-text");
-  const prevBtn = document.getElementById("prev-slide");
-  const nextBtn = document.getElementById("next-slide");
+  const slideshowContainer = document.querySelector('.slideshow');
+  const caption = document.getElementById('caption-text');
+  const prevBtn = document.getElementById('prev-slide');
+  const nextBtn = document.getElementById('next-slide');
 
   if (!slideshowContainer) return;
 
@@ -76,8 +58,7 @@ function initSlideshow(jsonFilename) {
     })
     .then((data) => {
       slideshowState.slides = data;
-      slideshowContainer.innerHTML = "";
-
+      slideshowContainer.innerHTML = '';
       createSlides(slideshowContainer);
       setupControls(prevBtn, nextBtn, slideshowContainer);
       fadeInFirstSlide(caption);
@@ -86,56 +67,51 @@ function initSlideshow(jsonFilename) {
 }
 
 function createSlides(container) {
-  container.style.position = "relative";
-  if (container.clientHeight < 50) container.style.minHeight = "60vh";
+  container.style.position = 'relative';
+  // Adjust height based on viewport
+  container.style.height = '60vh';
 
   slideshowState.slides.forEach(({ src }, index) => {
-    const img = document.createElement("img");
+    const img = document.createElement('img');
     img.src = src;
-    img.className = "slide";
-
+    img.className = 'slide';
     Object.assign(img.style, {
       opacity: 0,
-      transition: "opacity 1.5s ease-in-out",
-      position: "absolute",
-      maxWidth: "100%",
-      maxHeight: "100%",
-      width: "auto",
-      height: "auto",
+      transition: 'opacity 1.5s ease-in-out',
+      position: 'absolute',
+      maxWidth: '100%',
+      maxHeight: '100%',
+      width: 'auto',
+      height: 'auto',
       top: 0,
       left: 0,
       right: 0,
       bottom: 0,
-      margin: "auto",
-      display: "block",
-      objectFit: "contain",
+      margin: 'auto',
+      display: 'block',
+      objectFit: 'contain',
     });
-
     container.appendChild(img);
   });
 }
 
 function fadeInFirstSlide(captionEl) {
-  const slidesDOM = document.querySelectorAll(".slide");
+  const slidesDOM = document.querySelectorAll('.slide');
   if (slidesDOM.length === 0) return;
-
   const firstSlide = slidesDOM[0];
-
   firstSlide.style.opacity = 0;
   requestAnimationFrame(() => {
     firstSlide.style.opacity = 1;
   });
 
   if (captionEl && slideshowState.slides[0]) {
-    captionEl.textContent = slideshowState.slides[0].caption || "";
+    captionEl.textContent = slideshowState.slides[0].caption || '';
     captionEl.style.opacity = 0;
     setTimeout(() => {
-      captionEl.style.transition = "opacity 1.5s ease-in-out";
+      captionEl.style.transition = 'opacity 1.5s ease-in-out';
       captionEl.style.opacity = 1;
     }, 100);
   }
-
-  // Start autoplay
   setTimeout(() => {
     showSlide(0);
     startAutoPlay();
@@ -143,24 +119,20 @@ function fadeInFirstSlide(captionEl) {
 }
 
 function showSlide(index) {
-  const slidesDOM = document.querySelectorAll(".slide");
-  const captionEl = document.getElementById("caption-text");
-
+  const slidesDOM = document.querySelectorAll('.slide');
+  const captionEl = document.getElementById('caption-text');
   if (captionEl) {
     captionEl.style.opacity = 0;
     setTimeout(() => {
-      if (slideshowState.slides[index]) {
-        captionEl.textContent = slideshowState.slides[index].caption || "";
-      }
+      if (slideshowState.slides[index])
+        captionEl.textContent = slideshowState.slides[index].caption || '';
       captionEl.style.opacity = 1;
     }, 500);
   }
-
   slidesDOM.forEach((img, i) => {
     img.style.opacity = i === index ? 1 : 0;
     img.style.zIndex = i === index ? 2 : 1;
   });
-
   slideshowState.current = index;
 }
 
@@ -171,8 +143,7 @@ function nextSlide() {
 
 function prevSlide() {
   const prev =
-    (slideshowState.current - 1 + slideshowState.slides.length) %
-    slideshowState.slides.length;
+    (slideshowState.current - 1 + slideshowState.slides.length) % slideshowState.slides.length;
   showSlide(prev);
 }
 
@@ -187,136 +158,92 @@ function resetAutoPlay() {
 }
 
 function setupControls(prevBtn, nextBtn, container) {
-  if (nextBtn) {
+  if (nextBtn)
     nextBtn.onclick = (e) => {
       e.preventDefault();
       nextSlide();
       resetAutoPlay();
     };
-  }
-  if (prevBtn) {
+  if (prevBtn)
     prevBtn.onclick = (e) => {
       e.preventDefault();
       prevSlide();
       resetAutoPlay();
     };
-  }
 
-  container.addEventListener("mouseenter", () => {
+  container.addEventListener('mouseenter', () => {
     slideshowState.isPaused = true;
     if (slideshowTimer) clearInterval(slideshowTimer);
   });
-
-  container.addEventListener("mouseleave", () => {
+  container.addEventListener('mouseleave', () => {
     slideshowState.isPaused = false;
     startAutoPlay();
   });
-
   container.addEventListener(
-    "touchstart",
+    'touchstart',
     () => {
       slideshowState.isPaused = true;
       if (slideshowTimer) clearInterval(slideshowTimer);
     },
-    { passive: true },
+    { passive: true }
   );
-
   container.addEventListener(
-    "touchend",
+    'touchend',
     () => {
       slideshowState.isPaused = false;
       startAutoPlay();
     },
-    { passive: true },
+    { passive: true }
   );
 }
 
-// ---------------------------------------------------------------------------
-//  Main Application Logic
-// ---------------------------------------------------------------------------
-
-document.addEventListener("DOMContentLoaded", () => {
-  log("Initializing site application...");
-
+// --- Main App ---
+document.addEventListener('DOMContentLoaded', () => {
+  log('Initializing site application...');
   const body = document.body;
-  const targetContainer =
-    document.getElementById("dynamic-content-area") ||
-    document.querySelector(".container");
-  const navMenu = document.getElementById("main-nav");
-  const hamburgerBtn = document.getElementById("hamburger-btn");
-  const closeNavBtn = document.getElementById("close-nav-btn");
-  const navBackdrop = document.getElementById("nav-backdrop");
-
+  const targetContainer = document.getElementById('dynamic-content-area');
+  const navMenu = document.getElementById('main-nav');
   let siteData = null;
 
-  // Render Functions
-
   function renderCardGrid(cardGrid) {
-    const sectionWrapper = document.createElement("section");
-    sectionWrapper.className = "card-grid";
+    const sectionWrapper = document.createElement('section');
+    sectionWrapper.className = 'card-grid';
 
     cardGrid.forEach((item) => {
-      const card = document.createElement("div");
+      const card = document.createElement('div');
       card.className = item.type;
       const content = item.content;
-
-      const cardContent = document.createElement("div");
+      const cardContent = document.createElement('div');
       cardContent.className = content.type;
+      cardContent.style.width = '100%';
+      cardContent.style.height = '100%';
+      cardContent.style.display = 'flex';
+      cardContent.style.justifyContent = 'center';
+      cardContent.style.alignItems = 'center';
+      cardContent.style.flexDirection = 'column';
+      cardContent.style.textAlign = 'center';
 
-      // FIX 1: Ensure card content takes up full space
-      cardContent.style.width = "100%";
-      cardContent.style.height = "100%";
-      cardContent.style.display = "flex";
-      cardContent.style.justifyContent = "center";
-      cardContent.style.alignItems = "center";
-
-      if (content.class) cardContent.classList.add(...content.class.split(" "));
-
+      if (content.class) cardContent.classList.add(...content.class.split(' '));
       if (content.link) {
-        const linkElement = document.createElement("a");
+        const linkElement = document.createElement('a');
         linkElement.href = content.link.href;
         linkElement.textContent = content.link.text;
-        linkElement.className = content.link.class || "page-link";
-
-        // FIX 2: Make the link fill the card for easier clicking
-        linkElement.style.display = "flex";
-        linkElement.style.justifyContent = "center";
-        linkElement.style.alignItems = "center";
-        linkElement.style.width = "100%";
-        linkElement.style.height = "100%";
-        linkElement.style.textDecoration = "none";
-
-        const pageName = content.link.href.replace(/^\//, "").trim();
+        linkElement.className = content.link.class || 'page-link';
+        const pageName = content.link.href.replace(/^\//, '').trim();
         if (pageName) linkElement.dataset.page = pageName;
-        if (content.link.ariaLabel)
-          linkElement.setAttribute("aria-label", content.link.ariaLabel);
-
         cardContent.appendChild(linkElement);
       }
-
-      // Handle Paragraphs/Images if present
       if (content.paragraph) {
-        if (
-          typeof content.paragraph === "object" &&
-          content.paragraph.type === "image"
-        ) {
-          const img = document.createElement("img");
-          img.src = content.paragraph.src;
-          if (content.paragraph.class) img.className = content.paragraph.class;
-          cardContent.appendChild(img);
-        } else {
-          const p = document.createElement("p");
-          p.textContent = content.paragraph;
-          cardContent.appendChild(p);
-        }
+        const p = document.createElement('p');
+        p.textContent = content.paragraph;
+        cardContent.appendChild(p);
       }
-
       card.appendChild(cardContent);
       sectionWrapper.appendChild(card);
     });
 
     fadeSwap(targetContainer, () => {
-      targetContainer.innerHTML = "";
+      targetContainer.innerHTML = '';
       targetContainer.appendChild(sectionWrapper);
     });
   }
@@ -324,30 +251,40 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderContentSection(sectionData) {
     const wrapperElement = document.createElement(sectionData.tag);
     Object.entries(sectionData.attributes || {}).forEach(([k, v]) =>
-      wrapperElement.setAttribute(k, v),
+      wrapperElement.setAttribute(k, v)
     );
 
+    // Add a container for text to constrain width
+    const textWrap = document.createElement('div');
+    textWrap.style.maxWidth = '800px';
+    textWrap.style.margin = '0 auto';
+    textWrap.style.padding = '2rem';
+
     sectionData.paragraphs.forEach((txt) => {
-      const p = document.createElement("p");
+      const p = document.createElement('p');
       p.textContent = txt;
-      wrapperElement.appendChild(p);
+      p.style.marginBottom = '1em';
+      p.style.lineHeight = '1.6';
+      textWrap.appendChild(p);
     });
 
+    wrapperElement.appendChild(textWrap);
+
     fadeSwap(targetContainer, () => {
-      targetContainer.innerHTML = "";
+      targetContainer.innerHTML = '';
       targetContainer.appendChild(wrapperElement);
     });
   }
 
   function renderContactForm(formData) {
-    const sectionWrapper = document.createElement(formData.wrapper.tag);
+    const sectionWrapper = document.createElement(formData.wrapper.tag || 'div');
+    sectionWrapper.classList.add('contact-wrapper'); // Ensure CSS wrapper class
     Object.entries(formData.wrapper.attributes || {}).forEach(([k, v]) =>
-      sectionWrapper.setAttribute(k, v),
+      sectionWrapper.setAttribute(k, v)
     );
-    const formEl = document.createElement(formData.form.tag);
-    Object.entries(formData.form.attributes || {}).forEach(([k, v]) =>
-      formEl.setAttribute(k, v),
-    );
+
+    const formEl = document.createElement(formData.form.tag || 'form');
+    Object.entries(formData.form.attributes || {}).forEach(([k, v]) => formEl.setAttribute(k, v));
 
     (formData.form.headers || []).forEach((header) => {
       const h = document.createElement(header.tag);
@@ -355,59 +292,49 @@ document.addEventListener("DOMContentLoaded", () => {
       formEl.appendChild(h);
     });
 
-    formData.fields.forEach((fieldData) => {
-      const wrapperEl = document.createElement(fieldData.wrapperTag || "div");
-      const inputEl = document.createElement(fieldData.tag);
-      if (fieldData.text) inputEl.textContent = fieldData.text;
-      Object.entries(fieldData.attributes || {}).forEach(([k, v]) =>
-        inputEl.setAttribute(k, v),
-      );
-      wrapperEl.appendChild(inputEl);
-      formEl.appendChild(wrapperEl);
-    });
-
+    if (formData.form.fields) {
+      formData.form.fields.forEach((fieldData) => {
+        const fieldSet = document.createElement(fieldData.wrapperTag || 'fieldset');
+        const inputEl = document.createElement(fieldData.tag);
+        if (fieldData.text) inputEl.textContent = fieldData.text;
+        Object.entries(fieldData.attributes || {}).forEach(([k, v]) => {
+          if (v === true) inputEl.setAttribute(k, '');
+          else inputEl.setAttribute(k, v);
+        });
+        fieldSet.appendChild(inputEl);
+        formEl.appendChild(fieldSet);
+      });
+    }
     sectionWrapper.appendChild(formEl);
+
     fadeSwap(targetContainer, () => {
-      targetContainer.innerHTML = "";
+      targetContainer.innerHTML = '';
       targetContainer.appendChild(sectionWrapper);
     });
   }
 
   function renderSlideshow(template, pageTitle, gallerySource) {
-    // Standardizing HTML to match index1.php exactly
-    // Logo and Category titles are handled by the static PHP header,
-    // so we do NOT include them here to prevent grid layout breakage.
     const htmlContent = `
-      <div class="slideshow">
-           <div class="loading-msg">Loading...</div>
+      <div class="slideshow" style="width:100%; height: 60vh; position: relative;">
+           <div class="loading-msg" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%)">Loading Gallery...</div>
       </div>
-
       <div class="previous">
-        <button id="${
-          template.previousButton.buttonId || "prev-slide"
-        }" class="prev-next circle" aria-label="Previous">
-          <img src="${template.previousButton.imgSrc}" class="prev-nexts" width="50" alt="Previous">
+        <button id="prev-slide" class="prev-next" aria-label="Previous">
+          <img src="${template.previousButton.imgSrc}" width="40" alt="<">
         </button>
       </div>
-
       <div class="next">
-        <button id="${
-          template.nextButton.buttonId || "next-slide"
-        }" class="prev-next circle" aria-label="Next">
-          <img src="${template.nextButton.imgSrc}" class="prev-nexts" width="50" alt="Next">
+        <button id="next-slide" class="prev-next" aria-label="Next">
+          <img src="${template.nextButton.imgSrc}" width="40" alt=">">
         </button>
       </div>
-
       <div class="caption">
-        <p id="${template.caption.paragraphId || "caption-text"}"></p>
+        <p id="caption-text"></p>
       </div>
-
-      <div class="footer">
-        <footer>
-          <div class="copyright">
-            <p>©2025 Alexis Elza. All rights reserved.</p>
-          </div>
-        </footer>
+      <div style="text-align:center; margin-top:2rem;">
+        <a href="/artworks" data-page="artworks" style="color:var(--brand); text-decoration:none;">
+            <img src="${template.rtnArrow.imgSrc}" width="30" alt="Return">
+        </a>
       </div>
     `;
 
@@ -417,117 +344,80 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Page Controller
   function renderPageContent(data, pageName) {
     if (history.state?.page) scrollMemory[history.state.page] = window.scrollY;
-
     clearSlideshow();
     document.title = `${data.title} | Alexis Elza`;
-    body.classList.toggle("slideshow-active", Boolean(data.slideshowTemplate));
+    if (data.slideshowTemplate) body.classList.add('slideshow-active');
+    else body.classList.remove('slideshow-active');
 
     if (data.cardGrid) renderCardGrid(data.cardGrid);
     else if (data.contentSection) renderContentSection(data.contentSection);
     else if (data.contactForm) renderContactForm(data.contactForm);
-    else if (data.slideshowTemplate) {
-      renderSlideshow(
-        data.slideshowTemplate,
-        data.title,
-        data.slideshowTemplate.gallerySource,
-      );
-    } else {
-      targetContainer.innerHTML = "<p>No content available.</p>";
-    }
+    else if (data.slideshowTemplate)
+      renderSlideshow(data.slideshowTemplate, data.title, data.slideshowTemplate.gallerySource);
 
-    // Scroll restoration - delay slightly to allow DOM paint
-    setTimeout(() => {
-      window.scrollTo({ top: scrollMemory[pageName] || 0, behavior: "smooth" });
-    }, 50);
+    // Auto-close menu on navigate
+    if (navMenu && navMenu.classList.contains('is-open')) navMenu.classList.remove('is-open');
   }
 
   async function loadPage(pageName, addToHistory = true) {
     if (!siteData) return;
-    if (!pageName || pageName === "/") pageName = "home";
+    if (!pageName || pageName === '/' || pageName === 'index.php') pageName = 'home';
 
     const pageData = siteData.pages[pageName];
-    if (!pageData) return console.error("Page not found:", pageName);
+    if (!pageData) {
+      console.error('Page not found:', pageName);
+      return;
+    }
 
     let finalData = { title: pageData.title };
-    if (pageData.type === "slideshow") {
-      const templateCopy = JSON.parse(
-        JSON.stringify(siteData.slideshowTemplate),
-      );
+    if (pageData.type === 'slideshow') {
+      const templateCopy = JSON.parse(JSON.stringify(siteData.slideshowTemplate));
       templateCopy.gallerySource = pageData.gallerySource;
       finalData.slideshowTemplate = templateCopy;
-    } else if (pageData.type === "cardGrid")
-      finalData.cardGrid = pageData.content;
-    else if (pageData.type === "contentSection")
-      finalData.contentSection = pageData.content;
-    else if (pageData.type === "contactForm")
-      finalData.contactForm = pageData.content;
+    } else if (pageData.type === 'cardGrid') finalData.cardGrid = pageData.content;
+    else if (pageData.type === 'contentSection') finalData.contentSection = pageData.content;
+    else if (pageData.type === 'contactForm') finalData.contactForm = pageData.content;
 
     renderPageContent(finalData, pageName);
 
-    const menuButtons = document.querySelectorAll(
-      ".gallery-menu .menu-button, .main-nav-menu a",
-    );
-    menuButtons.forEach((btn) => btn.classList.remove("active", "is-active"));
-
-    const activeBtn = document.querySelector(
-      `[data-gallery="${pageName}"], [data-page="${pageName}"]`,
-    );
-    if (activeBtn) activeBtn.classList.add("active");
-
-    if (addToHistory)
-      history.pushState(
-        { page: pageName },
-        finalData.title,
-        `/${pageName === "home" ? "" : pageName}`,
-      );
+    if (addToHistory) {
+      const urlPath = pageName === 'home' ? '/' : `/${pageName}`;
+      history.pushState({ page: pageName }, finalData.title, urlPath);
+    }
   }
 
-  // Initialization
   async function init() {
     try {
-      const response = await fetch("json-files/site-data.json");
-      if (!response.ok) throw new Error("Bad JSON response");
+      const response = await fetch('json-files/site-data.json');
+      if (!response.ok) throw new Error('Bad JSON response');
       siteData = await response.json();
 
-      const path = window.location.pathname.replace(/^\//, "");
-      const initialPage = path || "home";
+      let path = window.location.pathname.replace(/^\//, '');
+      if (path === 'index.html' || path === 'index.php') path = '';
+      const initialPage = path || 'home';
       loadPage(initialPage, false);
     } catch (err) {
-      console.error("FATAL INIT ERROR:", err);
+      console.error('INIT ERROR:', err);
     }
   }
 
-  // Global Listeners
-  document.addEventListener("click", (event) => {
-    // Handle Navigation
-    const link = event.target.closest("a[data-page], button[data-gallery]");
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[data-page]');
     if (link) {
-      if (link.tagName === "BUTTON") {
-        const gallery = link.dataset.gallery;
-        if (gallery) loadPage(gallery);
-      } else {
-        event.preventDefault(); // Prevent standard navigation
-        loadPage(link.dataset.page);
-      }
+      event.preventDefault();
+      loadPage(link.dataset.page);
     }
+    const btn = event.target.closest('#hamburger-btn');
+    if (btn && navMenu) navMenu.classList.add('is-open');
 
-    // Handle Mobile Menu
-    if (event.target.closest("#hamburger-btn")) {
-      if (navMenu) navMenu.classList.add("is-open");
-    }
-    if (
-      event.target.closest("#close-nav-btn") ||
-      event.target.closest("#nav-backdrop")
-    ) {
-      if (navMenu) navMenu.classList.remove("is-open");
-    }
+    const close = event.target.closest('#close-nav-btn') || event.target.closest('#nav-backdrop');
+    if (close && navMenu) navMenu.classList.remove('is-open');
   });
 
-  window.addEventListener("popstate", (event) => {
-    const page = event.state?.page || "home";
+  window.addEventListener('popstate', (event) => {
+    const page = event.state?.page || 'home';
     loadPage(page, false);
   });
 

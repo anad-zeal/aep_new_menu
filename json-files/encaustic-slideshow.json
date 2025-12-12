@@ -1,29 +1,14 @@
 [
   {
-    "id": "encaustic-1",
-    "title": "All Thats Left",
-    "src": "assets/images/encaustic-paintings/all-thats-left.jpg",
-    "caption": "All Thats Left",
-    "description": "Description for All Thats Left",
-    "medium": "Medium TBD",
-    "dimensions": "00\" x 00\""
+    "src": "assets/images/encaustic-paintings/stage-two-over-cosmos.jpg",
+    "caption": "Stage Two Over Cosmos"
   },
   {
-    "id": "encaustic-2",
-    "title": "Birth Of A Hunting Tool",
-    "src": "assets/images/encaustic-paintings/birth-of-a-hunting-tool.jpg",
-    "caption": "Birth Of A Hunting Tool",
-    "description": "Description for Birth Of A Hunting Tool",
-    "medium": "Medium TBD",
-    "dimensions": "00\" x 00\""
+    "src": "assets/images/encaustic-paintings/under-the-bridge.jpg",
+    "caption": "Under The Bridge"
   },
   {
-    "id": "encaustic-3",
-    "title": "Close Encounter",
-    "src": "assets/images/encaustic-paintings/close-encounter.jpg",
-    "caption": "Close Encounter",
-    "description": "Description for Close Encounter",
-    "medium": "Medium TBD",
-    "dimensions": "00\" x 00\""
+    "src": "assets/images/encaustic-paintings/wynken-blynken-and-nod.jpg",
+    "caption": "Wynken, Blynken, and Nod"
   }
 ]

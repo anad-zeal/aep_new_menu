@@ -38,9 +38,10 @@
     </header>
 
     <!-- Navigation (Included from separate file) -->
-    <?php include 'menu.php'; ?>
+    <?php include '/includes/menu.php'; ?>
 
     <!-- Main Dynamic Content Area -->
+
     <main id="dynamic-content-area">
         <!-- JS will inject content here -->
     </main>
