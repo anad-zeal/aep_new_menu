@@ -538,3 +538,161 @@ body.slideshow-active main#dynamic-content-area {
 body.slideshow-active .slide {
   max-width: 75% !important; /* Prevent image from overlapping arrows */
 }
+
+/* ==========================================================================
+   11. Strict Centering & Specific Contact Form Styles
+   ========================================================================== */
+
+/* --- SLIDESHOW CENTERING --- */
+
+/* Ensure the container takes full height and uses Flexbox for centering */
+body.slideshow-active main#dynamic-content-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* The slideshow wrapper itself */
+.slideshow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+   We will handle the image positioning via JS for the cross-fade,
+   but we add this helper to ensure no external margins interfere.
+*/
+.slide {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* --- CONTACT FORM (User Provided + Centering) --- */
+
+/* Target the Contact Page wrapper to force V/H centering */
+.contact-page-active main#dynamic-content-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-color); /* Match site bg */
+}
+
+/* User Provided CSS for the Form */
+
+.container {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+#contact {
+  background: #f9f9f9;
+  padding: 25px;
+  margin: 0; /* Changed from 50px 0 to 0 to allow Flexbox to center it perfectly */
+  border-radius: 5px; /* Optional polish */
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#contact h3 {
+  display: block;
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--brand-gold); /* Updated to match site theme, or use #F96 if preferred */
+  margin-bottom: 10px;
+  font-family: var(--font-body);
+}
+
+#contact h4 {
+  margin: 5px 0 15px;
+  display: block;
+  font-size: 13px;
+  font-family: var(--font-body);
+  color: var(--text-muted);
+}
+
+fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+#contact input[type='text'],
+#contact input[type='email'],
+#contact input[type='tel'],
+#contact input[type='url'],
+#contact textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #fff;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
+
+#contact input:hover,
+#contact textarea:hover {
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid #aaa;
+}
+
+#contact textarea {
+  height: 100px;
+  max-width: 100%;
+  resize: none;
+}
+
+#contact button[type='submit'] {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #0cf; /* Cyan as requested */
+  color: #fff;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  transition: background 0.3s ease-in-out;
+}
+
+#contact button[type='submit']:hover {
+  background: #09c;
+}
+
+#contact button[type='submit']:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  outline: 0;
+  border: 1px solid #999;
+}
+
+/* Placeholder colors */
+::-webkit-input-placeholder {
+  color: #888;
+}
+:-moz-placeholder {
+  color: #888;
+}
+::-moz-placeholder {
+  color: #888;
+}
+:-ms-input-placeholder {
+  color: #888;
+}
