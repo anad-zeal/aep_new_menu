@@ -2,7 +2,7 @@
 /* root/send_email.php */
 
 // Replace this with your actual email address
-$recipient_email = "your-email@example.com";
+$recipient_email = "elza.dana@elzalive.com";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 1. Sanitize and Validate Inputs

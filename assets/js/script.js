@@ -65,6 +65,16 @@ function initSlideshow(jsonFilename) {
   const prevBtn = document.getElementById('prev-slide');
   const nextBtn = document.getElementById('next-slide');
 
+  // Check for URL parameters to show success/error message
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('status') === 'success') {
+    alert('Thank you! Your message has been sent.');
+    // Clean URL
+    window.history.replaceState({}, document.title, window.location.pathname);
+  } else if (urlParams.get('status') === 'error') {
+    alert('There was an error sending your message. Please try again.');
+  }
+
   if (!slideshowContainer) return;
 
   const fetchPath = `json-files/${jsonFilename}`;
