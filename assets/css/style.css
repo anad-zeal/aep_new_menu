@@ -487,3 +487,54 @@ main#dynamic-content-area > div:last-child a:hover img {
     font-size: 2.5rem;
   }
 }
+
+/* ==========================================================================
+   10. Slideshow Page Specific Overrides
+   ========================================================================== */
+
+/* 1. Hide Hamburger Menu ONLY on slideshow pages */
+body.slideshow-active .hamburger-btn {
+  display: none !important;
+}
+
+/* 2. Reposition Header Title to Top Right & Reduce Size */
+body.slideshow-active .site-header {
+  position: absolute; /* Take out of flow to sit at top right */
+  top: 0;
+  right: 0;
+  width: 100%;
+  text-align: right;
+  padding-right: 4vw; /* Align with the visual gutter */
+  padding-top: 2rem;
+  z-index: 10;
+  height: auto;
+}
+
+body.slideshow-active .hero .sub-title {
+  font-size: 3rem; /* Reduced from 4rem (approx 25% smaller) */
+  margin: 0;
+}
+
+/* 3. Move Navigation Arrows Inside Viewport */
+/* We increase the percentage from the edge to ensure they don't touch the scrollbar */
+
+body.slideshow-active .next {
+  right: 5vw; /* Moved inward from 2vw */
+}
+
+body.slideshow-active .previous {
+  left: 5vw; /* Maintain symmetry */
+}
+
+/* 4. Slideshow Container Adjustment */
+/* Ensure the container accounts for the header being absolute now */
+body.slideshow-active main#dynamic-content-area {
+  margin-top: 0;
+  height: 100vh; /* Full height */
+  padding-top: 0;
+}
+
+/* Ensure the slide image allows space for the arrows */
+body.slideshow-active .slide {
+  max-width: 75% !important; /* Prevent image from overlapping arrows */
+}
