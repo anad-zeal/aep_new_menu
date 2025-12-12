@@ -57,7 +57,7 @@ body {
   z-index: 100;
 }
 .hero {
-  background-color: #8b0000;
+  background-color: #8b0000 !important;
 }
 
 .hero .sub-title {
