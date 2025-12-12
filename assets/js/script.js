@@ -1,29 +1,47 @@
 /*
  * assets/js/script.js
  * Combined Router, Page Renderer, and Cross-Fading Slideshow
+ * Updated with Centering Logic, Return Arrow Classes, and Header Text Toggles
  */
 
 const DEBUG = true;
 const log = (...args) => DEBUG && console.log('[AEP]', ...args);
 
+/** Stores scroll positions by page */
 const scrollMemory = {};
-let slideshowTimer = null;
-let slideshowState = { current: 0, slides: [], isPaused: false };
 
-// --- Transitions ---
+/** Global references for slideshow cleanup */
+let slideshowTimer = null;
+let slideshowState = {
+  current: 0,
+  slides: [],
+  isPaused: false,
+};
+
+// ---------------------------------------------------------------------------
+//  Helper: Transition / DOM Swap with Height Locking
+// ---------------------------------------------------------------------------
+
 function fadeSwap(element, newContentCallback) {
+  // 1. Lock the container height to prevent layout shifting
   const currentHeight = element.offsetHeight;
   element.style.minHeight = `${currentHeight}px`;
+
+  // 2. Start Fade Out
   element.classList.add('fade-out');
 
   setTimeout(() => {
+    // 3. Update the DOM (Swap Content)
     newContentCallback();
+
+    // 4. Fade back in
     element.classList.remove('fade-out');
     element.classList.add('fade-in');
 
     // Scroll to top of container if needed
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
+    // 5. Cleanup: Remove fade class and release height lock
     setTimeout(() => {
       element.classList.remove('fade-in');
       element.style.minHeight = '';
@@ -31,7 +49,10 @@ function fadeSwap(element, newContentCallback) {
   }, 300);
 }
 
-// --- Slideshow ---
+// ---------------------------------------------------------------------------
+//  Slideshow Logic
+// ---------------------------------------------------------------------------
+
 function clearSlideshow() {
   if (slideshowTimer) {
     clearInterval(slideshowTimer);
@@ -42,6 +63,7 @@ function clearSlideshow() {
 
 function initSlideshow(jsonFilename) {
   log(`Initializing slideshow with source: ${jsonFilename}`);
+
   const slideshowContainer = document.querySelector('.slideshow');
   const caption = document.getElementById('caption-text');
   const prevBtn = document.getElementById('prev-slide');
@@ -59,6 +81,7 @@ function initSlideshow(jsonFilename) {
     .then((data) => {
       slideshowState.slides = data;
       slideshowContainer.innerHTML = '';
+
       createSlides(slideshowContainer);
       setupControls(prevBtn, nextBtn, slideshowContainer);
       fadeInFirstSlide(caption);
@@ -68,29 +91,29 @@ function initSlideshow(jsonFilename) {
 
 function createSlides(container) {
   container.style.position = 'relative';
-  // Adjust height based on viewport
-  container.style.height = '60vh';
 
   slideshowState.slides.forEach(({ src }, index) => {
     const img = document.createElement('img');
     img.src = src;
     img.className = 'slide';
+
+    // UPDATED: Absolute Centering via Transform
     Object.assign(img.style, {
       opacity: 0,
       transition: 'opacity 1.5s ease-in-out',
       position: 'absolute',
-      maxWidth: '100%',
-      maxHeight: '100%',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)', // Perfect center
+      maxWidth: '85%', // Leave room for arrows
+      maxHeight: '85%', // Leave room for header/footer
       width: 'auto',
       height: 'auto',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      margin: 'auto',
       display: 'block',
       objectFit: 'contain',
+      boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
     });
+
     container.appendChild(img);
   });
 }
@@ -98,7 +121,9 @@ function createSlides(container) {
 function fadeInFirstSlide(captionEl) {
   const slidesDOM = document.querySelectorAll('.slide');
   if (slidesDOM.length === 0) return;
+
   const firstSlide = slidesDOM[0];
+
   firstSlide.style.opacity = 0;
   requestAnimationFrame(() => {
     firstSlide.style.opacity = 1;
@@ -112,6 +137,8 @@ function fadeInFirstSlide(captionEl) {
       captionEl.style.opacity = 1;
     }, 100);
   }
+
+  // Start autoplay
   setTimeout(() => {
     showSlide(0);
     startAutoPlay();
@@ -121,18 +148,22 @@ function fadeInFirstSlide(captionEl) {
 function showSlide(index) {
   const slidesDOM = document.querySelectorAll('.slide');
   const captionEl = document.getElementById('caption-text');
+
   if (captionEl) {
     captionEl.style.opacity = 0;
     setTimeout(() => {
-      if (slideshowState.slides[index])
+      if (slideshowState.slides[index]) {
         captionEl.textContent = slideshowState.slides[index].caption || '';
+      }
       captionEl.style.opacity = 1;
     }, 500);
   }
+
   slidesDOM.forEach((img, i) => {
     img.style.opacity = i === index ? 1 : 0;
     img.style.zIndex = i === index ? 2 : 1;
   });
+
   slideshowState.current = index;
 }
 
@@ -158,27 +189,31 @@ function resetAutoPlay() {
 }
 
 function setupControls(prevBtn, nextBtn, container) {
-  if (nextBtn)
+  if (nextBtn) {
     nextBtn.onclick = (e) => {
       e.preventDefault();
       nextSlide();
       resetAutoPlay();
     };
-  if (prevBtn)
+  }
+  if (prevBtn) {
     prevBtn.onclick = (e) => {
       e.preventDefault();
       prevSlide();
       resetAutoPlay();
     };
+  }
 
   container.addEventListener('mouseenter', () => {
     slideshowState.isPaused = true;
     if (slideshowTimer) clearInterval(slideshowTimer);
   });
+
   container.addEventListener('mouseleave', () => {
     slideshowState.isPaused = false;
     startAutoPlay();
   });
+
   container.addEventListener(
     'touchstart',
     () => {
@@ -187,6 +222,7 @@ function setupControls(prevBtn, nextBtn, container) {
     },
     { passive: true }
   );
+
   container.addEventListener(
     'touchend',
     () => {
@@ -197,13 +233,21 @@ function setupControls(prevBtn, nextBtn, container) {
   );
 }
 
-// --- Main App ---
+// ---------------------------------------------------------------------------
+//  Main Application Logic
+// ---------------------------------------------------------------------------
+
 document.addEventListener('DOMContentLoaded', () => {
   log('Initializing site application...');
+
   const body = document.body;
-  const targetContainer = document.getElementById('dynamic-content-area');
+  const targetContainer =
+    document.getElementById('dynamic-content-area') || document.querySelector('.container');
   const navMenu = document.getElementById('main-nav');
+
   let siteData = null;
+
+  // --- RENDER FUNCTIONS ---
 
   function renderCardGrid(cardGrid) {
     const sectionWrapper = document.createElement('section');
@@ -213,8 +257,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('div');
       card.className = item.type;
       const content = item.content;
+
       const cardContent = document.createElement('div');
       cardContent.className = content.type;
+
+      // Styling adjustments for card layout
       cardContent.style.width = '100%';
       cardContent.style.height = '100%';
       cardContent.style.display = 'flex';
@@ -224,20 +271,33 @@ document.addEventListener('DOMContentLoaded', () => {
       cardContent.style.textAlign = 'center';
 
       if (content.class) cardContent.classList.add(...content.class.split(' '));
+
       if (content.link) {
         const linkElement = document.createElement('a');
         linkElement.href = content.link.href;
         linkElement.textContent = content.link.text;
         linkElement.className = content.link.class || 'page-link';
+
         const pageName = content.link.href.replace(/^\//, '').trim();
         if (pageName) linkElement.dataset.page = pageName;
+        if (content.link.ariaLabel) linkElement.setAttribute('aria-label', content.link.ariaLabel);
+
         cardContent.appendChild(linkElement);
       }
+
       if (content.paragraph) {
-        const p = document.createElement('p');
-        p.textContent = content.paragraph;
-        cardContent.appendChild(p);
+        if (typeof content.paragraph === 'object' && content.paragraph.type === 'image') {
+          const img = document.createElement('img');
+          img.src = content.paragraph.src;
+          if (content.paragraph.class) img.className = content.paragraph.class;
+          cardContent.appendChild(img);
+        } else {
+          const p = document.createElement('p');
+          p.textContent = content.paragraph;
+          cardContent.appendChild(p);
+        }
       }
+
       card.appendChild(cardContent);
       sectionWrapper.appendChild(card);
     });
@@ -277,34 +337,54 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderContactForm(formData) {
+    // 1. Create Wrapper (div.container)
     const sectionWrapper = document.createElement(formData.wrapper.tag || 'div');
-    sectionWrapper.classList.add('contact-wrapper'); // Ensure CSS wrapper class
-    Object.entries(formData.wrapper.attributes || {}).forEach(([k, v]) =>
-      sectionWrapper.setAttribute(k, v)
-    );
+    // Ensure the wrapper class is applied
+    if (formData.wrapper.attributes && formData.wrapper.attributes.class) {
+      sectionWrapper.className = formData.wrapper.attributes.class;
+    }
 
+    Object.entries(formData.wrapper.attributes || {}).forEach(([k, v]) => {
+      if (k !== 'class') sectionWrapper.setAttribute(k, v);
+    });
+
+    // 2. Create Form (form#contact)
     const formEl = document.createElement(formData.form.tag || 'form');
     Object.entries(formData.form.attributes || {}).forEach(([k, v]) => formEl.setAttribute(k, v));
 
+    // 3. Create Headers
     (formData.form.headers || []).forEach((header) => {
       const h = document.createElement(header.tag);
       h.textContent = header.text;
       formEl.appendChild(h);
     });
 
+    // 4. Create Fields
     if (formData.form.fields) {
       formData.form.fields.forEach((fieldData) => {
+        // Create the <fieldset>
         const fieldSet = document.createElement(fieldData.wrapperTag || 'fieldset');
+
+        // Create Input/TextArea/Button
         const inputEl = document.createElement(fieldData.tag);
+
+        // Handle text content (for buttons)
         if (fieldData.text) inputEl.textContent = fieldData.text;
+
+        // Handle Attributes
         Object.entries(fieldData.attributes || {}).forEach(([k, v]) => {
-          if (v === true) inputEl.setAttribute(k, '');
-          else inputEl.setAttribute(k, v);
+          if (v === true) {
+            inputEl.setAttribute(k, ''); // Boolean attributes (required, autofocus)
+          } else {
+            inputEl.setAttribute(k, v);
+          }
         });
+
         fieldSet.appendChild(inputEl);
         formEl.appendChild(fieldSet);
       });
     }
+
     sectionWrapper.appendChild(formEl);
 
     fadeSwap(targetContainer, () => {
@@ -314,6 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderSlideshow(template, pageTitle, gallerySource) {
+    // UPDATED: HTML Structure with specific return-arrow-container
     const htmlContent = `
       <div class="slideshow">
            <div class="loading-msg" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%)">Loading Gallery...</div>
@@ -350,34 +431,73 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- PAGE CONTROLLER ---
+
   function renderPageContent(data, pageName) {
     if (history.state?.page) scrollMemory[history.state.page] = window.scrollY;
+
     clearSlideshow();
     document.title = `${data.title} | Alexis Elza`;
-    if (data.slideshowTemplate) body.classList.add('slideshow-active');
-    else body.classList.remove('slideshow-active');
 
+    // UPDATED: Body Class Logic for Slideshow and Contact
+    if (data.slideshowTemplate) {
+      body.classList.add('slideshow-active');
+    } else {
+      body.classList.remove('slideshow-active');
+    }
+
+    if (pageName === 'contact') {
+      body.classList.add('contact-page-active');
+    } else {
+      body.classList.remove('contact-page-active');
+    }
+
+    // UPDATED: Toggle Header Text Logic
+    const titleEl = document.querySelector('.hero .sub-title');
+    if (titleEl) {
+      if (data.slideshowTemplate) {
+        titleEl.textContent = 'The Life of an Artist';
+      } else {
+        titleEl.textContent = 'Alexis Elza';
+      }
+    }
+
+    // Route to correct renderer
     if (data.cardGrid) renderCardGrid(data.cardGrid);
     else if (data.contentSection) renderContentSection(data.contentSection);
     else if (data.contactForm) renderContactForm(data.contactForm);
-    else if (data.slideshowTemplate)
+    else if (data.slideshowTemplate) {
       renderSlideshow(data.slideshowTemplate, data.title, data.slideshowTemplate.gallerySource);
+    } else {
+      targetContainer.innerHTML = '<p>No content available for this page.</p>';
+    }
 
-    // Auto-close menu on navigate
-    if (navMenu && navMenu.classList.contains('is-open')) navMenu.classList.remove('is-open');
+    // Auto-close menu if open
+    if (navMenu && navMenu.classList.contains('is-open')) {
+      navMenu.classList.remove('is-open');
+    }
+
+    setTimeout(() => {
+      window.scrollTo({ top: scrollMemory[pageName] || 0, behavior: 'smooth' });
+    }, 50);
   }
 
   async function loadPage(pageName, addToHistory = true) {
     if (!siteData) return;
     if (!pageName || pageName === '/' || pageName === 'index.php') pageName = 'home';
 
-    const pageData = siteData.pages[pageName];
-    if (!pageData) {
-      console.error('Page not found:', pageName);
+    // Handle "contact" explicitly
+    if (pageName === 'contact' && !siteData.pages['contact']) {
+      console.error('Contact page requested but not found in siteData.pages');
       return;
     }
 
+    const pageData = siteData.pages[pageName];
+    if (!pageData) return console.error('Page not found in JSON:', pageName);
+
+    // Structure the data object based on type
     let finalData = { title: pageData.title };
+
     if (pageData.type === 'slideshow') {
       const templateCopy = JSON.parse(JSON.stringify(siteData.slideshowTemplate));
       templateCopy.gallerySource = pageData.gallerySource;
@@ -388,11 +508,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderPageContent(finalData, pageName);
 
+    // Update Menu Active State
+    const menuButtons = document.querySelectorAll('.main-nav-menu a, [data-page]');
+    menuButtons.forEach((btn) => btn.classList.remove('active', 'is-active'));
+
+    const activeBtn = document.querySelector(`[data-page="${pageName}"]`);
+    if (activeBtn) activeBtn.classList.add('active');
+
     if (addToHistory) {
       const urlPath = pageName === 'home' ? '/' : `/${pageName}`;
       history.pushState({ page: pageName }, finalData.title, urlPath);
     }
   }
+
+  // --- INIT ---
 
   async function init() {
     try {
@@ -400,26 +529,37 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!response.ok) throw new Error('Bad JSON response');
       siteData = await response.json();
 
-      let path = window.location.pathname.replace(/^\//, '');
-      if (path === 'index.html' || path === 'index.php') path = '';
+      // Determine page from URL
+      let path = window.location.pathname.replace(/^\//, ''); // Remove leading slash
+      if (path === 'index.html' || path === 'index.php') path = ''; // normalize index
+
       const initialPage = path || 'home';
+      log('Loading initial page:', initialPage);
+
       loadPage(initialPage, false);
     } catch (err) {
-      console.error('INIT ERROR:', err);
+      console.error('FATAL INIT ERROR:', err);
     }
   }
 
+  // --- GLOBAL LISTENERS ---
+
   document.addEventListener('click', (event) => {
+    // Handle Navigation
     const link = event.target.closest('a[data-page]');
     if (link) {
       event.preventDefault();
       loadPage(link.dataset.page);
     }
-    const btn = event.target.closest('#hamburger-btn');
-    if (btn && navMenu) navMenu.classList.add('is-open');
 
-    const close = event.target.closest('#close-nav-btn') || event.target.closest('#nav-backdrop');
-    if (close && navMenu) navMenu.classList.remove('is-open');
+    // Handle Mobile Menu Open
+    if (event.target.closest('#hamburger-btn')) {
+      if (navMenu) navMenu.classList.add('is-open');
+    }
+    // Handle Mobile Menu Close
+    if (event.target.closest('#close-nav-btn') || event.target.closest('#nav-backdrop')) {
+      if (navMenu) navMenu.classList.remove('is-open');
+    }
   });
 
   window.addEventListener('popstate', (event) => {
