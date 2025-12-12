@@ -51,8 +51,7 @@ body {
 .site-header {
   position: relative;
   width: 100%;
-  padding-top: 2rem;
-  padding-bottom: 1rem;
+  padding: 1rem 0;
   text-align: center;
   z-index: 100;
 }
