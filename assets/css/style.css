@@ -4,13 +4,13 @@
 
 :root {
   /* Colors */
-  --bg-color: #fdfbf7;
-  --menu-bg: #f9f6f0;
-  --text-main: #111111;
-  --text-muted: #555555;
-  --brand-gold: #c19a6b;
-  --arrow-blue: #000080;
-  --arrow-red: #8b0000;
+  --bg-color: #fdfbf7; /* Warm Cream */
+  --menu-bg: #f9f6f0; /* Slightly darker cream for menu */
+  --text-main: #111111; /* Near Black */
+  --text-muted: #555555; /* Grey for descriptions */
+  --brand-gold: #c19a6b; /* Gold/Brown for script font */
+  --arrow-blue: #000080; /* Deep Navy for Next/Prev */
+  --arrow-red: #8b0000; /* Dark Red for Return */
 
   /* Typography */
   --font-body: 'Montserrat', sans-serif;
@@ -272,27 +272,28 @@ main#dynamic-content-area {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  /* FORCE SCALING UP */
-  /* This creates a box 80% of the screen height */
-  height: 80vh !important;
-  /* This ensures the width matches the container */
-  width: 100% !important;
-  /* This ensures the image stretches to fill that box while keeping aspect ratio */
-  object-fit: contain;
+  /* MAXIMIZED SIZE: Increased to fill available viewport */
+  max-height: 85vh !important;
+  max-width: 90vw !important;
 
+  width: auto;
+  height: auto;
   display: block;
+  object-fit: contain;
+  box-shadow: none;
+  border: 1px solid #e0e0e0;
   z-index: 1;
 }
 
-/* Navigation Arrows - AGGRESSIVE POSITIONING */
+/* Navigation Arrows - Base Styles */
 .prev-next {
-  position: fixed !important; /* Force out of any container flow */
+  position: fixed; /* Fixed to viewport edges */
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 9999; /* Force on top of everything */
+  z-index: 50;
   padding: 20px;
   transition: transform 0.2s ease;
 }
@@ -323,74 +324,6 @@ main#dynamic-content-area {
   transform: scale(1.1) rotate(-10deg);
 }
 
-/* ==========================================================================
-   Navigation Arrows
-   ========================================================================== */
-.prev-arrow,
-.next-arrow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.prev-arrow button,
-.next-arrow button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 10px; /* Merged padding */
-  width: 50px;
-  height: 50px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* -- Option A: If using CSS Shapes (::before) -- */
-.prev-arrow button::before,
-.next-arrow button::before {
-  content: '';
-  display: block;
-  width: 1rem; /* Adjust size of chevron */
-  height: 1rem;
-  border-top: 2px solid var(--ink, #000); /* Fallback to black if var undefined */
-  border-right: 2px solid var(--ink, #000);
-  opacity: 0.7;
-  transition: opacity 0.3s;
-  /* Centering logic for the pseudo-element */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
-
-.prev-arrow button:hover::before,
-.next-arrow button:hover::before {
-  opacity: 1;
-}
-
-.prev-arrow button::before {
-  transform: translate(-25%, -50%) rotate(-135deg);
-}
-.next-arrow button::before {
-  transform: translate(-75%, -50%) rotate(45deg);
-}
-
-/* -- Option B: If using Images (<img>) inside buttons -- */
-/* These styles ensure <img> arrows also look good if present */
-.prev-arrow img,
-.next-arrow img {
-  width: 100%; /* Fill the button */
-  height: auto;
-  opacity: 0.7;
-  transition: opacity 0.3s;
-}
-
-.prev-arrow img:hover,
-.next-arrow img:hover {
-  opacity: 1;
-}
-
 /* ============================================= */
 /* 6. Contact Form                               */
 /* ============================================= */
@@ -398,9 +331,9 @@ main#dynamic-content-area {
 .contact-page-active main#dynamic-content-area {
   display: flex;
   flex-direction: column;
-  justify-content: center;w
+  justify-content: center;
   align-items: center;
-  max-height: 60vh;
+  min-height: 100vh;
 }
 
 .container {
@@ -501,12 +434,13 @@ fieldset {
 }
 
 /* ============================================= */
-/* 8. Animations (Pure Opacity)                  */
+/* 8. Animations (UPDATED: Pure Opacity)         */
 /* ============================================= */
 
 .fade-out {
   opacity: 0;
   transition: opacity 300ms ease-in;
+  /* Removed transform to stop "sliding up" */
 }
 
 .fade-in {
@@ -518,6 +452,7 @@ fieldset {
   to {
     opacity: 1;
   }
+  /* Removed transform to stop "sliding up" */
 }
 
 /* ============================================= */
@@ -536,7 +471,7 @@ body.slideshow-active .site-header {
   left: 0;
   width: 100%;
   padding: 0;
-  height: 0;
+  height: 0; /* Zero height to prevent layout push */
   z-index: 100;
 }
 
@@ -567,20 +502,18 @@ body.slideshow-active .hero .page-title {
 }
 
 /* --- Arrows: Pushed to Extremes --- */
-/* We use !important on left/right to override any specificity issues */
+/* Fixed positioning guarantees they are at the viewport edge */
 body.slideshow-active .previous {
-  left: 2vw !important;
-  right: auto !important;
+  left: 10px;
 }
 body.slideshow-active .next {
-  right: 2vw !important;
-  left: auto !important;
+  right: 10px;
 }
 
 /* --- Caption: Bottom Right --- */
 body.slideshow-active .caption {
   position: fixed;
-  bottom: 3rem;
+  bottom: 3rem; /* Align horizontally with return arrow */
   right: 4vw;
   text-align: right;
   width: auto;
@@ -590,7 +523,7 @@ body.slideshow-active .caption {
 
 #caption-text {
   font-family: var(--font-thin);
-  font-weight: 100;
+  font-weight: 100; /* Thin */
   font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -629,16 +562,16 @@ body.slideshow-active .caption {
   }
 
   body.slideshow-active .slide {
-    height: 60vh !important;
+    max-height: 60vh !important;
+    max-width: 95vw !important;
   }
 
-  body.slideshow-active .previous {
-    left: 5px !important;
+  .previous {
+    left: 5px;
   }
-  body.slideshow-active .next {
-    right: 5px !important;
+  .next {
+    right: 5px;
   }
-
   .return-arrow-container {
     left: 1rem;
     bottom: 1rem;
