@@ -295,6 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderContactForm(formData) {
+    // 1. Create Wrapper
     const sectionWrapper = document.createElement(formData.wrapper.tag || 'div');
     if (formData.wrapper.attributes && formData.wrapper.attributes.class) {
       sectionWrapper.className = formData.wrapper.attributes.class;
@@ -303,17 +304,23 @@ document.addEventListener('DOMContentLoaded', () => {
       if (k !== 'class') sectionWrapper.setAttribute(k, v);
     });
 
+    // 2. Create Form
     const formEl = document.createElement(formData.form.tag || 'form');
     Object.entries(formData.form.attributes || {}).forEach(([k, v]) => formEl.setAttribute(k, v));
 
+    // 3. Create Headers
     (formData.form.headers || []).forEach((header) => {
       const h = document.createElement(header.tag);
       h.textContent = header.text;
       formEl.appendChild(h);
     });
 
-    if (formData.form.fields) {
-      formData.form.fields.forEach((fieldData) => {
+    // 4. Create Fields
+    // FIX: Look in 'formData.fields', falling back to 'formData.form.fields' if structure varies
+    const fields = formData.fields || formData.form.fields;
+
+    if (fields) {
+      fields.forEach((fieldData) => {
         const fieldSet = document.createElement(fieldData.wrapperTag || 'fieldset');
         const inputEl = document.createElement(fieldData.tag);
         if (fieldData.text) inputEl.textContent = fieldData.text;
@@ -401,10 +408,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageTitleEl = document.querySelector('.hero .page-title');
     if (pageTitleEl) {
       if (data.slideshowTemplate) {
-        // Set the text to the current category name (e.g. "Black and White")
         pageTitleEl.textContent = data.title;
       } else {
-        // Clear it on non-slideshow pages just in case
         pageTitleEl.textContent = '';
       }
     }
