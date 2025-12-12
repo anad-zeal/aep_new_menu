@@ -206,59 +206,36 @@
           }
         },
         "form": {
-          "tag": "form",
-          "attributes": {
-            "method": "post",
-            "action": "",
-            "class": "ccform"
-          }
+          "attributes": { "method": "post", "action": "", "class": "ccform" }
         },
         "fields": [
           {
-            "tag": "input",
-            "wrapperTag": "div",
-            "attributes": {
-              "type": "text",
-              "placeholder": "Your Name",
-              "required": "true"
-            }
+            "type": "text",
+            "icon": "fa-user",
+            "placeholder": "Your Name",
+            "required": true
           },
           {
-            "tag": "input",
-            "wrapperTag": "div",
-            "attributes": {
-              "type": "email",
-              "placeholder": "Email",
-              "required": "true"
-            }
+            "type": "email",
+            "icon": "fa-envelope",
+            "placeholder": "Email",
+            "required": true
           },
           {
-            "tag": "input",
-            "wrapperTag": "div",
-            "attributes": {
-              "type": "text",
-              "placeholder": "Subject",
-              "required": "true"
-            }
+            "type": "text",
+            "icon": "fa-info",
+            "placeholder": "Subject",
+            "required": true
           },
           {
-            "tag": "textarea",
-            "wrapperTag": "div",
-            "attributes": {
-              "name": "comments",
-              "placeholder": "Message",
-              "rows": "8",
-              "required": "true"
-            }
+            "type": "textarea",
+            "icon": "fa-comment",
+            "placeholder": "Message",
+            "name": "comments",
+            "rows": 8,
+            "required": true
           },
-          {
-            "tag": "input",
-            "wrapperTag": "div",
-            "attributes": {
-              "type": "submit",
-              "value": "Submit"
-            }
-          }
+          { "type": "submit", "value": "Submit" }
         ]
       }
     }
