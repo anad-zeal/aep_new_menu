@@ -8,9 +8,17 @@
       "imgSrc": "assets/images/misc-images/arrow-right.png",
       "buttonId": "next-slide"
     },
-    "caption": { "paragraphId": "caption-text" },
-    "rtnArrow": { "imgSrc": "assets/images/misc-images/arrow-return.png" },
-    "wrapper": { "tag": "div", "class": "container" }
+    "caption": {
+      "paragraphId": "caption-text"
+    },
+    "rtnArrow": {
+      "imgSrc": "assets/images/misc-images/arrow-return.png"
+    },
+    "wrapper": {
+      "tag": "div",
+      "class": "container"
+    },
+    "gallerySource": ""
   },
   "pages": {
     "home": {
@@ -51,6 +59,14 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
+            "link": { "href": "/black-and-white-paintings", "text": "Black and White" },
+            "paragraph": "Monochromatic studies."
+          }
+        },
+        {
+          "type": "card",
+          "content": {
+            "type": "landingMenuItem",
             "link": { "href": "/encaustic-paintings", "text": "Encaustic" },
             "paragraph": "Heated beeswax and colored pigments."
           }
@@ -67,16 +83,24 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/black-and-white-paintings", "text": "Black & White" },
-            "paragraph": "Monochromatic studies."
+            "link": { "href": "/decorative", "text": "Decorative" },
+            "paragraph": "Intricate and expressive decorative works."
           }
         },
         {
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/decorative", "text": "Decorative" },
-            "paragraph": "Intricate and expressive decorative works."
+            "link": { "href": "/historic-preservation", "text": "Historical" },
+            "paragraph": "Restoration and preservation projects."
+          }
+        },
+        {
+          "type": "card",
+          "content": {
+            "type": "landingMenuItem",
+            "link": { "href": "/project-series-paintings", "text": "Project Series" },
+            "paragraph": "Thematic series and collections."
           }
         }
       ]
@@ -101,12 +125,24 @@
       "title": "Decorative",
       "gallerySource": "decorative-slideshow.json"
     },
+    "historic-preservation": {
+      "type": "slideshow",
+      "title": "Historic Preservation",
+      "gallerySource": "preservation-slideshow.json"
+    },
+    "project-series-paintings": {
+      "type": "slideshow",
+      "title": "Project Series",
+      "gallerySource": "projects-slideshow.json"
+    },
     "biography": {
       "type": "contentSection",
       "title": "Biography",
       "content": {
         "tag": "article",
-        "attributes": { "class": "content-section bio" },
+        "attributes": {
+          "class": "content-section bio"
+        },
         "paragraphs": [
           "Alexis Elza is an artist with 20 years of experience...",
           "Her work explores the boundaries between structure and chaos."
@@ -117,23 +153,57 @@
       "type": "contactForm",
       "title": "Contact",
       "content": {
-        "wrapper": { "tag": "div", "attributes": { "class": "container" } },
+        "wrapper": {
+          "tag": "div",
+          "attributes": {
+            "class": "container"
+          }
+        },
         "form": {
           "tag": "form",
-          "attributes": { "id": "contact", "action": "#", "method": "post" },
-          "headers": [{ "tag": "h3", "text": "Quick Contact" }]
+          "attributes": {
+            "id": "contact",
+            "action": "#",
+            "method": "post"
+          },
+          "headers": [
+            {
+              "tag": "h3",
+              "text": "Quick Contact"
+            }
+          ]
         },
         "fields": [
           {
             "tag": "input",
-            "attributes": { "placeholder": "Your Name", "type": "text", "required": true }
+            "attributes": {
+              "placeholder": "Your Name",
+              "type": "text",
+              "required": true
+            }
           },
           {
             "tag": "input",
-            "attributes": { "placeholder": "Your Email", "type": "email", "required": true }
+            "attributes": {
+              "placeholder": "Your Email",
+              "type": "email",
+              "required": true
+            }
           },
-          { "tag": "textarea", "attributes": { "placeholder": "Message", "required": true } },
-          { "tag": "button", "text": "Submit", "attributes": { "type": "submit" } }
+          {
+            "tag": "textarea",
+            "attributes": {
+              "placeholder": "Message",
+              "required": true
+            }
+          },
+          {
+            "tag": "button",
+            "text": "Submit",
+            "attributes": {
+              "type": "submit"
+            }
+          }
         ]
       }
     }
