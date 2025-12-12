@@ -437,7 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (history.state?.page) scrollMemory[history.state.page] = window.scrollY;
 
     clearSlideshow();
-    document.title = `${data.title} | Alexis Elza`;
+    document.title = `${data.title} | The Life of an Artist`;
 
     // UPDATED: Body Class Logic for Slideshow and Contact
     if (data.slideshowTemplate) {
@@ -458,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (data.slideshowTemplate) {
         titleEl.textContent = 'The Life of an Artist';
       } else {
-        titleEl.textContent = 'Alexis Elza';
+        titleEl.textContent = 'The Life of an Artist';
       }
     }
 
