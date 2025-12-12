@@ -1,7 +1,6 @@
 /*
  * assets/js/script.js
  * Combined Router, Page Renderer, and Cross-Fading Slideshow
- * Updated with Centering Logic, Return Arrow Classes, and Header Text Toggles
  */
 
 const DEBUG = true;
@@ -19,11 +18,11 @@ let slideshowState = {
 };
 
 // ---------------------------------------------------------------------------
-//  Helper: Transition / DOM Swap with Height Locking
+//  Helper: Transition / DOM Swap
 // ---------------------------------------------------------------------------
 
 function fadeSwap(element, newContentCallback) {
-  // 1. Lock the container height to prevent layout shifting
+  // 1. Lock the container height
   const currentHeight = element.offsetHeight;
   element.style.minHeight = `${currentHeight}px`;
 
@@ -31,17 +30,16 @@ function fadeSwap(element, newContentCallback) {
   element.classList.add('fade-out');
 
   setTimeout(() => {
-    // 3. Update the DOM (Swap Content)
+    // 3. Update the DOM
     newContentCallback();
 
     // 4. Fade back in
     element.classList.remove('fade-out');
     element.classList.add('fade-in');
 
-    // Scroll to top of container if needed
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // 5. Cleanup: Remove fade class and release height lock
+    // 5. Cleanup
     setTimeout(() => {
       element.classList.remove('fade-in');
       element.style.minHeight = '';
@@ -62,8 +60,6 @@ function clearSlideshow() {
 }
 
 function initSlideshow(jsonFilename) {
-  log(`Initializing slideshow with source: ${jsonFilename}`);
-
   const slideshowContainer = document.querySelector('.slideshow');
   const caption = document.getElementById('caption-text');
   const prevBtn = document.getElementById('prev-slide');
@@ -97,22 +93,9 @@ function createSlides(container) {
     img.src = src;
     img.className = 'slide';
 
-    // UPDATED: Absolute Centering via Transform
-    Object.assign(img.style, {
-      opacity: 0,
-      transition: 'opacity 1.5s ease-in-out',
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)', // Perfect center
-      maxWidth: '85%', // Leave room for arrows
-      maxHeight: '85%', // Leave room for header/footer
-      width: 'auto',
-      height: 'auto',
-      display: 'block',
-      objectFit: 'contain',
-      boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-    });
+    // Set initial cross-fade state
+    img.style.opacity = 0;
+    img.style.transition = 'opacity 1.5s ease-in-out';
 
     container.appendChild(img);
   });
@@ -123,8 +106,8 @@ function fadeInFirstSlide(captionEl) {
   if (slidesDOM.length === 0) return;
 
   const firstSlide = slidesDOM[0];
-
   firstSlide.style.opacity = 0;
+
   requestAnimationFrame(() => {
     firstSlide.style.opacity = 1;
   });
@@ -138,7 +121,6 @@ function fadeInFirstSlide(captionEl) {
     }, 100);
   }
 
-  // Start autoplay
   setTimeout(() => {
     showSlide(0);
     startAutoPlay();
@@ -189,31 +171,27 @@ function resetAutoPlay() {
 }
 
 function setupControls(prevBtn, nextBtn, container) {
-  if (nextBtn) {
+  if (nextBtn)
     nextBtn.onclick = (e) => {
       e.preventDefault();
       nextSlide();
       resetAutoPlay();
     };
-  }
-  if (prevBtn) {
+  if (prevBtn)
     prevBtn.onclick = (e) => {
       e.preventDefault();
       prevSlide();
       resetAutoPlay();
     };
-  }
 
   container.addEventListener('mouseenter', () => {
     slideshowState.isPaused = true;
     if (slideshowTimer) clearInterval(slideshowTimer);
   });
-
   container.addEventListener('mouseleave', () => {
     slideshowState.isPaused = false;
     startAutoPlay();
   });
-
   container.addEventListener(
     'touchstart',
     () => {
@@ -222,7 +200,6 @@ function setupControls(prevBtn, nextBtn, container) {
     },
     { passive: true }
   );
-
   container.addEventListener(
     'touchend',
     () => {
@@ -241,13 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
   log('Initializing site application...');
 
   const body = document.body;
-  const targetContainer =
-    document.getElementById('dynamic-content-area') || document.querySelector('.container');
+  const targetContainer = document.getElementById('dynamic-content-area');
   const navMenu = document.getElementById('main-nav');
-
   let siteData = null;
-
-  // --- RENDER FUNCTIONS ---
 
   function renderCardGrid(cardGrid) {
     const sectionWrapper = document.createElement('section');
@@ -257,11 +230,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('div');
       card.className = item.type;
       const content = item.content;
-
       const cardContent = document.createElement('div');
       cardContent.className = content.type;
 
-      // Styling adjustments for card layout
       cardContent.style.width = '100%';
       cardContent.style.height = '100%';
       cardContent.style.display = 'flex';
@@ -277,25 +248,15 @@ document.addEventListener('DOMContentLoaded', () => {
         linkElement.href = content.link.href;
         linkElement.textContent = content.link.text;
         linkElement.className = content.link.class || 'page-link';
-
         const pageName = content.link.href.replace(/^\//, '').trim();
         if (pageName) linkElement.dataset.page = pageName;
-        if (content.link.ariaLabel) linkElement.setAttribute('aria-label', content.link.ariaLabel);
-
         cardContent.appendChild(linkElement);
       }
 
       if (content.paragraph) {
-        if (typeof content.paragraph === 'object' && content.paragraph.type === 'image') {
-          const img = document.createElement('img');
-          img.src = content.paragraph.src;
-          if (content.paragraph.class) img.className = content.paragraph.class;
-          cardContent.appendChild(img);
-        } else {
-          const p = document.createElement('p');
-          p.textContent = content.paragraph;
-          cardContent.appendChild(p);
-        }
+        const p = document.createElement('p');
+        p.textContent = content.paragraph;
+        cardContent.appendChild(p);
       }
 
       card.appendChild(cardContent);
@@ -310,11 +271,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderContentSection(sectionData) {
     const wrapperElement = document.createElement(sectionData.tag);
-    Object.entries(sectionData.attributes || {}).forEach(([k, v]) =>
-      wrapperElement.setAttribute(k, v)
-    );
-
-    // Add a container for text to constrain width
+    if (sectionData.attributes) {
+      Object.entries(sectionData.attributes).forEach(([k, v]) => wrapperElement.setAttribute(k, v));
+    }
     const textWrap = document.createElement('div');
     textWrap.style.maxWidth = '800px';
     textWrap.style.margin = '0 auto';
@@ -327,7 +286,6 @@ document.addEventListener('DOMContentLoaded', () => {
       p.style.lineHeight = '1.6';
       textWrap.appendChild(p);
     });
-
     wrapperElement.appendChild(textWrap);
 
     fadeSwap(targetContainer, () => {
@@ -337,56 +295,38 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderContactForm(formData) {
-    // 1. Create Wrapper (div.container)
     const sectionWrapper = document.createElement(formData.wrapper.tag || 'div');
-    // Ensure the wrapper class is applied
     if (formData.wrapper.attributes && formData.wrapper.attributes.class) {
       sectionWrapper.className = formData.wrapper.attributes.class;
     }
-
     Object.entries(formData.wrapper.attributes || {}).forEach(([k, v]) => {
       if (k !== 'class') sectionWrapper.setAttribute(k, v);
     });
 
-    // 2. Create Form (form#contact)
     const formEl = document.createElement(formData.form.tag || 'form');
     Object.entries(formData.form.attributes || {}).forEach(([k, v]) => formEl.setAttribute(k, v));
 
-    // 3. Create Headers
     (formData.form.headers || []).forEach((header) => {
       const h = document.createElement(header.tag);
       h.textContent = header.text;
       formEl.appendChild(h);
     });
 
-    // 4. Create Fields
     if (formData.form.fields) {
       formData.form.fields.forEach((fieldData) => {
-        // Create the <fieldset>
         const fieldSet = document.createElement(fieldData.wrapperTag || 'fieldset');
-
-        // Create Input/TextArea/Button
         const inputEl = document.createElement(fieldData.tag);
-
-        // Handle text content (for buttons)
         if (fieldData.text) inputEl.textContent = fieldData.text;
-
-        // Handle Attributes
         Object.entries(fieldData.attributes || {}).forEach(([k, v]) => {
-          if (v === true) {
-            inputEl.setAttribute(k, ''); // Boolean attributes (required, autofocus)
-          } else {
-            inputEl.setAttribute(k, v);
-          }
+          if (v === true) inputEl.setAttribute(k, '');
+          else inputEl.setAttribute(k, v);
         });
-
         fieldSet.appendChild(inputEl);
         formEl.appendChild(fieldSet);
       });
     }
 
     sectionWrapper.appendChild(formEl);
-
     fadeSwap(targetContainer, () => {
       targetContainer.innerHTML = '';
       targetContainer.appendChild(sectionWrapper);
@@ -394,33 +334,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderSlideshow(template, pageTitle, gallerySource) {
-    // UPDATED: HTML Structure with specific return-arrow-container
     const htmlContent = `
       <div class="slideshow">
-           <div class="loading-msg" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%)">Loading Gallery...</div>
+           <div class="loading-msg" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%)">Loading...</div>
       </div>
 
-      <!-- Nav Arrows -->
       <div class="previous">
         <button id="prev-slide" class="prev-next" aria-label="Previous">
-          <img src="${template.previousButton.imgSrc}" width="50" alt="<">
+          <img src="${template.previousButton.imgSrc}" alt="<">
         </button>
       </div>
       <div class="next">
         <button id="next-slide" class="prev-next" aria-label="Next">
-          <img src="${template.nextButton.imgSrc}" width="50" alt=">">
+          <img src="${template.nextButton.imgSrc}" alt=">">
         </button>
       </div>
 
-      <!-- Caption -->
       <div class="caption">
         <p id="caption-text"></p>
       </div>
 
-      <!-- Return Arrow (Targeted via CSS class) -->
       <div class="return-arrow-container">
         <a href="/artworks" data-page="artworks">
-            <img src="${template.rtnArrow.imgSrc}" width="40" alt="Return">
+            <img src="${template.rtnArrow.imgSrc}" alt="Return">
         </a>
       </div>
     `;
@@ -435,11 +371,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderPageContent(data, pageName) {
     if (history.state?.page) scrollMemory[history.state.page] = window.scrollY;
-
     clearSlideshow();
-    document.title = `${data.title} | The Life of an Artist`;
+    document.title = `${data.title} | Alexis Elza`;
 
-    // UPDATED: Body Class Logic for Slideshow and Contact
+    // 1. Handle Body Classes
     if (data.slideshowTemplate) {
       body.classList.add('slideshow-active');
     } else {
@@ -452,27 +387,37 @@ document.addEventListener('DOMContentLoaded', () => {
       body.classList.remove('contact-page-active');
     }
 
-    // UPDATED: Toggle Header Text Logic
-    const titleEl = document.querySelector('.hero .sub-title');
-    if (titleEl) {
+    // 2. Handle Header Text (Top Left)
+    const subTitleEl = document.querySelector('.hero .sub-title');
+    if (subTitleEl) {
       if (data.slideshowTemplate) {
-        titleEl.textContent = 'The Life of an Artist';
+        subTitleEl.textContent = 'The Life of an Artist';
       } else {
-        titleEl.textContent = 'The Life of an Artist';
+        subTitleEl.textContent = 'Alexis Elza';
       }
     }
 
-    // Route to correct renderer
+    // 3. Handle Category Name (Top Right)
+    const pageTitleEl = document.querySelector('.hero .page-title');
+    if (pageTitleEl) {
+      if (data.slideshowTemplate) {
+        // Set the text to the current category name (e.g. "Black and White")
+        pageTitleEl.textContent = data.title;
+      } else {
+        // Clear it on non-slideshow pages just in case
+        pageTitleEl.textContent = '';
+      }
+    }
+
+    // 4. Render
     if (data.cardGrid) renderCardGrid(data.cardGrid);
     else if (data.contentSection) renderContentSection(data.contentSection);
     else if (data.contactForm) renderContactForm(data.contactForm);
     else if (data.slideshowTemplate) {
       renderSlideshow(data.slideshowTemplate, data.title, data.slideshowTemplate.gallerySource);
-    } else {
-      targetContainer.innerHTML = '<p>No content available for this page.</p>';
     }
 
-    // Auto-close menu if open
+    // Close menu if open
     if (navMenu && navMenu.classList.contains('is-open')) {
       navMenu.classList.remove('is-open');
     }
@@ -486,16 +431,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!siteData) return;
     if (!pageName || pageName === '/' || pageName === 'index.php') pageName = 'home';
 
-    // Handle "contact" explicitly
-    if (pageName === 'contact' && !siteData.pages['contact']) {
-      console.error('Contact page requested but not found in siteData.pages');
-      return;
-    }
+    if (pageName === 'contact' && !siteData.pages['contact']) return;
 
     const pageData = siteData.pages[pageName];
     if (!pageData) return console.error('Page not found in JSON:', pageName);
 
-    // Structure the data object based on type
     let finalData = { title: pageData.title };
 
     if (pageData.type === 'slideshow') {
@@ -508,10 +448,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderPageContent(finalData, pageName);
 
-    // Update Menu Active State
+    // Menu Active State
     const menuButtons = document.querySelectorAll('.main-nav-menu a, [data-page]');
     menuButtons.forEach((btn) => btn.classList.remove('active', 'is-active'));
-
     const activeBtn = document.querySelector(`[data-page="${pageName}"]`);
     if (activeBtn) activeBtn.classList.add('active');
 
@@ -521,42 +460,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- INIT ---
-
   async function init() {
     try {
       const response = await fetch('json-files/site-data.json');
       if (!response.ok) throw new Error('Bad JSON response');
       siteData = await response.json();
 
-      // Determine page from URL
-      let path = window.location.pathname.replace(/^\//, ''); // Remove leading slash
-      if (path === 'index.html' || path === 'index.php') path = ''; // normalize index
-
+      let path = window.location.pathname.replace(/^\//, '');
+      if (path === 'index.html' || path === 'index.php') path = '';
       const initialPage = path || 'home';
-      log('Loading initial page:', initialPage);
-
       loadPage(initialPage, false);
     } catch (err) {
       console.error('FATAL INIT ERROR:', err);
     }
   }
 
-  // --- GLOBAL LISTENERS ---
-
   document.addEventListener('click', (event) => {
-    // Handle Navigation
     const link = event.target.closest('a[data-page]');
     if (link) {
       event.preventDefault();
       loadPage(link.dataset.page);
     }
-
-    // Handle Mobile Menu Open
     if (event.target.closest('#hamburger-btn')) {
       if (navMenu) navMenu.classList.add('is-open');
     }
-    // Handle Mobile Menu Close
     if (event.target.closest('#close-nav-btn') || event.target.closest('#nav-backdrop')) {
       if (navMenu) navMenu.classList.remove('is-open');
     }

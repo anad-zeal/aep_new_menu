@@ -4,13 +4,13 @@
 
 :root {
   /* Colors */
-  --bg-color: #fdfbf7; /* Warm Cream */
-  --menu-bg: #f9f6f0; /* Slightly darker cream for menu */
-  --text-main: #111111; /* Near Black */
-  --text-muted: #555555; /* Grey for descriptions */
-  --brand-gold: #c19a6b; /* Gold/Brown for script font */
-  --arrow-blue: #000080; /* Deep Navy for Next/Prev */
-  --arrow-red: #8b0000; /* Dark Red for Return */
+  --bg-color: #fdfbf7;
+  --menu-bg: #f9f6f0;
+  --text-main: #111111;
+  --text-muted: #555555;
+  --brand-gold: #c19a6b;
+  --arrow-blue: #000080;
+  --arrow-red: #8b0000;
 
   /* Typography */
   --font-body: 'Montserrat', sans-serif;
@@ -272,28 +272,27 @@ main#dynamic-content-area {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  /* MAXIMIZED SIZE: Increased to fill available viewport */
-  max-height: 85vh !important;
-  max-width: 90vw !important;
-
-  width: auto;
-  height: auto;
-  display: block;
+  /* FORCE SCALING UP */
+  /* This creates a box 80% of the screen height */
+  height: 80vh !important;
+  /* This ensures the width matches the container */
+  width: 100% !important;
+  /* This ensures the image stretches to fill that box while keeping aspect ratio */
   object-fit: contain;
-  box-shadow: none;
-  border: 1px solid #e0e0e0;
+
+  display: block;
   z-index: 1;
 }
 
-/* Navigation Arrows - Base Styles */
+/* Navigation Arrows - AGGRESSIVE POSITIONING */
 .prev-next {
-  position: fixed; /* Fixed to viewport edges */
+  position: fixed !important; /* Force out of any container flow */
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 50;
+  z-index: 9999; /* Force on top of everything */
   padding: 20px;
   transition: transform 0.2s ease;
 }
@@ -434,13 +433,12 @@ fieldset {
 }
 
 /* ============================================= */
-/* 8. Animations (UPDATED: Pure Opacity)         */
+/* 8. Animations (Pure Opacity)                  */
 /* ============================================= */
 
 .fade-out {
   opacity: 0;
   transition: opacity 300ms ease-in;
-  /* Removed transform to stop "sliding up" */
 }
 
 .fade-in {
@@ -452,7 +450,6 @@ fieldset {
   to {
     opacity: 1;
   }
-  /* Removed transform to stop "sliding up" */
 }
 
 /* ============================================= */
@@ -471,7 +468,7 @@ body.slideshow-active .site-header {
   left: 0;
   width: 100%;
   padding: 0;
-  height: 0; /* Zero height to prevent layout push */
+  height: 0;
   z-index: 100;
 }
 
@@ -502,18 +499,20 @@ body.slideshow-active .hero .page-title {
 }
 
 /* --- Arrows: Pushed to Extremes --- */
-/* Fixed positioning guarantees they are at the viewport edge */
+/* We use !important on left/right to override any specificity issues */
 body.slideshow-active .previous {
-  left: 10px;
+  left: 2vw !important;
+  right: auto !important;
 }
 body.slideshow-active .next {
-  right: 10px;
+  right: 2vw !important;
+  left: auto !important;
 }
 
 /* --- Caption: Bottom Right --- */
 body.slideshow-active .caption {
   position: fixed;
-  bottom: 3rem; /* Align horizontally with return arrow */
+  bottom: 3rem;
   right: 4vw;
   text-align: right;
   width: auto;
@@ -523,7 +522,7 @@ body.slideshow-active .caption {
 
 #caption-text {
   font-family: var(--font-thin);
-  font-weight: 100; /* Thin */
+  font-weight: 100;
   font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -562,16 +561,16 @@ body.slideshow-active .caption {
   }
 
   body.slideshow-active .slide {
-    max-height: 60vh !important;
-    max-width: 95vw !important;
+    height: 60vh !important;
   }
 
-  .previous {
-    left: 5px;
+  body.slideshow-active .previous {
+    left: 5px !important;
   }
-  .next {
-    right: 5px;
+  body.slideshow-active .next {
+    right: 5px !important;
   }
+
   .return-arrow-container {
     left: 1rem;
     bottom: 1rem;
