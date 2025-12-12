@@ -38,7 +38,7 @@
     </header>
 
     <!-- Navigation (Included from separate file) -->
-    <?php include '/includes/menu.php'; ?>
+    <?php include 'includes/menu.php'; ?>
 
     <!-- Main Dynamic Content Area -->
 
