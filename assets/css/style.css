@@ -3,7 +3,7 @@
    ========================================================================== */
 
 :root {
-  /* Colors extracted from your screenshots */
+  /* Colors */
   --bg-color: #fdfbf7; /* Warm Cream */
   --menu-bg: #f9f6f0; /* Slightly darker cream for menu */
   --text-main: #111111; /* Near Black */
@@ -15,8 +15,9 @@
   /* Typography */
   --font-body: 'Montserrat', sans-serif;
   --font-script: 'Bonheur Royale', cursive;
+  --font-thin: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-  /* Spacing */
+  /* Dimensions */
   --header-height: 120px;
 }
 
@@ -58,13 +59,13 @@ body {
 
 .hero .sub-title {
   font-family: var(--font-script);
-  font-size: 4rem; /* Large script size */
+  font-size: 4rem;
   color: var(--brand-gold);
   line-height: 1.2;
   font-weight: normal;
 }
 
-/* Hide the secondary title to match screenshot simplicity */
+/* Default state for Home Page (Hidden secondary title) */
 .hero .page-title {
   display: none;
 }
@@ -73,7 +74,6 @@ body {
 /* 3. Hamburger Navigation                       */
 /* ============================================= */
 
-/* The Button (Three lines) */
 .hamburger-btn {
   position: absolute;
   top: 3rem;
@@ -93,11 +93,11 @@ body {
   display: block;
   width: 100%;
   height: 2px;
-  background-color: var(--brand-gold); /* Gold/Brown lines */
+  background-color: var(--brand-gold);
   transition: all 0.3s ease;
 }
 
-/* The Menu Panel (Off-Canvas) */
+/* Off-Canvas Menu */
 .main-nav-menu {
   position: fixed;
   top: 0;
@@ -112,22 +112,20 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 300px; /* Width of the sidebar */
+  width: 300px;
   height: 100%;
   background-color: var(--menu-bg);
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
-  padding: 8rem 3rem; /* Push links down */
+  padding: 8rem 3rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
   transform: translateX(-100%);
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   pointer-events: auto;
   border-right: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Links inside the menu */
 .main-nav-menu a {
   font-family: var(--font-body);
   font-size: 1.1rem;
@@ -145,7 +143,6 @@ body {
   font-weight: 500;
 }
 
-/* Close "X" Button */
 .close-nav-btn {
   position: absolute;
   top: 2rem;
@@ -153,16 +150,15 @@ body {
   background: none;
   border: none;
   font-size: 2rem;
-  color: #a52a2a; /* Reddish brown X */
+  color: #a52a2a;
   cursor: pointer;
   font-weight: 300;
 }
 
-/* Open States */
+/* Menu Open States */
 .main-nav-menu.is-open .nav-content {
   transform: translateX(0);
 }
-
 .main-nav-menu .nav-backdrop {
   position: absolute;
   top: 0;
@@ -174,7 +170,6 @@ body {
   transition: opacity 0.4s;
   z-index: -1;
 }
-
 .main-nav-menu.is-open .nav-backdrop {
   opacity: 1;
   pointer-events: auto;
@@ -188,7 +183,7 @@ main#dynamic-content-area {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Vertically center content */
+  justify-content: center;
   align-items: center;
   width: 100%;
   padding: 2rem;
@@ -197,15 +192,14 @@ main#dynamic-content-area {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 Columns like the screenshot */
-  gap: 4rem 2rem; /* Vertical gap, Horizontal gap */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem 2rem;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  align-items: flex-start; /* Align top so titles line up */
+  align-items: flex-start;
 }
 
-/* Clean up the "Cards" to look like text links */
 .card,
 .landingMenuItem,
 .page-link {
@@ -217,7 +211,6 @@ main#dynamic-content-area {
   align-items: center;
 }
 
-/* The Main Titles (e.g., "BLACK AND WHITE") */
 .card-grid .page-link {
   font-family: var(--font-body);
   font-size: 1.6rem;
@@ -234,319 +227,21 @@ main#dynamic-content-area {
   opacity: 0.7;
 }
 
-/* The Description Text (e.g., "Heated beeswax...") */
 .landingMenuItem p {
   font-family: var(--font-body);
   font-size: 0.9rem;
   color: var(--text-muted);
   font-weight: 300;
   line-height: 1.5;
-  max-width: 250px; /* Constrain width for better readability */
+  max-width: 250px;
   margin: 0 auto;
 }
 
 /* ============================================= */
-/* 5. Slideshow Styles                           */
+/* 5. Slideshow Elements (Common)                */
 /* ============================================= */
 
-/* Wrapper to establish context */
 .slideshow-active main#dynamic-content-area {
-  display: block; /* Override flex centering */
-  position: relative;
-  height: 75vh; /* Fixed height for slideshow area */
-  padding: 0;
-  margin-top: 2rem;
-}
-
-.slideshow {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Images */
-.slide {
-  max-height: 80vh !important; /* Limit height so arrows fit */
-  max-width: 80% !important; /* Leave room for side arrows */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-/* -- Navigation Arrows -- */
-
-.prev-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 50;
-  padding: 20px; /* Larger hit area */
-  transition: transform 0.2s ease;
-}
-
-.prev-next:hover {
-  transform: translateY(-50%) scale(1.1);
-}
-
-/* Explicit positioning from edge */
-.previous {
-  position: absolute;
-  left: 2vw;
-  top: 50%;
-}
-
-.next {
-  position: absolute;
-  right: 2vw;
-  top: 50%;
-}
-
-/* Specific styling for the Arrow Images */
-.prev-next img {
-  width: 50px;
-  height: auto;
-  display: block;
-  /* If your arrow images aren't already blue/navy, use filter (optional):
-     filter: hue-rotate(240deg) brightness(0.5);
-  */
-}
-
-/* -- Return Arrow (Red, Bottom Left) -- */
-
-/*
-   We target the div containing the return arrow.
-   In JS this is the last div injected.
-   We use :last-child or a specific class if we add one to JS.
-   Based on current JS structure, it is a div with style="text-align:center..."
-*/
-main#dynamic-content-area > div:last-child {
-  position: fixed; /* Fixed to viewport */
-  bottom: 3rem;
-  left: 3rem;
-  margin: 0 !important;
-  z-index: 60;
-  text-align: left !important;
-}
-
-main#dynamic-content-area > div:last-child img {
-  width: 40px; /* Adjust size */
-  transform: rotate(0deg); /* Adjust rotation if source image is weird */
-  transition: transform 0.3s ease;
-}
-
-main#dynamic-content-area > div:last-child a:hover img {
-  transform: scale(1.1) rotate(-10deg);
-}
-
-/* Caption */
-.caption {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  padding-bottom: 1rem;
-  pointer-events: none; /* Let clicks pass through */
-}
-
-#caption-text {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-/* ============================================= */
-/* 6. Contact Form                               */
-/* ============================================= */
-
-.contact-wrapper {
-  max-width: 600px;
-  margin: 0 auto;
-  width: 100%;
-  padding-top: 2rem;
-}
-
-#contact {
-  background: #fff;
-  padding: 40px;
-  border: 1px solid #eee; /* Very subtle border */
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-}
-
-#contact h3 {
-  font-family: var(--font-script);
-  font-size: 3rem;
-  color: var(--brand-gold);
-  margin-bottom: 0.5rem;
-}
-
-#contact input,
-#contact textarea {
-  background: #fafafa;
-  border: 1px solid #ddd;
-  font-family: var(--font-body);
-}
-
-#contact button {
-  background-color: var(--text-main);
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-/* ============================================= */
-/* 7. Footer                                     */
-/* ============================================= */
-
-.site-footer {
-  padding: 2rem;
-  text-align: center;
-  font-size: 0.8rem;
-  color: #999;
-  margin-top: auto;
-}
-
-/* ============================================= */
-/* 8. Animations                                 */
-/* ============================================= */
-
-.fade-out {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 300ms ease-in, transform 300ms ease-in;
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeInAnim 400ms forwards ease-out;
-}
-
-@keyframes fadeInAnim {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ============================================= */
-/* 9. Responsive Adjustments                     */
-/* ============================================= */
-
-/* Tablet (2 cols) */
-@media (max-width: 900px) {
-  .card-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-  }
-
-  .hero .sub-title {
-    font-size: 3rem;
-  }
-}
-
-/* Mobile (1 col) */
-@media (max-width: 600px) {
-  .card-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .slideshow-active main#dynamic-content-area {
-    height: 60vh;
-  }
-
-  .previous {
-    left: 10px;
-  }
-  .next {
-    right: 10px;
-  }
-
-  .return-arrow-container {
-    position: fixed;
-    bottom: 3rem;
-    left: 3rem;
-    z-index: 60;
-  }
-
-  .return-arrow-container img {
-    width: 40px;
-    transition: transform 0.3s ease;
-  }
-
-  .return-arrow-container a:hover img {
-    transform: scale(1.1) rotate(-10deg);
-  }
-
-  .hero .sub-title {
-    font-size: 2.5rem;
-  }
-}
-
-/* ==========================================================================
-   10. Slideshow Page Specific Overrides
-   ========================================================================== */
-
-/* 1. Hide Hamburger Menu ONLY on slideshow pages */
-body.slideshow-active .hamburger-btn {
-  display: none !important;
-}
-
-/* 2. Reposition Header Title to Top Right & Reduce Size */
-body.slideshow-active .site-header {
-  position: absolute; /* Take out of flow to sit at top right */
-  top: 0;
-  right: 0;
-  width: 100%;
-  text-align: right;
-  padding-right: 4vw; /* Align with the visual gutter */
-  padding-top: 2rem;
-  z-index: 10;
-  height: auto;
-}
-
-body.slideshow-active .hero .sub-title {
-  font-size: 3rem; /* Reduced from 4rem (approx 25% smaller) */
-  margin: 0;
-}
-
-/* 3. Move Navigation Arrows Inside Viewport */
-/* We increase the percentage from the edge to ensure they don't touch the scrollbar */
-
-body.slideshow-active .next {
-  right: 5vw; /* Moved inward from 2vw */
-}
-
-body.slideshow-active .previous {
-  left: 5vw; /* Maintain symmetry */
-}
-
-/* 4. Slideshow Container Adjustment */
-/* Ensure the container accounts for the header being absolute now */
-body.slideshow-active main#dynamic-content-area {
-  margin-top: 0;
-  height: 100vh; /* Full height */
-  padding-top: 0;
-}
-
-/* Ensure the slide image allows space for the arrows */
-body.slideshow-active .slide {
-  max-width: 75% !important; /* Prevent image from overlapping arrows */
-}
-
-/* ==========================================================================
-   11. Strict Centering & Specific Contact Form Styles
-   ========================================================================== */
-
-/* --- SLIDESHOW CENTERING --- */
-
-/* Ensure the container takes full height and uses Flexbox for centering */
-body.slideshow-active main#dynamic-content-area {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -558,7 +253,6 @@ body.slideshow-active main#dynamic-content-area {
   position: relative;
 }
 
-/* The slideshow wrapper itself */
 .slideshow {
   position: absolute;
   top: 0;
@@ -567,28 +261,62 @@ body.slideshow-active main#dynamic-content-area {
   height: 100%;
 }
 
-/*
-   We will handle the image positioning via JS for the cross-fade,
-   but we add this helper to ensure no external margins interfere.
-*/
 .slide {
   margin: 0 !important;
   padding: 0 !important;
+  user-select: none;
 }
 
-/* --- CONTACT FORM (User Provided + Centering) --- */
+/* Navigation Arrows - Base Styles */
+.prev-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 50;
+  padding: 20px;
+  transition: transform 0.2s ease;
+}
 
-/* Target the Contact Page wrapper to force V/H centering */
+.prev-next:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Scale arrows down by 25% (Base size was 50px, new target ~37.5px) */
+.prev-next img {
+  width: 38px;
+  height: auto;
+  display: block;
+}
+
+/* Return Arrow */
+.return-arrow-container {
+  position: fixed;
+  bottom: 3rem;
+  left: 4vw; /* Aligned with header text */
+  z-index: 60;
+}
+.return-arrow-container img {
+  width: 40px;
+  transition: transform 0.3s ease;
+}
+.return-arrow-container a:hover img {
+  transform: scale(1.1) rotate(-10deg);
+}
+
+/* ============================================= */
+/* 6. Contact Form                               */
+/* ============================================= */
+
 .contact-page-active main#dynamic-content-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: var(--bg-color); /* Match site bg */
 }
-
-/* User Provided CSS for the Form */
 
 .container {
   max-width: 400px;
@@ -600,8 +328,8 @@ body.slideshow-active main#dynamic-content-area {
 #contact {
   background: #f9f9f9;
   padding: 25px;
-  margin: 0; /* Changed from 50px 0 to 0 to allow Flexbox to center it perfectly */
-  border-radius: 5px; /* Optional polish */
+  margin: 0;
+  border-radius: 5px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
@@ -609,7 +337,7 @@ body.slideshow-active main#dynamic-content-area {
   display: block;
   font-size: 30px;
   font-weight: 400;
-  color: var(--brand-gold); /* Updated to match site theme, or use #F96 if preferred */
+  color: var(--brand-gold);
   margin-bottom: 10px;
   font-family: var(--font-body);
 }
@@ -630,10 +358,7 @@ fieldset {
   width: 100%;
 }
 
-#contact input[type='text'],
-#contact input[type='email'],
-#contact input[type='tel'],
-#contact input[type='url'],
+#contact input,
 #contact textarea {
   width: 100%;
   border: 1px solid #ccc;
@@ -646,53 +371,216 @@ fieldset {
 
 #contact input:hover,
 #contact textarea:hover {
-  transition: border-color 0.3s ease-in-out;
   border: 1px solid #aaa;
+  transition: border-color 0.3s ease;
 }
-
 #contact textarea {
   height: 100px;
-  max-width: 100%;
   resize: none;
 }
-
 #contact button[type='submit'] {
   cursor: pointer;
   width: 100%;
   border: none;
-  background: #0cf; /* Cyan as requested */
+  background: #0cf;
   color: #fff;
   margin: 0 0 5px;
   padding: 10px;
   font-size: 15px;
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease;
 }
-
 #contact button[type='submit']:hover {
   background: #09c;
 }
-
-#contact button[type='submit']:active {
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
-}
-
 #contact input:focus,
 #contact textarea:focus {
   outline: 0;
   border: 1px solid #999;
 }
 
-/* Placeholder colors */
-::-webkit-input-placeholder {
-  color: #888;
+/* ============================================= */
+/* 7. Footer                                     */
+/* ============================================= */
+
+.site-footer {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #999;
+  position: fixed;
+  bottom: 1rem;
+  width: 100%;
+  pointer-events: none;
+  z-index: 5;
 }
-:-moz-placeholder {
-  color: #888;
+
+/* ============================================= */
+/* 8. Animations                                 */
+/* ============================================= */
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 300ms ease-in, transform 300ms ease-in;
 }
-::-moz-placeholder {
-  color: #888;
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInAnim 400ms forwards ease-out;
 }
-:-ms-input-placeholder {
-  color: #888;
+@keyframes fadeInAnim {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================= */
+/* 9. SLIDESHOW PAGE OVERRIDES (Visual Update)   */
+/* ============================================= */
+
+/* Hide Hamburger */
+body.slideshow-active .hamburger-btn {
+  display: none !important;
+}
+
+/* --- Header Layout: Split Top-Left and Top-Right --- */
+body.slideshow-active .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  height: 0; /* Zero height to prevent layout push */
+  z-index: 100;
+}
+
+/* "The Life of an Artist" - Top Left */
+body.slideshow-active .hero .sub-title {
+  position: fixed;
+  top: 2rem;
+  left: 4vw;
+  text-align: left;
+  font-size: 3rem;
+  margin: 0;
+  z-index: 101;
+}
+
+/* Category Name - Top Right */
+body.slideshow-active .hero .page-title {
+  display: block; /* Visible on slideshow */
+  position: fixed;
+  top: 2rem;
+  right: 4vw;
+  text-align: right;
+  font-family: var(--font-thin);
+  font-weight: 100; /* Thin */
+  font-size: 2.5rem;
+  color: var(--text-main);
+  z-index: 101;
+  margin: 0;
+}
+
+/* --- Arrows --- */
+body.slideshow-active .previous {
+  left: 4vw;
+}
+body.slideshow-active .next {
+  right: 4vw;
+}
+
+/* --- Caption: Bottom Right --- */
+body.slideshow-active .caption {
+  position: fixed;
+  bottom: 3rem; /* Align horizontally with return arrow */
+  right: 4vw;
+  text-align: right;
+  width: auto;
+  z-index: 60;
+  pointer-events: none;
+}
+
+#caption-text {
+  font-family: var(--font-thin);
+  font-weight: 100; /* Thin */
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* --- Slideshow Image: Maximized --- */
+body.slideshow-active .slide {
+  /* Absolute Center */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* Maximize Size without occluding header/footer text */
+  /* Calc logic: 100vh minus ~150px top header and ~150px bottom footer space */
+  max-height: 70vh !important;
+  max-width: 80vw !important;
+
+  /* Styling */
+  width: auto;
+  height: auto;
+  display: block;
+  objectfit: contain;
+  box-shadow: none;
+  border: 1px solid #e0e0e0; /* Thin subtle border */
+  z-index: 1; /* Below text/arrows */
+}
+
+/* ============================================= */
+/* 10. Responsive Adjustments                    */
+/* ============================================= */
+
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+  .hero .sub-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  /* Mobile Slideshow Adjustments */
+  body.slideshow-active .hero .sub-title {
+    font-size: 2rem;
+    left: 1rem;
+  }
+  body.slideshow-active .hero .page-title {
+    font-size: 1.5rem;
+    right: 1rem;
+    top: 2.5rem;
+  }
+
+  body.slideshow-active .slide {
+    max-height: 50vh !important;
+    max-width: 90vw !important;
+  }
+
+  .previous {
+    left: 1rem;
+  }
+  .next {
+    right: 1rem;
+  }
+  .return-arrow-container {
+    left: 1rem;
+    bottom: 1rem;
+  }
+  body.slideshow-active .caption {
+    right: 1rem;
+    bottom: 4rem; /* Move up slightly on mobile */
+  }
 }
