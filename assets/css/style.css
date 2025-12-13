@@ -4,8 +4,8 @@
 
 :root {
   /* Colors */
-  --bg-color: #fdfbf7; /* Warm Cream */
-  --menu-bg: #f9f6f0; /* Slightly darker cream for menu */
+  --bg-color: #eae7df; /* Warm Cream */
+  --menu-bg: #eae7df; /* Slightly darker cream for menu */
   --text-main: #3b569e; /* Near Black */
   --text-muted: #555555; /* Grey for descriptions */
   --brand-gold: #c19a6b; /* Gold/Brown for script font */
