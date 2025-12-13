@@ -114,7 +114,7 @@ h6 {
   display: block;
   width: 100%;
   height: 2px;
-  background-color: var(--brand-gold);
+  background-color: var(--btext-main);
   transition: all 0.3s ease;
 }
 
@@ -152,14 +152,13 @@ h6 {
   font-size: 1.1rem;
   letter-spacing: 0.15em;
   text-decoration: none;
-  color: var(--text-muted);
+  color: var(--text-main);
   text-transform: uppercase;
   font-weight: 400;
   transition: color 0.3s;
 }
 
-.main-nav-menu a:hover,
-.main-nav-menu a.active {
+.main-nav-menu a:hover .main-nav-menu a.active {
   color: var(--text-main);
   font-weight: 500;
 }
@@ -251,7 +250,7 @@ main#dynamic-content-area {
 .landingMenuItem p {
   font-family: var(--font-body);
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--text-main);
   font-weight: 300;
   line-height: 1.5;
   max-width: 250px;
