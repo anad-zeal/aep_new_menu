@@ -344,7 +344,13 @@ document.addEventListener('DOMContentLoaded', () => {
         : 'The Life of an Artist';
 
     const pageTitleEl = document.querySelector('.hero .page-title');
-    if (pageTitleEl) pageTitleEl.textContent = data.slideshowTemplate ? data.title : '';
+    if (pageTitleEl) {
+      if (data.slideshowTemplate) {
+        pageTitleEl.textContent = data.title;
+      } else {
+        pageTitleEl.textContent = '';
+      }
+    }
 
     // Route Content
     if (data.cardGrid) renderCardGrid(targetContainer, data.cardGrid);
