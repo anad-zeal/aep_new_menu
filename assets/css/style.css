@@ -70,7 +70,7 @@ body {
   display: none;
 }
 
-.hero-oval {
+.oval {
   width: 200px; /* adjust as needed */
   height: 100px; /* smaller than width for a horizontal oval */
   border: 2px solid black; /* line thickness and color */
