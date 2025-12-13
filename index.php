@@ -24,8 +24,8 @@
 
     <!-- Header / Branding -->
     <header class="site-header">
-        <div class="hero oval">
-            <div class="sub-title">The Life of an Artistsss</div>
+        <div class="hero">
+            <div class="sub-title">The Life of an Artist</div>
             <div class="page-title">Artist Portfolio</div>
         </div>
 
