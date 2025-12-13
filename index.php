@@ -25,7 +25,9 @@
     <!-- Header / Branding -->
     <header class="site-header">
         <div class="hero">
-            <div class="sub-title">The Life of an Artist</div>
+            <div class="hero-oval">
+                <h2 class="sub-title">The Life of an Artist</h2>
+            </div>
             <div class="page-title">Artist Portfolio</div>
         </div>
 
