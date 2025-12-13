@@ -249,7 +249,7 @@ main#dynamic-content-area {
 
 .landingMenuItem p {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 1.25rem;
   color: var(--text-main);
   font-weight: 300;
   line-height: 1.5;
