@@ -4,7 +4,7 @@
 
 :root {
   /* Colors */
-  --bg-color: #8b0000; /* Warm Cream */
+  --bg-color: transparent; /* Warm Cream */
   --menu-bg: #f9f6f0; /* Slightly darker cream for menu */
   --text-main: #111111; /* Near Black */
   --text-muted: #555555; /* Grey for descriptions */
@@ -70,8 +70,7 @@ body {
   display: none;
 }
 
-.oval {
-  position: relative;
+.hero-oval {
   width: 200px; /* adjust as needed */
   height: 100px; /* smaller than width for a horizontal oval */
   border: 2px solid black; /* line thickness and color */
