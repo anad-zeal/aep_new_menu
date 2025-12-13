@@ -51,13 +51,10 @@ body {
 .site-header {
   position: relative;
   width: 100%;
-  padding: 1rem 0;
+  padding-top: 2rem;
   padding-bottom: 1rem;
   text-align: center;
   z-index: 100;
-}
-.hero {
-  height: auto;
 }
 
 .hero .sub-title {
@@ -71,14 +68,6 @@ body {
 /* Default state for Home Page (Hidden secondary title) */
 .hero .page-title {
   display: none;
-}
-
-.hero {
-  width: 200px; /* adjust as needed */
-  height: 100px; /* smaller than width for a horizontal oval */
-  border: 2px solid black; /* line thickness and color */
-  border-radius: 50%; /* makes the rectangle into an ellipse */
-  background: white; /* or transparent */
 }
 
 /* ============================================= */
