@@ -1,6 +1,7 @@
 <section class="hero">
-    <h2 class="sub-title">The Life of an Artist</h2>
-    <p class="page-title"></p>
+    <div class="hero-oval">
+        <h2 class="sub-title">The Life of an Artist</h2>
+    </div>
 </section>
 
 <main id="dynamic-page-wrapper" tabindex="-1">
