@@ -213,7 +213,7 @@ main#dynamic-content-area {
   gap: 4rem 2rem;
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: -10vh auto 10vh auto;
   align-items: flex-start;
 }
 
