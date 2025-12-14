@@ -83,7 +83,7 @@ h6 {
   font-size: 4rem;
   color: var(--body-font-color);
   line-height: 1.2;
-  font-weight: 200;
+  font-weight: normal;
 }
 
 /* Default state for Home Page (Hidden secondary title) */
