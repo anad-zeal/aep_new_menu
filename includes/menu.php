@@ -8,7 +8,7 @@
         </div> -->
 
         <!-- Menu Links -->
-        <a href="/" data-page="home">Home</a>
+        <!-- <a href="/" data-page="home">Home</a> -->
         <a href="/" data-page="artworks">Home</a>
         <a href="/biography" data-page="biography">Biography</a>
         <a href="/contact" data-page="contact">Contact</a>
