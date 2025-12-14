@@ -55,6 +55,8 @@ $life_title = "<h2 class='sub-title fade-title'>The Life sof an Artist</h2>";
     <link
         href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <link rel="preload" href="/fonts/test-tiempos-fine-light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/assets/css/style.css" />

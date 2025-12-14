@@ -2,6 +2,14 @@
    1. Design Tokens & Global Reset
    ========================================================================== */
 
+@font-face {
+  font-family: test-tiempos-fine-light.woff2';
+  src: url('/fonts/test-tiempos-fine-light.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Colors */
   --bg-color: #eae7df;
@@ -17,6 +25,7 @@
   --font-body: 'Montserrat', sans-serif;
   --font-script: 'Bonheur Royale', cursive;
   --font-thin: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif: 'test-tiempos-fine-light.woff2', serif;
 
   --header-height: 120px;
 }
@@ -70,11 +79,11 @@ h6 {
 }
 
 .hero .sub-title {
-  font-family: var(--font-script);
+  font-family: var(--font-serif);
   font-size: 4rem;
-  color: var(--brand-gold);
+  color: var(--body-font-color);
   line-height: 1.2;
-  font-weight: normal;
+  font-weight: 200;
 }
 
 /* Default state for Home Page (Hidden secondary title) */
