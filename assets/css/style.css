@@ -226,6 +226,7 @@ main#dynamic-content-area {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 10vh;
 }
 
 .card-grid .page-link {
