@@ -2,14 +2,6 @@
    1. Design Tokens & Global Reset
    ========================================================================== */
 
-@font-face {
-  font-family: test-tiempos-fine-light.woff2';
-  src: url('/fonts/test-tiempos-fine-light.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   /* Colors */
   --bg-color: #eae7df;
@@ -25,8 +17,6 @@
   --font-body: 'Montserrat', sans-serif;
   --font-script: 'Bonheur Royale', cursive;
   --font-thin: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-serif: 'test-tiempos-fine-light.woff2', serif;
-
   --header-height: 120px;
 }
 
