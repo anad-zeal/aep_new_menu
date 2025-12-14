@@ -125,9 +125,7 @@ h6 {
   height: 20vh;
   z-index: 2001;
   pointer-events: none;
-}
 
-.main-nav-menu .nav-content {
   position: absolute;
   top: 0;
   left: 0;
