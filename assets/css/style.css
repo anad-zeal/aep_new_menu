@@ -70,11 +70,11 @@ h6 {
 
 .hero .sub-title {
   font-family: var(--font-script);
-  font-size: 4rem;
+  font-size: 6rem;
   color: var(--body-font-color);
   line-height: 1.2;
   font-weight: normal;
-  background-color: green;
+  background-color: orange;
 }
 
 /* Default state for Home Page (Hidden secondary title) */
@@ -133,8 +133,8 @@ h6 {
   top: 0;
   left: 0;
   width: 300px;
-  height: auto;
-  background-color: var(--menu-bg);
+  height: 100%;
+  background-color: gray; /*  var(--menu-bg); */
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
   padding: 8rem 3rem;
   display: flex;
@@ -144,7 +144,6 @@ h6 {
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   pointer-events: auto;
   border-right: 1px solid rgba(0, 0, 0, 0.05);
-  background-color: pink;
 }
 
 .main-nav-menu a {
