@@ -65,7 +65,6 @@ h6 {
   padding: 1rem 0;
   text-align: center;
   z-index: 100;
-  background-color: tan;
 }
 
 .hero .sub-title {
@@ -74,7 +73,6 @@ h6 {
   color: var(--body-font-color);
   line-height: 1.2;
   font-weight: normal;
-  background-color: orange;
 }
 
 /* Default state for Home Page (Hidden secondary title) */
@@ -614,5 +612,57 @@ body.slideshow-active .caption {
   body.slideshow-active .caption {
     right: 1rem;
     bottom: 4rem;
+  }
+}
+
+.hero-background {
+  width: 1600px;
+  height: 399px;
+  background: linear-gradient(to bottom right, #ff7e3f, #ffffff);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Abstract wave-like patterns using pseudo-elements */
+.hero-background::before,
+.hero-background::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  transform: rotate(45deg);
+  animation: waveFloat 12s infinite linear;
+  opacity: 0.4;
+}
+
+.hero-background::after {
+  transform: rotate(-45deg);
+  animation-delay: 6s;
+}
+
+/* Centered white card */
+.hero-card {
+  width: 600px;
+  height: 200px;
+  background: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Optional wave animation */
+@keyframes waveFloat {
+  0% {
+    transform: translateY(0) rotate(45deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
   }
 }

@@ -1,5 +1,5 @@
-<section class="hero">
-    <div class="hero-oval">
+<section class="hero-background">
+    <div class="hero-card">
         <h2 class="sub-title">The Life of an Artist</h2>
     </div>
 </section>
