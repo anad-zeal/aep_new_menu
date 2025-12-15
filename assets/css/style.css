@@ -124,7 +124,6 @@ h6 {
   height: 100vh;
   z-index: 2001;
   pointer-events: none;
-  background-color: palegreen;
 }
 
 .main-nav-menu .nav-content {
@@ -186,6 +185,7 @@ h6 {
   opacity: 0;
   transition: opacity 0.4s;
   z-index: -1;
+  display: none;
 }
 .main-nav-menu.is-open .nav-backdrop {
   opacity: 1;
