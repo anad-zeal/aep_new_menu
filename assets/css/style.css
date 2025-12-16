@@ -81,14 +81,6 @@ h6 {
   display: none;
 }
 
-.hero-oval {
-  width: 200px; /* adjust as needed */
-  height: 100px; /* smaller than width for a horizontal oval */
-  border: 2px solid black; /* line thickness and color */
-  border-radius: 50%; /* makes the rectangle into an ellipse */
-  background: white; /* or transparent */
-}
-
 /* ============================================= */
 /* 3. Hamburger Navigation                       */
 /* ============================================= */
@@ -97,7 +89,7 @@ h6 {
   position: absolute;
   top: 3rem;
   left: 3rem;
-  background: transparent;
+  background: blue;
   border: none;
   cursor: pointer;
   width: 40px;
