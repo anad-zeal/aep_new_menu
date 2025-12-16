@@ -37,7 +37,7 @@ body {
 
 body {
   font-family: var(---body-font);
-  background-color: #8b0000;
+  background-color: #0a0707;
   /* background-color: var(--bg-color); */
   color: var(--body-font-color);
   display: flex;
