@@ -3,6 +3,8 @@
  * Combined Router, Page Renderer, and Cross-Fading Slideshow
  */
 
+alert('This is a demo version of the site. Some features may be limited.');
+
 const DEBUG = true;
 const log = (...args) => DEBUG && console.log('[AEP]', ...args);
 
