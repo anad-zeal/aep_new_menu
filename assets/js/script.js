@@ -3,8 +3,6 @@
  * Combined Router, Page Renderer, and Cross-Fading Slideshow
  */
 
-alert('This is a demo version of the site. Some features may be limited.');
-
 const DEBUG = true;
 const log = (...args) => DEBUG && console.log('[AEP]', ...args);
 
@@ -403,6 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function init() {
     try {
+      alert('This is a demo version of the site. Some features may be limited.');
       const response = await fetch('json-files/site-data.json');
       siteData = await response.json();
       let path = window.location.pathname.replace(/^\//, '');
