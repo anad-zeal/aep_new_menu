@@ -401,7 +401,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function init() {
     try {
-      alert('This is a demo version of the site. Some features may be limited.');
       const response = await fetch('json-files/site-data.json');
       siteData = await response.json();
       let path = window.location.pathname.replace(/^\//, '');
