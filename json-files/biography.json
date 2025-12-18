@@ -4,8 +4,8 @@
     "tag": "section",
     "attributes": {
       "class": "body-paragraphs",
-      "aria-labelledby": "biography-page-heading"
-      "images":[
+      "aria-labelledby": "biography-page-heading",
+      "images": [
         {
           "src": "assets/images/misc-images/Alexis_at_Tilton_Academy.jpg",
           "alt": "Portrait of the artist in her studio",
