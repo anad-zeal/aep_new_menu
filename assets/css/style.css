@@ -66,10 +66,11 @@ h6 {
   padding: 1rem 0;
   text-align: center;
   z-index: 100;
+  background-color: turquoise;
 }
 
 .hero .sub-title {
-  font-family: var(--font-body);
+  font-family: var(--font-script);
   font-size: 6rem;
   color: var(--body-font-color);
   line-height: 1.2;
