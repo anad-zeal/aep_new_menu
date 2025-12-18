@@ -42,6 +42,7 @@ body {
   color: var(--body-font-color);
   display: flex;
   flex-direction: column;
+  display: none;
 }
 
 a,
