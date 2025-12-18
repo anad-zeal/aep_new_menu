@@ -67,14 +67,14 @@
 
   "folders": [
     {
-      "path": "/Users/tal/Library/Mobile Documents/com~apple~CloudDocs/Website_Projects/AEPaints
+      "path": "/Users/tal/Library/Mobile Documents/com~apple~CloudDocs/Website_Projects/aep_new_menu
     }
   ],
   "settings": {
     // Always set the root path for terminals/tasks
-    "terminal.integrated.cwd": "/Users/tal/Library/Mobile Documents/com~apple~CloudDocs/Website_Projects/AEPaints",
+    "terminal.integrated.cwd": "/Users/tal/Library/Mobile Documents/com~apple~CloudDocs/Website_Projects/aep_new_menu",
 
     // Optional: default deploy tool path (example for sftp/ftp-deploy extension)
-    "ftp-simple.remote-workspace": "/Users/tal/Library/Mobile Documents/com~apple~CloudDocs/Website_Projects/AEPaints"
+    "ftp-simple.remote-workspace": "/Users/tal/Library/Mobile Documents/com~apple~CloudDocs/Website_Projects/aep_new_menu"
   }
 }
