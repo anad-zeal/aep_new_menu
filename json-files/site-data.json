@@ -1,288 +1,105 @@
 {
-  "slideshowTemplate": {
-    "previousButton": {
-      "imgSrc": "assets/images/misc-images/arrow-left.png",
-      "buttonId": "prev-slide"
-    },
-    "nextButton": {
-      "imgSrc": "assets/images/misc-images/arrow-right.png",
-      "buttonId": "next-slide"
-    },
-    "caption": {
-      "paragraphId": "caption-text"
-    },
-    "rtnArrow": {
-      "imgSrc": "assets/images/misc-images/arrow-return.png"
-    },
-    "wrapper": {
-      "tag": "div",
-      "class": "container"
-    },
-    "gallerySource": ""
+  "site": {
+    "title": "Elza Fine Art",
+    "tagline": "Paintings, Projects, and Preservation",
+    "description": "A portfolio of paintings and project-based artwork, including black-and-white works, decorative paintings, encaustics, drip series, historic preservation, and related projects.",
+    "language": "en-US",
+    "author": "Dana Elza",
+    "copyright": "© 2025 Dana Elza. All rights reserved."
   },
 
-  "pages": {
-    "home": {
-      "type": "cardGrid",
-      "title": "Home",
-      "content": [
-        {
-          "type": "card",
-          "content": {
-            "type": "landingMenuItem",
-            "link": { "href": "/artworks", "text": "Artworks" },
-            "paragraph": "Explore various series of paintings."
-          }
-        },
-        {
-          "type": "card",
-          "content": {
-            "type": "landingMenuItem",
-            "link": { "href": "/biography", "text": "Biography" },
-            "paragraph": "About the artist."
-          }
-        },
-        {
-          "type": "card",
-          "content": {
-            "type": "landingMenuItem",
-            "link": { "href": "/contact", "text": "Contact" },
-            "paragraph": "Get in touch."
-          }
-        }
-      ]
+  "navigation": [
+    {
+      "label": "Home",
+      "route": "/",
+      "template": "home"
     },
-
-    "artworks": {
-      "type": "cardGrid",
-      "title": "Artworks",
-      "content": [
-        {
-          "type": "card",
-          "content": {
-            "type": "landingMenuItem",
-            "link": { "href": "/black-and-white", "text": "Black and White" },
-            "paragraph": "Monochromatic studies."
-          }
-        },
-        {
-          "type": "card",
-          "content": {
-            "type": "landingMenuItem",
-            "link": { "href": "/encaustic", "text": "Encaustic" },
-            "paragraph": "Heated beeswax and colored pigments."
-          }
-        },
-        {
-          "type": "card",
-          "content": {
-            "type": "landingMenuItem",
-            "link": { "href": "/drip-series", "text": "Drip Series" },
-            "paragraph": "Controlled spontaneous dripping technique."
-          }
-        },
-        {
-          "type": "card",
-          "content": {
-            "type": "landingMenuItem",
-            "link": { "href": "/decorative", "text": "Decorative" },
-            "paragraph": "Intricate and expressive decorative works."
-          }
-        },
-        {
-          "type": "card",
-          "content": {
-            "type": "landingMenuItem",
-            "link": { "href": "/historic-preservation", "text": "Historic Preservation" },
-            "paragraph": "Restoration and preservation projects."
-          }
-        },
-        {
-          "type": "card",
-          "content": {
-            "type": "landingMenuItem",
-            "link": { "href": "/project-series", "text": "Project Series" },
-            "paragraph": "Thematic series and collections."
-          }
-        }
-      ]
+    {
+      "label": "Artworks",
+      "route": "/artworks",
+      "template": "artworks"
     },
-
-    "black-and-white": {
-      "type": "slideshow",
-      "title": "Black and White",
-      "gallerySource": "black-and-white-slideshow.json"
+    {
+      "label": "Biography",
+      "route": "/biography",
+      "template": "biography"
     },
-
-    "encaustic": {
-      "type": "slideshow",
-      "title": "Encaustic",
-      "gallerySource": "encaustic-slideshow.json"
-    },
-
-    "drip-series": {
-      "type": "slideshow",
-      "title": "Drip Series",
-      "gallerySource": "drip-series-slideshow.json"
-    },
-
-    "decorative": {
-      "type": "slideshow",
-      "title": "Decorative",
-      "gallerySource": "decorative-slideshow.json"
-    },
-
-    "historic-preservation": {
-      "type": "slideshow",
-      "title": "Historic Preservation",
-      "gallerySource": "preservation-slideshow.json"
-    },
-
-    "project-series": {
-      "type": "slideshow",
-      "title": "Project Series",
-      "gallerySource": "projects-slideshow.json"
-    },
-
-    "biography": {
-      "type": "contentSection",
-      "title": "Biography",
-      "content": {
-        "tag": "article",
-        "attributes": {
-          "class": "content-section bio"
-        },
-        "images": [
-          {
-            "src": "assets/images/misc-images/Alexis_at_Tilton_Academy.jpg",
-            "alt": "Portrait of the artist in her studio",
-            "class": "biography-photo"
-          }
-        ],
-        "paragraphs": [
-          "When I was a child I spent many hours in my father's wood shop. He was a master cabinet maker, restorer of antique furniture, and a wood sculptor. My mother was an inventor and patent holder. It is no surprise, given the talent I was exposed to at such an early age, that I made the decision to attend art school. It was at the School of the Worcester Art Museum in Worcester, Massachusetts that I began my formal education in the arts.",
-          "While at that school I was honored to receive the Frances Kinnicutt Foreign Travel Award for Women, which gave me the opportunity to study Minoan and Mycenaean art history and architecture on the island of Crete. I went on to earn a BA at Clark University in Worcester, Massachusetts.",
-          "It was serendipity that brought me to my career in historic conservation and restoration. While visiting an 1848 Gothic Revival house that was undergoing decorative painting and plaster restoration I realized what a joy it would be to apply my art training to such endeavors. That same day I convinced the project supervisor to hire me, and so began my twenty-five year adventure in historic conservation and restoration."
-        ]
-      }
-    },
-
-    "contact": {
-      "type": "contactForm",
-      "title": "Contact",
-      "content": {
-        "wrapper": {
-          "tag": "div",
-          "attributes": { "class": "container" }
-        },
-        "form": {
-          "tag": "form",
-          "attributes": {
-            "id": "contact",
-            "action": "send_email.php",
-            "method": "post"
-          },
-          "headers": [
-            { "tag": "h3", "text": "Quick Contact" },
-            {
-              "tag": "h4",
-              "text": "Contact us today, and get reply with in 24 hours!"
-            }
-          ],
-          "fields": [
-            {
-              "tag": "fieldset",
-              "children": [
-                {
-                  "tag": "input",
-                  "attributes": {
-                    "name": "name",
-                    "placeholder": "Your name",
-                    "type": "text",
-                    "tabindex": "1",
-                    "required": true,
-                    "autofocus": true
-                  }
-                }
-              ]
-            },
-            {
-              "tag": "fieldset",
-              "children": [
-                {
-                  "tag": "input",
-                  "attributes": {
-                    "name": "email",
-                    "placeholder": "Your Email Address",
-                    "type": "email",
-                    "tabindex": "2",
-                    "required": true
-                  }
-                }
-              ]
-            },
-            {
-              "tag": "fieldset",
-              "children": [
-                {
-                  "tag": "input",
-                  "attributes": {
-                    "name": "phone",
-                    "placeholder": "Your Phone Number",
-                    "type": "tel",
-                    "tabindex": "3",
-                    "required": true
-                  }
-                }
-              ]
-            },
-            {
-              "tag": "fieldset",
-              "children": [
-                {
-                  "tag": "input",
-                  "attributes": {
-                    "name": "website",
-                    "placeholder": "Your Web Site starts with http://",
-                    "type": "url",
-                    "tabindex": "4",
-                    "required": true
-                  }
-                }
-              ]
-            },
-            {
-              "tag": "fieldset",
-              "children": [
-                {
-                  "tag": "textarea",
-                  "attributes": {
-                    "name": "message",
-                    "placeholder": "Type your Message Here....",
-                    "tabindex": "5",
-                    "required": true
-                  }
-                }
-              ]
-            },
-            {
-              "tag": "fieldset",
-              "children": [
-                {
-                  "tag": "button",
-                  "text": "Submit",
-                  "attributes": {
-                    "name": "submit",
-                    "type": "submit",
-                    "id": "contact-submit",
-                    "data-submit": "...Sending"
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      }
+    {
+      "label": "Contact",
+      "route": "/contact",
+      "template": "contact"
     }
+  ],
+
+  "artworkCategories": [
+    {
+      "id": "black-and-white",
+      "title": "Black & White Paintings",
+      "imagePath": "assets/images/black-and-white-paintings/",
+      "slideshow": "json-files/black-and-white-slideshow.json"
+    },
+    {
+      "id": "decorative",
+      "title": "Decorative Paintings",
+      "imagePath": "assets/images/decorative-painting/",
+      "slideshow": "json-files/decorative-slideshow.json"
+    },
+    {
+      "id": "drip-series",
+      "title": "Drip Series",
+      "imagePath": "assets/images/drip-series-paintings/",
+      "slideshow": "json-files/drip-series-slideshow.json"
+    },
+    {
+      "id": "encaustic",
+      "title": "Encaustic Paintings",
+      "imagePath": "assets/images/encaustic-paintings/",
+      "slideshow": "json-files/encaustic-slideshow.json"
+    },
+    {
+      "id": "historic-preservation",
+      "title": "Historic Preservation",
+      "imagePath": "assets/images/historic-preservation/",
+      "slideshow": "json-files/preservation-slideshow.json"
+    },
+    {
+      "id": "projects",
+      "title": "Project Series",
+      "imagePath": "assets/images/project-series-paintings/",
+      "slideshow": "json-files/projects-slideshow.json"
+    }
+  ],
+
+  "routes": {
+    "/": {
+      "pageTitle": "Home",
+      "json": null
+    },
+    "/artworks": {
+      "pageTitle": "Artworks",
+      "json": "json-files/artworks.json"
+    },
+    "/biography": {
+      "pageTitle": "Biography",
+      "json": "json-files/biography.json"
+    },
+    "/contact": {
+      "pageTitle": "Contact",
+      "json": "json-files/contact.json"
+    }
+  },
+
+  "slideshowDefaults": {
+    "autoplay": true,
+    "interval": 6000,
+    "transition": "fade",
+    "showCaptions": true,
+    "loop": true
+  },
+
+  "ui": {
+    "headerSticky": true,
+    "animatePageTransitions": true,
+    "enableKeyboardNavigation": true
   }
 }
