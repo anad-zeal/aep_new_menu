@@ -444,7 +444,7 @@ fieldset {
   cursor: pointer;
   width: 100%;
   border: none;
-  background: #0cf;
+  background-color: var(--text-main);
   color: #fff;
   margin: 0 0 5px;
   padding: 10px;
