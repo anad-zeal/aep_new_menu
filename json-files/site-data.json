@@ -20,6 +20,7 @@
     },
     "gallerySource": ""
   },
+
   "pages": {
     "home": {
       "type": "cardGrid",
@@ -51,6 +52,7 @@
         }
       ]
     },
+
     "artworks": {
       "type": "cardGrid",
       "title": "Artworks",
@@ -59,7 +61,7 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/black-and-white-paintings", "text": "Black and White" },
+            "link": { "href": "/black-and-white", "text": "Black and White" },
             "paragraph": "Monochromatic studies."
           }
         },
@@ -67,7 +69,7 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/encaustic-paintings", "text": "Encaustic" },
+            "link": { "href": "/encaustic", "text": "Encaustic" },
             "paragraph": "Heated beeswax and colored pigments."
           }
         },
@@ -75,7 +77,7 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/drip-series-paintings", "text": "Drip Series" },
+            "link": { "href": "/drip-series", "text": "Drip Series" },
             "paragraph": "Controlled spontaneous dripping technique."
           }
         },
@@ -91,7 +93,7 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/historic-preservation", "text": "Historical" },
+            "link": { "href": "/historic-preservation", "text": "Historic Preservation" },
             "paragraph": "Restoration and preservation projects."
           }
         },
@@ -99,42 +101,49 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/project-series-paintings", "text": "Project Series" },
+            "link": { "href": "/project-series", "text": "Project Series" },
             "paragraph": "Thematic series and collections."
           }
         }
       ]
     },
-    "encaustic-paintings": {
-      "type": "slideshow",
-      "title": "Encaustic Paintings",
-      "gallerySource": "encaustic-slideshow.json"
-    },
-    "drip-series-paintings": {
-      "type": "slideshow",
-      "title": "Drip Series",
-      "gallerySource": "drip-series-slideshow.json"
-    },
-    "black-and-white-paintings": {
+
+    "black-and-white": {
       "type": "slideshow",
       "title": "Black and White",
       "gallerySource": "black-and-white-slideshow.json"
     },
+
+    "encaustic": {
+      "type": "slideshow",
+      "title": "Encaustic",
+      "gallerySource": "encaustic-slideshow.json"
+    },
+
+    "drip-series": {
+      "type": "slideshow",
+      "title": "Drip Series",
+      "gallerySource": "drip-series-slideshow.json"
+    },
+
     "decorative": {
       "type": "slideshow",
       "title": "Decorative",
       "gallerySource": "decorative-slideshow.json"
     },
+
     "historic-preservation": {
       "type": "slideshow",
       "title": "Historic Preservation",
       "gallerySource": "preservation-slideshow.json"
     },
-    "project-series-paintings": {
+
+    "project-series": {
       "type": "slideshow",
       "title": "Project Series",
       "gallerySource": "projects-slideshow.json"
     },
+
     "biography": {
       "type": "contentSection",
       "title": "Biography",
@@ -157,6 +166,7 @@
         ]
       }
     },
+
     "contact": {
       "type": "contactForm",
       "title": "Contact",
