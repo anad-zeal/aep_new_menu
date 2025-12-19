@@ -72,9 +72,9 @@
 
   "routes": {
     "/": {
-      "pageTitle": "Home",
-      "json": null
-    },
+  "pageTitle": "Home",
+  "json": "json-files/home.json"
+},
     "/artworks": {
       "pageTitle": "Artworks",
       "json": "json-files/artworks.json"
