@@ -433,7 +433,7 @@ fieldset {
 
 #contact input:hover,
 #contact textarea:hover {
-  border: 1px solid #aaa;
+  border: 5px solid #aaa;
   transition: border-color 0.3s ease;
 }
 #contact textarea {
