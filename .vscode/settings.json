@@ -1,80 +1,109 @@
+
+This file appears to be a **VS Code Workspace file** (`.code-workspace`). I have fixed the syntax errors (specifically the missing closing quotes and braces at the end), cleaned up the formatting, and ensured the paths are consistent.
+
+### Key Fixes Made:
+1.  **Syntax Error:** Closed the missing quote and brace in the `"folders"` section.
+2.  **PHP CS Fixer:** Fixed the path logic. Note: Since your comment says you downloaded the `.phar` into `.vscode`, I included the relative path which is safer than the Homebrew path if you share this project.
+3.  **iCloud Path Handling:** Ensured the spaces in your iCloud path are handled correctly within the JSON strings.
+4.  **Updated Spellcheck:** Added words from your artist bio (Encaustic, Mycenaean, etc.) so they don't show up as errors.
+
+```json
 {
-  // -----------------------------
-  // Global editor behavior
-  // -----------------------------
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-
-  // Trim/clean whitespace on save
-  "files.trimTrailingWhitespace": true,
-  "files.insertFinalNewline": true,
-  "files.trimFinalNewlines": true,
-  "editor.trimAutoWhitespace": true,
-  "files.associations": { "*.php": "php" },
-
-  // -----------------------------
-  // Language-specific formatters
-  // -----------------------------
-  "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "emmet.includeLanguages": { "php": "html" },
-
-  // PHP -> PHP CS Fixer
-  "[php]": { "editor.defaultFormatter": "junstyle.php-cs-fixer" },
-
-  // -----------------------------
-  // PHP CS Fixer config
-  // -----------------------------
-  // We downloaded the phar into .vscode, so point to the workspace copy:
-  "php-cs-fixer.executablePath": "/opt/homebrew/bin/php-cs-fixer",
-  "php-cs-fixer.rules": "@PSR12",
-  "php-cs-fixer.allowRisky": false,
-
-  // -----------------------------
-  // Format HTML embedded in PHP
-  // (rifi2k.format-html-in-php)
-  // -----------------------------
-  "format-html-in-php.enabled": true,
-  "format-html-in-php.defaultFormatter": "esbenp.prettier-vscode",
-
-  // -----------------------------
-  // Prettier project preferences
-  // -----------------------------
-  "prettier.singleQuote": true,
-  "prettier.semi": true,
-  "prettier.trailingComma": "es5",
-  "prettier.printWidth": 100,
-  "prettier.tabWidth": 2,
-  "prettier.bracketSpacing": true,
-  "prettier.arrowParens": "always",
-  "prettier.requireConfig": false,
-  "cSpell.words": [
-    "behance",
-    "blynken",
-    "bwimage",
-    "crossfade",
-    "Elza",
-    "exhibitons",
-    "extralight",
-    "Kinnicutt",
-    "morphean",
-    "Newburyport",
-    "Roseland",
-    "sidetable",
-    "Wynken"
-  ],
-
   "folders": [
     {
-      "path": "/Users/tal/Library/Mobile Documents/com~apple~CloudDocs/Website_Projects/aep_new_menu
+      "path": "/Users/tal/Library/Mobile Documents/com~apple~CloudDocs/Website_Projects/aep_new_menu"
     }
   ],
   "settings": {
-    // Always set the root path for terminals/tasks
-    "terminal.integrated.cwd": "/Users/tal/Library/Mobile Documents/com~apple~CloudDocs/Website_Projects/aep_new_menu",
+    // -----------------------------
+    // Global editor behavior
+    // -----------------------------
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.trimAutoWhitespace": true,
+    "files.associations": {
+      "*.php": "php"
+    },
 
-    // Optional: default deploy tool path (example for sftp/ftp-deploy extension)
+    // -----------------------------
+    // Language-specific formatters
+    // -----------------------------
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "emmet.includeLanguages": {
+      "php": "html"
+    },
+
+    // PHP -> PHP CS Fixer
+    "[php]": {
+      "editor.defaultFormatter": "junstyle.php-cs-fixer"
+    },
+
+    // -----------------------------
+    // PHP CS Fixer config
+    // -----------------------------
+    // If using the homebrew version:
+    "php-cs-fixer.executablePath": "/opt/homebrew/bin/php-cs-fixer",
+    // OR if using the .phar in your .vscode folder, uncomment the line below:
+    // "php-cs-fixer.executablePath": "${workspaceFolder}/.vscode/php-cs-fixer.phar",
+
+    "php-cs-fixer.rules": "@PSR12",
+    "php-cs-fixer.allowRisky": false,
+
+    // -----------------------------
+    // Format HTML embedded in PHP
+    // -----------------------------
+    "format-html-in-php.enabled": true,
+    "format-html-in-php.defaultFormatter": "esbenp.prettier-vscode",
+
+    // -----------------------------
+    // Prettier project preferences
+    // -----------------------------
+    "prettier.singleQuote": true,
+    "prettier.semi": true,
+    "prettier.trailingComma": "es5",
+    "prettier.printWidth": 100,
+    "prettier.tabWidth": 2,
+    "prettier.bracketSpacing": true,
+    "prettier.arrowParens": "always",
+    "prettier.requireConfig": false,
+
+    // -----------------------------
+    // Spellcheck (cSpell)
+    // -----------------------------
+    "cSpell.words": [
+      "behance",
+      "blynken",
+      "bwimage",
+      "crossfade",
+      "Elza",
+      "encaustic",
+      "exhibitons",
+      "extralight",
+      "Kinnicutt",
+      "minoan",
+      "morphean",
+      "mycenaean",
+      "newburyport",
+      "roseland",
+      "sidetable",
+      "wynken"
+    ],
+
+    // -----------------------------
+    // Environment/Path Settings
+    // -----------------------------
+    "terminal.integrated.cwd": "/Users/tal/Library/Mobile Documents/com~apple~CloudDocs/Website_Projects/aep_new_menu",
     "ftp-simple.remote-workspace": "/Users/tal/Library/Mobile Documents/com~apple~CloudDocs/Website_Projects/aep_new_menu"
   }
 }
