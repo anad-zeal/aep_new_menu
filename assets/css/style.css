@@ -388,7 +388,7 @@ main#dynamic-content-area {
 }
 
 #contact {
-  background: #f9f9f9;
+  background-color: #f75252;
   padding: 25px;
   margin: 0;
   border-radius: 5px;
@@ -405,7 +405,7 @@ main#dynamic-content-area {
 }
 
 #contact h4 {
-  margin: 5px 0 15px;
+  margin: 5px 0 5px;
   display: block;
   font-size: 13px;
   font-family: var(--font-body);
