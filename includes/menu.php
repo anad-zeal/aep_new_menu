@@ -9,7 +9,7 @@
 
         <!-- Menu Links -->
         <a href="/" data-page="home">Home</a>
-        <a href="/" data-page="artworks">Artworks</a>
+        <a href="/" data-page="artworks">Artworkssss</a>
         <a href="/biography" data-page="biography">Biography</a>
         <a href="/contact" data-page="contact">Contact</a>
     </div>
