@@ -3,37 +3,33 @@
 ========================================================================== */
 
 :root {
-/* Colors */
-–bg-color: #eae7df;
-–menu-bg: #eae7df;
-–text-main: #3b569e;
-–text-muted: #555555;
-–brand-gold: #c19a6b;
-–arrow-blue: #000080;
-–arrow-red: #8b0000;
-–body-font-color: #3b569e;
+    /* Colors */
+    --ink: hsl(0, 0%, 10%);
+    --ink-muted: hsl(0, 0%, 45%);
+    --paper: hsl(36, 21%, 65%);
+    --soft: hsl(0, 0%, 96%);
 
-/* Typography */
-–font-body: ‘Montserrat’, sans-serif;
-–font-script: ‘Bonheur Royale’, cursive;
-–font-thin: ‘Helvetica Neue’, Helvetica, Arial, sans-serif;
-–header-height: 120px;
+    --brand: rgb(122, 1, 1);
+    --brand-hover: rgb(122, 99, 99);
+    --focus-ring: hsl(0, 2%, 55%);
+    --focus-active: hsl(0, 2%, 55%);
+
+    /* Typography */
+    --font-body: "Montserrat", sans-serif;
+    --font-ui: "Inter", sans-serif;
+    --font-display: "Montserrat", sans-serif;
+    --font-title: "Montserrat", sans-serif;
+    --font-script: "Bonheur Royale", cursive;
+
+    /* Layout */
+    --gap: clamp(0.75rem, 2vw, 1.25rem);
+    --narrow-max: 90ch;
+
+    /* Motion */
+    --speed: 280ms;
+    --easing: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-*,
-*::before,
-*::after {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
-}
-
-html,
-body {
-height: 100%;
-width: 100%;
-overflow-x: hidden;
-}
 
 body {
 font-family: var(–font-body);
