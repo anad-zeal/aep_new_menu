@@ -1,47 +1,46 @@
 /* ==========================================================================
-   1. Design Tokens & Global Reset
-   ========================================================================== */
+	1.	Design Tokens & Global Reset
+========================================================================== */
 
 :root {
-  /* Colors */
-  --bg-color: #eae7df;
-  --menu-bg: #eae7df;
-  --text-main: #3b569e;
-  --text-muted: #555555;
-  --brand-gold: #c19a6b;
-  --arrow-blue: #000080;
-  --arrow-red: #8b0000;
-  --body-font-color: #3b569e;
+/* Colors */
+–bg-color: #eae7df;
+–menu-bg: #eae7df;
+–text-main: #3b569e;
+–text-muted: #555555;
+–brand-gold: #c19a6b;
+–arrow-blue: #000080;
+–arrow-red: #8b0000;
+–body-font-color: #3b569e;
 
-  /* Typography */
-  --font-body: 'Montserrat', sans-serif;
-  --font-script: 'Bonheur Royale', cursive;
-  --font-thin: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --header-height: 120px;
+/* Typography */
+–font-body: ‘Montserrat’, sans-serif;
+–font-script: ‘Bonheur Royale’, cursive;
+–font-thin: ‘Helvetica Neue’, Helvetica, Arial, sans-serif;
+–header-height: 120px;
 }
 
 *,
-*::before,set
+*::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+box-sizing: border-box;
+margin: 0;
+padding: 0;
 }
 
 html,
 body {
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
+height: 100%;
+width: 100%;
+overflow-x: hidden;
 }
 
 body {
-  font-family: var(---body-font);
-
-  background-color: var(--bg-color);
-  color: var(--body-font-color);
-  display: flex;
-  flex-direction: column;
+font-family: var(–font-body);
+background-color: var(–bg-color);
+color: var(–body-font-color);
+display: flex;
+flex-direction: column;
 }
 
 a,
@@ -52,610 +51,229 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-body);
-  color: var(--body-font-color);
+font-family: var(–font-body);
+color: var(–body-font-color);
 }
 
-/* ============================================= */
-/* 2. Header & Branding                          */
-/* ============================================= */
+/* ============================================= /
+/ 2. Header & Branding                          /
+/ ============================================= */
 
 .site-header {
-  position: relative;
-  width: 100%;
-  padding: 1rem 0;
-  text-align: center;
-  z-index: 100;
+position: relative;
+width: 100%;
+padding: 1rem 0;
+text-align: center;
+z-index: 100;
 }
 
 .hero .sub-title {
-  font-family: var(--font-script);
-  font-size: 6rem;
-  color: var(--body-font-color);
-  line-height: 1.2;
-  font-weight: normal;
+font-family: var(–font-script);
+font-size: 6rem;
+color: var(–body-font-color);
+line-height: 1.2;
+font-weight: normal;
 }
 
-/* Default state for Home Page (Hidden secondary title) */
 .hero .page-title {
-  display: none;
+display: none;
 }
 
-/* ============================================= */
-/* 3. Hamburger Navigation                       */
-/* ============================================= */
+/* ============================================= /
+/ 3. Hamburger Navigation                       /
+/ ============================================= */
 
 .hamburger-btn {
-  position: absolute;
-  top: 13rem;
-  left: 3rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  width: 40px;
-  height: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  z-index: 2000;
+position: absolute;
+top: 13rem;
+left: 3rem;
+background: transparent;
+border: none;
+cursor: pointer;
+width: 40px;
+height: 25px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+z-index: 2000;
 }
 
 .hamburger-btn .bar {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background-color: var(--text-main);
-  transition: all 0.3s ease;
+width: 100%;
+height: 2px;
+background-color: var(–text-main);
+transition: all 0.3s ease;
 }
 
-/* Off-Canvas Menu */
 .main-nav-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 2001;
-  pointer-events: none;
+position: fixed;
+inset: 0;
+z-index: 2001;
+pointer-events: none;
 }
 
 .main-nav-menu .nav-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 300px;
-  height: 100%;
-  background-color: var(--menu-bg);
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
-  padding: 8rem 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  transform: translateX(-100%);
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  pointer-events: auto;
-  border-right: 1px solid rgba(0, 0, 0, 0.05);
+width: 300px;
+height: 100%;
+background-color: var(–menu-bg);
+padding: 8rem 3rem;
+display: flex;
+flex-direction: column;
+gap: 2rem;
+transform: translateX(-100%);
+transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+pointer-events: auto;
+border-right: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .main-nav-menu a {
-  font-family: var(--font-body);
-  font-size: 1.1rem;
-  letter-spacing: 0.15em;
-  text-decoration: none;
-  color: var(--text-main);
-  text-transform: uppercase;
-  font-weight: 400;
-  transition: color 0.3s;
+font-size: 1.1rem;
+letter-spacing: 0.15em;
+text-decoration: none;
+color: var(–text-main);
+text-transform: uppercase;
+transition: color 0.3s;
 }
 
-.main-nav-menu a:hover .main-nav-menu a.active {
-  color: var(--text-main);
-  font-weight: 500;
+.main-nav-menu a:hover,
+.main-nav-menu a.active {
+font-weight: 500;
 }
 
 .close-nav-btn {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #a52a2a;
-  cursor: pointer;
-  font-weight: 300;
+position: absolute;
+top: 2rem;
+right: 2rem;
+background: none;
+border: none;
+font-size: 2rem;
+color: #a52a2a;
+cursor: pointer;
 }
 
-/* Menu Open States */
 .main-nav-menu.is-open .nav-content {
-  transform: translateX(0);
-}
-.main-nav-menu .nav-backdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  transition: opacity 0.4s;
-  z-index: -1;
-}
-.main-nav-menu.is-open .nav-backdrop {
-  opacity: 1;
-  pointer-events: auto;
+transform: translateX(0);
 }
 
-/* ============================================= */
-/* 4. Main Layout (Home & Artworks Grid)         */
-/* ============================================= */
+.main-nav-menu .nav-backdrop {
+position: absolute;
+inset: 0;
+background: rgba(0, 0, 0, 0.2);
+opacity: 0;
+transition: opacity 0.4s;
+}
+
+.main-nav-menu.is-open .nav-backdrop {
+opacity: 1;
+pointer-events: auto;
+}
+
+/* ============================================= /
+/ 4. Main Layout                                /
+/ ============================================= */
 
 main#dynamic-content-area {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 2rem;
-  min-height: 60vh;
+flex: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 2rem;
 }
 
 .card-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4rem 2rem;
-  width: 100%;
-  max-width: 1200px;
-  margin: -20vh auto 30vh auto;
-  align-items: flex-start;
-}
-
-.card,
-.landingMenuItem,
-.page-link {
-  background: transparent;
-  border: none;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 4rem 2rem;
+max-width: 1200px;
+margin: -20vh auto 30vh;
 }
 
 .card-grid .page-link {
-  font-family: var(--font-body);
-  font-size: 1.6rem;
-  font-weight: 400;
-  color: var(--text-main);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
-  transition: opacity 0.3s ease;
+font-size: 1.6rem;
+text-transform: uppercase;
+letter-spacing: 0.05em;
+text-decoration: none;
 }
 
-.card-grid .page-link:hover {
-  opacity: 0.7;
-}
-
-.landingMenuItem p {
-  font-family: var(--font-body);
-  font-size: 1.25rem;
-  color: var(--text-main);
-  font-weight: 300;
-  line-height: 1.5;
-  max-width: 250px;
-  margin: 0 auto;
-}
-
-/* ============================================= */
-/* 5. Slideshow Elements (Common)                */
-/* ============================================= */
+/* ============================================= /
+/ 5. Slideshow                                  /
+/ ============================================= */
 
 .slideshow-active main#dynamic-content-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  position: relative;
-}
-
-.slideshow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+height: 100vh;
+padding: 0;
+overflow: hidden;
 }
 
 .slide {
-  margin: 0 !important;
-  padding: 0 !important;
-  user-select: none;
-
-  /* Absolute Center */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  /* FORCE SCALING UP */
-  /* This creates a box 85% of the screen height */
-  height: 85vh !important;
-  /* This ensures the width matches the container */
-  width: 100% !important;
-  /* This ensures the image stretches to fill that box while keeping aspect ratio */
-  object-fit: contain;
-
-  display: block;
-  z-index: 1;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+height: 85vh;
+width: 100%;
 }
 
-/* ============================================= */
-/* 6. Navigation Arrows (Refactored)             */
-/* ============================================= */
-
-/* Wrapper: Fixed to Viewport Edges */
-.prev-arrow,
-.next-arrow {
-  position: fixed !important; /* Force out of flow */
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.slide img {
+width: 100%;
+height: 100%;
+object-fit: contain;
 }
 
-.prev-arrow {
-  left: 10px !important;
-}
-.next-arrow {
-  right: 10px !important;
-}
-
-/* Button Styling */
-.prev-arrow button,
-.next-arrow button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  width: 50px;
-  height: 50px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.2s ease;
-}
-
-.prev-arrow button:hover,
-.next-arrow button:hover {
-  transform: scale(1.1);
-}
-
-/* Image Styling */
-.prev-arrow img,
-.next-arrow img {
-  width: 100%;
-  height: auto;
-  opacity: 0.7;
-  transition: opacity 0.3s;
-  display: block;
-}
-
-.prev-arrow img:hover,
-.next-arrow img:hover {
-  opacity: 1;
-}
-
-/* Return Arrow */
-.return-arrow-container {
-  position: fixed;
-  bottom: 3rem;
-  left: 4vw;
-  z-index: 60;
-}
-.return-arrow-container img {
-  width: 40px;
-  transition: transform 0.3s ease;
-}
-.return-arrow-container a:hover img {
-  transform: scale(1.1) rotate(-10deg);
-}
-
-/* ============================================= */
-/* 7. Contact Form                               */
-/* ============================================= */
-
-.contact-page-active main#dynamic-content-area {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
+/* ============================================= /
+/ 6. Contact Form                               /
+/ ============================================= */
 
 .container {
-  max-width: 400px;
-  width: 100%;
-  margin: 0 auto;
-  position: relative;`
+max-width: 400px;
+width: 100%;
+margin: 0 auto;
+position: relative;
 }
 
 #contact {
-  background-color: hsl(30, 22%, 96%);
-  padding: 25px;
-  margin: 0;
-  border-radius: 5px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+background-color: hsl(30, 22%, 96%);
+padding: 25px;
+border-radius: 5px;
 }
 
-#contact h3 {
-  display: block;
-  font-size: 30px;
-  font-weight: 400;
-  color: var(--brand-gold);
-  margin-bottom: 10px;
-  font-family: var(--font-body);
-}
-
-#contact h4 {
-  margin: 5px 0 5px;
-  display: block;
-  font-size: 13px;
-  font-family: var(--font-body);
-  color: var(--text-muted);
-}
-
-fieldset {
-  border: medium none !important;
-  margin: 0 0 10px;
-  min-width: 100%;
-  padding: 0;
-  width: 100%;
-}
-
-#contact input,
-#contact textarea {
-  width: 100%;
-  border: 5px solid #ccc;
-  background: #fff;
-  margin: 0 0 5px;
-  padding: 10px;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  font-size: 12px;
-}
-
-#contact input:hover,
-#contact textarea:hover {
-  border: 5px solid #aaa;
-  transition: border-color 0.3s ease;
-}
-#contact textarea {
-  height: 100px;
-  resize: none;
-}
-#contact button[type='submit'] {
-  cursor: pointer;
-  width: 100%;
-  border: none;
-  background-color: var(--text-main);
-  color: #fff;
-  margin: 0 0 5px;
-  padding: 10px;
-  font-size: 15px;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  transition: background 0.3s ease;
-}
-#contact button[type='submit']:hover {
-  background: #09c;
-}
-#contact input:focus,
-#contact textarea:focus {
-  outline: 0;
-  border: 1px solid #999;
-}
-
-/* ============================================= */
-/* 8. Footer                                     */
-/* ============================================= */
+/* ============================================= /
+/ 7. Footer                                     /
+/ ============================================= */
 
 .site-footer {
-  padding: 1rem;
-  text-align: center;
-  font-size: 0.8rem;
-  color: #999;
-  position: fixed;
-  bottom: 1rem;
-  width: 100%;
-  pointer-events: none;
-  z-index: 5;
+padding: 1rem;
+text-align: center;
+font-size: 0.8rem;
+color: #999;
 }
 
-/* ============================================= */
-/* 9. Animations (Pure Opacity)                  */
-/* ============================================= */
+/* ============================================= /
+/ 8. Animations                                 /
+/ ============================================= */
 
 .fade-out {
-  opacity: 0;
-  transition: opacity 300ms ease-in;
+opacity: 0;
+transition: opacity 300ms ease-in;
 }
 
 .fade-in {
-  opacity: 0;
-  animation: fadeInAnim 400ms forwards ease-out;
+opacity: 0;
+animation: fadeInAnim 400ms forwards ease-out;
 }
 
 @keyframes fadeInAnim {
-  to {
-    opacity: 1;
-  }
+to { opacity: 1; }
 }
 
-/* ============================================= */
-/* 10. SLIDESHOW PAGE OVERRIDES                  */
-/* ============================================= */
-
-/* Hide Hamburger */
-body.slideshow-active .hamburger-btn {
-  display: none !important;
-}
-
-/* --- Header Layout: Split Top-Left and Top-Right --- */
-body.slideshow-active .site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 0;
-  height: 0;
-  z-index: 100;
-}
-
-/* "The Life of an Artist" - Top Left */
-body.slideshow-active .hero .sub-title {
-  position: fixed;
-  top: 2rem;
-  left: 4vw;
-  text-align: left;
-  font-size: 3rem;
-  margin: 0;
-  z-index: 101;
-}
-
-/* Category Name - Top Right (Dynamic) */
-body.slideshow-active .hero .page-title {
-  display: block; /* Visible on slideshow */
-  position: fixed;
-  top: 2rem;
-  right: 4vw;
-  text-align: right;
-  font-family: var(--font-thin);
-  font-weight: 100; /* Thin */
-  font-size: 2.5rem;
-  color: var(--text-main);
-  z-index: 101;
-  margin: 0;
-}
-
-/* --- Caption: Bottom Right --- */
-body.slideshow-active .caption {
-  position: fixed;
-  bottom: 3rem;
-  right: 4vw;
-  text-align: right;
-  width: auto;
-  z-index: 60;
-  pointer-events: none;
-}
-
-#caption-text {
-  font-family: var(--font-thin);
-  font-weight: 100;
-  font-size: 1rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-main);
-}
-
-/* ============================================= */
-/* 11. Responsive Adjustments                    */
-/* ============================================= */
+/* ============================================= /
+/ 9. Responsive                                 /
+/ ============================================= */
 
 @media (max-width: 900px) {
-  .card-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-  }
-  .hero .sub-title {
-    font-size: 3rem;
-  }
+.card-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 600px) {
-  .card-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  /* Mobile Slideshow Adjustments */
-  body.slideshow-active .hero .sub-title {
-    font-size: 2rem;
-    left: 1rem;
-  }
-  body.slideshow-active .hero .page-title {
-    font-size: 1.5rem;
-    right: 1rem;
-    top: 2.5rem;
-  }
-
-  body.slideshow-active .slide {
-    height: 60vh !important;
-  }
-
-  .return-arrow-container {
-    left: 1rem;
-    bottom: 1rem;
-  }
-  body.slideshow-active .caption {
-    right: 1rem;
-    bottom: 4rem;
-  }
-}
-
-.hero-background {
-  width: 1600px;
-  height: 399px;
-  background: linear-gradient(to bottom right, #ff7e3f, #ffffff);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Abstract wave-like patterns using pseudo-elements */
-.hero-background::before,
-.hero-background::after {
-  content: '';
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-  transform: rotate(45deg);
-  animation: waveFloat 12s infinite linear;
-  opacity: 0.4;
-}
-
-.hero-background::after {
-  transform: rotate(-45deg);
-  animation-delay: 6s;
-}
-
-/* Centered white card */
-.hero-card {
-  width: 600px;
-  height: 200px;
-  background: white;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Optional wave animation */
-@keyframes waveFloat {
-  0% {
-    transform: translateY(0) rotate(45deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(45deg);
-  }
-  100% {
-    transform: translateY(0) rotate(45deg);
-  }
+.card-grid { grid-template-columns: 1fr; }
 }
