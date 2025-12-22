@@ -181,7 +181,7 @@ display: grid;
 grid-template-columns: repeat(3, 1fr);
 gap: 4rem 2rem;
 max-width: 1200px;
-margin: -20vh auto 30vh;
+margin: 20vh auto 30vh;
 }
 
 .card-grid .page-link {
