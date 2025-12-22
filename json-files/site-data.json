@@ -20,6 +20,7 @@
     },
     "gallerySource": ""
   },
+
   "pages": {
     "home": {
       "type": "cardGrid",
@@ -51,6 +52,7 @@
         }
       ]
     },
+
     "artworks": {
       "type": "cardGrid",
       "title": "Artworks",
@@ -59,7 +61,7 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/black-and-white-paintings", "text": "Black and White" },
+            "link": { "href": "/black-and-white", "text": "Black and White" },
             "paragraph": "Monochromatic studies."
           }
         },
@@ -67,7 +69,7 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/encaustic-paintings", "text": "Encaustic" },
+            "link": { "href": "/encaustic", "text": "Encaustic" },
             "paragraph": "Heated beeswax and colored pigments."
           }
         },
@@ -75,7 +77,7 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/drip-series-paintings", "text": "Drip Series" },
+            "link": { "href": "/drip-series", "text": "Drip Series" },
             "paragraph": "Controlled spontaneous dripping technique."
           }
         },
@@ -91,7 +93,7 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/historic-preservation", "text": "Historical" },
+            "link": { "href": "/historic-preservation", "text": "Historic Preservation" },
             "paragraph": "Restoration and preservation projects."
           }
         },
@@ -99,42 +101,49 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/project-series-paintings", "text": "Project Series" },
+            "link": { "href": "/project-series", "text": "Project Series" },
             "paragraph": "Thematic series and collections."
           }
         }
       ]
     },
-    "encaustic-paintings": {
-      "type": "slideshow",
-      "title": "Encaustic Paintings",
-      "gallerySource": "encaustic-slideshow.json"
-    },
-    "drip-series-paintings": {
-      "type": "slideshow",
-      "title": "Drip Series",
-      "gallerySource": "drip-series-slideshow.json"
-    },
-    "black-and-white-paintings": {
+
+    "black-and-white": {
       "type": "slideshow",
       "title": "Black and White",
       "gallerySource": "black-and-white-slideshow.json"
     },
+
+    "encaustic": {
+      "type": "slideshow",
+      "title": "Encaustic",
+      "gallerySource": "encaustic-slideshow.json"
+    },
+
+    "drip-series": {
+      "type": "slideshow",
+      "title": "Drip Series",
+      "gallerySource": "drip-series-slideshow.json"
+    },
+
     "decorative": {
       "type": "slideshow",
       "title": "Decorative",
       "gallerySource": "decorative-slideshow.json"
     },
+
     "historic-preservation": {
       "type": "slideshow",
       "title": "Historic Preservation",
       "gallerySource": "preservation-slideshow.json"
     },
-    "project-series-paintings": {
+
+    "project-series": {
       "type": "slideshow",
       "title": "Project Series",
       "gallerySource": "projects-slideshow.json"
     },
+
     "biography": {
       "type": "contentSection",
       "title": "Biography",
@@ -143,12 +152,21 @@
         "attributes": {
           "class": "content-section bio"
         },
+        "images": [
+          {
+            "src": "assets/images/misc-images/Alexis_at_Tilton_Academy.jpg",
+            "alt": "Portrait of the artist in her studio",
+            "class": "biography-photo"
+          }
+        ],
         "paragraphs": [
-          "Alexis Elza is an artist with 20 years of experience...",
-          "Her work explores the boundaries between structure and chaos."
+          "When I was a child I spent many many hours in my father's wood shop. He was a master cabinet maker, restorer of antique furniture, and a wood sculptor. My mother was an inventor and patent holder. It is no surprise, given the talent I was exposed to at such an early age, that I made the decision to attend art school. It was at the School of the Worcester Art Museum in Worcester, Massachusetts that I began my formal education in the arts.",
+          "While at that school I was honored to receive the Frances Kinnicutt Foreign Travel Award for Women, which gave me the opportunity to study Minoan and Mycenaean art history and architecture on the island of Crete. I went on to earn a BA at Clark University in Worcester, Massachusetts.",
+          "It was serendipity that brought me to my career in historic conservation and restoration. While visiting an 1848 Gothic Revival house that was undergoing decorative painting and plaster restoration I realized what a joy it would be to apply my art training to such endeavors. That same day I convinced the project supervisor to hire me, and so began my twenty-five year adventure in historic conservation and restoration."
         ]
       }
     },
+
     "contact": {
       "type": "contactForm",
       "title": "Contact",
