@@ -32,9 +32,9 @@
 
 
 body {
-font-family: var(–font-body);
-background-color: var(–bg-color);
-color: var(–body-font-color);
+font-family: var(--font-body);
+background-color: var(--bg-color);
+color: var(--body-font-color);
 display: flex;
 flex-direction: column;
 }
@@ -47,8 +47,8 @@ h3,
 h4,
 h5,
 h6 {
-font-family: var(–font-body);
-color: var(–body-font-color);
+font-family: var(--font-body);
+color: var(--body-font-color);
 }
 
 /* ============================================= /
@@ -64,9 +64,9 @@ z-index: 100;
 }
 
 .hero .sub-title {
-font-family: var(–font-script);
+font-family: var(--font-script);
 font-size: 6rem;
-color: var(–body-font-color);
+color: var(--body-font-color);
 line-height: 1.2;
 font-weight: normal;
 }
@@ -86,7 +86,7 @@ left: 3rem;
 background: transparent;
 border: none;
 cursor: pointer;
-width: 444px;
+width: 40px;
 height: 25px;
 display: flex;
 flex-direction: column;
@@ -111,7 +111,7 @@ pointer-events: none;
 .main-nav-menu .nav-content {
 width: 300px;
 height: 100%;
-background-color: var(–menu-bg);
+background-color: var(--menu-bg);
 padding: 8rem 3rem;
 display: flex;
 flex-direction: column;
@@ -126,7 +126,7 @@ border-right: 1px solid rgba(0, 0, 0, 0.05);
 font-size: 1.1rem;
 letter-spacing: 0.15em;
 text-decoration: none;
-color: var(–text-main);
+color: var(--text-main);
 text-transform: uppercase;
 transition: color 0.3s;
 }
