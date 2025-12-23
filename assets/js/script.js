@@ -102,15 +102,21 @@ function fadeInFirstSlide(captionEl) {
 
 function showSlide(index) {
   const slidesDOM = document.querySelectorAll('.slide');
-  const captionEl = document.getElementById('caption-text');
-  if (captionEl) {
-    captionEl.style.opacity = 0;
+  const metaContainer = document.getElementById('meta-container');
+  const item = slideshowState.slides[index];
+
+  if (metaContainer && item) {
+    metaContainer.classList.remove('active'); // Start fade out
+
     setTimeout(() => {
-      if (slideshowState.slides[index])
-        captionEl.textContent = slideshowState.slides[index].caption || '';
-      captionEl.style.opacity = 1;
-    }, 500);
+      document.getElementById('meta-title').textContent = item.title || '';
+      document.getElementById('meta-medium').textContent = item.medium || '';
+      document.getElementById('meta-dimensions').textContent = item.dimensions || '';
+      document.getElementById('meta-description').textContent = item.description || '';
+      metaContainer.classList.add('active'); // Fade back in
+    }, 400); 
   }
+
   slidesDOM.forEach((img, i) => {
     img.style.opacity = i === index ? 1 : 0;
     img.style.zIndex = i === index ? 2 : 1;
@@ -288,7 +294,6 @@ function renderContactForm(targetContainer, formData) {
 }
 
 function renderSlideshow(targetContainer, template, gallerySource) {
-  // Uses specific 'prev-arrow' structure for styling
   const htmlContent = `
     <div class="slideshow">
          <div class="loading-msg" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%)">Loading...</div>
@@ -305,7 +310,14 @@ function renderSlideshow(targetContainer, template, gallerySource) {
       </button>
     </div>
 
-    <div class="caption"><p id="caption-text"></p></div>
+    <!-- NEW STRUCTURED METADATA AREA -->
+    <div class="slideshow-metadata" id="meta-container">
+      <h2 id="meta-title"></h2>
+      <p id="meta-medium"></p>
+      <p id="meta-dimensions"></p>
+      <div id="meta-description"></div>
+    </div>
+
     <div class="return-arrow-container">
       <a href="/artworks" data-page="artworks"><img src="${template.rtnArrow.imgSrc}" alt="Return"></a>
     </div>
