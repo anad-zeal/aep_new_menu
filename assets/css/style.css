@@ -452,7 +452,7 @@ fieldset {
   transition: background 0.3s ease;
 }
 #contact button[type='submit']:hover {
-  background-color: rgb(141, 2, 2);22
+  background-color: rgb(141, 2, 2);
 }
 #contact input:focus,
 #contact textarea:focus {
