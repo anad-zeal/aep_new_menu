@@ -80,14 +80,6 @@ h6 {
   display: none;
 }
 
-.hero-oval {
-  width: 200px; /* adjust as needed */
-  height: 100px; /* smaller than width for a horizontal oval */
-  border: 2px solid black; /* line thickness and color */
-  border-radius: 50%; /* makes the rectangle into an ellipse */
-  background: white; /* or transparent */
-}
-
 /* ============================================= */
 /* 3. Hamburger Navigation                       */
 /* ============================================= */
@@ -104,7 +96,7 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  z-index: 2000;
+  z-index: 9999;
 }
 
 .hamburger-btn .bar {
@@ -132,7 +124,7 @@ h6 {
   left: 0;
   width: 300px;
   height: 100%;
-  background-color: gray; /*  var(--menu-bg); */
+  background-color: var(--menu-bg);
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
   padding: 8rem 3rem;
   display: flex;
@@ -451,7 +443,7 @@ fieldset {
   cursor: pointer;
   width: 100%;
   border: none;
-  background: #0cf;
+  background: rgb(47, 1, 1);
   color: #fff;
   margin: 0 0 5px;
   padding: 10px;
@@ -664,5 +656,72 @@ body.slideshow-active .caption {
   }
   100% {
     transform: translateY(0) rotate(45deg);
+  }
+}
+
+/* Slideshow Metadata Container */
+.slideshow-metadata {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  z-index: 10;
+  max-width: 400px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.85); /* Sophisticated frosted glass effect */
+  backdrop-filter: blur(5px);
+  border-left: 3px solid #333; /* Artistic accent line */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none; /* Allows clicks to pass through to the image */
+}
+
+/* When the slide is active, fade it in */
+.slideshow-metadata.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#meta-title {
+  font-family: "Playfair Display", serif; /* Or your preferred serif */
+  font-size: 1.4rem;
+  margin: 0 0 5px 0;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#meta-medium {
+  font-style: italic;
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+}
+
+#meta-dimensions {
+  font-family: sans-serif;
+  font-size: 0.85rem;
+  color: #888;
+  margin: 5px 0 10px 0;
+}
+
+#meta-description {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #333;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .slideshow-metadata {
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-left: none;
+    border-top: 2px solid #333;
   }
 }
