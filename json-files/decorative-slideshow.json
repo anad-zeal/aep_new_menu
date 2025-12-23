@@ -1,26 +1,110 @@
 [
   {
-    "id": "decorative-painting-1763827513578-0",
+    "id": "deco-1766448182705-0",
     "title": "Box Stars On Blue",
-    "src": "assets/images/decorative-painting/Box_Stars_on_Blue.jpg",
-    "description": "",
-    "medium": "",
-    "dimensions": ""
+    "src": "assets/images/decorative/Box_Stars_on_Blue.jpg",
+    "caption": "Box Stars On Blue",
+    "description": "Description for Box Stars On Blue",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
   },
   {
-    "id": "decorative-painting-1763827729818-1",
+    "id": "deco-1766448182706-1",
     "title": "Bronze",
-    "src": "assets/images/decorative-painting/Bronze.jpg",
-    "description": "",
-    "medium": "",
-    "dimensions": ""
+    "src": "assets/images/decorative/Bronze.jpg",
+    "caption": "Bronze",
+    "description": "Description for Bronze",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
   },
   {
-    "id": "decorative-painting-1763827729768-1",
+    "id": "deco-1766448182707-2",
     "title": "Cresh Arrow 2",
-    "src": "assets/images/decorative-painting/Cresh-Arrow-2.jpg",
-    "description": "",
-    "medium": "",
-    "dimensions": ""
+    "src": "assets/images/decorative/Cresh-Arrow-2.jpg",
+    "caption": "Cresh Arrow 2",
+    "description": "Description for Cresh Arrow 2",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "deco-1766448182708-3",
+    "title": "Cross Cabinet 039",
+    "src": "assets/images/decorative/Cross-Cabinet-039.jpg",
+    "caption": "Cross Cabinet 039",
+    "description": "Description for Cross Cabinet 039",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "deco-1766448182709-4",
+    "title": "Cross Cabinet036",
+    "src": "assets/images/decorative/Cross-Cabinet036.jpg",
+    "caption": "Cross Cabinet036",
+    "description": "Description for Cross Cabinet036",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "deco-1766448182711-5",
+    "title": "DSCN0005",
+    "src": "assets/images/decorative/DSCN0005.JPG",
+    "caption": "DSCN0005",
+    "description": "          ",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "deco-1766448182712-6",
+    "title": "DSCN0009",
+    "src": "assets/images/decorative/DSCN0009.JPG",
+    "caption": "DSCN0009",
+    "description": "          ",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "deco-1766448182713-7",
+    "title": "DSCN0012",
+    "src": "assets/images/decorative/DSCN0012.JPG",
+    "caption": "DSCN0012",
+    "description": "          ",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "deco-1766448182714-8",
+    "title": "DSCN0013",
+    "src": "assets/images/decorative/DSCN0013.JPG",
+    "caption": "DSCN0013",
+    "description": "          ",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "deco-1766448182715-9",
+    "title": "Mirror Trim",
+    "src": "assets/images/decorative/Mirror-Trim.jpg",
+    "caption": "Mirror Trim",
+    "description": "Description for Mirror Trim",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "deco-1766448182715-10",
+    "title": "SideTable",
+    "src": "assets/images/decorative/SideTable.jpg",
+    "caption": "SideTable",
+    "description": "Description for SideTable",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "deco-1766448182720-11",
+    "title": "Cadoret Frame",
+    "src": "assets/images/decorative/cadoret-frame.jpg",
+    "caption": "Cadoret Frame",
+    "description": "Description for Cadoret Frame",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
   }
 ]
