@@ -443,7 +443,7 @@ fieldset {
   cursor: pointer;
   width: 100%;
   border: none;
-  background: rgb(47, 1, 1);
+  background: rgb(70, 2, 2);
   color: #fff;
   margin: 0 0 5px;
   padding: 10px;
@@ -452,7 +452,7 @@ fieldset {
   transition: background 0.3s ease;
 }
 #contact button[type='submit']:hover {
-  background: #09c;
+  background-color: rgb(141, 2, 2);22
 }
 #contact input:focus,
 #contact textarea:focus {
