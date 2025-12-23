@@ -1,4 +1,5 @@
-{
+
+  {
   "slideshowTemplate": {
     "previousButton": {
       "imgSrc": "assets/images/misc-images/arrow-left.png",
@@ -8,15 +9,19 @@
       "imgSrc": "assets/images/misc-images/arrow-right.png",
       "buttonId": "next-slide"
     },
-    "caption": {
-      "paragraphId": "caption-text"
+    "metadata": {
+      "titleId": "slideshow-title",
+      "mediumId": "slideshow-medium",
+      "dimensionsId": "slideshow-dimensions",
+      "descriptionId": "slideshow-description"
     },
     "rtnArrow": {
-      "imgSrc": "assets/images/misc-images/arrow-return.png"
+      "imgSrc": "assets/images/misc-images/arrow-return.png",
+      "buttonId": "return-to-gallery"
     },
     "wrapper": {
       "tag": "div",
-      "class": "container"
+      "class": "slideshow-container"
     },
     "gallerySource": ""
   },
