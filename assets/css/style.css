@@ -728,7 +728,7 @@ body.slideshow-active .caption {
 
 body {
     /* Set the background image */
-    background-image: url('/assets/images/project-series/0800.jpg'); /* Replace with your image path */
+    background-image: url('/assets/images/project-series/radish.jpg'); /* Replace with your image path */
 
     /* Prevent the image from repeating */
     background-repeat: no-repeat;
