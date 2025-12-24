@@ -52,8 +52,11 @@ h4,
 h5,
 h6 {
   font-family: var(--font-body);
-  color: var(--body-font-color);
+  color: #000;;
+  /* color: var(--body-font-color); */
 }
+
+article p
 
 /* ============================================= */
 /* 2. Header & Branding                          */
