@@ -63,14 +63,14 @@ h6 {
   position: relative;
   top: 10vh;
   width: 100%;
-  padding: 1rem 0;
+  padding: 2rem 0;
   text-align: center;
   z-index: 100;
 }
 
 .hero .sub-title {
   font-family: var(--font-script);
-  font-size: 6rem;
+  font-size: 10rem;
   color: var(--body-font-color);
   line-height: 1.2;
   font-weight: normal;
