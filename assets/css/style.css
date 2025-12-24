@@ -734,9 +734,9 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  /* background: url('/assets/images/project-series/radish.jpg'); */
+  background: url('/assets/images/project-series/radish.jpg');
   opacity: 0.4; /* control opacity here */
   z-index: -1;
-}
- background-size: cover;
+  background-size: cover;
  background-repeat: no-repeat;
+}
