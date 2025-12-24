@@ -169,6 +169,7 @@ h6 {
 .main-nav-menu.is-open .nav-content {
   transform: translateX(0);
 }
+
 .main-nav-menu .nav-backdrop {
   position: absolute;
   top: 0;
