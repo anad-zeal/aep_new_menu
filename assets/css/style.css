@@ -728,32 +728,18 @@ body.slideshow-active .caption {
 }
 
 body {
-    /* Set the background image */
-    background-image: url('/assets/images/project-series/radish.jpg'); /* Replace with your image path */
-
-    /* Prevent the image from repeating */
-    background-repeat: no-repeat;
-
-    /* Center the image in the viewport */
-    background-position: center;
-
-    /* Scale the image to cover the entire container (the body) */
-    background-size: cover;
-
-    /* Keep the image fixed in the background while scrolling, if needed */
-    background-attachment: fixed;
-
-    /* Ensure the body takes at least the full height of the viewport */
-    height: 100vh;
-    margin: 0; /* Remove default browser margins */
-
-    /* Optional: Add a background color as a fallback while the image loads */
-    background-color: #cccccc;
+  position: relative;
+  margin: 0;
 }
 
-/* Optional: Style your content to be readable over the image */
-.content {
-    color: white; /* Make text readable on a dark background */
-    text-align: center;
-    padding-top: 20vh; /* Adjust positioning as needed */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/assets/images/project-series/radish.jpg'); center/cover no-repeat;
+  opacity: 0.4; /* control opacity here */
+  z-index: -1;
 }
