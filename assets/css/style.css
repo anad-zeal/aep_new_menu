@@ -181,6 +181,7 @@ h6 {
   transition: opacity 0.4s;
   z-index: -1;
 }
+
 .main-nav-menu.is-open .nav-backdrop {
   opacity: 1;
   pointer-events: auto;
@@ -197,7 +198,7 @@ main#dynamic-content-area {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  padding-top:1vh;
+  padding-top:0;
   height: auto;
 }
 
