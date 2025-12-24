@@ -727,11 +727,6 @@ body.slideshow-active .caption {
   }
 }
 
-body {
-  position: relative;
-  margin: 0;
-}
-
 body::before {
   content: "";
   position: fixed;
@@ -743,3 +738,5 @@ body::before {
   opacity: 0.4; /* control opacity here */
   z-index: -1;
 }
+ background-size: cover;
+ background-repeat: no-repeat;
