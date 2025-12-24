@@ -732,8 +732,8 @@ body::before {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: url('/assets/images/project-series/radish.jpg'); center/cover no-repeat;
   opacity: 0.4; /* control opacity here */
   z-index: -1;
