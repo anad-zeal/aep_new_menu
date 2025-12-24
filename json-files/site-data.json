@@ -36,7 +36,7 @@
           "content": {
             "type": "landingMenuItem",
             "link": { "href": "/artworks", "text": "Artworks" },
-            "paragraph": "Explore various series of paintings."
+            "paragraph": ""
           }
         },
         {
@@ -44,7 +44,7 @@
           "content": {
             "type": "landingMenuItem",
             "link": { "href": "/biography", "text": "Biography" },
-            "paragraph": "About the artist."
+            "paragraph": ""
           }
         },
         {
@@ -52,7 +52,7 @@
           "content": {
             "type": "landingMenuItem",
             "link": { "href": "/contact", "text": "Contact" },
-            "paragraph": "Get in touch."
+            "paragraph": ""
           }
         }
       ]

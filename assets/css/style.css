@@ -61,6 +61,7 @@ h6 {
 
 .site-header {
   position: relative;
+  top: 10vh;
   width: 100%;
   padding: 1rem 0;
   text-align: center;
