@@ -55,6 +55,13 @@ h6 {
   color: var(--body-font-color);
 }
 
+article {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #888;
+}
+
 article p {
   font-size: 1.6rem;
   line-height: 1.6;
