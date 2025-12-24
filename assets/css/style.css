@@ -65,6 +65,7 @@ article p {
   font-size: 1.6rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
+   min-width: 1000px;
   }
 
 /* ============================================= */
