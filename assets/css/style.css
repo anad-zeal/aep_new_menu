@@ -64,6 +64,7 @@ article {
 article p {
   font-family: var(--font-body);
   font-size: 1.6rem;
+  font-weight: 300;
   line-height: 1.6;
   margin-bottom: 1.5rem;
    width: 900px;
