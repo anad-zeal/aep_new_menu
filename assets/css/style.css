@@ -16,7 +16,7 @@
   /* Typography */
   --font-body: 'Poppins', sans-serif;
   --font-script: 'Bonheur Royale', cursive;
-  --font-round: 'Comfortaa', sans-serif;
+  --font-rounded: 'Comfortaa', sans-serif;
   --header-height: 120px;
 }
 
@@ -61,15 +61,27 @@ article {
   background-color: transparent;
 }
 
-article p {
-  font-family: var(--font-body);
+
+article p  {
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+   line-height: 1.6;
+  margin-bottom: 1.5rem;
+   width: 900px;
+   color:#000;
+}
+
+/* article p {
+  font-family: var( --font-rounded);
   font-size: 1.6rem;
   font-weight: 300;
   line-height: 1.6;
   margin-bottom: 1.5rem;
    width: 900px;
    color:#000;
-  }
+  } */
 
 /* ============================================= */
 /* 2. Header & Branding                          */
