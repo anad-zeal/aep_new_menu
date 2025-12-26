@@ -61,19 +61,7 @@ article {
   background-color: transparent;
 }
 
-
-article div p  {
-  font-family: "Comfortaa", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-   line-height: 1.6;
-  margin-bottom: 1.5rem;
-   width: 900px;
-   color:#000;
-}
-
-/* article p {
+article p {
   font-family: var( --font-rounded);
   font-size: 1.6rem;
   font-weight: 300;
@@ -81,7 +69,7 @@ article div p  {
   margin-bottom: 1.5rem;
    width: 900px;
    color:#000;
-  } */
+  }
 
 /* ============================================= */
 /* 2. Header & Branding                          */
