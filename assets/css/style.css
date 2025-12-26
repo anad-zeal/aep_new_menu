@@ -61,7 +61,7 @@ article {
   background-color: transparent;
 }
 
-article p {
+.body-paragraphs{
   font-family: var( --font-rounded);
   font-size: 1.6rem;
   font-weight: 300;
