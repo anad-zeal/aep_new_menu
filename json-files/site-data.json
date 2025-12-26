@@ -188,7 +188,7 @@
         ]
       }
     },
-    "coil": {
+     "coil": {
       "type": "contentSection",
       "title": "Ignition Coil Overview",
       "content": {
@@ -209,14 +209,14 @@
           }
         ],
         "paragraphs": [
-          "CONSTRUCTION OF THE IGNITION COIL",
-          "Primary Coil: Made of thick copper wire with fewer turns, connected to the battery.",
-          "Secondary Coil: Made of fine wire with many more turns, responsible for generating high voltage.",
-          "Iron Core: Central cylindrical core that enhances magnetic field strength.",
-          "Resin Encapsulation: The \"Dry Resin Technology\" helps insulate and protect internal components from moisture and vibration.",
-          "Terminals: Two low-voltage terminals (positive and negative) and one high-voltage output terminal for the spark plug.",
-          "Mounting Bracket: Secures the coil to the vehicle chassis.",
-          "FUNCTION OF THE IGNITION COIL",
+          "<h3>Construction of the Ignition Coil</h3>",
+          "<strong>Primary Coil:</strong> Made of thick copper wire with fewer turns, connected to the battery.",
+          "<strong>Secondary Coil:</strong> Made of fine wire with many more turns, responsible for generating high voltage.",
+          "<strong>Iron Core:</strong> Central cylindrical core that enhances magnetic field strength.",
+          "<strong>Resin Encapsulation:</strong> The \"Dry Resin Technology\" helps insulate and protect internal components from moisture and vibration.",
+          "<strong>Terminals:</strong> Two low-voltage terminals (positive and negative) and one high-voltage output terminal for the spark plug.",
+          "<strong>Mounting Bracket:</strong> Secures the coil to the vehicle chassis.",
+          "<br><h3>Function of the Ignition Coil</h3>",
           "It transforms the 12V battery voltage into 20,000–40,000 volts needed to create a spark at the spark plug. This spark ignites the air-fuel mixture in the engine's combustion chamber, enabling engine operation."
         ]
       }

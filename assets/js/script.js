@@ -237,7 +237,7 @@ function renderContentSection(targetContainer, sectionData) {
   textWrap.style.padding = '2rem';
   sectionData.paragraphs.forEach((txt) => {
     const p = document.createElement('p');
-    p.textContent = txt;
+    p.innerHTML = txt; 
     p.style.marginBottom = '1em';
     p.style.lineHeight = '1.6';
     textWrap.appendChild(p);
