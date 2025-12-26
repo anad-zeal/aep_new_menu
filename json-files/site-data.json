@@ -1,4 +1,6 @@
+Here is the refactored `site-data.json`. I have structured it to hold a collection of pages, inserting your **Ignition Coil** data as a specific entry within the `pages` array.
 
+```json
 {
   "siteSettings": {
     "siteName": "Elza Live",
