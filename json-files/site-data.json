@@ -191,49 +191,35 @@
     "coil": {
       "type": "contentSection",
       "title": "Ignition Coil Overview",
-      "content": [
-        {
-          "tag": "section",
-          "attributes": {
-            "id": "construction",
-            "class": "coil-section"
-          },
-          "subtitle": "Construction of the Ignition Coil",
-          "images": [
-            {
-              "src": "/assets/images/misc-images/ignition-coil.jpg",
-              "alt": "Diagram showing the construction of an ignition coil",
-              "caption": "Internal construction of a standard ignition coil."
-            }
-          ],
-          "paragraphs": [
-            "Primary Coil: Made of thick copper wire with fewer turns, connected to the battery.",
-            "Secondary Coil: Made of fine wire with many more turns, responsible for generating high voltage.",
-            "Iron Core: Central cylindrical core that enhances magnetic field strength.",
-            "Resin Encapsulation: The \"Dry Resin Technology\" helps insulate and protect internal components from moisture and vibration.",
-            "Terminals: Two low-voltage terminals (positive and negative) and one high-voltage output terminal for the spark plug.",
-            "Mounting Bracket: Secures the coil to the vehicle chassis."
-          ]
+      "content": {
+        "tag": "article",
+        "attributes": {
+          "class": "content-section coil"
         },
-        {
-          "tag": "section",
-          "attributes": {
-            "id": "function",
-            "class": "coil-section"
+        "images": [
+          {
+            "src": "assets/images/misc-images/ignition-coil.jpg",
+            "alt": "Diagram showing the construction of an ignition coil",
+            "caption": "Internal construction of a standard ignition coil."
           },
-          "subtitle": "Function of the Ignition Coil",
-          "images": [
-            {
-              "src": "/assets/images/misc-images/ignition-system.jpg",
-              "alt": "Ignition system diagram",
-              "caption": "Overview of the ignition system function."
-            }
-          ],
-          "paragraphs": [
-            "It transforms the 12V battery voltage into 20,000–40,000 volts needed to create a spark at the spark plug. This spark ignites the air-fuel mixture in the engine's combustion chamber, enabling engine operation."
-          ]
-        }
-      ]
+          {
+            "src": "assets/images/misc-images/ignition-system.jpg",
+            "alt": "Ignition system diagram",
+            "caption": "Overview of the ignition system function."
+          }
+        ],
+        "paragraphs": [
+          "CONSTRUCTION OF THE IGNITION COIL",
+          "Primary Coil: Made of thick copper wire with fewer turns, connected to the battery.",
+          "Secondary Coil: Made of fine wire with many more turns, responsible for generating high voltage.",
+          "Iron Core: Central cylindrical core that enhances magnetic field strength.",
+          "Resin Encapsulation: The \"Dry Resin Technology\" helps insulate and protect internal components from moisture and vibration.",
+          "Terminals: Two low-voltage terminals (positive and negative) and one high-voltage output terminal for the spark plug.",
+          "Mounting Bracket: Secures the coil to the vehicle chassis.",
+          "FUNCTION OF THE IGNITION COIL",
+          "It transforms the 12V battery voltage into 20,000–40,000 volts needed to create a spark at the spark plug. This spark ignites the air-fuel mixture in the engine's combustion chamber, enabling engine operation."
+        ]
+      }
     },
     "contact": {
       "type": "contactForm",
