@@ -382,29 +382,55 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function loadPage(pageName, addToHistory = true) {
+    // 1. Check if global config (arrows, templates) is ready
     if (!siteData) return;
+    
+    // 2. Default to home if no page provided
     if (!pageName || pageName === '/' || pageName === 'index.php') pageName = 'home';
-    if (pageName === 'contact' && !siteData.pages['contact']) return;
 
-    const pageData = siteData.pages[pageName];
-    if (!pageData) return console.error('Page not found:', pageName);
+    // 3. FETCH THE DEDICATED PAGE FILE
+    // Instead of looking in siteData.pages, we fetch the file dynamically
+    let pageData;
+    try {
+      const response = await fetch(`json-files/${pageName}.json`);
+      if (!response.ok) throw new Error(`File not found: ${pageName}.json`);
+      pageData = await response.json();
+    } catch (err) {
+      console.error('Page Load Error:', err);
+      return; // Stop execution if file is missing
+    }
 
+    // 4. Prepare data for the renderer
     let finalData = { title: pageData.title };
-    if (pageData.type === 'slideshow') {
-      const templateCopy = JSON.parse(JSON.stringify(siteData.slideshowTemplate));
-      templateCopy.gallerySource = pageData.gallerySource;
-      finalData.slideshowTemplate = templateCopy;
-    } else if (pageData.type === 'cardGrid') finalData.cardGrid = pageData.content;
-    else if (pageData.type === 'contentSection') finalData.contentSection = pageData.content;
-    else if (pageData.type === 'contactForm') finalData.contactForm = pageData.content;
 
+    // Map the JSON "type" to the Render Object
+    if (pageData.type === 'slideshow') {
+      // Merge global template (arrows/css) with this page's specific gallery source
+      const templateCopy = JSON.parse(JSON.stringify(siteData.slideshowTemplate));
+      // Ensure your page json has "gallerySource" pointing to the list of images
+      templateCopy.gallerySource = pageData.gallerySource; 
+      finalData.slideshowTemplate = templateCopy;
+    } 
+    else if (pageData.type === 'cardGrid') {
+      finalData.cardGrid = pageData.content;
+    } 
+    else if (pageData.type === 'contentSection') {
+      finalData.contentSection = pageData.content;
+    } 
+    else if (pageData.type === 'contactForm') {
+      finalData.contactForm = pageData.content;
+    }
+
+    // 5. Render the content
     renderPageContent(finalData, pageName);
 
+    // 6. Update Navigation Active State
     const menuButtons = document.querySelectorAll('.main-nav-menu a, [data-page]');
     menuButtons.forEach((btn) => btn.classList.remove('active', 'is-active'));
     const activeBtn = document.querySelector(`[data-page="${pageName}"]`);
     if (activeBtn) activeBtn.classList.add('active');
 
+    // 7. Push to History
     if (addToHistory) {
       const urlPath = pageName === 'home' ? '/' : `/${pageName}`;
       history.pushState({ page: pageName }, finalData.title, urlPath);
