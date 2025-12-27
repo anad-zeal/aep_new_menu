@@ -1,0 +1,58 @@
+{
+  "page": {
+    "url": "https://elzalive.com/coil",
+    "title": "Ignition Coil Overview",
+    "slug": "coil"
+  },
+  "content": [
+    {
+      "section_id": "construction",
+      "title": "Construction of the Ignition Coil",
+      "type": "feature_list",
+      "items": [
+        {
+          "term": "Primary Coil",
+          "definition": "Made of thick copper wire with fewer turns, connected to the battery."
+        },
+        {
+          "term": "Secondary Coil",
+          "definition": "Made of fine wire with many more turns, responsible for generating high voltage."
+        },
+        {
+          "term": "Iron Core",
+          "definition": "Central cylindrical core that enhances magnetic field strength."
+        },
+        {
+          "term": "Resin Encapsulation",
+          "definition": "The \"Dry Resin Technology\" helps insulate and protect internal components from moisture and vibration."
+        },
+        {
+          "term": "Terminals",
+          "definition": "Two low-voltage terminals (positive and negative) and one high-voltage output terminal for the spark plug."
+        },
+        {
+          "term": "Mounting Bracket",
+          "definition": "Secures the coil to the vehicle chassis."
+        }
+      ],
+      "media": {
+        "type": "image",
+        "src": "/assets/images/misc-images/ignition-coil.jpg",
+        "alt": "Diagram showing the construction of an ignition coil",
+        "caption": "Internal construction of a standard ignition coil."
+      }
+    },
+    {
+      "section_id": "function",
+      "title": "Function of the Ignition Coil",
+      "type": "text_block",
+      "body": "It transforms the 12V battery voltage into 20,000–40,000 volts needed to create a spark at the spark plug. This spark ignites the air-fuel mixture in the engine's combustion chamber, enabling engine operation.",
+      "media": {
+        "type": "image",
+        "src": "/assets/images/misc-images/ignition-system.jpg",
+        "alt": "Ignition system diagram",
+        "caption": "Overview of the ignition system function."
+      }
+    }
+  ]
+}

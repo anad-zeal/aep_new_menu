@@ -1,5 +1,4 @@
-
-  {
+{
   "slideshowTemplate": {
     "previousButton": {
       "imgSrc": "assets/images/misc-images/arrow-left.png",
@@ -25,7 +24,6 @@
     },
     "gallerySource": ""
   },
-
   "pages": {
     "home": {
       "type": "cardGrid",
@@ -35,7 +33,10 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/artworks", "text": "Artworks" },
+            "link": {
+              "href": "/artworks",
+              "text": "Artworks"
+            },
             "paragraph": ""
           }
         },
@@ -43,7 +44,10 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/biography", "text": "Biography" },
+            "link": {
+              "href": "/biography",
+              "text": "Biography"
+            },
             "paragraph": ""
           }
         },
@@ -51,13 +55,15 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/contact", "text": "Contact" },
+            "link": {
+              "href": "/contact",
+              "text": "Contact"
+            },
             "paragraph": ""
           }
         }
       ]
     },
-
     "artworks": {
       "type": "cardGrid",
       "title": "Artworks",
@@ -66,7 +72,10 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/black-and-white", "text": "Black and White" },
+            "link": {
+              "href": "/black-and-white",
+              "text": "Black and White"
+            },
             "paragraph": "Monochromatic studies."
           }
         },
@@ -74,7 +83,10 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/encaustic", "text": "Encaustic" },
+            "link": {
+              "href": "/encaustic",
+              "text": "Encaustic"
+            },
             "paragraph": "Heated beeswax and colored pigments."
           }
         },
@@ -82,7 +94,10 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/drip-series", "text": "Drip Series" },
+            "link": {
+              "href": "/drip-series",
+              "text": "Drip Series"
+            },
             "paragraph": "Controlled spontaneous dripping technique."
           }
         },
@@ -90,7 +105,10 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/decorative", "text": "Decorative" },
+            "link": {
+              "href": "/decorative",
+              "text": "Decorative"
+            },
             "paragraph": "Intricate and expressive decorative works."
           }
         },
@@ -98,7 +116,10 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/historic-preservation", "text": "Historic Preservation" },
+            "link": {
+              "href": "/historic-preservation",
+              "text": "Historic Preservation"
+            },
             "paragraph": "Restoration and preservation projects."
           }
         },
@@ -106,49 +127,45 @@
           "type": "card",
           "content": {
             "type": "landingMenuItem",
-            "link": { "href": "/project-series", "text": "Project Series" },
+            "link": {
+              "href": "/project-series",
+              "text": "Project Series"
+            },
             "paragraph": "Thematic series and collections."
           }
         }
       ]
     },
-
     "black-and-white": {
       "type": "slideshow",
       "title": "Black and White",
       "gallerySource": "black-and-white-slideshow.json"
     },
-
     "encaustic": {
       "type": "slideshow",
       "title": "Encaustic",
       "gallerySource": "encaustic-slideshow.json"
     },
-
     "drip-series": {
       "type": "slideshow",
       "title": "Drip Series",
       "gallerySource": "drip-series-slideshow.json"
     },
-
     "decorative": {
       "type": "slideshow",
       "title": "Decorative",
       "gallerySource": "decorative-slideshow.json"
     },
-
     "historic-preservation": {
       "type": "slideshow",
       "title": "Historic Preservation",
       "gallerySource": "preservation-slideshow.json"
     },
-
     "project-series": {
       "type": "slideshow",
       "title": "Project Series",
       "gallerySource": "projects-slideshow.json"
     },
-
     "biography": {
       "type": "contentSection",
       "title": "Biography",
@@ -171,14 +188,48 @@
         ]
       }
     },
-
+     "coil": {
+      "type": "contentSection",
+      "title": "Ignition Coil Overview",
+      "content": {
+        "tag": "article",
+        "attributes": {
+          "class": "content-section coil"
+        },
+        "images": [
+          {
+            "src": "assets/images/misc-images/ignition-coil.jpg",
+            "alt": "Diagram showing the construction of an ignition coil",
+            "caption": "Internal construction of a standard ignition coil."
+          },
+          {
+            "src": "assets/images/misc-images/ignition-system.jpg",
+            "alt": "Ignition system diagram",
+            "caption": "Overview of the ignition system function."
+          }
+        ],
+        "paragraphs": [
+          "<h3>Construction of the Ignition Coil</h3>",
+          "<strong>Primary Coil:</strong> Made of thick copper wire with fewer turns, connected to the battery.",
+          "<strong>Secondary Coil:</strong> Made of fine wire with many more turns, responsible for generating high voltage.",
+          "<strong>Iron Core:</strong> Central cylindrical core that enhances magnetic field strength.",
+          "<strong>Resin Encapsulation:</strong> The \"Dry Resin Technology\" helps insulate and protect internal components from moisture and vibration.",
+          "<strong>Terminals:</strong> Two low-voltage terminals (positive and negative) and one high-voltage output terminal for the spark plug.",
+          "<strong>Mounting Bracket:</strong> Secures the coil to the vehicle chassis.",
+          "<br><h3>Function of the Ignition Coil</h3>",
+          "It transforms the 12V battery voltage into 20,000–40,000 volts needed to create a spark at the spark plug. This spark ignites the air-fuel mixture in the engine's combustion chamber, enabling engine operation."
+        ]
+      }
+    },
     "contact": {
       "type": "contactForm",
       "title": "Contact",
       "content": {
         "wrapper": {
           "tag": "div",
-          "attributes": { "class": "container" }
+          "attributes": {
+            "class": "container"
+          }
         },
         "form": {
           "tag": "form",
@@ -188,7 +239,10 @@
             "method": "post"
           },
           "headers": [
-            { "tag": "h3", "text": "Quick Contact" },
+            {
+              "tag": "h3",
+              "text": "Quick Contact"
+            },
             {
               "tag": "h4",
               "text": "Contact us today, and get reply with in 24 hours!"
