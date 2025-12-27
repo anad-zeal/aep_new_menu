@@ -1,0 +1,72 @@
+{
+  "type": "cardGrid",
+  "title": "Artworks",
+  "content": [
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "link": {
+          "href": "/black-and-white",
+          "text": "Black and White"
+        },
+        "paragraph": "Monochromatic studies."
+      }
+    },
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "link": {
+          "href": "/encaustic",
+          "text": "Encaustic"
+        },
+        "paragraph": "Heated beeswax and colored pigments."
+      }
+    },
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "link": {
+          "href": "/drip-series",
+          "text": "Drip Series"
+        },
+        "paragraph": "Controlled spontaneous dripping technique."
+      }
+    },
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "link": {
+          "href": "/decorative",
+          "text": "Decorative"
+        },
+        "paragraph": "Intricate and expressive decorative works."
+      }
+    },
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "link": {
+          "href": "/historic-preservation",
+          "text": "Historic Preservation"
+        },
+        "paragraph": "Restoration and preservation projects."
+      }
+    },
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "link": {
+          "href": "/project-series",
+          "text": "Project Series"
+        },
+        "paragraph": "Thematic series and collections."
+      }
+    }
+  ]
+}
