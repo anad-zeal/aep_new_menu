@@ -1,4 +1,39 @@
 {
-  "title": "Welcome",
-  "content": "<p>This is the home page.</p>"
+  "type": "cardGrid",
+  "title": "Home",
+  "content": [
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "link": {
+          "href": "/artworks",
+          "text": "Artworks"
+        },
+        "paragraph": ""
+      }
+    },
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "link": {
+          "href": "/biography",
+          "text": "Biography"
+        },
+        "paragraph": ""
+      }
+    },
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "link": {
+          "href": "/contact",
+          "text": "Contact"
+        },
+        "paragraph": ""
+      }
+    }
+  ]
 }
