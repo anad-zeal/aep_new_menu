@@ -62,7 +62,7 @@
       "content": {
         "type": "landingMenuItem",
         "link": {
-          "href": "/project-series",
+          "href": "/projects",
           "text": "Project Series"
         },
         "paragraph": "Thematic series and collections."
