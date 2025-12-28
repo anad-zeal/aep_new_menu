@@ -1,5 +1,5 @@
 {
+  "type": "slideshow",
   "title": "Historic Preservation",
-   "type": "slideshow",
-    "gallerySource": "preservation-slideshow.json",
+  "gallerySource": "preservation-slideshow.json"
 }
