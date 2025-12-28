@@ -1,12 +1,12 @@
 [
   {
-    "src": "assets/images/historic-preservation/homer-head.jpg"
-  },
-  {
-    "src": "assets/images/historic-preservation/homer-or-bust.jpg"
-  },
-  {
-    "src": "assets/images/historic-preservation/marble-piece.jpg"
+    "id": "bw-1",
+    "title": "NM",
+    "src": "assets/images/black-and-white/NM.jpg",
+    "caption": "NM",
+    "description": "Description for NM",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
   },
   {
     "id": "pres-1766441624217-3",
