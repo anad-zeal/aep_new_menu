@@ -1,6 +1,7 @@
 {
+  "type": "contentSection",
   "title": "Biography",
-  "contentSection": {
+  "content": {
     "tag": "section",
     "attributes": {
       "class": "body-paragraphs",
