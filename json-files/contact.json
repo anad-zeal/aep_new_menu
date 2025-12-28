@@ -1,26 +1,24 @@
 {
-  "contact": {
-    "type": "contactForm",
-    "title": "Contact",
-    "content": {
-      "wrapper": {
-        "tag": "div",
-        "attributes": {
-          "class": "container"
-        }
+  "type": "contactForm",
+  "title": "Contact",
+  "content": {
+    "wrapper": {
+      "tag": "div",
+      "attributes": {
+        "class": "container"
+      }
+    },
+    "form": {
+      "tag": "form",
+      "attributes": {
+        "id": "contact",
+        "action": "/submit-contact",
+        "method": "post"
       },
-      "form": {
-        "tag": "form",
-        "attributes": {
-          "id": "contact",
-          "action": "/submit-contact",
-          "method": "post"
-        },
-        "headers": [
-          { "tag": "h3", "text": "Quick Contact" },
-          { "tag": "h4", "text": "Contact today, and get a reply within 24 hours!" }
-        ]
-      },
+      "headers": [
+        { "tag": "h3", "text": "Quick Contact" },
+        { "tag": "h4", "text": "Contact today, and get a reply within 24 hours!" }
+      ],
       "fields": [
         {
           "tag": "input",
