@@ -391,7 +391,7 @@ if (!pageName || pageName === '/' || pageName === 'index.php') pageName = 'home'
 // Instead of looking in siteData.pages, we fetch the file dynamically
 let pageData;
 try {
-const response = await fetch(`json-files/${pageName}.json`);
+const response = await fetch(`/json-files/${pageName}.json`);
 if (!response.ok) throw new Error(`File not found: ${pageName}.json`);
 pageData = await response.json();
 } catch (err) {
