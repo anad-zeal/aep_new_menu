@@ -556,7 +556,7 @@ body.slideshow-active .hero .page-title {
   text-align: right;
   font-family: var(--font-rounded);
   font-weight: 100; /* Thin */
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   color: var(--text-main);
   z-index: 101;
   margin: 0;  
