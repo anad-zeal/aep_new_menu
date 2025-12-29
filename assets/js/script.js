@@ -355,7 +355,7 @@ subTitleEl.textContent = data.slideshowTemplate
 ? 'The Life of an Artist'
 : 'The Life of an Artist';
 
-const pageTitleEl = document.querySelector('.hero .rounded');
+const pageTitleEl = document.querySelector('.hero .page-title');
 if (pageTitleEl) {
 if (data.slideshowTemplate) {
 pageTitleEl.textContent = data.title;
