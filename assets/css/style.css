@@ -554,7 +554,7 @@ body.slideshow-active .hero .page-title {
   top: 2rem;
   right: 4vw;
   text-align: right;
-  /* font-family: var(--font-rounded); */
+  font-family: var(--font-rounded);
   font-weight: 100; /* Thin */
   font-size: 2.5rem;
   color: var(--text-main);
@@ -562,13 +562,13 @@ body.slideshow-active .hero .page-title {
   margin: 0;  
 }
 
-
+/* 
 .rounded  {
   font-family: var(--rounded);
   font-optical-sizing: auto;
   font-weight: 100;
   font-style: normal;
-}
+} */
 
 /* --- Caption: Bottom Right --- */
 body.slideshow-active .caption {
