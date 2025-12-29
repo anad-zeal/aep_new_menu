@@ -17,6 +17,7 @@
   --font-body: 'Poppins', sans-serif;
   --font-script: 'Bonheur Royale', cursive;
   --font-rounded: 'Comfortaa', sans-serif;
+  --header-height: 120px;
 }
 
 *,.page-title
@@ -546,13 +547,13 @@ body.slideshow-active .hero .sub-title {
 }
 
 /* Category Name - Top Right (Dynamic) */
-.rounded {
+body.slideshow-active .hero .page-title {
   display: block; /* Visible on slideshow */
   position: fixed;
   top: 2rem;
   right: 4vw;
   text-align: right;
-  font-family: 'Comfortaa', sans-serif;
+  /* font-family: var(--font-rounded); */
   font-weight: 100; /* Thin */
   font-size: 2.5rem;
   color: var(--text-main);
@@ -561,12 +562,12 @@ body.slideshow-active .hero .sub-title {
 }
 
 
-/* .page-title  {
+.page-title  {
   font-family: "Comfortaa", sans-serif;
   font-optical-sizing: auto;
   font-weight: 100;
   font-style: normal;
-} */
+}
 
 /* --- Caption: Bottom Right --- */
 body.slideshow-active .caption {
