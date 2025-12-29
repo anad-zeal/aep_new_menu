@@ -691,7 +691,7 @@ body.slideshow-active .caption {
 .slideshow-metadata {
   position: absolute;
   bottom: 40px;
-  left: 40px;
+  right: 40px;
   z-index: 10;
   max-width: 400px;
   padding: 20px;
