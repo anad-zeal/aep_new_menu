@@ -550,6 +550,7 @@ body.slideshow-active .hero .sub-title {
 body.slideshow-active .hero .page-title {
   display: block; /* Visible on slideshow */
   position: fixed;
+  position: fixed;
   top: 2rem;
   right: 4vw;
   text-align: right;
@@ -558,12 +559,12 @@ body.slideshow-active .hero .page-title {
   font-size: 2.5rem;
   color: var(--text-main);
   z-index: 101;
-  margin: 0;
+  margin: 0;  
 }
 
 
 .rounded  {
-  font-family: "Comfortaa", sans-serif;
+  font-family: var(--font-script);
   font-optical-sizing: auto;
   font-weight: 100;
   font-style: normal;
