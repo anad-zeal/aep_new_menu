@@ -552,7 +552,7 @@ body.slideshow-active .hero .page-title {
   top: 2rem;
   right: 4vw;
   text-align: right;
-  font-family: var(--font-rounded);
+  font-family: 'Comfortaa', sans-serif;
   font-weight: 100; /* Thin */
   font-size: 2.5rem;
   color: var(--text-main);
