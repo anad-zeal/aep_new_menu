@@ -564,7 +564,7 @@ body.slideshow-active .hero .page-title {
 
 
 .rounded  {
-  font-family: var(--font-script);
+  font-family: var(--rounded);
   font-optical-sizing: auto;
   font-weight: 100;
   font-style: normal;
