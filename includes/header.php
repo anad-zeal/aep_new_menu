@@ -50,6 +50,9 @@ $life_title = "<h2 class='sub-title fade-title'>The Life sof an Artist</h2>";
     <link rel="canonical" href="<?= htmlspecialchars($canonicalUrl) ?>">
 
     <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
