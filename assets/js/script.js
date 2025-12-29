@@ -414,9 +414,12 @@ else if (pageData.type === 'cardGrid') {
 finalData.cardGrid = pageData.content;
 } 
 else if (pageData.type === 'contentSection') {
+    alert('here');
 finalData.contentSection = pageData.content;
 } 
 else if (pageData.type === 'contactForm') {
+     alert('Contsct');
+finalData.contentSe
 finalData.contactForm = pageData.content;
 }
 
