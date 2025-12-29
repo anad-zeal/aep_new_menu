@@ -546,7 +546,7 @@ body.slideshow-active .hero .sub-title {
 }
 
 /* Category Name - Top Right (Dynamic) */
-body.slideshow-active .hero .page-title {
+.rounded {
   display: block; /* Visible on slideshow */
   position: fixed;
   top: 2rem;
