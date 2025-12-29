@@ -26,7 +26,7 @@
     <header class="site-header">
         <div class="hero">
             <div class="sub-title">The Life of an Artist</div>
-            <div class="page-title">Artist Portfolio</div>
+            <div class="page-title rounded">Artist Portfolio</div>
         </div>
 
         <!-- Hamburger Button -->
