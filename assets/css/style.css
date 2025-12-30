@@ -610,7 +610,7 @@ body.slideshow-active .caption {
   border-left: 3px solid #333;
   opacity: 0;
   transform: translateY(10px);
-pointer-events: none;
+  pointer-events: none;
 }
 
 .slideshow-metadata.active {
