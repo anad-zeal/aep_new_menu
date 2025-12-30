@@ -540,8 +540,8 @@ body.slideshow-active .hamburger-btn {
 /* Header Layout: Split Top-Left and Top-Right */
 body.slideshow-active .site-header {
   position: fixed;
-  top: 1vh;
-  left: 3vw;
+  top: 0;
+  left: 0;
   width: 100%;
   padding: 0;
   height: 0;
@@ -551,8 +551,8 @@ body.slideshow-active .site-header {
 /* "The Life of an Artist" - Top Left */
 body.slideshow-active .hero .sub-title {
   position: fixed;
-  top: 0.5rem;
-  left: 0.5vw;
+  top: 1rem;
+  left: 4vw;
   text-align: left;
   font-size: 3.5rem;
   margin: 0;
