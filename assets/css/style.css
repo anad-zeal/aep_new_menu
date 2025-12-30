@@ -19,7 +19,8 @@
   --font-rounded: 'Comfortaa', sans-serif;
 }
 
-*,.page-title
+/* FIXED: Corrected selector syntax */
+*,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -35,11 +36,27 @@ body {
 }
 
 body {
-  font-family: var(---body-font);
+  /* FIXED: Typo was '---body-font' */
+  font-family: var(--font-body);
   /* background-color: var(--bg-color); */
   color: var(--body-font-color);
   display: flex;
   flex-direction: column;
+}
+
+/* Background Image Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('/assets/images/project-series/radish.jpg');
+  opacity: 0.4;
+  z-index: -1;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 a,
@@ -61,14 +78,14 @@ article {
 }
 
 .body-paragraphs {
-  font-family: var( --font-rounded);
+  font-family: var(--font-rounded);
   font-size: 2rem;
   font-weight: 300;
   line-height: 1.6;
   margin-bottom: 1.5rem;
-   width: 900px;
-   color:#000;
-  }
+  width: 900px;
+  color: #000;
+}
 
 /* ============================================= */
 /* 2. Header & Branding                          */
@@ -163,7 +180,8 @@ article {
   transition: color 0.3s;
 }
 
-.main-nav-menu a:hover .main-nav-menu a.active {
+.main-nav-menu a:hover,
+.main-nav-menu a.active {
   color: var(--text-main);
   font-weight: 500;
 }
@@ -213,7 +231,7 @@ main#dynamic-content-area {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  padding-top:0;
+  padding-top: 0;
   height: auto;
 }
 
@@ -292,21 +310,13 @@ main#dynamic-content-area {
   margin: 0 !important;
   padding: 0 !important;
   user-select: none;
-
-  /* Absolute Center */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  /* FORCE SCALING UP */
-  /* This creates a box 85% of the screen height */
   height: 85vh !important;
-  /* This ensures the width matches the container */
   width: 100% !important;
-  /* This ensures the image stretches to fill that box while keeping aspect ratio */
   object-fit: contain;
-
   display: block;
   z-index: 1;
 }
@@ -315,10 +325,9 @@ main#dynamic-content-area {
 /* 6. Navigation Arrows (Refactored)             */
 /* ============================================= */
 
-/* Wrapper: Fixed to Viewport Edges */
 .prev-arrow,
 .next-arrow {
-  position: fixed !important; /* Force out of flow */
+  position: fixed !important;
   top: 50%;
   transform: translateY(-50%);
   z-index: 9999;
@@ -334,7 +343,6 @@ main#dynamic-content-area {
   right: 10px !important;
 }
 
-/* Button Styling */
 .prev-arrow button,
 .next-arrow button {
   background: transparent;
@@ -355,7 +363,6 @@ main#dynamic-content-area {
   transform: scale(1.1);
 }
 
-/* Image Styling */
 .prev-arrow img,
 .next-arrow img {
   width: 100%;
@@ -523,7 +530,7 @@ body.slideshow-active .hamburger-btn {
   display: none !important;
 }
 
-/* --- Header Layout: Split Top-Left and Top-Right --- */
+/* Header Layout: Split Top-Left and Top-Right */
 body.slideshow-active .site-header {
   position: fixed;
   top: 0;
@@ -552,23 +559,18 @@ body.slideshow-active .hero .page-title {
   top: 2rem;
   right: 4vw;
   text-align: right;
+  
+  /* FIXED: Use Variable and Weight 300 */
   font-family: var(--font-rounded);
   font-weight: 300;
+  
   font-size: 2.25rem;
   color: var(--text-main);
   z-index: 101;
   margin: 0;
 }
 
-
-.rounded  {
-  font-family: var(--font-rounded);
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-}
-
-/* --- Caption: Bottom Right --- */
+/* Caption: Bottom Right */
 body.slideshow-active .caption {
   position: fixed;
   bottom: 3rem;
@@ -580,109 +582,12 @@ body.slideshow-active .caption {
 }
 
 #caption-text {
-  font-family: var(--font-thin);
+  font-family: var(--font-body); /* Adjusted fallback if thin undefined */
   font-weight: 100;
   font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-main);
-}
-
-/* ============================================= */
-/* 11. Responsive Adjustments                    */
-/* ============================================= */
-
-@media (max-width: 900px) {
-  .card-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-  }
-  .hero .sub-title {
-    font-size: 3rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .card-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  /* Mobile Slideshow Adjustments */
-  body.slideshow-active .hero .sub-title {
-    font-size: 2rem;
-    left: 1rem;
-  }
-  body.slideshow-active .hero .page-title {
-    font-size: 1.25rem;
-    right: 1rem;
-    top: 2.5rem;
-  }
-
-  body.slideshow-active .slide {
-    height: 60vh !important;
-  }
-
-  .return-arrow-container {
-    left: 1rem;
-    bottom: 1rem;
-  }
-  body.slideshow-active .caption {
-    right: 1rem;
-    bottom: 4rem;
-  }
-}
-
-.hero-background {
-  width: 1600px;
-  height: 399px;
-  background: linear-gradient(to bottom right, #ff7e3f, #ffffff);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Abstract wave-like patterns using pseudo-elements */
-.hero-background::before,
-.hero-background::after {
-  content: '';
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-  transform: rotate(45deg);
-  animation: waveFloat 12s infinite linear;
-  opacity: 0.4;
-}
-
-.hero-background::after {
-  transform: rotate(-45deg);
-  animation-delay: 6s;
-}
-
-/* Centered white card */
-.hero-card {
-  width: 600px;
-  height: 200px;
-  background: white;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Optional wave animation */
-@keyframes waveFloat {
-  0% {
-    transform: translateY(0) rotate(45deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(45deg);
-  }
-  100% {
-    transform: translateY(0) rotate(45deg);
-  }
 }
 
 /* Slideshow Metadata Container */
@@ -693,23 +598,21 @@ body.slideshow-active .caption {
   z-index: 10;
   max-width: 400px;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.85); /* Sophisticated frosted glass effect */
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(5px);
-  border-left: 3px solid #333; /* Artistic accent line */
+  border-left: 3px solid #333;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.6s ease, transform 0.6s ease;
-  pointer-events: none; /* Allows clicks to pass through to the image */
+  pointer-events: none;
 }
 
-/* When the slide is active, fade it in */
 .slideshow-metadata.active {
   opacity: 1;
   transform: translateY(0);
 }
 
 #meta-title {
-  /* font-family: "Playfair Display", serif; Or your preferred serif */
   font-size: 1.4rem;
   margin: 0 0 5px 0;
   color: #111;
@@ -739,7 +642,20 @@ body.slideshow-active .caption {
   padding-top: 10px;
 }
 
-/* Mobile Adjustments */
+/* ============================================= */
+/* 11. Responsive Adjustments                    */
+/* ============================================= */
+
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+  .hero .sub-title {
+    font-size: 3rem;
+  }
+}
+
 @media (max-width: 768px) {
   .slideshow-metadata {
     bottom: 0;
@@ -752,101 +668,102 @@ body.slideshow-active .caption {
   }
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url('/assets/images/project-series/radish.jpg');
-  opacity: 0.4; /* control opacity here */
-  z-index: -1;
-  background-size: cover;
- background-repeat: no-repeat;
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  body.slideshow-active .hero .sub-title {
+    font-size: 2rem;
+    left: 1rem;
+  }
+  body.slideshow-active .hero .page-title {
+    font-size: 1.25rem;
+    right: 1rem;
+    top: 2.5rem;
+  }
+
+  body.slideshow-active .slide {
+    height: 60vh !important;
+  }
+
+  .return-arrow-container {
+    left: 1rem;
+    bottom: 1rem;
+  }
+  body.slideshow-active .caption {
+    right: 1rem;
+    bottom: 4rem;
+  }
 }
 
+/* ============================================= */
+/* 12. Coil Page Styles                          */
+/* ============================================= */
 
-/* Layout Container */
-    .coil-container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 40px 20px;
-        background-color: #ffffff;
-        min-height: 100vh;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-    }
+.coil-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #ffffff;
+  min-height: 100vh;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
 
-    /* Typography */
-    h1,
-    h2 {
-        color: #2c3e50;
-        margin-bottom: 1rem;
-    }
+/* Scoped headers for Coil page to prevent conflicts */
+.coil-container h1 {
+  font-size: 2.5rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
 
-    h1 {
-        font-size: 2.5rem;
-        border-bottom: 2px solid #eee;
-        padding-bottom: 10px;
-        margin-bottom: 30px;
-    }
+.coil-container h2 {
+  font-size: 1.75rem;
+  margin-top: 40px;
+  color: #2c3e50;
+}
 
-    h2 {
-        font-size: 1.75rem;
-        margin-top: 40px;
-    }
+.coil-container p {
+  margin-bottom: 1.5rem;
+}
 
-    p {
-        margin-bottom: 1.5rem;
-    }
+.coil-container ul {
+  list-style-type: none;
+  padding-left: 0;
+}
 
-    /* List Styling */
-    ul {
-        list-style-type: none;
-        padding-left: 0;
-    }
+.coil-container li {
+  margin-bottom: 15px;
+  padding-left: 20px;
+  border-left: 4px solid #3498db;
+  background-color: #fdfdfd;
+  padding: 10px 15px;
+}
 
-    li {
-        margin-bottom: 15px;
-        padding-left: 20px;
-        border-left: 4px solid #3498db;
-        background-color: #fdfdfd;
-        padding: 10px 15px;
-    }
+.coil-container strong {
+  color: #2980b9;
+}
 
-    strong {
-        color: #2980b9;
-    }
+.coil-container figure {
+  margin: 30px 0;
+  text-align: center;
+}
 
-    /* Images */
-    figure {
-        margin: 30px 0;
-        text-align: center;
-    }
+.coil-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  display: block;
+  margin: 0 auto;
+}
 
-    img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 4px;
-        border: 1px solid #ddd;
-        display: block;
-        margin: 0 auto;
-    }
-
-    figcaption {
-        font-size: 0.9rem;
-        color: #666;
-        margin-top: 8px;
-        font-style: italic;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 600px) {
-        h1 {
-            font-size: 2rem;
-        }
-
-        .container {
-            padding: 20px 15px;
-        }
-    }
+.coil-container figcaption {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 8px;
+  font-style: italic;
+}
