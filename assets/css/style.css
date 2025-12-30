@@ -564,14 +564,14 @@ body.slideshow-active .hero .page-title {
   display: block; /* Visible on slideshow */
   position: fixed;
   top: 1.5rem;
-  right: 4vw;
+  right: 4rem;
   text-align: right;
 
   /* FIXED: Use Variable and Weight 300 */
   font-family: var(--font-rounded);
   font-weight: 300;
 
-  font-size: 2.25rem;
+  font-size: 2rem;
   color: var(--text-main);
   z-index: 101;
   margin: 0;
