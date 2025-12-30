@@ -549,12 +549,11 @@ body.slideshow-active .hero .sub-title {
 body.slideshow-active .hero .page-title {
   display: block; /* Visible on slideshow */
   position: fixed;
-  position: fixed;
   top: 2rem;
   right: 4vw;
   text-align: right;
   font-family: var(--font-rounded);
-  font-weight: 300; /* Thin */
+  font-weight: 300; 
   font-size: 2rem;
   color: var(--text-main);
   z-index: 101;
