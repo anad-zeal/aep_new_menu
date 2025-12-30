@@ -407,18 +407,16 @@ if (pageData.type === 'slideshow') {
 // Merge global template (arrows/css) with this page's specific gallery source
 const templateCopy = JSON.parse(JSON.stringify(siteData.slideshowTemplate));
 // Ensure your page json has "gallerySource" pointing to the list of images
-templateCopy.gallerySource = pageData.gallerySource; 
+templateCopy.gallerySource = pageData.gallerySource;
 finalData.slideshowTemplate = templateCopy;
-} 
+}
 else if (pageData.type === 'cardGrid') {
 finalData.cardGrid = pageData.content;
-} 
+}
 else if (pageData.type === 'contentSection') {
-    alert('here');
 finalData.contentSection = pageData.content;
-} 
+}
 else if (pageData.type === 'contactForm') {
-     alert('Contsct');
 finalData.contentSe
 finalData.contactForm = pageData.content;
 }
