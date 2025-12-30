@@ -21,61 +21,85 @@
       ],
       "fields": [
         {
-          "tag": "input",
-          "wrapperTag": "fieldset",
-          "attributes": {
-            "placeholder": "Your Name",
-            "type": "text",
-            "required": true,
-            "autofocus": true
-          }
+          "tag": "fieldset",
+          "children": [
+            {
+              "tag": "input",
+              "attributes": {
+                "placeholder": "Your Name",
+                "type": "text",
+                "required": true,
+                "autofocus": true
+              }
+            }
+          ]
         },
         {
-          "tag": "input",
-          "wrapperTag": "fieldset",
-          "attributes": {
-            "placeholder": "Your Email Address",
-            "type": "email",
-            "required": true
-          }
+          "tag": "fieldset",
+          "children": [
+            {
+              "tag": "input",
+              "attributes": {
+                "placeholder": "Your Email Address",
+                "type": "email",
+                "required": true
+              }
+            }
+          ]
         },
         {
-          "tag": "input",
-          "wrapperTag": "fieldset",
-          "attributes": {
-            "placeholder": "Your Phone Number",
-            "type": "tel",
-            "pattern": "[0-9]{3}-[0-9]{3}-[0-9]{4}",
-            "required": true
-          }
+          "tag": "fieldset",
+          "children": [
+            {
+              "tag": "input",
+              "attributes": {
+                "placeholder": "Your Phone Number",
+                "type": "tel",
+                "pattern": "[0-9]{3}-[0-9]{3}-[0-9]{4}",
+                "required": true
+              }
+            }
+          ]
         },
         {
-          "tag": "input",
-          "wrapperTag": "fieldset",
-          "attributes": {
-            "placeholder": "Your Website (http:// or https://)",
-            "type": "url",
-            "required": true
-          }
+          "tag": "fieldset",
+          "children": [
+            {
+              "tag": "input",
+              "attributes": {
+                "placeholder": "Your Website (http:// or https://)",
+                "type": "url",
+                "required": true
+              }
+            }
+          ]
         },
         {
-          "tag": "textarea",
-          "wrapperTag": "fieldset",
-          "attributes": {
-            "placeholder": "Type your Message Here...",
-            "required": true
-          }
+          "tag": "fieldset",
+          "children": [
+            {
+              "tag": "textarea",
+              "attributes": {
+                "placeholder": "Type your Message Here...",
+                "required": true
+              }
+            }
+          ]
         },
         {
-          "tag": "button",
-          "text": "Submit",
-          "wrapperTag": "fieldset",
-          "attributes": {
-            "name": "submit",
-            "type": "submit",
-            "id": "contact-submit",
-            "data-submit": "...Sending"
-          }
+          "tag": "fieldset",
+          "children": [
+            {
+              "tag": "button",
+              "text": "Submit",
+              "attributes": {
+                "name": "submit",
+                "type": "submit",
+                "id": "contact-submit",
+                "data-submit": "...Sending"
+              }
+            }
+          ]
         }
       ]
     }
