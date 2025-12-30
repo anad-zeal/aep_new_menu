@@ -91,7 +91,7 @@ article {
   line-height: 1.6;
   margin-bottom: 1.5rem;
   min-width: 1100px;
-  color: #000;
+  color: var(--body-font-color);
 }
 
 /* ============================================= */
@@ -143,7 +143,7 @@ article {
   display: block;
   width: 100%;
   height: 2px;
-  background-color: var(--text-main);
+  background-color: var(--body-font-color);
   transition: all 0.3s ease;
 }
 
@@ -173,7 +173,7 @@ article {
   transform: translateX(-100%);
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   pointer-events: auto;
-  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  border-right: 1px solid var(--body-font-color);
 }
 
 .main-nav-menu a {
@@ -181,7 +181,7 @@ article {
   font-size: 1.6rem;
   letter-spacing: 0.15em;
   text-decoration: none;
-  color: black;
+  color: var(--body-font-color);
   /* text-transform: uppercase; */
   font-weight: 300;
   transition: color 0.3s;
@@ -189,7 +189,7 @@ article {
 
 .main-nav-menu a:hover,
 .main-nav-menu a.active {
-  color: var(--text-main);
+  color: var(--body-font-color);
   font-weight: 500;
 }
 
@@ -200,7 +200,7 @@ article {
   background: none;
   border: none;
   font-size: 2rem;
-  color: #a52a2a;
+  color: var(--body-font-color);
   cursor: pointer;
   font-weight: 300;
 }
@@ -267,7 +267,7 @@ main#dynamic-content-area {
   font-family: var(--font-body);
   font-size: 1.6rem;
   font-weight: 400;
-  color: var(--text-main);
+  color: var(--body-font-color);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -282,7 +282,7 @@ main#dynamic-content-area {
 .landingMenuItem p {
   font-family: var(--font-body);
   font-size: 1.25rem;
-  color: var(--text-main);
+  color: var(--body-font-color);
   font-weight: 300;
   line-height: 1.5;
   max-width: 250px;
@@ -464,7 +464,7 @@ fieldset {
 
 #contact input:hover,
 #contact textarea:hover {
-  border: 1px solid #aaa;
+  border: 1px solid var(--body-font-color);
   transition: border-color 0.3s ease;
 }
 #contact textarea {
@@ -500,7 +500,7 @@ fieldset {
   padding: 1rem;
   text-align: center;
   font-size: 0.8rem;
-  color: #999;
+  color: var(--body-font-color);
   position: fixed;
   bottom: 1rem;
   width: 100%;
@@ -572,7 +572,7 @@ body.slideshow-active .hero .page-title {
   font-weight: 300;
 
   font-size: 2rem;
-  color: var(--text-main);
+  color: var(--body-font-color);
   z-index: 101;
   margin: 0;
 }
