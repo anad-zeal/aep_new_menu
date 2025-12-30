@@ -99,7 +99,7 @@ article {
 /* ============================================= */
 
 .site-header {
-  position: relative;
+  position: fixed;
   top: 0;
   width: 100%;
   padding:0;
@@ -416,6 +416,7 @@ main#dynamic-content-area {
   width: 100%;
   margin: 0 auto;
   position: relative;
+  top: -15vh;
 }
 
 #contact {
