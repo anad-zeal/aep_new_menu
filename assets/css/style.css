@@ -564,7 +564,7 @@ body.slideshow-active .hero .page-title {
   display: block; /* Visible on slideshow */
   position: fixed;
   top: 1.5rem;
-  right: 4rem;
+  right: 2rem;
   text-align: right;
 
   /* FIXED: Use Variable and Weight 300 */
