@@ -182,8 +182,8 @@ article {
   letter-spacing: 0.15em;
   text-decoration: none;
   color: black;
-  text-transform: uppercase;
-  font-weight: 400;
+  /* text-transform: uppercase; */
+  font-weight: 300;
   transition: color 0.3s;
 }
 
