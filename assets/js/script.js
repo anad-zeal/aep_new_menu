@@ -455,7 +455,7 @@ console.error('INIT ERROR:', err);
 document.addEventListener('click', (event) => {
 const link = event.target.closest('a[data-page]');
 if (link) {
-    alert
+    alert("link's working");
 event.preventDefault();
 loadPage(link.dataset.page);
 }
