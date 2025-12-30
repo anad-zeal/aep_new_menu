@@ -540,8 +540,8 @@ body.slideshow-active .hamburger-btn {
 /* Header Layout: Split Top-Left and Top-Right */
 body.slideshow-active .site-header {
   position: fixed;
-  top: 0;
-  left: 2vw;
+  top: 1vh;
+  left: 3vw;
   width: 100%;
   padding: 0;
   height: 0;
