@@ -541,7 +541,7 @@ body.slideshow-active .hamburger-btn {
 body.slideshow-active .site-header {
   position: fixed;
   top: 0;
-  left: 1vw;
+  left: 2vw;
   width: 100%;
   padding: 0;
   height: 0;
