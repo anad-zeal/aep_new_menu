@@ -1,24 +1,23 @@
-/* ==========================================================================
-   1. Design Tokens & Global Reset
-   ========================================================================== */
+  /* ==========================================================================
+    1. Design Tokens & Global Reset
+    ========================================================================== */
 
-:root {
-  /* Colors */
-  --bg-color: #eae7df;
-  --menu-bg: #eae7df;
-  --text-main: #3b569e;
-  --text-muted: #555555;
-  --brand-gold: #c19a6b;
-  --arrow-blue: #000080;
-  --arrow-red: #8b0000;
-  --body-font-color: #3b569e;
+  :root {
+    /* Colors */
+    --bg-color: #eae7df;
+    --menu-bg: #eae7df;
+    --text-main: #3b569e;
+    --text-muted: #555555;
+    --brand-gold: #c19a6b;
+    --arrow-blue: #000080;
+    --arrow-red: #8b0000;
+    --body-font-color: #3b569e;
 
-  /* Typography */
-  --font-body: 'Comfortaa', sans-serif;
-  --font-script: 'Bonheur Royale', cursive;
-  --font-rounded: 'Comfortaa', sans-serif;
-  /* --header-height: 120px; */
-}
+    /* Typography */
+    --font-body: 'Poppins', sans-serif;
+    --font-script: 'Bonheur Royale', cursive;
+    --font-rounded: 'Comfortaa', sans-serif;
+  }
 
 *,.page-title
 *::before,
@@ -691,7 +690,7 @@ body.slideshow-active .caption {
 .slideshow-metadata {
   position: absolute;
   bottom: 40px;
-  right: 40px;
+  left: 40px;
   z-index: 10;
   max-width: 400px;
   padding: 20px;
