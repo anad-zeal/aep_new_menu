@@ -382,62 +382,64 @@ window.scrollTo({ top: scrollMemory[pageName] || 0, behavior: 'smooth' });
 }
 
 async function loadPage(pageName, addToHistory = true) {
-// 1. Check if global config (arrows, templates) is ready
-if (!siteData) return;
-// 2. Default to home if no page provided
-if (!pageName || pageName === '/' || pageName === 'index.php') pageName = 'home';
+    // 1. Check if global config (arrows, templates) is ready
+    if (!siteData) return;
+    
+    // 2. Default to home if no page provided
+    if (!pageName || pageName === '/' || pageName === 'index.php') pageName = 'home';
 
-// 3. FETCH THE DEDICATED PAGE FILE
-// Instead of looking in siteData.pages, we fetch the file dynamically
-let pageData;
-try {
-const response = await fetch(`/json-files/${pageName}.json`);
-alert('the response = ' + response);
-if (!response.ok) throw new Error(`File not found: ${pageName}.json`);
-pageData = await response.json();
-} catch (err) {
-console.error('Page Load Error:', err);
-return; // Stop execution if file is missing
-}
+    // 3. FETCH THE DEDICATED PAGE FILE
+    let pageData;
+    try {
+        const response = await fetch(`/json-files/${pageName}.json`);
+        // ALERT REMOVED HERE
+        if (!response.ok) throw new Error(`File not found: ${pageName}.json`);
+        pageData = await response.json();
+    } catch (err) {
+        console.error('Page Load Error:', err);
+        return; // Stop execution if file is missing
+    }
 
-// 4. Prepare data for the renderer
-let finalData = { title: pageData.title };
+    // 4. Prepare data for the renderer
+    let finalData = {
+        title: pageData.title
+    };
 
-alert('the pageData.type = ' + pageData.type);
+    // ALERT REMOVED HERE
+    // Note: If pageData.type is undefined, your JSON file is missing the "type" key.
 
-// Map the JSON "type" to the Render Object
-if (pageData.type === 'slideshow') {
-// Merge global template (arrows/css) with this page's specific gallery source
-const templateCopy = JSON.parse(JSON.stringify(siteData.slideshowTemplate));
-// Ensure your page json has "gallerySource" pointing to the list of images
-templateCopy.gallerySource = pageData.gallerySource;
-finalData.slideshowTemplate = templateCopy;
-}
-else if (pageData.type === 'cardGrid') {
-finalData.cardGrid = pageData.content;
-}
-else if (pageData.type === 'contentSection') {
-finalData.contentSection = pageData.content;
-}
-else if (pageData.type === 'contactForm') {
-finalData.contentSe
-finalData.contactForm = pageData.content;
-}
+    // Map the JSON "type" to the Render Object
+    if (pageData.type === 'slideshow') {
+        // Merge global template (arrows/css) with this page's specific gallery source
+        const templateCopy = JSON.parse(JSON.stringify(siteData.slideshowTemplate));
+        // Ensure your page json has "gallerySource" pointing to the list of images
+        templateCopy.gallerySource = pageData.gallerySource;
+        finalData.slideshowTemplate = templateCopy;
+    } else if (pageData.type === 'cardGrid') {
+        finalData.cardGrid = pageData.content;
+    } else if (pageData.type === 'contentSection') {
+        finalData.contentSection = pageData.content;
+    } else if (pageData.type === 'contactForm') {
+        // FIXED: Removed the typo "finalData.contentSe" that was here
+        finalData.contactForm = pageData.content;
+    }
 
-// 5. Render the content
-renderPageContent(finalData, pageName);
+    // 5. Render the content
+    renderPageContent(finalData, pageName);
 
-// 6. Update Navigation Active State
-const menuButtons = document.querySelectorAll('.main-nav-menu a, [data-page]');
-menuButtons.forEach((btn) => btn.classList.remove('active', 'is-active'));
-const activeBtn = document.querySelector(`[data-page="${pageName}"]`);
-if (activeBtn) activeBtn.classList.add('active');
+    // 6. Update Navigation Active State
+    const menuButtons = document.querySelectorAll('.main-nav-menu a, [data-page]');
+    menuButtons.forEach((btn) => btn.classList.remove('active', 'is-active'));
+    const activeBtn = document.querySelector(`[data-page="${pageName}"]`);
+    if (activeBtn) activeBtn.classList.add('active');
 
-// 7. Push to History
-if (addToHistory) {
-const urlPath = pageName === 'home' ? '/' : `/${pageName}`;
-history.pushState({ page: pageName }, finalData.title, urlPath);
-}
+    // 7. Push to History
+    if (addToHistory) {
+        const urlPath = pageName === 'home' ? '/' : `/${pageName}`;
+        history.pushState({
+            page: pageName
+        }, finalData.title, urlPath);
+    }
 }
 
 async function init() {
