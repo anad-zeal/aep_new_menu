@@ -392,6 +392,7 @@ if (!pageName || pageName === '/' || pageName === 'index.php') pageName = 'home'
 let pageData;
 try {
 const response = await fetch(`/json-files/${pageName}.json`);
+alert('the response = ' + response);
 if (!response.ok) throw new Error(`File not found: ${pageName}.json`);
 pageData = await response.json();
 } catch (err) {
@@ -402,7 +403,7 @@ return; // Stop execution if file is missing
 // 4. Prepare data for the renderer
 let finalData = { title: pageData.title };
 
-alert('hepageData.type: ' + pageData.type);
+alert('the pageData.type = ' + pageData.type);
 
 // Map the JSON "type" to the Render Object
 if (pageData.type === 'slideshow') {
