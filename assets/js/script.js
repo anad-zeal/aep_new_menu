@@ -418,8 +418,8 @@ else if (pageData.type === 'contentSection') {
     alert("contentSection's working");
 finalData.contentSection = pageData.content;
 }
-else if (pageData.type === 'contactForm') {
-    alert("contactForm's working");
+else if (pageData.type === 'contact') {
+    alert("contact is working");
 finalData.contentSe
 finalData.contactForm = pageData.content;
 }
