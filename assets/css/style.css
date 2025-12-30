@@ -767,3 +767,8 @@ body.slideshow-active .caption {
   margin-top: 8px;
   font-style: italic;
 }
+
+.hero .page-title {
+    font-family: 'Comfortaa', cursive !important;
+    font-weight: 700 !important; /* Force bold just to test */
+}
