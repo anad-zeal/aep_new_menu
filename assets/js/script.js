@@ -412,11 +412,14 @@ finalData.slideshowTemplate = templateCopy;
 }
 else if (pageData.type === 'cardGrid') {
 finalData.cardGrid = pageData.content;
+alert("cardGrid's working");
 }
 else if (pageData.type === 'contentSection') {
+    alert("contentSection's working");
 finalData.contentSection = pageData.content;
 }
 else if (pageData.type === 'contactForm') {
+    alert("contactForm's working");
 finalData.contentSe
 finalData.contactForm = pageData.content;
 }
