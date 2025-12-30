@@ -1,3 +1,10 @@
+
+/* ==========================================================================
+   1. Font Imports (Must be at the very top)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Montserrat:ital,wght@0,300;0,400;0,700;1,300&family=Poppins:wght@300;400;500;600&display=swap');
+
+
 /* ==========================================================================
    1. Design Tokens & Global Reset
    ========================================================================== */
@@ -767,8 +774,4 @@ body.slideshow-active .caption {
   margin-top: 8px;
   font-style: italic;
 }
-/* 
-.hero .page-title {
-    font-family: 'Comfortaa', cursive !important;
-    font-weight: 700 !important; /* Force bold just to test */
-} */
+
