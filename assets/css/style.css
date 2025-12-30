@@ -561,12 +561,12 @@ body.slideshow-active .hero .page-title {
 }
 
 
-.rounded  {
+/* .rounded  {
   font-family: var(--font-rounded);
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-}
+} */
 
 /* --- Caption: Bottom Right --- */
 body.slideshow-active .caption {
