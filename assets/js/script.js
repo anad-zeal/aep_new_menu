@@ -418,8 +418,8 @@ else if (pageData.type === 'contentSection') {
     alert("contentSection's working");
 finalData.contentSection = pageData.content;
 }
-else if (pageData.type === 'contact') {
-    alert("contact is working");
+else if (pageData.type === 'contactForm') {
+    alert("contactForm's working");
 finalData.contentSe
 finalData.contactForm = pageData.content;
 }
@@ -455,6 +455,7 @@ console.error('INIT ERROR:', err);
 document.addEventListener('click', (event) => {
 const link = event.target.closest('a[data-page]');
 if (link) {
+    alert
 event.preventDefault();
 loadPage(link.dataset.page);
 }
