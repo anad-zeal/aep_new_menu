@@ -402,6 +402,8 @@ return; // Stop execution if file is missing
 // 4. Prepare data for the renderer
 let finalData = { title: pageData.title };
 
+alert('hepageData.type: ' + pageData.type);
+
 // Map the JSON "type" to the Render Object
 if (pageData.type === 'slideshow') {
 // Merge global template (arrows/css) with this page's specific gallery source
@@ -412,14 +414,11 @@ finalData.slideshowTemplate = templateCopy;
 }
 else if (pageData.type === 'cardGrid') {
 finalData.cardGrid = pageData.content;
-alert("cardGrid's working");
 }
 else if (pageData.type === 'contentSection') {
-    alert("contentSection's working");
 finalData.contentSection = pageData.content;
 }
 else if (pageData.type === 'contactForm') {
-    alert("contactForm's working");
 finalData.contentSe
 finalData.contactForm = pageData.content;
 }
@@ -455,7 +454,7 @@ console.error('INIT ERROR:', err);
 document.addEventListener('click', (event) => {
 const link = event.target.closest('a[data-page]');
 if (link) {
-    alert(link+": link's working");
+
 event.preventDefault();
 loadPage(link.dataset.page);
 }
