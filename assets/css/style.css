@@ -102,7 +102,7 @@ article {
   position: relative;
   top: 0;
   width: 100%;
-  padding: 2rem 0;
+  padding:0;
   text-align: center;
   z-index: 100;
 }
