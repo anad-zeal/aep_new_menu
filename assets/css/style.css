@@ -17,7 +17,6 @@
   --font-body: 'Poppins', sans-serif;
   --font-script: 'Bonheur Royale', cursive;
   --font-rounded: 'Comfortaa', sans-serif;
-  /* --header-height: 120px; */
 }
 
 *,.page-title
@@ -549,7 +548,6 @@ body.slideshow-active .hero .sub-title {
 /* Category Name - Top Right (Dynamic) */
 body.slideshow-active .hero .page-title {
   display: block; /* Visible on slideshow */
-  position: fixed;
   position: fixed;
   top: 2rem;
   right: 4vw;
