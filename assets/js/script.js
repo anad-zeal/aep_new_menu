@@ -70,7 +70,7 @@ function createSlides(container) {
     img.src = src;
     img.className = 'slide';
     img.style.opacity = 0;
-    img.style.transition = 'opacity 1.5s ease-in-out';
+    img.style.transition = 'opacity 5s ease-in-out';
     container.appendChild(img);
   });
 }
@@ -89,7 +89,7 @@ function fadeInFirstSlide(captionEl) {
     captionEl.textContent = slideshowState.slides[0].caption || '';
     captionEl.style.opacity = 0;
     setTimeout(() => {
-      captionEl.style.transition = 'opacity 1.5s ease-in-out';
+      captionEl.style.transition = 'opacity 5s ease-in-out';
       captionEl.style.opacity = 1;
     }, 100);
   }
