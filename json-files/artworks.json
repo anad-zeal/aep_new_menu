@@ -51,8 +51,8 @@
       "content": {
         "type": "landingMenuItem",
         "link": {
-          "href": "/historic-preservation",
-          "text": "Historic Preservation"
+          "href": "/preservation",
+          "text": "Preservation"
         },
         "paragraph": "Restoration and preservation projects."
       }

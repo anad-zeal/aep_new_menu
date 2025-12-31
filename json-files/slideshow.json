@@ -1,0 +1,92 @@
+{
+  "type": "contentSection",
+  "title": "Slideshow",
+  "content": {
+    "tag": "div",
+    "attributes": {
+      "class": "slideshow-page-wrapper"
+    },
+    "elements": [
+      {
+        "tag": "div",
+        "attributes": {
+          "class": "slideshow",
+          "style": "position: relative;"
+        },
+        "children": [
+          {
+            "tag": "div",
+            "attributes": {
+              "class": "loading-msg",
+              "style": "position:absolute; top:50%; left:50%; transform:translate(-50%,-50%)"
+            },
+            "text": "Loading..."
+          }
+        ]
+      },
+      {
+        "tag": "div",
+        "attributes": {
+          "class": "prev-arrow"
+        },
+        "children": [
+          {
+            "tag": "button",
+            "attributes": {
+              "id": "prev-slide",
+              "aria-label": "Previous"
+            },
+            "children": [
+              {
+                "tag": "img",
+                "attributes": {
+                  "src": "assets/images/misc-images/arrow-left.png",
+                  "alt": "<"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "div",
+        "attributes": {
+          "class": "next-arrow"
+        },
+        "children": [
+          {
+            "tag": "button",
+            "attributes": {
+              "id": "next-slide",
+              "aria-label": "Next"
+            },
+            "children": [
+              {
+                "tag": "img",
+                "attributes": {
+                  "src": "assets/images/misc-images/arrow-right.png",
+                  "alt": ">"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "div",
+        "attributes": {
+          "class": "artwork-metadata active",
+          "id": "meta-container"
+        },
+        "children": [
+          {
+            "tag": "h3",
+            "attributes": {
+              "id": "art-title"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
