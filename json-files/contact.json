@@ -92,7 +92,9 @@
               "placeholder": "123-456-7890",
               "pattern": "[0-9]{3}-[0-9]{3}-[0-9]{4}",
               "aria-describedby": "phone-help",
-              "autocomplete": "tel"
+              "autocomplete": "tel",
+              "required": "true",
+              "aria-required": "true"
             }
           },
           {
@@ -121,7 +123,9 @@
               "name": "website",
               "type": "url",
               "placeholder": "https://example.com",
-              "autocomplete": "url"
+              "autocomplete": "url",
+              "required": "true",
+              "aria-required": "true"
             }
           }
         ]
