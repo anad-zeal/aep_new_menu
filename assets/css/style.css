@@ -400,7 +400,7 @@ main#dynamic-content-area {
 }
 
 /* ============================================= */
-/* 7. Contact Form                               */
+/* 7. Contact Form (Refactored & Accessible)     */
 /* ============================================= */
 
 .contact-page-active main#dynamic-content-area {
@@ -411,102 +411,156 @@ main#dynamic-content-area {
   min-height: 100vh;
 }
 
+/* Container (keeps your existing layout intent) */
 .container {
-  max-width: 400px;
+  max-width: 420px;
   width: 100%;
   margin: 0 auto;
   position: relative;
   top: -15vh;
 }
 
+/* Form */
 #contact {
-  background: #f9f9f9;
+  background: rgba(255, 255, 255, 0.95);
   padding: 25px;
   margin: 0;
-  border-radius: 5px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 6px;
+  box-shadow:
+    0 0 20px rgba(0, 0, 0, 0.15),
+    0 5px 5px rgba(0, 0, 0, 0.1);
+  font-family: var(--font-body);
 }
 
+/* Headings */
 #contact h3 {
-  display: block;
-  font-size: 30px;
+  margin-bottom: 0.25rem;
+  font-size: 1.9rem;
   font-weight: 400;
   color: var(--brand-gold);
-  margin-bottom: 10px;
-  font-family: var(--font-body);
 }
 
+#contact p,
 #contact h4 {
-  margin: 5px 0 15px;
-  display: block;
-  font-size: 13px;
-  font-family: var(--font-body);
+  margin-bottom: 1.25rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
+  font-weight: 300;
 }
 
-fieldset {
-  border: medium none !important;
-  margin: 0 0 10px;
-  min-width: 100%;
+/* Fieldsets */
+#contact fieldset {
+  border: 0;
   padding: 0;
+  margin: 0 0 1rem;
   width: 100%;
 }
 
+/* Labels (screen-reader + visible) */
+#contact label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--body-font-color);
+}
+
+/* Inputs & textarea */
 #contact input,
 #contact textarea {
   width: 100%;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
   border: 1px solid #ccc;
-  background: #fff;
-  margin: 0 0 5px;
-  padding: 10px;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  border-radius: 4px;
+  background-color: #fff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-#contact input:hover,
-#contact textarea:hover {
-  border: 1px solid var(--body-font-color);
-  transition: border-color 0.3s ease;
-}
 #contact textarea {
-  height: 100px;
-  resize: none;
+  min-height: 120px;
+  resize: vertical;
 }
-#contact button[type='submit'] {
-  cursor: pointer;
-  width: 100%;
-  border: none;
-  background: rgb(70, 2, 2);
-  color: #fff;
-  margin: 0 0 5px;
-  padding: 10px;
-  font-size: 15px;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  transition: background 0.3s ease;
+
+/* Placeholder */
+#contact ::placeholder {
+  color: #999;
 }
-#contact button[type='submit']:hover {
-  background-color: rgb(141, 2, 2);
-}
+
+/* Focus (keyboard-visible, WCAG compliant) */
 #contact input:focus,
-#contact textarea:focus {
-  outline: 0;
-  border: 1px solid #999;
+#contact textarea:focus,
+#contact button:focus-visible {
+  outline: none;
+  border-color: var(--brand-gold);
+  box-shadow: 0 0 0 2px rgba(193, 154, 107, 0.35);
 }
 
-/* ============================================= */
-/* 8. Footer                                     */
-/* ============================================= */
+/* Required field indicator (ARIA-aware) */
+#contact [aria-required="true"] {
+  border-left: 4px solid var(--brand-gold);
+  padding-left: 0.6rem;
+}
 
-.site-footer {
-  padding: 1rem;
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--body-font-color);
-  position: fixed;
-  bottom: 1rem;
+/* Help text */
+#contact small {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Submit button */
+#contact button {
+  display: inline-block;
   width: 100%;
-  pointer-events: none;
-  z-index: 5;
+  padding: 0.7rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: #fff;
+  background-color: var(--text-main);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+#contact button:hover {
+  background-color: var(--brand-gold);
+}
+
+#contact button:active {
+  transform: translateY(1px);
+}
+
+#contact button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Error states (JS or server-applied classes) */
+#contact .field-error input,
+#contact .field-error textarea {
+  border-color: #8b0000;
+}
+
+#contact .error-message {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: #8b0000;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  #contact * {
+    transition: none;
+  }
 }
 
 /* ============================================= */

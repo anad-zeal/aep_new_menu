@@ -384,7 +384,7 @@ window.scrollTo({ top: scrollMemory[pageName] || 0, behavior: 'smooth' });
 async function loadPage(pageName, addToHistory = true) {
     // 1. Check if global config (arrows, templates) is ready
     if (!siteData) return;
-    
+
     // 2. Default to home if no page provided
     if (!pageName || pageName === '/' || pageName === 'index.php') pageName = 'home';
 
@@ -404,9 +404,6 @@ async function loadPage(pageName, addToHistory = true) {
     let finalData = {
         title: pageData.title
     };
-
-    // ALERT REMOVED HERE
-    // Note: If pageData.type is undefined, your JSON file is missing the "type" key.
 
     // Map the JSON "type" to the Render Object
     if (pageData.type === 'slideshow') {
