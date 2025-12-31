@@ -52,7 +52,11 @@
         "type": "landingMenuItem",
         "link": {
           "href": "/preservation",
+<<<<<<< HEAD
           "text": "Preservation"
+=======
+          "text": "Historical Preservation"
+>>>>>>> 3baa5d0a82ffe4303c3fa69114eb99602e0e2c72
         },
         "paragraph": "Restoration and preservation projects."
       }
@@ -62,7 +66,7 @@
       "content": {
         "type": "landingMenuItem",
         "link": {
-          "href": "/project-series",
+          "href": "/projects",
           "text": "Project Series"
         },
         "paragraph": "Thematic series and collections."

@@ -1,85 +1,173 @@
 {
-  "contact": {
-    "type": "contactForm",
-    "title": "Contact",
-    "content": {
-      "wrapper": {
-        "tag": "div",
+  "type": "contentSection",
+  "title": "Quick Contact",
+  "content": {
+    "tag": "form",
+    "attributes": {
+      "id": "contact",
+      "action": "/submit-contact",
+      "method": "post",
+      "role": "form",
+      "aria-labelledby": "contact-heading"
+    },
+    "elements": [
+      {
+        "tag": "h3",
         "attributes": {
-          "class": "container"
-        }
-      },
-      "form": {
-        "tag": "form",
-        "attributes": {
-          "id": "contact",
-          "action": "/submit-contact",
-          "method": "post"
+          "id": "contact-heading"
         },
-        "headers": [
-          { "tag": "h3", "text": "Quick Contact" },
-          { "tag": "h4", "text": "Contact today, and get a reply within 24 hours!" }
+        "text": "Quick Contact"
+      },
+      {
+        "tag": "p",
+        "attributes": {
+          "id": "contact-subheading"
+        },
+        "text": "Contact today, and get a reply within 24 hours!"
+      },
+      {
+        "tag": "fieldset",
+        "children": [
+          {
+            "tag": "label",
+            "attributes": {
+              "for": "contact-name"
+            },
+            "text": "Your Name"
+          },
+          {
+            "tag": "input",
+            "attributes": {
+              "id": "contact-name",
+              "name": "name",
+              "type": "text",
+              "placeholder": "Your Name",
+              "required": "true",
+              "aria-required": "true",
+              "autocomplete": "name"
+            }
+          }
         ]
       },
-      "fields": [
-        {
-          "tag": "input",
-          "wrapperTag": "fieldset",
-          "attributes": {
-            "placeholder": "Your Name",
-            "type": "text",
-            "required": true,
-            "autofocus": true
+      {
+        "tag": "fieldset",
+        "children": [
+          {
+            "tag": "label",
+            "attributes": {
+              "for": "contact-email"
+            },
+            "text": "Email Address"
+          },
+          {
+            "tag": "input",
+            "attributes": {
+              "id": "contact-email",
+              "name": "email",
+              "type": "email",
+              "placeholder": "Your Email Address",
+              "required": "true",
+              "aria-required": "true",
+              "autocomplete": "email"
+            }
           }
-        },
-        {
-          "tag": "input",
-          "wrapperTag": "fieldset",
-          "attributes": {
-            "placeholder": "Your Email Address",
-            "type": "email",
-            "required": true
+        ]
+      },
+      {
+        "tag": "fieldset",
+        "children": [
+          {
+            "tag": "label",
+            "attributes": {
+              "for": "contact-phone"
+            },
+            "text": "Phone Number"
+          },
+          {
+            "tag": "input",
+            "attributes": {
+              "id": "contact-phone",
+              "name": "phone",
+              "type": "tel",
+              "placeholder": "123-456-7890",
+              "pattern": "[0-9]{3}-[0-9]{3}-[0-9]{4}",
+              "aria-describedby": "phone-help",
+              "autocomplete": "tel",
+              "required": "true",
+              "aria-required": "true"
+            }
+          },
+          {
+            "tag": "small",
+            "attributes": {
+              "id": "phone-help"
+            },
+            "text": "Format: 123-456-7890"
           }
-        },
-        {
-          "tag": "input",
-          "wrapperTag": "fieldset",
-          "attributes": {
-            "placeholder": "Your Phone Number",
-            "type": "tel",
-            "pattern": "[0-9]{3}-[0-9]{3}-[0-9]{4}",
-            "required": true
+        ]
+      },
+      {
+        "tag": "fieldset",
+        "children": [
+          {
+            "tag": "label",
+            "attributes": {
+              "for": "contact-website"
+            },
+            "text": "Website"
+          },
+          {
+            "tag": "input",
+            "attributes": {
+              "id": "contact-website",
+              "name": "website",
+              "type": "url",
+              "placeholder": "https://example.com",
+              "autocomplete": "url",
+              "required": "true",
+              "aria-required": "true"
+            }
           }
-        },
-        {
-          "tag": "input",
-          "wrapperTag": "fieldset",
-          "attributes": {
-            "placeholder": "Your Website (http:// or https://)",
-            "type": "url",
-            "required": true
+        ]
+      },
+      {
+        "tag": "fieldset",
+        "children": [
+          {
+            "tag": "label",
+            "attributes": {
+              "for": "contact-message"
+            },
+            "text": "Message"
+          },
+          {
+            "tag": "textarea",
+            "attributes": {
+              "id": "contact-message",
+              "name": "message",
+              "placeholder": "Type your Message Here...",
+              "required": "true",
+              "aria-required": "true",
+              "rows": "5"
+            }
           }
-        },
-        {
-          "tag": "textarea",
-          "wrapperTag": "fieldset",
-          "attributes": {
-            "placeholder": "Type your Message Here...",
-            "required": true
+        ]
+      },
+      {
+        "tag": "fieldset",
+        "children": [
+          {
+            "tag": "button",
+            "attributes": {
+              "id": "contact-submit",
+              "name": "submit",
+              "type": "submit",
+              "aria-label": "Submit contact form"
+            },
+            "text": "Submit"
           }
-        },
-        {
-          "tag": "button",
-          "text": "Submit",
-          "wrapperTag": "fieldset",
-          "attributes": {
-            "name": "submit",
-            "type": "submit",
-            "id": "contact-submit",
-            "data-submit": "...Sending"
-          }
-        }
-      ]
-    }
+        ]
+      }
+    ]
   }
 }

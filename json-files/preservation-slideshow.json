@@ -1,17 +1,8 @@
 [
   {
-    "src": "assets/images/historic-preservation/homer-head.jpg"
-  },
-  {
-    "src": "assets/images/historic-preservation/homer-or-bust.jpg"
-  },
-  {
-    "src": "assets/images/historic-preservation/marble-piece.jpg"
-  },
-  {
     "id": "pres-1766441624217-3",
     "title": "Office",
-    "src": "assets/images/historic-preservation/office.jpg",
+    "src": "assets/images/preservation/office.jpg",
     "description": "Description for Office",
     "medium": "Medium TBD",
     "dimensions": "00\" x 00\""
@@ -19,7 +10,7 @@
   {
     "id": "pres-1766441624217-4",
     "title": "Old South Church",
-    "src": "assets/images/historic-preservation/old-south-church.jpg",
+    "src": "assets/images/preservation/old-south-church.jpg",
     "description": "Description for Old South Church",
     "medium": "Medium TBD",
     "dimensions": "00\" x 00\""
@@ -27,7 +18,7 @@
   {
     "id": "pres-1766441624219-5",
     "title": "Painting Ceiling",
-    "src": "assets/images/historic-preservation/painting-ceiling.jpg",
+    "src": "assets/images/preservation/painting-ceiling.jpg",
     "description": "Description for Painting Ceiling",
     "medium": "Medium TBD",
     "dimensions": "00\" x 00\""
@@ -35,7 +26,7 @@
   {
     "id": "pres-1766441624221-6",
     "title": "Painting Wall",
-    "src": "assets/images/historic-preservation/painting-wall.jpg",
+    "src": "assets/images/preservation/painting-wall.jpg",
     "description": "Description for Painting Wall",
     "medium": "Medium TBD",
     "dimensions": "00\" x 00\""
@@ -43,7 +34,7 @@
   {
     "id": "pres-1766441624222-7",
     "title": "Senate Pres Wall",
-    "src": "assets/images/historic-preservation/senate-pres-wall.jpg",
+    "src": "assets/images/preservation/senate-pres-wall.jpg",
     "description": "Description for Senate Pres Wall",
     "medium": "Medium TBD",
     "dimensions": "00\" x 00\""
@@ -51,7 +42,7 @@
   {
     "id": "pres-1766441624224-8",
     "title": "Stpauls",
-    "src": "assets/images/historic-preservation/stpauls.jpg",
+    "src": "assets/images/preservation/stpauls.jpg",
     "description": "Description for Stpauls",
     "medium": "Medium TBD",
     "dimensions": "00\" x 00\""
@@ -59,7 +50,7 @@
   {
     "id": "pres-1766448182738-9",
     "title": "Sur Mer 1",
-    "src": "assets/images/historic-preservation/sur-mer-1.jpg",
+    "src": "assets/images/preservation/sur-mer-1.jpg",
     "description": "Description for Sur Mer 1",
     "medium": "Medium TBD",
     "dimensions": "00\" x 00\""
@@ -67,7 +58,7 @@
   {
     "id": "pres-1766448182739-10",
     "title": "Sur Mer 2",
-    "src": "assets/images/historic-preservation/sur-mer-2.jpg",
+    "src": "assets/images/preservation/sur-mer-2.jpg",
     "description": "Description for Sur Mer 2",
     "medium": "Medium TBD",
     "dimensions": "00\" x 00\""
