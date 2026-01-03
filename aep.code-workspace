@@ -7,7 +7,7 @@
 	"settings": {
 		"window.title": "AEP Project Workspace",
 		"workbench.colorCustomizations": {
-			"titleBar.activeBackground": "#ff0000", 
+			"titleBar.activeBackground": "#3b569e",
 			"titleBar.activeForeground": "#ffffff"
 		}
 	}
