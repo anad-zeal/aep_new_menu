@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"window.title": "AEP Project Workspace",
+		"workbench.colorCustomizations": {
+			"titleBar.activeBackground": "#ff0000", 
+			"titleBar.activeForeground": "#ffffff"
+		}
+	}
+}
