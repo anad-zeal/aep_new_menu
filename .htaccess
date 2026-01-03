@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /
+RewriteBase /aep_portfolio_spa/
 
 # Allow existing files/folders to load normally (CSS, JS and Images)
 RewriteCond %{REQUEST_FILENAME} -f [OR]
