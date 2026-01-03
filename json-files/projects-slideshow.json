@@ -1,0 +1,50 @@
+[
+  {
+    "id": "proj-1766448182703-0",
+    "title": "0800 o'clock",
+    "src": "assets/images/project-series/0800.jpg",
+    "description": "Description for 0800",
+    "medium": "Watercolor on canvas",
+    "dimensions": "65' X 65\""
+  },
+  {
+    "id": "proj-1766448182703-1",
+    "title": "Calliope",
+    "src": "assets/images/project-series/calliope.jpg",
+    "description": "Description for Calliope",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "proj-1766448182703-2",
+    "title": "Magic Flute",
+    "src": "assets/images/project-series/magic-flute.jpg",
+    "description": "Description for Magic Flute",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "proj-1766448182704-3",
+    "title": "Morphean",
+    "src": "assets/images/project-series/morphean.jpg",
+    "description": "Description for Morphean",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "proj-1766448182704-4",
+    "title": "Radish",
+    "src": "assets/images/project-series/radish.jpg",
+    "description": "Description for Radish",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "proj-1766448182704-5",
+    "title": "Tui",
+    "src": "assets/images/project-series/tui.jpg",
+    "description": "Description for Tui",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  }
+]
