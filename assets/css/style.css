@@ -1,0 +1,166 @@
+/* =========================================
+   1. Variables & Reset
+   ========================================= */
+:root {
+    /* Colors - Dark Minimalist Theme */
+    --bg-body: #121212;      /* Very dark grey, softer than black */
+    --bg-nav: #0a0a0a;       /* Slightly darker for sidebar */
+    --text-main: #e0e0e0;    /* Off-white for readability */
+    --text-muted: #888888;
+    --accent: #d4a373;       /* Muted bronze/gold for artist vibe */
+    --border-color: #333333;
+
+    /* Spacing */
+    --sidebar-width: 280px;
+    --nav-padding: 2rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+    display: flex; /* Flex container for Sidebar layout */
+    min-height: 100vh;
+}
+
+/* =========================================
+   2. Main Navigation (The Sidebar)
+   ========================================= */
+.main-nav {
+    width: var(--sidebar-width);
+    background-color: var(--bg-nav);
+    padding: var(--nav-padding);
+    border-right: 1px solid var(--border-color);
+    position: fixed; /* Fix sidebar on left */
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.main-nav li {
+    margin-bottom: 0.8rem;
+}
+
+/* Reset Button Styles to look like Links */
+.main-nav button {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+    padding: 0;
+    width: 100%;
+}
+
+.main-nav button:hover,
+.main-nav button:focus {
+    color: var(--accent);
+    padding-left: 5px; /* Subtle movement on hover */
+    outline: none;
+}
+
+/* Specific styling for the Gallery sub-menu */
+.gallery-nav button {
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+/* The Separator Line */
+.main-nav hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 1.5rem 0;
+}
+
+/* =========================================
+   3. Main Application Area
+   ========================================= */
+.app-container {
+    flex: 1; /* Take up remaining space */
+    margin-left: var(--sidebar-width); /* Offset by sidebar width */
+    padding: 3rem;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically by default */
+}
+
+/* Welcome Message Styling */
+.welcome-message {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    letter-spacing: 1px;
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   4. Responsive Design (Mobile)
+   ========================================= */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Stack vertically on mobile */
+    }
+
+    .main-nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem;
+    }
+
+    .main-nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .main-nav li {
+        margin-bottom: 0;
+    }
+
+    .gallery-nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for galleries */
+        gap: 10px;
+    }
+    
+    .main-nav hr {
+        margin: 1rem 0;
+    }
+
+    .app-container {
+        margin-left: 0;
+        padding: 1.5rem;
+        justify-content: flex-start; /* Align to top on mobile */
+    }
+}
