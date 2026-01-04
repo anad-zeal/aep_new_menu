@@ -1,3 +1,10 @@
+Here is the refactored script.
+
+This version preserves your original files. It creates a **copy** of every image in the same folder, appending `_res` to the end of the filename (e.g., `photo.jpg` becomes `photo_res.jpg`).
+
+I have also included a check to prevent it from processing images that have already been resized (so you don't end up with `photo_res_res.jpg`).
+
+```python
 import os
 from PIL import Image
 
