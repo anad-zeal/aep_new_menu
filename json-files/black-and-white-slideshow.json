@@ -2,7 +2,7 @@
   {
     "id": "bw-1",
     "title": "NM",
-    "src": "assets/images/black-and-white/NM.jpg",
+    "src": "assets/images/black-and-white/NM_res.jpg",
     "caption": "NM",
     "description": "Description for NM",
     "medium": "Medium TBD",
@@ -11,7 +11,7 @@
   {
     "id": "bw-2",
     "title": "Serengeti",
-    "src": "assets/images/black-and-white/Serengeti.jpg",
+    "src": "assets/images/black-and-white/Serengeti_res.jpg",
     "caption": "Serengeti",
     "description": "Description for Serengeti",
     "medium": "Medium TBD",
@@ -20,7 +20,7 @@
   {
     "id": "bw-3",
     "title": "Tsunami",
-    "src": "assets/images/black-and-white/Tsunami.jpg",
+    "src": "assets/images/black-and-white/Tsunami_res.jpg",
     "caption": "Tsunami",
     "description": "Description for Tsunami",
     "medium": "Medium TBD",
@@ -29,7 +29,7 @@
   {
     "id": "bw-4",
     "title": "Close Encounter",
-    "src": "assets/images/black-and-white/close-encounter.jpg",
+    "src": "assets/images/black-and-white/close-encounter_res.jpg",
     "caption": "Close Encounter",
     "description": "Description for Close Encounter",
     "medium": "Medium TBD",
@@ -38,7 +38,7 @@
   {
     "id": "bw-5",
     "title": "Earth, Wind And Fire",
-    "src": "assets/images/black-and-white/earth,-wind-and-fire.jpg",
+    "src": "assets/images/black-and-white/earth,-wind-and-fire_res.jpg",
     "caption": "Earth, Wind And Fire",
     "description": "Description for Earth, Wind And Fire",
     "medium": "Medium TBD",
@@ -47,7 +47,7 @@
   {
     "id": "bw-6",
     "title": "Evidence Of An Iron Horse 2",
-    "src": "assets/images/black-and-white/evidence-of-an-iron-horse-2.jpg",
+    "src": "assets/images/black-and-white/evidence-of-an-iron-horse-2_res.jpg",
     "caption": "Evidence Of An Iron Horse 2",
     "description": "Description for Evidence Of An Iron Horse 2",
     "medium": "Medium TBD",
@@ -56,7 +56,7 @@
   {
     "id": "bw-7",
     "title": "Evidence Of An Iron Horse",
-    "src": "assets/images/black-and-white/evidence-of-an-iron-horse.jpg",
+    "src": "assets/images/black-and-white/evidence-of-an-iron-horse_res.jpg",
     "caption": "Evidence Of An Iron Horse",
     "description": "Description for Evidence Of An Iron Horse",
     "medium": "Medium TBD",
@@ -65,7 +65,7 @@
   {
     "id": "bw-8",
     "title": "Green Pond",
-    "src": "assets/images/black-and-white/green-pond.jpg",
+    "src": "assets/images/black-and-white/green-pond_res.jpg",
     "caption": "Green Pond",
     "description": "Description for Green Pond",
     "medium": "Medium TBD",
@@ -74,7 +74,7 @@
   {
     "id": "bw-9",
     "title": "How I Imagine Minnesota",
-    "src": "assets/images/black-and-white/how-i-imagine-minnesota.jpg",
+    "src": "assets/images/black-and-white/how-i-imagine-minnesota_res.jpg",
     "caption": "How I Imagine Minnesota",
     "description": "Description for How I Imagine Minnesota",
     "medium": "Medium TBD",
@@ -83,7 +83,7 @@
   {
     "id": "bw-10",
     "title": "Low Tide Somasian Shore",
-    "src": "assets/images/black-and-white/low-tide-somasian-shore.jpg",
+    "src": "assets/images/black-and-white/low-tide-somasian-shore_res.jpg",
     "caption": "Low Tide Somasian Shore",
     "description": "Description for Low Tide Somasian Shore",
     "medium": "Medium TBD",
@@ -92,7 +92,7 @@
   {
     "id": "bw-11",
     "title": "North By Northwest",
-    "src": "assets/images/black-and-white/north-by-northwest.jpg",
+    "src": "assets/images/black-and-white/north-by-northwest_res.jpg",
     "caption": "North By Northwest",
     "description": "Description for North By Northwest",
     "medium": "Medium TBD",
@@ -101,7 +101,7 @@
   {
     "id": "bw-12",
     "title": "Spartobranchus Tenuis",
-    "src": "assets/images/black-and-white/spartobranchus-tenuis.jpg",
+    "src": "assets/images/black-and-white/spartobranchus-tenuis_res.jpg",
     "caption": "Spartobranchus Tenuis",
     "description": "Description for Spartobranchus Tenuis",
     "medium": "Medium TBD",
@@ -110,7 +110,7 @@
   {
     "id": "bw-13",
     "title": "The Big Island",
-    "src": "assets/images/black-and-white/the-big-island.jpg",
+    "src": "assets/images/black-and-white/the-big-island_res.jpg",
     "caption": "The Big Island",
     "description": "Description for The Big Island",
     "medium": "Medium TBD",
