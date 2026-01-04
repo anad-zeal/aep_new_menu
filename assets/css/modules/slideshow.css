@@ -1,5 +1,5 @@
 :root {
-    --gallery-bg: #000000;
+    --gallery-bg: rgba(10, 10, 10, 0.25);
     --gallery-text: #f0f0f0;
     --accent: #d4a373;
     --nav-width: 80px; /* Increased slightly for easier clicking */
