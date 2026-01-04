@@ -1,5 +1,4 @@
 import os
-
 from PIL import Image
 
 # --- CONFIGURATION: EDIT THIS SECTION ---
@@ -8,14 +7,16 @@ from PIL import Image
 target_folder = "."
 
 # 2. The new dimensions
-target_width = 1000
-target_height = 800
+target_width = 800
+target_height = 600
 
 # 3. Choose your resize mode (True or False)
 FORCE_EXACT_SIZE = False
 
-# ----------------------------------------
+# 4. Suffix to add to new files
+SUFFIX = "_res"
 
+# ----------------------------------------
 
 def process_images():
     if not os.path.exists(target_folder):
@@ -26,35 +27,44 @@ def process_images():
     print(f"Processing images in: {target_folder}...")
 
     for filename in os.listdir(target_folder):
-        # Check for valid image extensions
-        if filename.lower().endswith(
-            (".png", ".jpg", ".jpeg", ".tiff", ".bmp", ".gif")
-        ):
-            try:
-                # Define path (same for input and output to overwrite)
-                file_path = os.path.join(target_folder, filename)
 
-                with Image.open(file_path) as img:
-                    # Handle Convert to RGB to prevent errors with certain formats
+        # Split the file into name and extension
+        name, ext = os.path.splitext(filename)
+
+        # 1. Check if it's an image
+        # 2. Check if it already has the suffix (to prevent re-processing output files)
+        if ext.lower() in (".png", ".jpg", ".jpeg", ".tiff", ".bmp", ".gif"):
+            if name.endswith(SUFFIX):
+                continue
+
+            try:
+                input_path = os.path.join(target_folder, filename)
+
+                # Construct new filename: "image" + "_res" + ".jpg"
+                new_filename = f"{name}{SUFFIX}{ext}"
+                output_path = os.path.join(target_folder, new_filename)
+
+                with Image.open(input_path) as img:
+                    # Handle Convert to RGB
                     if img.mode in ("RGBA", "P"):
                         img = img.convert("RGB")
 
                     if FORCE_EXACT_SIZE:
-                        # Forces image to be exactly the dimensions (Stretches)
+                        # Forces exact size
                         new_img = img.resize((target_width, target_height))
-                        new_img.save(file_path)
+                        new_img.save(output_path)
                     else:
-                        # Resizes to fit WITHIN dimensions (Maintains shapes)
-                        # Note: Thumbnail modifies the image in-place
+                        # Fits within size
                         img.thumbnail((target_width, target_height))
-                        img.save(file_path)
+                        img.save(output_path)
 
+                    print(f"  [Created] {new_filename}")
                     count += 1
 
             except Exception as e:
                 print(f"  [ERROR] {filename}: {e}")
 
-    print(f"Done! Overwrote {count} images.")
+    print(f"Done! Created {count} new images with suffix '{SUFFIX}'.")
 
 
 if __name__ == "__main__":
