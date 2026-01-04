@@ -38,21 +38,13 @@
   {
     "id": "bw-5",
     "title": "Earth, Wind And Fire",
-    "src": "assets/images/black-and-white/earth,-wind-and-fire.jpg",
+    "src": "assets/images/black-and-white/earth-wind-and-fire.jpg",
     "caption": "Earth, Wind And Fire",
     "description": "Description for Earth, Wind And Fire",
     "medium": "Medium TBD",
     "dimensions": "00\" x 00\""
   },
-  {
-    "id": "bw-6",
-    "title": "Evidence Of An Iron Horse 2",
-    "src": "assets/images/black-and-white/evidence-of-an-iron-horse-2.jpg",
-    "caption": "Evidence Of An Iron Horse 2",
-    "description": "Description for Evidence Of An Iron Horse 2",
-    "medium": "Medium TBD",
-    "dimensions": "00\" x 00\""
-  },
+
   {
     "id": "bw-7",
     "title": "Evidence Of An Iron Horse",
