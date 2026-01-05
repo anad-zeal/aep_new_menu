@@ -4,26 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artist Portfolio</title>
+
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
-    <link rel="stylesheet" href="assets/css/style.css"> <!-- Your global resets -->
-    <link rel="stylesheet" href="assets/css/modules/text-pages.css">
+
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">              <!-- Global Layout & Menu -->
+    <link rel="stylesheet" href="assets/css/modules/slideshow.css">   <!-- Gallery Module -->
+    <link rel="stylesheet" href="assets/css/modules/text-pages.css">  <!-- Bio & Contact Modules -->
 </head>
 <body>
- <!-- Hamburger Button -->
+
+    <!-- Hamburger Toggle Button (Top Left) -->
     <button id="menu-toggle" class="hamburger-btn" aria-label="Toggle Menu">
         <span></span>
         <span></span>
         <span></span>
     </button>
-    <nav class="main-nav">
+
+    <!-- Slide-out Navigation -->
+    <nav class="main-nav" id="main-nav">
+        <!-- Close 'X' Button inside the menu -->
+        <button id="menu-close" class="close-btn" aria-label="Close Menu">&times;</button>
+
+        <!-- Main Pages -->
         <ul>
-            <!-- Future Modules -->
             <li><button data-action="home">Home</button></li>
             <li><button data-action="bio">Biography</button></li>
             <li><button data-action="contact">Contact</button></li>
         </ul>
+
         <hr>
-        <!-- Slideshow Categories -->
+
+        <!-- Slideshow Galleries -->
         <ul class="gallery-nav">
             <li><button data-gallery="black-and-white">Black & White</button></li>
             <li><button data-gallery="encaustic">Encaustic</button></li>
@@ -34,14 +47,15 @@
         </ul>
     </nav>
 
-    <!-- Dynamic Content Area -->
+    <!-- Dynamic Content Area (Where modules load) -->
     <main id="app-root" class="app-container">
-        <div class="welcome-message">Select a gallery to begin.</div>
+        <div class="welcome-message">
+            <h1>Welcome</h1>
+            <p>Select a gallery to begin.</p>
+        </div>
     </main>
 
+    <!-- Main Application Script -->
     <script type="module" src="assets/js/app.js"></script>
-    <script type="module" src="assets/js/modules/Biography.js"></script>
-    <script type="module" src="assets/js/modules/Contact.js"></script>
-    <script type="module" src="assets/js/modules/Gallery.js"></script>
 </body>
 </html>
