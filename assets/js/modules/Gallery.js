@@ -7,13 +7,13 @@ export default class Gallery {
 
     async init(categorySlug) {
         this.renderLoading();
-        
+
         try {
             const response = await fetch(`json-files/${categorySlug}-slideshow.json`);
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            
+
             this.slides = await response.json();
-            
+
             if (this.slides.length === 0) {
                 this.container.innerHTML = '<p>No images found in this gallery.</p>';
                 return;
@@ -89,7 +89,7 @@ export default class Gallery {
         // Load Image
         const img = new Image();
         img.src = slideData.src;
-        
+
         img.onload = () => {
             this.mainImage.src = slideData.src;
             this.mainImage.alt = slideData.alt || slideData.title;
