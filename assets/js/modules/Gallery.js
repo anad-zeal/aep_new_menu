@@ -38,12 +38,14 @@ export default class Gallery {
             <div class="gallery-module">
                 <div class="gallery-stage" id="gallery-stage">
                     <div class="loader" id="stage-loader"></div>
+                    
                     <button class="gallery-nav-btn prev-btn">&lsaquo;</button>
                     <img id="main-image" src="" alt="Gallery Image">
                     <button class="gallery-nav-btn next-btn">&rsaquo;</button>
-
+                    
                     <div class="gallery-info">
                         <h3 id="image-title"></h3>
+                        <p id="image-caption"></p>
                     </div>
                 </div>
             </div>
@@ -52,12 +54,13 @@ export default class Gallery {
         // Cache DOM elements
         this.mainImage = document.getElementById('main-image');
         this.imageTitle = document.getElementById('image-title');
+        this.imageCaption = document.getElementById('image-caption');
         this.stageLoader = document.getElementById('stage-loader');
 
         // Event Listeners for Nav
         this.container.querySelector('.prev-btn').addEventListener('click', () => this.prev());
         this.container.querySelector('.next-btn').addEventListener('click', () => this.next());
-
+        
         // Keyboard Nav
         this.handleKeydown = (e) => {
             if (e.key === 'ArrowLeft') this.prev();
