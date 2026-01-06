@@ -140,6 +140,8 @@ body {
    4. Menu Links & Typography
    ========================================= */
 .main-nav ul {
+    position: relative;
+    top: 2vh;
     list-style: none;
     margin-bottom: 1.5rem;
 }
