@@ -90,14 +90,16 @@ body{
 /* =========================================
    3. The Slide-Out Navigation
    ========================================= */
-.main-nav {
+.main-nav > * {
     position: fixed;
     top: 0;
     left: 0;
     width: var(--sidebar-width);
     height: 100vh;
     background-color: var(--bg-nav);
-    
+
+
+    font-family: var(--font-rounded);
     /* Layout inside the menu */
     padding: 4rem 2rem 2rem 2rem;
     display: flex;
