@@ -54,8 +54,8 @@
 
 body {
   position: relative;
-  /* background: url("../images/project-series/0800.jpg") center/cover no-repeat;
-} */
+  background: url("../images/project-series/0800.jpg") center/cover no-repeat;
+}
 
 body::before {
   content: "";
