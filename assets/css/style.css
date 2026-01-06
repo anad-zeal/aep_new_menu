@@ -37,7 +37,7 @@
     padding: 0;
 }
 
-body{
+/* body{
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: transparent;
     color: var(--text-main);
@@ -50,7 +50,25 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    
+} */
+
+body {
+  position: relative;
+  background: url("../images/project-series/0800.jpg") center/cover no-repeat;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;      /* same background image */
+  opacity: 0.4;             /* adjust opacity here */
+  z-index: 0;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;               /* keep content above overlay */
 }
 
 /* =========================================
