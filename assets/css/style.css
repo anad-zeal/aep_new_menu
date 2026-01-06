@@ -29,7 +29,7 @@
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-script);
   font-weight: 200;
-  letter-spacing: 1.1px;
+  letter-spacing: -1.1px;
   line-height: 1.25;
   margin: 0 0 0.5em;
 }
@@ -85,13 +85,13 @@ body::before {
     width: 100%;
     height: 100%;
     z-index: -1; /* Puts the image BEHIND the text */
-    
+
     /* Image Settings */
     background-image: url("../images/project-series/0800.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
+
     /* OPACITY CONTROL */
     opacity: 0.1; /* Change this: 0.1 is faint, 1.0 is full strength */
 }
@@ -148,11 +148,11 @@ body::before {
     padding: 4rem 2rem 2rem 2rem;
     display: flex;
     flex-direction: column;
-    
+
     /* Visuals */
     border-right: 1px solid var(--border-color);
     box-shadow: 5px 0 20px rgba(0,0,0,0.6);
-    
+
     /* Hiding Logic (Off-screen) */
     transform: translateX(-100%);
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth ease-out */
@@ -243,8 +243,8 @@ body::before {
 .app-container {
     width: 100%;
     min-height: 100vh;
-    padding: 0; 
-    
+    padding: 0;
+
     /* Centering logic for the module content */
     display: flex;
     flex-direction: column;
