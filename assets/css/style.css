@@ -37,7 +37,7 @@
     padding: 0;
 }
 
- {
+body{
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: transparent;
     color: var(--text-main);
@@ -45,13 +45,13 @@
     overflow-x: hidden;
     width: 100%;
     min-height: 100vh;
-    background-image: url("./assets/images/project-series/0800.jpg");
+    background-image: url("../assets/images/project-series/0800.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
 }
-body
+
 /* =========================================
    2. Hamburger Toggle Button
    ========================================= */
