@@ -17,7 +17,8 @@
 
 /* Biography Paragraphs */
 .body-paragraphs p {
-    font-size: 3.1rem;
+    font-family: var(--font-rounded);
+    font-size: 1.1rem;
     line-height: 1.8;
     color: #ccc;
     margin-bottom: 1.5rem;
