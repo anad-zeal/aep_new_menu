@@ -51,26 +51,30 @@
     background-position: center;
     background-attachment: fixed;
 } */
-
 body {
   position: relative;
-  background-image: url("../images/project-series/0800.jpg") center/cover no-repeat;
+  background: url("../images/project-series/0800.jpg") center/cover no-repeat;
 }
 
 body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: inherit;      /* same background image */
-  opacity: 1;
+
+  /* Must restate ALL background properties */
+  background-image: url("../images/project-series/0800.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  opacity: 0.4;
   z-index: 0;
 }
 
 body > * {
   position: relative;
-  z-index: 1;               /* keep content above overlay */
+  z-index: 1;
 }
-
 /* =========================================
    2. Hamburger Toggle Button
    ========================================= */
