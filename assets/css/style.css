@@ -26,9 +26,31 @@
   --body-font-color: #3b569e;
 
   /* Typography */
-  --font-standard: 'Roboto', sans-serif;
+  --font-headline: 'Roboto', sans-serif;
   --font-script: 'Bonheur Royale', cursive;
   --font-rounded: 'Comfortaa', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headline);
+  letter-spacing: 1.1px;
+  line-height: 1.25;
+  margin: 0 0 0.5em;
+}
+
+/* Incrementally smaller sizes */
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 2rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+.welcome-message p {
+    font-family: var(--font-headline);
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
 }
 
 * {
