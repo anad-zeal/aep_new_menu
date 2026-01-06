@@ -48,7 +48,7 @@ body {
 }
 
 body {
-  background-image: url("assets/images/project-series/0800.jpg");
+  background-image: url("project-series/0800.jpg");
   background-size: cover;        /* Scale image to cover entire area */
   background-repeat: no-repeat;  /* Prevent tiling */
   background-position: center;   /* Keep it centered */
