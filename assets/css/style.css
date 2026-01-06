@@ -2,20 +2,13 @@
    1. Variables & Reset
    ========================================= */
 :root {
-    /* Colors - Dark Minimalist Theme */
-    --bg-body: #121212;      /* Very dark grey, softer than black */
-    --bg-nav: #0a0a0a;       /* Almost black for the menu */
-    --text-main: #e0e0e0;    /* Off-white for readability */
-    --text-muted: #888888;
-    --accent: #d4a373;       /* Muted bronze/gold */
-    --border-color: #333333;
+  /* Dark Theme Colors */
+  --bg-body: #121212;
+  --bg-nav: #0a0a0a;
+  --accent: #d4a373;
+  --border-color: #333333;
 
-    /* Menu Width */
-    --sidebar-width: 300px;
-}
-
-:root {
-  /* Colors */
+  /* Light Theme / Brand Colors */
   --bg-color: #eae7df;
   --menu-bg: #eae7df;
   --text-main: #3b569e;
@@ -24,6 +17,9 @@
   --arrow-blue: #000080;
   --arrow-red: #8b0000;
   --body-font-color: #3b569e;
+
+  /* Layout */
+  --sidebar-width: 300px;
 
   /* Typography */
   --font-headline: 'Roboto', sans-serif;
@@ -52,7 +48,7 @@ h6 { font-size: 1rem; }
     top: -10rem;
     font-family: var(--font-script);
     font-size: 10rem;
-    color: var(--brand-gold);
+    color: var(--body-font-color);
     text-align: center;
 }
 
@@ -77,10 +73,10 @@ body{
     overflow-x: hidden;
     width: 100%;
     min-height: 100vh;
-    background-image: url("../images/project-series/calliope.jpg");
+    background-image: url("../images/project-series/radish.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center; */
+    background-position: center; 
     background-attachment: fixed;
 } 
 /* =========================================
