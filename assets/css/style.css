@@ -83,7 +83,7 @@ body {
 }
 
 .hamburger-btn:hover span {
-    background-color: var(--text-main);
+    background-color: var(--accent);
 }
 
 /* =========================================
@@ -91,7 +91,7 @@ body {
    ========================================= */
 .main-nav {
     position: fixed;
-    top: 2vh;
+    top: 0;
     left: 0;
     width: var(--sidebar-width);
     height: 100vh;
