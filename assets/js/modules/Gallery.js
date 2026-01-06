@@ -83,7 +83,7 @@ export default class Gallery {
         this.mainImage.style.opacity = '0';
 
         // Update Text
-        this.imageTitle.textContent = slideData.title || '';
+       // this.imageTitle.textContent = slideData.title || '';
         this.imageCaption.textContent = slideData.caption || '';
 
         // Load Image
