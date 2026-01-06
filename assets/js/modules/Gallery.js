@@ -45,7 +45,7 @@ export default class Gallery {
                     
                     <div class="gallery-info">
                         <h3 id="image-title"></h3>
-                        <p id="image-caption"></p>
+                        <p id="image-captions"></p>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@ export default class Gallery {
         this.mainImage = document.getElementById('main-image');
         this.imageTitle = document.getElementById('image-title');
         this.imageCaption = document.getElementById('image-caption');
-        this.stageLoader = document.getElementById('stage-loader');
+       // this.stageLoader = document.getElementById('stage-loader');
 
         // Event Listeners for Nav
         this.container.querySelector('.prev-btn').addEventListener('click', () => this.prev());
@@ -84,7 +84,7 @@ export default class Gallery {
 
         // Update Text
         this.imageTitle.textContent = slideData.title || '';
-        this.imageCaption.textContent = slideData.caption || '';
+       // this.imageCaption.textContent = slideData.caption || '';
 
         // Load Image
         const img = new Image();
