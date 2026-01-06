@@ -91,7 +91,7 @@ body {
    ========================================= */
 .main-nav {
     position: fixed;
-    top: 2vh;
+    top: 6vh;
     left: 0;
     width: var(--sidebar-width);
     height: 100vh;
@@ -139,11 +139,9 @@ body {
 /* =========================================
    4. Menu Links & Typography
    ========================================= */
-.main-nav ul {
-    position: relative;
-    top: 2vh;
+.main-nav ul:first-child {
     list-style: none;
-    margin-bottom: 1.5rem;
+    margin: 1.5rem 0;
 }
 
 .main-nav li {
