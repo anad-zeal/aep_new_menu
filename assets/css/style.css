@@ -9,7 +9,6 @@
   --border-color: #333333;
 
   /* Light Theme / Brand Colors */
-  --bg-color: #eae7df;
   --menu-bg: #eae7df;
   --text-main: #3b569e;
   --text-muted: #555555;
@@ -67,7 +66,7 @@ h6 { font-size: 1rem; }
 
 /* 1. Clean up the body (Text & Background Color) */
 body {
-    background-color: var(--bg-body); /* This color will show through the faded image */
+    background-color: var(--menu-bg); /* This color will show through the faded image */
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
@@ -88,7 +87,7 @@ body::before {
     z-index: -1; /* Puts the image BEHIND the text */
     
     /* Image Settings */
-    background-image: url("../images/project-series/morphean.jpg");
+    background-image: url("../images/project-series/0800.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
