@@ -45,7 +45,7 @@ export default class Gallery {
                     
                     <div class="gallery-info">
                         <h3 id="image-title"></h3>
-                        <p id="image-captions"></p>
+                        <p id="image-caption"></p>
                     </div>
                 </div>
             </div>
