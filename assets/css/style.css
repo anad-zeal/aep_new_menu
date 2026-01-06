@@ -93,7 +93,7 @@ body::before {
     background-repeat: no-repeat;
     
     /* OPACITY CONTROL */
-    opacity: 0.3; /* Change this: 0.1 is faint, 1.0 is full strength */
+    opacity: 0.1; /* Change this: 0.1 is faint, 1.0 is full strength */
 }
 /* =========================================
    2. Hamburger Toggle Button
