@@ -29,9 +29,6 @@
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-script);
   font-weight: 200;
-  letter-spacing: -5px;
-  line-height: 1.25;
-  margin: 0 0 0.5em;
 }
 
 /* Incrementally smaller sizes */
@@ -66,7 +63,7 @@ h6 { font-size: 1rem; }
 
 /* 1. Clean up the body (Text & Background Color) */
 body {
-    background-color: var(--menu-bg); /* This color will show through the faded image */
+    background-color: var(--text-main); /* This color will show through the faded image */
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
