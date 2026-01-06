@@ -12,7 +12,7 @@
 
     /* Menu Width */
     --sidebar-width: 300px;
-
+}
 
 :root {
   /* Colors */
@@ -29,7 +29,6 @@
   --font-standard: 'Roboto', sans-serif;
   --font-script: 'Bonheur Royale', cursive;
   --font-rounded: 'Comfortaa', sans-serif;
-}
 }
 
 * {
