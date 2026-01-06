@@ -38,18 +38,18 @@
 }
 
 body{
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /* font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; */
     background-color: var(--bg-body);
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
     width: 100%;
     min-height: 100vh;
-    /* background-image: url("../images/project-series/0800.jpg");
+    background-image: url("../images/project-series/0800.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center; */
-    /* background-attachment: fixed;
+    background-attachment: fixed;
 } 
 /* =========================================
    2. Hamburger Toggle Button
