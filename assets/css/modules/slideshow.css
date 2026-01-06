@@ -41,19 +41,19 @@ body {
 }
 
 /* The three lines */
-.hamburger-btn span {
+/* .hamburger-btn span {
     display: block;
     width: 100%;
     height: 3px;
     background-color: var(--text-main);
     transition: all 0.3s ease;
     border-radius: 2px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.5); /* Drop shadow for visibility on images */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5); 
 }
 
 .hamburger-btn:hover span {
     background-color: var(--accent);
-}
+} */
 
 /* =========================================
    3. The Slide-Out Navigation
