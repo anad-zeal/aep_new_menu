@@ -91,7 +91,7 @@ body {
    ========================================= */
 .main-nav {
     position: fixed;
-    top: 0;
+    top: 2vh;
     left: 0;
     width: var(--sidebar-width);
     height: 100vh;
