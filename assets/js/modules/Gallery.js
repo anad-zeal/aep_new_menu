@@ -45,7 +45,7 @@ export default class Gallery {
                     
                     <div class="gallery-info">
                         <h3 id="image-title"></h3>
-                        
+                        <p id="image-caption"></p>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@ export default class Gallery {
         // Cache DOM elements
         this.mainImage = document.getElementById('main-image');
         this.imageTitle = document.getElementById('image-title');
-        
+        this.imageCaption = document.getElementById('image-caption');
         this.stageLoader = document.getElementById('stage-loader');
 
         // Event Listeners for Nav
@@ -83,7 +83,7 @@ export default class Gallery {
         this.mainImage.style.opacity = '0';
 
         // Update Text
-       // this.imageTitle.textContent = slideData.title || '';
+        this.imageTitle.textContent = slideData.title || '';
         this.imageCaption.textContent = slideData.caption || '';
 
         // Load Image
