@@ -37,22 +37,21 @@
     padding: 0;
 }
 
-body {
+ {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: var(--bg-body);
+    background-color: transparent;
     color: var(--text-main);
     line-height: 1.6;
-    /* Prevent horizontal scrolling when menu slides in/out */
     overflow-x: hidden;
     width: 100%;
     min-height: 100vh;
-  background-image: url("assets/images/project-series/0800.jpg");
-  background-size: cover;        /* Scale image to cover entire area */
-  background-repeat: no-repeat;  /* Prevent tiling */
-  background-position: center;   /* Keep it centered */
-  background-attachment: fixed;  /* Optional: creates a parallax-like effect */
+    background-image: url("../images/project-series/0800.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
-
+body
 /* =========================================
    2. Hamburger Toggle Button
    ========================================= */
