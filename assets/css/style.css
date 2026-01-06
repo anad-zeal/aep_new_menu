@@ -37,44 +37,20 @@
     padding: 0;
 }
 
-/* body{
+body{
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: transparent;
+    background-color: var(--bg-body);
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
     width: 100%;
     min-height: 100vh;
-    background-image: url("../images/project-series/0800.jpg");
+    /* background-image: url("../images/project-series/0800.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-} */
-body {
-  position: relative;
-  background: url("../images/project-series/0800.jpg") center/cover no-repeat;
-}
-
-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  /* Must restate ALL background properties */
-  background-image: url("../images/project-series/0800.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-
-  opacity: 0.1;
-  z-index: 999;
-}
-
-body > * {
-  position: relative;
-  z-index: 1;
-}
+    background-position: center; */
+    /* background-attachment: fixed;
+} 
 /* =========================================
    2. Hamburger Toggle Button
    ========================================= */
