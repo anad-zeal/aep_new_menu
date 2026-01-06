@@ -62,7 +62,7 @@ body::before {
   position: absolute;
   inset: 0;
   background: inherit;      /* same background image */
-  opacity: 0.4;             /* adjust opacity here */
+  opacity: 0.04;             /* adjust opacity here */
   z-index: 0;
 }
 
