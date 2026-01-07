@@ -11,18 +11,17 @@
     font-size: 2.5rem;
     color: var(--accent);
     margin-bottom: 2rem;
-    font-weight: 300;    
+    font-weight: 300;
     border-bottom: 1px solid #333;
     padding-bottom: 1rem;
 }
 
 .artist-name p {
-    font-size: 4rem;
+    font-family: var(--font-headline);
+    font-size: 10rem;
     color: var(--text-muted);
-    font-weight: 400;
-    margin-top: -1rem;
-    margin-bottom: 2rem;
-}
+    font-weight: 200;
+    text-align: center;
 
 /* Biography Paragraphs */
 .body-paragraphs p {
