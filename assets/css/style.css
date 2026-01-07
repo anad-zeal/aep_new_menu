@@ -3,18 +3,29 @@
    1. Variables & Reset
    ========================================= */
 :root {
-    /* Colors - Dark Minimalist Theme */
-    --bg-body: #121212;      /* Very dark grey */
-    --bg-nav: #0a0a0a;       /* Almost black for the menu */
-    --text-main: #e0e0e0;    /* Off-white for default reading */
-    --text-muted: #888888;
-    --brand-gold: #d4a373;   /* The accent color */
-    --border-color: #333333;
+  /* Dark Theme Colors */
+  --bg-body: #121212;
+  --bg-nav: #0a0a0a;
+  --accent: #d4a373;
+  --border-color: #333333;
 
-    /* Menu Width */
-    --sidebar-width: 300px;
+  /* Light Theme / Brand Colors */
+  --menu-bg: #eae7df;
+  --text-main: #3b569e;
+  --text-muted: #555555;
+  --brand-gold: #c19a6b;
+  --arrow-blue: #000080;
+  --arrow-red: #8b0000;
+  --body-font-color: #3b569e;
+
+  /* Layout */
+  --sidebar-width: 300px;
+
+  /* Typography */
+  --font-headline: 'Roboto', sans-serif;
+  --font-script: 'Bonheur Royale', cursive;
+  --font-rounded: 'Comfortaa', sans-serif;
 }
-
 * {
     box-sizing: border-box;
     margin: 0;
