@@ -55,19 +55,19 @@ function handleNavigation(action, payload = null) {
             AppState.currentModule = new Gallery(rootElementId);
             AppState.currentModule.init(payload); // payload is 'black-and-white', etc.
             break;
-            
+
         case 'bio':
             console.log("Loading Biography");
             AppState.currentModule = new Biography(rootElementId);
             AppState.currentModule.init();
             break;
-            
+
         case 'contact':
             console.log("Loading Contact");
             AppState.currentModule = new Contact(rootElementId);
             AppState.currentModule.init();
             break;
-            
+
         case 'home':
         default:
             document.getElementById(rootElementId).innerHTML = "<div class='welcome-message'>Select a gallery to begin.</div>";
@@ -125,4 +125,4 @@ document.addEventListener('click', (e) => {
 
 document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
-console.log("App Initialized"
+console.log("App Initialized");
