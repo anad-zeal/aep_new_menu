@@ -63,7 +63,7 @@ h6 { font-size: 1rem; }
 
 /* 1. Clean up the body (Text & Background Color) */
 body {
-    background-color: var(--text-main); /* This color will show through the faded image */
+    background-color: var(--brand-gold); /* This color will show through the faded image */
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
@@ -90,7 +90,7 @@ body::before {
     background-repeat: no-repeat;
 
     /* OPACITY CONTROL */
-    opacity: 0.1; /* Change this: 0.1 is faint, 1.0 is full strength */
+    opacity: 0.25; /* Change this: 0.1 is faint, 1.0 is full strength */
 }
 /* =========================================
    2. Hamburger Toggle Button
