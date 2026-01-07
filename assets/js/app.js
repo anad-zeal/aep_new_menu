@@ -46,12 +46,12 @@ function handleNavigation(action, payload = null) {
     if (action === 'home') {
         // HOME STATE: Remove the class so the image comes back and text reverts
         document.body.classList.remove('viewing-content');
-        
+
         document.getElementById(rootElementId).innerHTML = `
             <div class="site-title">
                 <h1>The Life of an Artist</h1>
             </div>`;
-    } 
+    }
     else {
         // CONTENT STATE: Add class to fade out image and turn text Gold
         document.body.classList.add('viewing-content');
@@ -63,12 +63,10 @@ function handleNavigation(action, payload = null) {
                 AppState.currentModule = new Gallery(rootElementId);
                 AppState.currentModule.init(payload);
                 break;
-                
             case 'bio':
                 AppState.currentModule = new Biography(rootElementId);
                 AppState.currentModule.init();
                 break;
-                
             case 'contact':
                 AppState.currentModule = new Contact(rootElementId);
                 AppState.currentModule.init();
@@ -111,7 +109,7 @@ document.addEventListener('click', (e) => {
         const galleryType = btn.dataset.gallery;
         handleNavigation('gallery', galleryType);
     }
-    
+
     // 2. Check for Main Menu Buttons (Home, Bio, Contact)
     if (e.target.closest('[data-action]')) {
         const btn = e.target.closest('[data-action]');
