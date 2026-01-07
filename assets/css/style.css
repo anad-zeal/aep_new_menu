@@ -41,9 +41,10 @@ h6 { font-size: 1rem; }
 
 .site-title h1 {
     position: relative;
-    top: -10rem;
+    top: -5rem;
     font-family: var(--font-script);
     font-size: 10rem;
+    line-height: 1;
     color: var(--body-font-color);
     text-align: center;
 }
