@@ -123,4 +123,6 @@ document.addEventListener('click', (e) => {
     }
 });
 
-console.log("App Initialized");
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+console.log("App Initialized"
