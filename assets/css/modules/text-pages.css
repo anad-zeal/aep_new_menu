@@ -15,6 +15,14 @@
     padding-bottom: 1rem;
 }
 
+.artist-name p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+}
+
 /* Biography Paragraphs */
 .body-paragraphs p {
     font-family: var(--font-rounded);
