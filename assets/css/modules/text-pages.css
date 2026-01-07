@@ -16,15 +16,6 @@
     padding-bottom: 1rem;
 }
 
-.artist-name p {
-    font-family: var(--font-headline);
-    font-size: 10rem;
-    color: var(--text-muted);
-    font-weight: 200;
-    text-align: center;
-    line-height: 1;
-}
-
 /* Biography Paragraphs */
 .body-paragraphs p {
     font-family: var(--font-rounded);

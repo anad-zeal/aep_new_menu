@@ -20,9 +20,6 @@ const menuClose = document.getElementById('menu-close');
 // 2. Helper Functions
 // ==========================================
 
-/**
- * Clean up the previous module (remove event listeners, etc.)
- */
 function clearModule() {
     if (AppState.currentModule && typeof AppState.currentModule.destroy === 'function') {
         AppState.currentModule.destroy();
@@ -30,15 +27,12 @@ function clearModule() {
     AppState.currentModule = null;
 }
 
-/**
- * Handle Menu Interaction (Open/Close)
- */
 function closeMenu() {
-    nav.classList.remove('open');
+    if(nav) nav.classList.remove('open');
 }
 
 function openMenu() {
-    nav.classList.add('open');
+    if(nav) nav.classList.add('open');
 }
 
 // ==========================================
@@ -48,30 +42,38 @@ function handleNavigation(action, payload = null) {
     // 1. Clean up previous content
     clearModule();
 
-    // 2. Load new content based on action
-    switch(action) {
-        case 'gallery':
-            console.log(`Loading Gallery: ${payload}`);
-            AppState.currentModule = new Gallery(rootElementId);
-            AppState.currentModule.init(payload); // payload is 'black-and-white', etc.
-            break;
+    // 2. TOGGLE CSS CLASS BASED ON SELECTION
+    if (action === 'home') {
+        // HOME STATE: Remove the class so the image comes back and text reverts
+        document.body.classList.remove('viewing-content');
+        
+        document.getElementById(rootElementId).innerHTML = `
+            <div class="site-title">
+                <h1>The Life of an Artist</h1>
+            </div>`;
+    } 
+    else {
+        // CONTENT STATE: Add class to fade out image and turn text Gold
+        document.body.classList.add('viewing-content');
 
-        case 'bio':
-            console.log("Loading Biography");
-            AppState.currentModule = new Biography(rootElementId);
-            AppState.currentModule.init();
-            break;
-
-        case 'contact':
-            console.log("Loading Contact");
-            AppState.currentModule = new Contact(rootElementId);
-            AppState.currentModule.init();
-            break;
-
-        case 'home':
-        default:
-            document.getElementById(rootElementId).innerHTML = "<div class='welcome-message'>Select a gallery to begin.</div>";
-            break;
+        // Load specific modules
+        switch(action) {
+            case 'gallery':
+                console.log(`Loading Gallery: ${payload}`);
+                AppState.currentModule = new Gallery(rootElementId);
+                AppState.currentModule.init(payload);
+                break;
+                
+            case 'bio':
+                AppState.currentModule = new Biography(rootElementId);
+                AppState.currentModule.init();
+                break;
+                
+            case 'contact':
+                AppState.currentModule = new Contact(rootElementId);
+                AppState.currentModule.init();
+                break;
+        }
     }
 
     // 3. Always close menu after making a selection
@@ -83,8 +85,6 @@ function handleNavigation(action, payload = null) {
 // ==========================================
 
 // --- Menu Toggles ---
-
-// Open Menu
 if (menuToggle) {
     menuToggle.addEventListener('click', (e) => {
         e.stopPropagation(); // Prevent immediate closing
@@ -92,21 +92,18 @@ if (menuToggle) {
     });
 }
 
-// Close Menu (X button)
 if (menuClose) {
     menuClose.addEventListener('click', closeMenu);
 }
 
 // Close Menu (Click Outside)
 document.addEventListener('click', (e) => {
-    // If menu is open, AND we didn't click inside the menu, AND we didn't click the toggle button
-    if (nav.classList.contains('open') && !nav.contains(e.target) && !menuToggle.contains(e.target)) {
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !menuToggle.contains(e.target)) {
         closeMenu();
     }
 });
 
 // --- Navigation Clicks (Event Delegation) ---
-
 document.addEventListener('click', (e) => {
     // 1. Check for Slideshow Category Buttons
     if (e.target.closest('[data-gallery]')) {
@@ -114,7 +111,7 @@ document.addEventListener('click', (e) => {
         const galleryType = btn.dataset.gallery;
         handleNavigation('gallery', galleryType);
     }
-
+    
     // 2. Check for Main Menu Buttons (Home, Bio, Contact)
     if (e.target.closest('[data-action]')) {
         const btn = e.target.closest('[data-action]');
@@ -123,6 +120,10 @@ document.addEventListener('click', (e) => {
     }
 });
 
-document.getElementById('copyright-year').textContent = new Date().getFullYear();
+// --- Footer Date Auto-Update ---
+const yearSpan = document.getElementById('copyright-year');
+if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+}
 
 console.log("App Initialized");

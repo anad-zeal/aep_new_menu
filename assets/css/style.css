@@ -1,60 +1,18 @@
+
 /* =========================================
    1. Variables & Reset
    ========================================= */
 :root {
-  /* Dark Theme Colors */
-  --bg-body: #121212;
-  --bg-nav: #0a0a0a;
-  --accent: #d4a373;
-  --border-color: #333333;
+    /* Colors - Dark Minimalist Theme */
+    --bg-body: #121212;      /* Very dark grey */
+    --bg-nav: #0a0a0a;       /* Almost black for the menu */
+    --text-main: #e0e0e0;    /* Off-white for default reading */
+    --text-muted: #888888;
+    --brand-gold: #d4a373;   /* The accent color */
+    --border-color: #333333;
 
-  /* Light Theme / Brand Colors */
-  --menu-bg: #eae7df;
-  --text-main: #3b569e;
-  --text-muted: #555555;
-  --brand-gold: #c19a6b;
-  --arrow-blue: #000080;
-  --arrow-red: #8b0000;
-  --body-font-color: #3b569e;
-
-  /* Layout */
-  --sidebar-width: 300px;
-
-  /* Typography */
-  --font-headline: 'Roboto', sans-serif;
-  --font-script: 'Bonheur Royale', cursive;
-  --font-rounded: 'Comfortaa', sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-script);
-  font-weight: 200;
-}
-
-/* Incrementally smaller sizes */
-h1 { font-size: 13rem; }
-h2 { font-size: 2.5rem; }
-h3 { font-size: 2rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
-
-.site-title {
-    max-height: fit-content;
-}
-
-.site-title h1 {
-    font-family: var(--font-script);
-    line-height: 1;
-    color: var(--body-font-color);
-    text-align: center;
-}
-
-.welcome-message p {
-    font-family: var(--font-headline);
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    margin-top: 0.5rem;
+    /* Menu Width */
+    --sidebar-width: 300px;
 }
 
 * {
@@ -63,45 +21,76 @@ h6 { font-size: 1rem; }
     padding: 0;
 }
 
-/* 1. Clean up the body (Text & Background Color) */
+/* =========================================
+   2. Body & Background Image Logic
+   ========================================= */
 body {
-    background-color: #fff; /* This color will show through the faded image */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    
+    /* Default Background Color (Revealed when image fades out) */
+    background-color: var(--bg-body);
+    
+    /* Default Text Color */
     color: var(--text-main);
+    
     line-height: 1.6;
     overflow-x: hidden;
     width: 100%;
     min-height: 100vh;
-    position: relative; /* Needed to anchor the background */
+    
+    /* Anchoring for the background layer */
+    position: relative;
     z-index: 0;
+
+    /* SMOOTH TRANSITION for color changes */
+    transition: color 1s ease, background-color 1s ease;
 }
 
-/* 2. Create the Background Image Layer */
+/* The Background Image Layer */
 body::before {
     content: "";
-    position: fixed; /* Equivalent to background-attachment: fixed */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Puts the image BEHIND the text */
-
+    z-index: -1; /* Puts image BEHIND text */
+    
     /* Image Settings */
     background-image: url("../images/project-series/0800.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-    /* OPACITY CONTROL */
-    opacity: 0.25; /* Change this: 0.1 is faint, 1.0 is full strength */
+    
+    /* HOME STATE: Image is visible (30% opacity) */
+    opacity: 0.3;
+    
+    /* SMOOTH TRANSITION for opacity */
+    transition: opacity 1s ease;
 }
+
 /* =========================================
-   2. Hamburger Toggle Button
+   3. The "Viewing Content" State
+   (Applied by JavaScript when leaving Home)
+   ========================================= */
+body.viewing-content {
+    /* Text turns to Gold */
+    color: var(--brand-gold);
+}
+
+body.viewing-content::before {
+    /* Image fades out completely */
+    opacity: 0;
+}
+
+/* =========================================
+   4. Hamburger Toggle Button
    ========================================= */
 .hamburger-btn {
     position: fixed;
     top: 20px;
     left: 20px;
-    z-index: 2000; /* Stays on top of everything */
+    z-index: 2000;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -114,71 +103,56 @@ body::before {
     outline: none;
 }
 
-/* The three lines of the burger */
 .hamburger-btn span {
     display: block;
     width: 100%;
-    height: 2px;
-    background-color: var(--accent);
+    height: 3px;
+    background-color: var(--text-main);
     transition: all 0.3s ease;
     border-radius: 2px;
-    /* Drop shadow ensures visibility if an image slides under it */
     box-shadow: 0 1px 4px rgba(0,0,0,0.8);
 }
 
 .hamburger-btn:hover span {
-    background-color: var(--text-muted);
-}
-
-.site-footer p {
-    text-align: center;
-    padding: 1rem 0;
-    font-size: 0.9rem;
-    color: var(--text-muted);
+    background-color: var(--brand-gold);
 }
 
 /* =========================================
-   3. The Slide-Out Navigation
+   5. The Slide-Out Navigation
    ========================================= */
-.main-nav{
+.main-nav {
     position: fixed;
     top: 0;
     left: 0;
     width: var(--sidebar-width);
     height: 100vh;
     background-color: var(--bg-nav);
-
-
-    font-family: var(--font-rounded);
-    /* Layout inside the menu */
+    
     padding: 4rem 2rem 2rem 2rem;
     display: flex;
     flex-direction: column;
-
-    /* Visuals */
+    
     border-right: 1px solid var(--border-color);
     box-shadow: 5px 0 20px rgba(0,0,0,0.6);
-
-    /* Hiding Logic (Off-screen) */
+    
+    /* Hidden by default */
     transform: translateX(-100%);
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth ease-out */
-    z-index: 1500; /* Above content, below hamburger button */
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 1500;
     overflow-y: auto;
 }
 
-/* JS adds this class to slide it in */
 .main-nav.open {
     transform: translateX(0);
 }
 
-/* Close 'X' Button inside Nav */
 .close-btn {
     position: absolute;
     top: 15px;
     right: 15px;
     background: none;
     border: none;
-    color: var(--accent);
+    color: var(--text-muted);
     font-size: 2rem;
     cursor: pointer;
     line-height: 1;
@@ -186,18 +160,12 @@ body::before {
 }
 
 .close-btn:hover {
-    color: var(--text-muted);
+    color: var(--brand-gold);
 }
 
 /* =========================================
-   4. Menu Links & Typography
+   6. Menu Links
    ========================================= */
-
-.top-nav {
-    list-style: none;
-    margin-top: 4.5rem;
-}
-
 .main-nav ul {
     list-style: none;
     margin-bottom: 1.5rem;
@@ -207,11 +175,10 @@ body::before {
     margin-bottom: 1rem;
 }
 
-/* Reset Button Styles to look like Links */
 .main-nav button {
     background: none;
     border: none;
-    color: var(--accent);
+    color: var(--text-muted);
     font-family: inherit;
     font-size: 1.1rem;
     font-weight: 500;
@@ -224,18 +191,16 @@ body::before {
 
 .main-nav button:hover,
 .main-nav button:focus {
-    color: var(--text-muted);
+    color: var(--brand-gold);
     transform: translateX(5px);
     outline: none;
 }
 
-/* Sub-menu (Gallery List) specific styling */
 .gallery-nav button {
     font-size: 0.95rem;
     font-weight: 400;
 }
 
-/* The Separator Line */
 .main-nav hr {
     border: 0;
     border-top: 1px solid var(--border-color);
@@ -244,29 +209,41 @@ body::before {
 }
 
 /* =========================================
-   5. Main Application Area
+   7. Main Application Area
    ========================================= */
 .app-container {
     width: 100%;
     min-height: 100vh;
-    padding: 0;
-
-    /* Centering logic for the module content */
+    padding: 0; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-/* Welcome / Placeholder Message */
-.welcome-message {
+/* Welcome Message */
+.site-title {
     text-align: center;
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    font-weight: 300;
-    letter-spacing: 1px;
     animation: fadeIn 1s ease-in;
     padding: 1rem;
+}
+
+.site-title h1 {
+    font-family: 'Bonheur Royale', cursive;
+    font-size: 4rem; /* Adjust based on preference */
+    color: var(--text-main);
+    font-weight: normal;
+}
+
+/* Footer */
+.site-footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    z-index: 10;
 }
 
 @keyframes fadeIn {
@@ -274,12 +251,12 @@ body::before {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* =========================================
-   6. Responsive Adjustments
-   ========================================= */
+/* Mobile Adjustments */
 @media (max-width: 480px) {
-    /* On very small phones, make menu nearly full width */
     :root {
         --sidebar-width: 85vw;
+    }
+    .site-title h1 {
+        font-size: 2.5rem;
     }
 }
