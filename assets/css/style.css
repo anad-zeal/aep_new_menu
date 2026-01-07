@@ -63,7 +63,7 @@ h6 { font-size: 1rem; }
 
 /* 1. Clean up the body (Text & Background Color) */
 body {
-    background-color: var(--brand-gold); /* This color will show through the faded image */
+    background-color: #fff; /* This color will show through the faded image */
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
