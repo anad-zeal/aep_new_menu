@@ -109,7 +109,6 @@ document.addEventListener('click', (e) => {
         const galleryType = btn.dataset.gallery;
         handleNavigation('gallery', galleryType);
     }
-
     // 2. Check for Main Menu Buttons (Home, Bio, Contact)
     if (e.target.closest('[data-action]')) {
         const btn = e.target.closest('[data-action]');

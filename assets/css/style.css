@@ -5,6 +5,7 @@
 :root {
   /* Dark Theme Colors */
   --bg-body: #121212;
+  --bg-body-light: #FFFFFF;
   --bg-nav: #0a0a0a;
   --accent: #d4a373;
   --border-color: #333333;
@@ -39,7 +40,7 @@ body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     
     /* Default Background Color (Revealed when image fades out) */
-    background-color: var(--bg-body);
+    background-color: var(--bg-body-light);
     
     /* Default Text Color */
     color: var(--text-main);
