@@ -226,7 +226,7 @@ body.viewing-content::before {
 .app-container {
     width: 100%;
     min-height: 100vh;
-    padding: 0; 
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -242,9 +242,18 @@ body.viewing-content::before {
 
 .site-title h1 {
     font-family: 'Bonheur Royale', cursive;
-    font-size: 4rem; /* Adjust based on preference */
+    font-size: 13rem; /* Adjust based on preference */
     color: var(--text-main);
     font-weight: normal;
+}
+
+.artist-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 10rem;
+    font-weight: 100;
+    color: var(--text-muted);
+    margin-top: -1rem;
+    letter-spacing: 2px;
 }
 
 /* Footer */
