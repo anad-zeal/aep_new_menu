@@ -1,11 +1,5 @@
-Here is the refactored script.
-
-This version preserves your original files. It creates a **copy** of every image in the same folder, appending `_res` to the end of the filename (e.g., `photo.jpg` becomes `photo_res.jpg`).
-
-I have also included a check to prevent it from processing images that have already been resized (so you don't end up with `photo_res_res.jpg`).
-
-```python
 import os
+
 from PIL import Image
 
 # --- CONFIGURATION: EDIT THIS SECTION ---
@@ -14,8 +8,8 @@ from PIL import Image
 target_folder = "."
 
 # 2. The new dimensions
-target_width = 800
-target_height = 600
+target_width = 1000
+target_height = 800
 
 # 3. Choose your resize mode (True or False)
 FORCE_EXACT_SIZE = False
@@ -24,6 +18,7 @@ FORCE_EXACT_SIZE = False
 SUFFIX = "_res"
 
 # ----------------------------------------
+
 
 def process_images():
     if not os.path.exists(target_folder):
@@ -34,7 +29,6 @@ def process_images():
     print(f"Processing images in: {target_folder}...")
 
     for filename in os.listdir(target_folder):
-
         # Split the file into name and extension
         name, ext = os.path.splitext(filename)
 
