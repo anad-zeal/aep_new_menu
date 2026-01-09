@@ -33,7 +33,7 @@ export default class Gallery {
     }
 
     renderLayout() {
-        // Build the simplified HTML structure (No thumbs div)
+        // Build the simplified HTML structure (No thumbs div, No caption)
         this.container.innerHTML = `
             <div class="gallery-module">
                 <div class="gallery-stage" id="gallery-stage">
@@ -53,7 +53,6 @@ export default class Gallery {
         // Cache DOM elements
         this.mainImage = document.getElementById('main-image');
         this.imageTitle = document.getElementById('image-title');
-       // this.imageCaption = document.getElementById('image-caption');
         this.stageLoader = document.getElementById('stage-loader');
 
         // Event Listeners for Nav
@@ -81,9 +80,8 @@ export default class Gallery {
         this.mainImage.classList.remove('loaded');
         this.mainImage.style.opacity = '0';
 
-        // Update Text
+        // Update Text (Title only)
         this.imageTitle.textContent = slideData.title || '';
-        this.imageCaption.textContent = slideData.caption || '';
 
         // Load Image
         const img = new Image();
