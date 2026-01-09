@@ -2,7 +2,7 @@
   {
     "id": "bw-1",
     "title": "NM",
-    "src": "assets/images/black-and-white/NM.jpg",
+    "src": "assets/images/black-and-white/nm.jpg",
     "caption": "NM",
     "description": "Description for NM",
     "medium": "Medium TBD",
@@ -11,7 +11,7 @@
   {
     "id": "bw-2",
     "title": "Serengeti",
-    "src": "assets/images/black-and-white/Serengeti.jpg",
+    "src": "assets/images/black-and-white/serengeti.jpg",
     "caption": "Serengeti",
     "description": "Description for Serengeti",
     "medium": "Medium TBD",
@@ -20,7 +20,7 @@
   {
     "id": "bw-3",
     "title": "Tsunami",
-    "src": "assets/images/black-and-white/Tsunami.jpg",
+    "src": "assets/images/black-and-white/tsunami.jpg",
     "caption": "Tsunami",
     "description": "Description for Tsunami",
     "medium": "Medium TBD",
@@ -44,7 +44,6 @@
     "medium": "Medium TBD",
     "dimensions": "00\" x 00\""
   },
-
   {
     "id": "bw-7",
     "title": "Evidence Of An Iron Horse",
