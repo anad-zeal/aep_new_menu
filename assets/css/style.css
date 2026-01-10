@@ -172,7 +172,7 @@ body.viewing-content::before {
 }
 
 .close-btn:hover {
-    color: var(--arrow-red);
+    color: var(--brand-gold);
 }
 
 /* =========================================
@@ -191,7 +191,6 @@ body.viewing-content::before {
     background: none;
     border: none;
     color: var(--brand-gold);
-    color: var(--text-muted);
     font-family: inherit;
     font-size: 1.1rem;
     font-weight: 500;
@@ -204,7 +203,7 @@ body.viewing-content::before {
 
 .main-nav button:hover,
 .main-nav button:focus {
-    color: var(--brand-gold);
+    color: var(--arrow-red);
     transform: translateX(5px);
     outline: none;
 }
