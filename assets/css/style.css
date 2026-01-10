@@ -172,7 +172,7 @@ body.viewing-content::before {
 }
 
 .close-btn:hover {
-    color: var(--brand-gold);
+    color: var(--arrow-red);
 }
 
 /* =========================================
@@ -190,6 +190,7 @@ body.viewing-content::before {
 .main-nav button {
     background: none;
     border: none;
+    color: var(--brand-gold);
     color: var(--text-muted);
     font-family: inherit;
     font-size: 1.1rem;
