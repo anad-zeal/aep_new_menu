@@ -186,7 +186,7 @@ body.viewing-content::before {
 .main-nav li {
     margin-bottom: 1rem;
     font-family: var(--font-rounded);
-    letter-spacing: 0.1em;
+    letter-spacing: 1em;
 }
 
 .main-nav button {
