@@ -16,7 +16,7 @@
     width: 100%;
     height: 90vh; /* Maximize vertical height */
     margin: 0 auto;
-    background-color: var(--gallery-bg);
+    /* background-color: var(--gallery-bg); */
     overflow: hidden;
 }
 
