@@ -203,7 +203,7 @@ body.viewing-content::before {
 
 .main-nav button:hover,
 .main-nav button:focus {
-    color: var(--arrow-red);
+    color: var(--menu-bg);
     transform: translateX(5px);
     outline: none;
 }
