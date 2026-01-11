@@ -1,111 +1,56 @@
-export default class Gallery {
-    constructor(containerId) {
-        this.container = document.getElementById(containerId);
-        this.slides = [];
-        this.currentIndex = 0;
-    }
+import React, { useState } from 'react';
+import './slideshow.css';
 
-    async init(categorySlug) {
-        this.renderLoading();
+const Gallery = ({ images, galleryName = "Black and White" }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-        try {
-            const response = await fetch(`json-files/${categorySlug}-slideshow.json`);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
 
-            this.slides = await response.json();
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
 
-            if (this.slides.length === 0) {
-                this.container.innerHTML = '<p>No images found in this gallery.</p>';
-                return;
-            }
+  const currentImage = images[currentIndex];
 
-            this.currentIndex = 0;
-            this.renderLayout();
-            this.loadSlide(this.currentIndex);
-        } catch (error) {
-            console.error("Gallery Load Error:", error);
-            this.container.innerHTML = `<p>Error loading gallery: ${error.message}</p>`;
-        }
-    }
+  return (
+    <div className="gallery-container">
+      {/* Top Left Menu Icon (Placeholder based on image) */}
+      <div className="menu-icon">
+        <div className="bar"></div>
+        <div className="bar"></div>
+        <div className="bar"></div>
+      </div>
 
-    renderLoading() {
-        this.container.innerHTML = '<div class="gallery-module"><div class="loader"></div></div>';
-    }
+      {/* --- NEW: Gallery Name (Top Right) --- */}
+      <div className="gallery-header">
+        <h1>{galleryName}</h1>
+      </div>
 
-    renderLayout() {
-        // Build the simplified HTML structure (No thumbs div, No caption)
-        this.container.innerHTML = `
-            <div class="gallery-module">
-                <div class="gallery-stage" id="gallery-stage">
-                    <div class="loader" id="stage-loader"></div>
+      {/* Main Slideshow Area */}
+      <div className="slideshow-wrapper">
+        <button className="nav-btn left" onClick={prevSlide}>&lt;</button>
+        
+        <div className="image-display">
+          <img src={currentImage.src} alt={currentImage.title} />
+          {/* REMOVED: Old hover overlay div was here */}
+        </div>
 
-                    <button class="gallery-nav-btn prev-btn">&lsaquo;</button>
-                    <img id="main-image" src="" alt="Gallery Image">
-                    <button class="gallery-nav-btn next-btn">&rsaquo;</button>
+        <button className="nav-btn right" onClick={nextSlide}>&gt;</button>
+      </div>
 
-                    <div class="gallery-info">
-                        <h3 id="image-title"></h3>
-                    </div>
-                </div>
-            </div>
-        `;
+      {/* --- NEW: Title Moved to Bottom Right (Static, no hover) --- */}
+      <div className="image-info">
+        <h2>{currentImage.title}</h2>
+      </div>
 
-        // Cache DOM elements
-        this.mainImage = document.getElementById('main-image');
-        this.imageTitle = document.getElementById('image-title');
-        this.stageLoader = document.getElementById('stage-loader');
+      {/* Footer */}
+      <footer className="gallery-footer">
+        © 2026 • All rights reserved
+      </footer>
+    </div>
+  );
+};
 
-        // Event Listeners for Nav
-        this.container.querySelector('.prev-btn').addEventListener('click', () => this.prev());
-        this.container.querySelector('.next-btn').addEventListener('click', () => this.next());
-
-        // Keyboard Nav
-        this.handleKeydown = (e) => {
-            if (e.key === 'ArrowLeft') this.prev();
-            if (e.key === 'ArrowRight') this.next();
-        };
-        document.addEventListener('keydown', this.handleKeydown);
-    }
-
-    loadSlide(index) {
-        // Bounds check
-        if (index < 0) index = this.slides.length - 1;
-        if (index >= this.slides.length) index = 0;
-
-        this.currentIndex = index;
-        const slideData = this.slides[index];
-
-        // UI Updates
-        this.stageLoader.style.display = 'block';
-        this.mainImage.classList.remove('loaded');
-        this.mainImage.style.opacity = '0';
-
-        // Update Text (Title only)
-        this.imageTitle.textContent = slideData.title || '';
-
-        // Load Image
-        const img = new Image();
-        img.src = slideData.src;
-
-        img.onload = () => {
-            this.mainImage.src = slideData.src;
-            this.mainImage.alt = slideData.alt || slideData.title;
-            this.stageLoader.style.display = 'none';
-            this.mainImage.style.opacity = '1';
-            this.mainImage.classList.add('loaded');
-        };
-    }
-
-    next() {
-        this.loadSlide(this.currentIndex + 1);
-    }
-
-    prev() {
-        this.loadSlide(this.currentIndex - 1);
-    }
-
-    destroy() {
-        document.removeEventListener('keydown', this.handleKeydown);
-        this.container.innerHTML = '';
-    }
-}
+export default Gallery;
