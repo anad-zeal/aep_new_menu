@@ -108,7 +108,7 @@
     place-items: center; /* Centers content horizontally and vertically */
     
     overflow: hidden;
-    border: 5px solid red;
+    border: 3px solid red;
 }
 
 .gallery-stage img {
@@ -116,10 +116,10 @@
     grid-area: 1 / 1; 
     
     /* Sizing constraints */
-    max-width: 100%;
+    /* max-width: 100%;
     max-height: 100%;
     width: auto;
-    height: auto;
+    height: auto; */
     object-fit: contain;
     
     /* Reinforce centering */
