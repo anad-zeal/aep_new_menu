@@ -1,111 +1,178 @@
 export default class Gallery {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
-        this.slides = [];
+        this.slidesData = [];
+        this.slideElements = []; // Array to hold the <img> DOM elements
         this.currentIndex = 0;
+        this.timer = null;
+        this.intervalTime = 5000; // 5 seconds per slide
+        this.categoryTitle = "";
     }
 
+    /**
+     * Initialize the gallery
+     * @param {string} categorySlug - e.g. 'black-and-white'
+     */
     async init(categorySlug) {
-        this.renderLoading();
+        // Pretty print title from slug (e.g., "black-and-white" -> "Black And White")
+        this.categoryTitle = categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
+        this.renderLoading();
+        
         try {
             const response = await fetch(`json-files/${categorySlug}-slideshow.json`);
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-            this.slides = await response.json();
-
-            if (this.slides.length === 0) {
-                this.container.innerHTML = '<p>No images found in this gallery.</p>';
+            
+            this.slidesData = await response.json();
+            
+            if (this.slidesData.length === 0) {
+                this.container.innerHTML = '<p style="text-align:center; padding:2rem;">No images found.</p>';
                 return;
             }
 
-            this.currentIndex = 0;
+            // Build the Grid Layout
             this.renderLayout();
-            this.loadSlide(this.currentIndex);
+            
+            // Start the Auto-Play
+            this.startSlideshow();
+
         } catch (error) {
             console.error("Gallery Load Error:", error);
-            this.container.innerHTML = `<p>Error loading gallery: ${error.message}</p>`;
+            this.container.innerHTML = `<p style="text-align:center; padding:2rem;">Error loading gallery.</p>`;
         }
     }
 
     renderLoading() {
-        this.container.innerHTML = '<div class="gallery-module"><div class="loader"></div></div>';
+        this.container.innerHTML = '<div style="display:flex;height:100vh;justify-content:center;align-items:center;"><div class="loader"></div></div>';
     }
 
     renderLayout() {
-        // Build the simplified HTML structure (No thumbs div, No caption)
+        // 1. Create the Shell
         this.container.innerHTML = `
             <div class="gallery-module">
+                <!-- Header -->
+                <div class="logo"><p>The Life of an Artist</p></div>
+                <div class="category"><p>${this.categoryTitle}</p></div>
+
+                <!-- Nav -->
+                <div class="prev-arrow">
+                    <button class="gallery-nav-btn prev-btn" aria-label="Previous Slide"></button>
+                </div>
+
+                <!-- Slides Container -->
                 <div class="gallery-stage" id="gallery-stage">
-                    <div class="loader" id="stage-loader"></div>
+                    <div class="loader"></div>
+                    <!-- Images will be injected here -->
+                </div>
 
-                    <button class="gallery-nav-btn prev-btn">&lsaquo;</button>
-                    <img id="main-image" src="" alt="Gallery Image">
-                    <button class="gallery-nav-btn next-btn">&rsaquo;</button>
+                <!-- Nav -->
+                <div class="next-arrow">
+                    <button class="gallery-nav-btn next-btn" aria-label="Next Slide"></button>
+                </div>
 
-                    <div class="gallery-info">
-                        <h3 id="image-title"></h3>
-                    </div>
+                <!-- Footer / Description -->
+                <div class="description">
+                    <h3 id="slide-title"></h3>
+                    <p id="slide-caption"></p>
                 </div>
             </div>
         `;
 
-        // Cache DOM elements
-        this.mainImage = document.getElementById('main-image');
-        this.imageTitle = document.getElementById('image-title');
-        this.stageLoader = document.getElementById('stage-loader');
+        // 2. Cache Elements
+        const stage = document.getElementById('gallery-stage');
+        this.titleEl = document.getElementById('slide-title');
+        this.captionEl = document.getElementById('slide-caption');
 
-        // Event Listeners for Nav
-        this.container.querySelector('.prev-btn').addEventListener('click', () => this.prev());
-        this.container.querySelector('.next-btn').addEventListener('click', () => this.next());
+        // 3. Create ALL Image Elements immediately (Stacking)
+        this.slidesData.forEach((data, index) => {
+            const img = document.createElement('img');
+            img.src = data.src;
+            img.alt = data.alt || data.title;
+            
+            // The first image starts active
+            if (index === 0) {
+                img.classList.add('active');
+                this.updateText(0); // Set initial text
+            }
+            
+            stage.appendChild(img);
+            this.slideElements.push(img);
+        });
 
+        // 4. Bind Events
+        this.container.querySelector('.prev-btn').addEventListener('click', () => {
+            this.resetTimer();
+            this.prev();
+        });
+
+        this.container.querySelector('.next-btn').addEventListener('click', () => {
+            this.resetTimer();
+            this.next();
+        });
+        
         // Keyboard Nav
         this.handleKeydown = (e) => {
-            if (e.key === 'ArrowLeft') this.prev();
-            if (e.key === 'ArrowRight') this.next();
+            if (e.key === 'ArrowLeft') { this.resetTimer(); this.prev(); }
+            if (e.key === 'ArrowRight') { this.resetTimer(); this.next(); }
         };
         document.addEventListener('keydown', this.handleKeydown);
     }
 
-    loadSlide(index) {
-        // Bounds check
-        if (index < 0) index = this.slides.length - 1;
-        if (index >= this.slides.length) index = 0;
+    updateSlide(newIndex) {
+        // Remove active class from current
+        const currentImg = this.slideElements[this.currentIndex];
+        if (currentImg) currentImg.classList.remove('active');
 
-        this.currentIndex = index;
-        const slideData = this.slides[index];
+        // Add active class to new (CSS handles crossfade)
+        const nextImg = this.slideElements[newIndex];
+        if (nextImg) nextImg.classList.add('active');
 
-        // UI Updates
-        this.stageLoader.style.display = 'block';
-        this.mainImage.classList.remove('loaded');
-        this.mainImage.style.opacity = '0';
+        // Update Text
+        this.updateText(newIndex);
 
-        // Update Text (Title only)
-        this.imageTitle.textContent = slideData.title || '';
+        // Update Index state
+        this.currentIndex = newIndex;
+    }
 
-        // Load Image
-        const img = new Image();
-        img.src = slideData.src;
-
-        img.onload = () => {
-            this.mainImage.src = slideData.src;
-            this.mainImage.alt = slideData.alt || slideData.title;
-            this.stageLoader.style.display = 'none';
-            this.mainImage.style.opacity = '1';
-            this.mainImage.classList.add('loaded');
-        };
+    updateText(index) {
+        const data = this.slidesData[index];
+        this.titleEl.textContent = data.title || '';
+        this.captionEl.textContent = data.caption || '';
     }
 
     next() {
-        this.loadSlide(this.currentIndex + 1);
+        let newIndex = this.currentIndex + 1;
+        if (newIndex >= this.slidesData.length) newIndex = 0;
+        this.updateSlide(newIndex);
     }
 
     prev() {
-        this.loadSlide(this.currentIndex - 1);
+        let newIndex = this.currentIndex - 1;
+        if (newIndex < 0) newIndex = this.slidesData.length - 1;
+        this.updateSlide(newIndex);
     }
 
+    // --- Automation Logic ---
+
+    startSlideshow() {
+        if (this.timer) clearInterval(this.timer);
+        this.timer = setInterval(() => {
+            this.next();
+        }, this.intervalTime);
+    }
+
+    resetTimer() {
+        // When user manually clicks, we stop the timer and restart it
+        // so the slide doesn't change immediately after they click.
+        clearInterval(this.timer);
+        this.startSlideshow();
+    }
+
+    // Cleanup for SPA navigation
     destroy() {
+        clearInterval(this.timer);
         document.removeEventListener('keydown', this.handleKeydown);
         this.container.innerHTML = '';
+        this.slideElements = [];
     }
 }
