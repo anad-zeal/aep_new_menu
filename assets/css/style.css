@@ -26,6 +26,7 @@
   --font-headline: 'Roboto', sans-serif;
   --font-script: 'Bonheur Royale', cursive;
   --font-rounded: 'Comfortaa', sans-serif;
+  --font-nav: 'Google Sans Flex', sans-serif;
 }
 * {
     box-sizing: border-box;

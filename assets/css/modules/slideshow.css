@@ -69,6 +69,7 @@
     color: #444;
     border: none;
     font-size: 3rem;
+    font-family: var(--font-nav);
     cursor: pointer;
     display: flex;
     align-items: center;
