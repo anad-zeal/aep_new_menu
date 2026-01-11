@@ -100,7 +100,7 @@
 .gallery-stage {
     grid-area: slideshow;
     position: relative;
-    width: 100vw;
+    width: 90%;
     height: 100%;
     
     /* CENTERING LOGIC */
