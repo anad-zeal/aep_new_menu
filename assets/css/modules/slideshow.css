@@ -2,7 +2,9 @@
    Slideshow Module - Grid Layout & Crossfade
    ========================================= */
 
-/* 1. Global Override */
+/* 1. Global Override for Slideshow Mode 
+   (Hides standard page elements if needed, 
+   or ensures the module fills the screen) */
 :root {
     --slide-duration: 1s; /* Crossfade speed */
 }
@@ -13,15 +15,14 @@
     inset: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--bg-body);
-    z-index: 100;
+    background-color: var(--bg-body); /* Matches your theme */
+    z-index: 100; /* Sit on top of everything */
     
     display: grid;
-    /* Fixed width nav columns, flexible center for image */
-    grid-template-columns: 80px 1fr 80px; 
-    grid-template-rows: 80px 1fr auto;
+    grid-template-columns: 80px 1fr 80px; /* Left Nav | Image | Right Nav */
+    grid-template-rows: 80px 1fr auto;     /* Header | Image | Footer/Desc */
     grid-template-areas:
-        'logo . category'
+        '. logo                                                                                                                                                                                                                                                                                                                                                                                                 category'
         'prev-arrow slideshow next-arrow'
         'return-arrow . description';
     
@@ -31,10 +32,11 @@
 
 /* 3. Header Areas */
 .logo {
-    grid-area: logo;
-    align-self: start;
-    justify-self: start;
+  grid-area: logo;
+  align-self: start;      /* top */
+  justify-self: center;   /* horizontal center */
 }
+
 .category {
     grid-area: category;
     align-self: start;
@@ -46,7 +48,7 @@
     margin: 0;
     line-height: 1;
     white-space: nowrap;
-    color: var(--brand-gold); /* Using the gold variable from style.css */
+    color: var(--accent); /* Bronze color */
 }
 
 .logo p {
@@ -61,7 +63,7 @@
     letter-spacing: 2px;
 }
 
-/* 4. Navigation Arrows */
+/* 4. Navigation Arrows (Prev/Next) */
 .prev-arrow { grid-area: prev-arrow; }
 .next-arrow { grid-area: next-arrow; }
 
@@ -76,14 +78,13 @@
     align-items: center;
     color: var(--text-muted);
     transition: color 0.3s ease;
-    outline: none;
 }
 
 .gallery-nav-btn:hover {
-    color: var(--brand-gold);
+    color: var(--accent);
 }
 
-/* Chevron Styling */
+/* Chevron Styling using CSS borders */
 .gallery-nav-btn::before {
     content: '';
     display: block;
@@ -96,28 +97,31 @@
 .prev-btn::before { transform: rotate(-135deg); }
 .next-btn::before { transform: rotate(45deg); }
 
+
 /* 5. The Slideshow Stage (Stacking Context) */
 .gallery-stage {
     grid-area: slideshow;
-   display: flex;
-  justify-content: center; /* horizontal */
-  align-items: center;     /* vertical */
-    border: 3px solid red;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
 }
 
+/* 
+   THE CROSSFADE MAGIC:
+   All slides sit in the same grid cell (1/1).
+   They are stacked on top of each other.
+   We toggle opacity to show/hide them.
+*/
 .gallery-stage img {
-    /* Stack all images in the same cell */
     grid-area: 1 / 1; 
-    
-    /* Sizing constraints */
-    max-width: 1000px;
-    max-height: 800px;
+    max-width: 100%;
+    max-height: 100%;
     width: auto;
     height: auto;
     object-fit: contain;
-    
-    /* Reinforce centering */
-    margin: auto;
     
     opacity: 0; /* Hidden by default */
     transition: opacity var(--slide-duration) ease-in-out;
@@ -129,7 +133,7 @@
     z-index: 2;
 }
 
-/* 6. Description (Bottom Right) */
+/* 6. Description & Footer */
 .description {
     grid-area: description;
     align-self: end;
@@ -146,11 +150,22 @@
 }
 
 .description h3 {
-    color: var(--brand-gold);
+    color: var(--accent);
     font-size: 1rem;
-    margin: 0; /* Removed bottom margin since caption is gone */
+    margin-bottom: 0.5rem;
     font-weight: 400;
+}
+
+.description p {
+    color: #ccc;
+    font-size: 0.85rem;
     line-height: 1.4;
+}
+
+.return-arrow {
+    grid-area: return-arrow;
+    align-self: end;
+    display: none; /* Hidden based on your new SPA nav, but kept for layout structure */
 }
 
 /* 7. Loading Spinner */
@@ -160,7 +175,7 @@
     width: 40px;
     height: 40px;
     border: 3px solid #333;
-    border-top: 3px solid var(--brand-gold);
+    border-top: 3px solid var(--accent);
     border-radius: 50%;
     animation: spin 1s linear infinite;
     justify-self: center;
