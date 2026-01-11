@@ -68,7 +68,7 @@ export default class Gallery {
                     <button class="gallery-nav-btn next-btn" aria-label="Next Slide"></button>
                 </div>
 
-                <!-- Footer / Description (Title Only) -->
+                <!-- Footer / Description -->
                 <div class="description">
                     <h3 id="slide-title"></h3>
                 </div>
