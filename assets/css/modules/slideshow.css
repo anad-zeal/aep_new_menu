@@ -32,10 +32,11 @@
 
 /* 3. Header Areas */
 .logo {
-    grid-area: logo;
-    align-self: start;
-    justify-self: start;
+  grid-area: logo;
+  align-self: start;      /* top */
+  justify-self: center;   /* horizontal center */
 }
+
 .category {
     grid-area: category;
     align-self: start;
