@@ -100,7 +100,7 @@
 .gallery-stage {
     grid-area: slideshow;
     position: relative;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     
     /* CENTERING LOGIC */
@@ -108,6 +108,7 @@
     place-items: center; /* Centers content horizontally and vertically */
     
     overflow: hidden;
+    border: 5px solid red;
 }
 
 .gallery-stage img {
