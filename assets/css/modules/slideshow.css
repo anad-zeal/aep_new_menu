@@ -16,7 +16,7 @@
     width: 100%;
     height: 90vh; /* Maximize vertical height */
     margin: 0 auto;
-    /* background-color: var(--gallery-bg); */
+    background-color: var(--gallery-bg);
     overflow: hidden;
 }
 
@@ -66,13 +66,10 @@
     flex: 0 0 var(--nav-arrow-width); /* Fixed width */
     height: 100%;
     background: transparent;
-    color:var(--brand-gold);
+    color: #444;
     border: none;
-    font-size: 5rem;
-    font-family: var(--font-nav);
-    font-weight: 100;
+    font-size: 3rem;
     cursor: pointer;
-    opacity: 0.5;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -83,7 +80,7 @@
 }
 
 .gallery-nav-btn:hover {
-    color: var(--bg-body-light);
+    color: #d4a373; /* Bronze accent */
     background: rgba(255, 255, 255, 0.03);
 }
 
