@@ -37,8 +37,7 @@ export default class Gallery {
         this.container.innerHTML = `
             <div class="gallery-module">
                 <div class="gallery-stage" id="gallery-stage">
-                    <div class="loader" id="stage-loader"></div>
-
+                   
                     <button class="gallery-nav-btn prev-btn">&lsaquo;</button>
                     <img id="main-image" src="" alt="Gallery Image">
                     <button class="gallery-nav-btn next-btn">&rsaquo;</button>
