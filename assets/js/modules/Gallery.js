@@ -90,7 +90,7 @@ export default class Gallery {
         img.onload = () => {
             this.mainImage.src = slideData.src;
             this.mainImage.alt = slideData.alt || slideData.title;
-            this.stageLoader.style.display = 'none';
+           
             this.mainImage.style.opacity = '1';
             this.mainImage.classList.add('loaded');
         };
