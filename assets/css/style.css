@@ -189,8 +189,10 @@ body.viewing-content::before {
     letter-spacing: 1em;
 }
 
-.main-nav button {
-    background: none;
+
+
+.left-panel-nav button {
+     background: none;
     border: none;
     color: var(--brand-gold);
     font-family: inherit;
@@ -201,16 +203,6 @@ body.viewing-content::before {
     transition: color 0.3s ease, transform 0.3s ease;
     padding: 0;
     width: 100%;
-}
-
-.main-nav button:hover,
-.main-nav button:focus {
-    color: var(--menu-bg);
-    transform: translateX(5px);
-    outline: none;
-}
-
-.gallery-nav button {
     font-size: 0.95rem;
     font-weight: 400;
 }
@@ -220,6 +212,13 @@ body.viewing-content::before {
     border-top: 1px solid var(--border-color);
     margin: 1.5rem 0;
     opacity: 0.5;
+}
+
+.left-panel-nav  button:hover,
+.left-panel-nav button:focus {
+    color: var(--menu-bg);
+    transform: translateX(5px);
+    outline: none;
 }
 
 /* =========================================
