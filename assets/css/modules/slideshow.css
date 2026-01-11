@@ -1,208 +1,170 @@
-/* =========================================
-   Slideshow Module - Grid Layout & Crossfade
-   ========================================= */
-
-/* 1. Global Override for Slideshow Mode 
-   (Hides standard page elements if needed, 
-   or ensures the module fills the screen) */
-:root {
-    --slide-duration: 1s; /* Crossfade speed */
-}
-
-/* 2. The Main Grid Container */
-.gallery-module {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--bg-body); /* Matches your theme */
-    z-index: 100; /* Sit on top of everything */
-    
-    display: grid;
-    grid-template-columns: 80px 1fr 80px; /* Left Nav | Image | Right Nav */
-    grid-template-rows: 80px 1fr auto;     /* Header | Image | Footer/Desc */
-    grid-template-areas:
-        '. logo                                                                                                                                                                                                                                                                                                                                                                                                 category'
-        'prev-arrow slideshow next-arrow'
-        'return-arrow . description';
-    
-    padding: 1rem;
-    box-sizing: border-box;
-}
-
-/* 3. Header Areas */
-.logo {
-  grid-area: logo;
-  align-self: start;      /* top */
-  justify-self: center;   /* horizontal center */
-}
-
-.category {
-    grid-area: category;
-    align-self: start;
-    justify-self: end;
-    text-align: right;
-}
-
-.logo p, .category p {
-    margin: 0;
-    line-height: 1;
-    white-space: nowrap;
-    color: var(--accent); /* Bronze color */
-}
-
-.logo p {
-    font-family: 'Bonheur Royale', cursive;
-    font-size: 2.5rem;
-}
-
-.category p {
-    font-family: 'Helvetica Neue', sans-serif;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* 4. Navigation Arrows (Prev/Next) */
-.prev-arrow { grid-area: prev-arrow; }
-.next-arrow { grid-area: next-arrow; }
-
-.gallery-nav-btn {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--text-muted);
-    transition: color 0.3s ease;
-}
-
-.gallery-nav-btn:hover {
-    color: var(--accent);
-}
-
-/* Chevron Styling using CSS borders */
-.gallery-nav-btn::before {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 20px;
-    border-top: 2px solid currentColor;
-    border-right: 2px solid currentColor;
-}
-
-.prev-btn::before { transform: rotate(-135deg); }
-.next-btn::before { transform: rotate(45deg); }
-
-
-/* 5. The Slideshow Stage (Stacking Context) */
-.gallery-stage {
-    grid-area: slideshow;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-}
-
-/* 
-   THE CROSSFADE MAGIC:
-   All slides sit in the same grid cell (1/1).
-   They are stacked on top of each other.
-   We toggle opacity to show/hide them.
-*/
-.gallery-stage img {
-    grid-area: 1 / 1; 
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    
-    opacity: 0; /* Hidden by default */
-    transition: opacity var(--slide-duration) ease-in-out;
-    z-index: 1;
-}
-
-.gallery-stage img.active {
-    opacity: 1; /* Visible */
-    z-index: 2;
-}
-
-/* 6. Description & Footer */
-.description {
-    grid-area: description;
-    align-self: end;
-    justify-self: end;
-    
-    background-color: rgba(0, 0, 0, 0.6);
-    border: 1px solid #333;
-    padding: 1rem;
-    max-width: 300px;
-    border-radius: 4px;
-    backdrop-filter: blur(5px);
-    margin-bottom: 2rem;
-    margin-right: 2rem;
-}
-
-.description h3 {
-    color: var(--accent);
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    font-weight: 400;
-}
-
-.description p {
-    color: #ccc;
-    font-size: 0.85rem;
-    line-height: 1.4;
-}
-
-.return-arrow {
-    grid-area: return-arrow;
-    align-self: end;
-    display: none; /* Hidden based on your new SPA nav, but kept for layout structure */
-}
-
-/* 7. Loading Spinner */
-.loader {
-    grid-area: slideshow;
-    z-index: 0;
-    width: 40px;
-    height: 40px;
-    border: 3px solid #333;
-    border-top: 3px solid var(--accent);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    justify-self: center;
-    align-self: center;
-}
-
-@keyframes spin { 100% { transform: rotate(360deg); } }
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .gallery-module {
-        grid-template-columns: 40px 1fr 40px;
-        grid-template-rows: 60px 1fr auto;
-        padding: 0;
+export default class Gallery {
+    constructor(containerId) {
+        this.container = document.getElementById(containerId);
+        this.slidesData = [];
+        this.slideElements = [];
+        this.currentIndex = 0;
+        this.timer = null;
+        this.intervalTime = 5000; // 5 seconds per slide
+        this.categoryTitle = "";
     }
-    
-    .description {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        max-width: 100%;
-        margin: 0;
-        border: none;
-        border-top: 1px solid #333;
+
+    /**
+     * Initialize the gallery
+     * @param {string} categorySlug - e.g. 'black-and-white'
+     */
+    async init(categorySlug) {
+        // Pretty print title from slug
+        this.categoryTitle = categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+        this.renderLoading();
+        
+        try {
+            const response = await fetch(`json-files/${categorySlug}-slideshow.json`);
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            
+            this.slidesData = await response.json();
+            
+            if (this.slidesData.length === 0) {
+                this.container.innerHTML = '<p style="text-align:center; padding:2rem;">No images found.</p>';
+                return;
+            }
+
+            this.renderLayout();
+            this.startSlideshow();
+
+        } catch (error) {
+            console.error("Gallery Load Error:", error);
+            this.container.innerHTML = `<p style="text-align:center; padding:2rem;">Error loading gallery.</p>`;
+        }
     }
-    
-    .logo p { font-size: 1.8rem; padding-left: 10px;}
-    .category p { font-size: 0.9rem; padding-right: 10px; }
+
+    renderLoading() {
+        this.container.innerHTML = '<div style="display:flex;height:100vh;justify-content:center;align-items:center;"><div class="loader"></div></div>';
+    }
+
+    renderLayout() {
+        // 1. Create the DOM Structure
+        // NOTE: Caption paragraph removed as requested
+        this.container.innerHTML = `
+            <div class="gallery-module">
+                <!-- Header -->
+                <div class="logo"><p>The Life of an Artist</p></div>
+                <div class="category"><p>${this.categoryTitle}</p></div>
+
+                <!-- Nav -->
+                <div class="prev-arrow">
+                    <button class="gallery-nav-btn prev-btn" aria-label="Previous Slide"></button>
+                </div>
+
+                <!-- Slides Container -->
+                <div class="gallery-stage" id="gallery-stage">
+                    <div class="loader"></div>
+                    <!-- Images injected here -->
+                </div>
+
+                <!-- Nav -->
+                <div class="next-arrow">
+                    <button class="gallery-nav-btn next-btn" aria-label="Next Slide"></button>
+                </div>
+
+                <!-- Footer / Description (Title Only) -->
+                <div class="description">
+                    <h3 id="slide-title"></h3>
+                </div>
+            </div>
+        `;
+
+        // 2. Cache Elements
+        const stage = document.getElementById('gallery-stage');
+        this.titleEl = document.getElementById('slide-title');
+
+        // 3. Create ALL Image Elements immediately (Stacking)
+        this.slidesData.forEach((data, index) => {
+            const img = document.createElement('img');
+            img.src = data.src;
+            img.alt = data.alt || data.title;
+            
+            // The first image starts active
+            if (index === 0) {
+                img.classList.add('active');
+                this.updateText(0);
+            }
+            
+            stage.appendChild(img);
+            this.slideElements.push(img);
+        });
+
+        // 4. Bind Events
+        this.container.querySelector('.prev-btn').addEventListener('click', () => {
+            this.resetTimer();
+            this.prev();
+        });
+
+        this.container.querySelector('.next-btn').addEventListener('click', () => {
+            this.resetTimer();
+            this.next();
+        });
+        
+        // Keyboard Nav
+        this.handleKeydown = (e) => {
+            if (e.key === 'ArrowLeft') { this.resetTimer(); this.prev(); }
+            if (e.key === 'ArrowRight') { this.resetTimer(); this.next(); }
+        };
+        document.addEventListener('keydown', this.handleKeydown);
+    }
+
+    updateSlide(newIndex) {
+        // Remove active class from current
+        const currentImg = this.slideElements[this.currentIndex];
+        if (currentImg) currentImg.classList.remove('active');
+
+        // Add active class to new
+        const nextImg = this.slideElements[newIndex];
+        if (nextImg) nextImg.classList.add('active');
+
+        // Update Text
+        this.updateText(newIndex);
+
+        this.currentIndex = newIndex;
+    }
+
+    updateText(index) {
+        const data = this.slidesData[index];
+        // Only setting title now
+        this.titleEl.textContent = data.title || '';
+    }
+
+    next() {
+        let newIndex = this.currentIndex + 1;
+        if (newIndex >= this.slidesData.length) newIndex = 0;
+        this.updateSlide(newIndex);
+    }
+
+    prev() {
+        let newIndex = this.currentIndex - 1;
+        if (newIndex < 0) newIndex = this.slidesData.length - 1;
+        this.updateSlide(newIndex);
+    }
+
+    // --- Automation Logic ---
+
+    startSlideshow() {
+        if (this.timer) clearInterval(this.timer);
+        this.timer = setInterval(() => {
+            this.next();
+        }, this.intervalTime);
+    }
+
+    resetTimer() {
+        clearInterval(this.timer);
+        this.startSlideshow();
+    }
+
+    destroy() {
+        clearInterval(this.timer);
+        document.removeEventListener('keydown', this.handleKeydown);
+        this.container.innerHTML = '';
+        this.slideElements = [];
+    }
 }

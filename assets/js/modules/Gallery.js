@@ -2,7 +2,7 @@ export default class Gallery {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
         this.slidesData = [];
-        this.slideElements = []; // Array to hold the <img> DOM elements
+        this.slideElements = [];
         this.currentIndex = 0;
         this.timer = null;
         this.intervalTime = 5000; // 5 seconds per slide
@@ -14,7 +14,7 @@ export default class Gallery {
      * @param {string} categorySlug - e.g. 'black-and-white'
      */
     async init(categorySlug) {
-        // Pretty print title from slug (e.g., "black-and-white" -> "Black And White")
+        // Pretty print title from slug
         this.categoryTitle = categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
         this.renderLoading();
@@ -30,10 +30,7 @@ export default class Gallery {
                 return;
             }
 
-            // Build the Grid Layout
             this.renderLayout();
-            
-            // Start the Auto-Play
             this.startSlideshow();
 
         } catch (error) {
@@ -47,7 +44,8 @@ export default class Gallery {
     }
 
     renderLayout() {
-        // 1. Create the Shell
+        // 1. Create the DOM Structure
+        // NOTE: Caption paragraph removed as requested
         this.container.innerHTML = `
             <div class="gallery-module">
                 <!-- Header -->
@@ -62,7 +60,7 @@ export default class Gallery {
                 <!-- Slides Container -->
                 <div class="gallery-stage" id="gallery-stage">
                     <div class="loader"></div>
-                    <!-- Images will be injected here -->
+                    <!-- Images injected here -->
                 </div>
 
                 <!-- Nav -->
@@ -70,10 +68,9 @@ export default class Gallery {
                     <button class="gallery-nav-btn next-btn" aria-label="Next Slide"></button>
                 </div>
 
-                <!-- Footer / Description -->
+                <!-- Footer / Description (Title Only) -->
                 <div class="description">
                     <h3 id="slide-title"></h3>
-                    <p id="slide-caption"></p>
                 </div>
             </div>
         `;
@@ -81,7 +78,6 @@ export default class Gallery {
         // 2. Cache Elements
         const stage = document.getElementById('gallery-stage');
         this.titleEl = document.getElementById('slide-title');
-        this.captionEl = document.getElementById('slide-caption');
 
         // 3. Create ALL Image Elements immediately (Stacking)
         this.slidesData.forEach((data, index) => {
@@ -92,7 +88,7 @@ export default class Gallery {
             // The first image starts active
             if (index === 0) {
                 img.classList.add('active');
-                this.updateText(0); // Set initial text
+                this.updateText(0);
             }
             
             stage.appendChild(img);
@@ -123,21 +119,20 @@ export default class Gallery {
         const currentImg = this.slideElements[this.currentIndex];
         if (currentImg) currentImg.classList.remove('active');
 
-        // Add active class to new (CSS handles crossfade)
+        // Add active class to new
         const nextImg = this.slideElements[newIndex];
         if (nextImg) nextImg.classList.add('active');
 
         // Update Text
         this.updateText(newIndex);
 
-        // Update Index state
         this.currentIndex = newIndex;
     }
 
     updateText(index) {
         const data = this.slidesData[index];
+        // Only setting title now
         this.titleEl.textContent = data.title || '';
-        this.captionEl.textContent = data.caption || '';
     }
 
     next() {
@@ -162,13 +157,10 @@ export default class Gallery {
     }
 
     resetTimer() {
-        // When user manually clicks, we stop the timer and restart it
-        // so the slide doesn't change immediately after they click.
         clearInterval(this.timer);
         this.startSlideshow();
     }
 
-    // Cleanup for SPA navigation
     destroy() {
         clearInterval(this.timer);
         document.removeEventListener('keydown', this.handleKeydown);
