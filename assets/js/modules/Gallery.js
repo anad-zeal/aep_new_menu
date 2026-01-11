@@ -37,9 +37,12 @@ export default class Gallery {
         this.container.innerHTML = `
             <div class="gallery-module">
                 <div class="gallery-stage" id="gallery-stage">
+                    <div class="loader" id="stage-loader"></div>
+
                     <button class="gallery-nav-btn prev-btn">&lsaquo;</button>
                     <img id="main-image" src="" alt="Gallery Image">
                     <button class="gallery-nav-btn next-btn">&rsaquo;</button>
+
                     <div class="gallery-info">
                         <h3 id="image-title"></h3>
                     </div>
@@ -50,6 +53,7 @@ export default class Gallery {
         // Cache DOM elements
         this.mainImage = document.getElementById('main-image');
         this.imageTitle = document.getElementById('image-title');
+        this.stageLoader = document.getElementById('stage-loader');
 
         // Event Listeners for Nav
         this.container.querySelector('.prev-btn').addEventListener('click', () => this.prev());
@@ -72,7 +76,7 @@ export default class Gallery {
         const slideData = this.slides[index];
 
         // UI Updates
-        
+        this.stageLoader.style.display = 'block';
         this.mainImage.classList.remove('loaded');
         this.mainImage.style.opacity = '0';
 
@@ -86,6 +90,7 @@ export default class Gallery {
         img.onload = () => {
             this.mainImage.src = slideData.src;
             this.mainImage.alt = slideData.alt || slideData.title;
+            this.stageLoader.style.display = 'none';
             this.mainImage.style.opacity = '1';
             this.mainImage.classList.add('loaded');
         };
