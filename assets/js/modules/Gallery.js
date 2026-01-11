@@ -76,7 +76,7 @@ export default class Gallery {
         const slideData = this.slides[index];
 
         // UI Updates
-        this.stageLoader.style.display = 'block';
+        
         this.mainImage.classList.remove('loaded');
         this.mainImage.style.opacity = '0';
 
