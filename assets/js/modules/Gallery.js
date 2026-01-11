@@ -59,7 +59,7 @@ export default class Gallery {
 
                 <!-- Slides Container -->
                 <div class="gallery-stage" id="gallery-stage">
-                    <div class="loader"></div>
+                   
                     <!-- Images injected here -->
                 </div>
 
