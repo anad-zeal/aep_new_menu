@@ -118,7 +118,7 @@
 .gallery-stage img {
     grid-area: 1 / 1; 
     max-width: 100%;
-    max-height: 100%;
+    max-height: 100vh;
     width: auto;
     height: auto;
     object-fit: none;
