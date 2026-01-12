@@ -17,15 +17,15 @@
     height: 100vh;
     background-color: var(--bg-body); /* Matches your theme */
     z-index: 100; /* Sit on top of everything */
-    
+
     display: grid;
     grid-template-columns: 80px 1fr 80px; /* Left Nav | Image | Right Nav */
     grid-template-rows: 80px 1fr auto;     /* Header | Image | Footer/Desc */
     grid-template-areas:
-        '. logo                                                                                                                                                                                                                                                                                                                                                                                                 category'
+        '. logo category'
         'prev-arrow slideshow next-arrow'
         'return-arrow . description';
-    
+
     padding: 1rem;
     box-sizing: border-box;
 }

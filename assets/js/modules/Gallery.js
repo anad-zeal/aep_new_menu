@@ -5,7 +5,7 @@ export default class Gallery {
         this.slideElements = [];
         this.currentIndex = 0;
         this.timer = null;
-        this.intervalTime = 5000; // 5 seconds per slide
+        this.intervalTime = 15000; // 5 seconds per slide
         this.categoryTitle = "";
     }
 
@@ -18,13 +18,12 @@ export default class Gallery {
         this.categoryTitle = categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
         this.renderLoading();
-        
+
         try {
             const response = await fetch(`json-files/${categorySlug}-slideshow.json`);
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            
             this.slidesData = await response.json();
-            
+
             if (this.slidesData.length === 0) {
                 this.container.innerHTML = '<p style="text-align:center; padding:2rem;">No images found.</p>';
                 return;
@@ -59,7 +58,7 @@ export default class Gallery {
 
                 <!-- Slides Container -->
                 <div class="gallery-stage" id="gallery-stage">
-                   
+
                     <!-- Images injected here -->
                 </div>
 
@@ -84,13 +83,13 @@ export default class Gallery {
             const img = document.createElement('img');
             img.src = data.src;
             img.alt = data.alt || data.title;
-            
+
             // The first image starts active
             if (index === 0) {
                 img.classList.add('active');
                 this.updateText(0);
             }
-            
+
             stage.appendChild(img);
             this.slideElements.push(img);
         });
@@ -105,7 +104,7 @@ export default class Gallery {
             this.resetTimer();
             this.next();
         });
-        
+
         // Keyboard Nav
         this.handleKeydown = (e) => {
             if (e.key === 'ArrowLeft') { this.resetTimer(); this.prev(); }
