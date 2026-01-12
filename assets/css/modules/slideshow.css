@@ -121,7 +121,7 @@
     max-height: 100%;
     width: auto;
     height: auto;
-    object-fit: contain;
+    object-fit: none;
     
     opacity: 0; /* Hidden by default */
     transition: opacity var(--slide-duration) ease-in-out;
