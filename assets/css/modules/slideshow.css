@@ -2,8 +2,8 @@
    Slideshow Module - Grid Layout & Crossfade
    ========================================= */
 
-/* 1. Global Override for Slideshow Mode 
-   (Hides standard page elements if needed, 
+/* 1. Global Override for Slideshow Mode
+   (Hides standard page elements if needed,
    or ensures the module fills the screen) */
 :root {
     --slide-duration: 1s; /* Crossfade speed */
@@ -109,20 +109,20 @@
     overflow: visible;
 }
 
-/* 
+/*
    THE CROSSFADE MAGIC:
    All slides sit in the same grid cell (1/1).
    They are stacked on top of each other.
    We toggle opacity to show/hide them.
 */
 .gallery-stage img {
-    grid-area: 1 / 1; 
+    grid-area: 1 / 1;
     max-width: 100%;
     max-height: 100vh;
     width: auto;
     height: auto;
     object-fit: none;
-    
+
     opacity: 0; /* Hidden by default */
     transition: opacity var(--slide-duration) ease-in-out;
     z-index: 1;

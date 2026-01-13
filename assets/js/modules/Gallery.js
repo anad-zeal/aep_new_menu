@@ -5,7 +5,7 @@ export default class Gallery {
         this.slideElements = [];
         this.currentIndex = 0;
         this.timer = null;
-        this.intervalTime = 15000; // 5 seconds per slide
+        this.intervalTime = 5000; // 5 seconds per slide
         this.categoryTitle = "";
     }
 
@@ -44,7 +44,6 @@ export default class Gallery {
 
     renderLayout() {
         // 1. Create the DOM Structure
-        // NOTE: Caption paragraph removed as requested
         this.container.innerHTML = `
             <div class="gallery-module">
                 <!-- Header -->
@@ -130,7 +129,6 @@ export default class Gallery {
 
     updateText(index) {
         const data = this.slidesData[index];
-        // Only setting title now
         this.titleEl.textContent = data.title || '';
     }
 
