@@ -243,14 +243,14 @@ body.viewing-content::before {
 }
 
 .site-title h1 {
-    font-family: 'Bonheur Royale', cursive;
+    font-family: var(--font-script );
     font-size: 13rem; /* Adjust based on preference */
     color: var(--text-main);
     font-weight: normal;
 }
 
 .artist-name {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-headline);
     font-size: 10rem;
     font-weight: 100;
     color: var(--text-muted);
