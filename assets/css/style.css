@@ -120,14 +120,14 @@ body.viewing-content::before {
     display: block;
     width: 100%;
     height: 3px;
-    background-color: var(--text-main);
+    background-color: var(--brand-gold);
     transition: all 0.3s ease;
     border-radius: 1px;
     /* box-shadow: 0 1px 4px rgba(0,0,0,0.8); */
 }
 
 .hamburger-btn:hover span {
-    background-color: var(--brand-gold);
+    background-color: var(--text-main);
 }
 
 /* =========================================
@@ -217,7 +217,7 @@ body.viewing-content::before {
 
 .left-panel-nav  button:hover,
 .left-panel-nav button:focus {
-    color:red;
+    color: var(--menu-bg);
     transform: translateX(5px);
     outline: none;
 }
