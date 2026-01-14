@@ -251,6 +251,8 @@ body.viewing-content::before {
 }
 
 .site-title-small h1 {
+    position: relative;
+    top: 5vh;
      font-family: var(--font-script );
     font-size: 3rem; /* Adjust based on preference */
     color: var(--text-main);
