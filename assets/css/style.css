@@ -217,7 +217,7 @@ body.viewing-content::before {
 
 .left-panel-nav  button:hover,
 .left-panel-nav button:focus {
-    color: var(--menu-bg);
+    color:red;
     transform: translateX(5px);
     outline: none;
 }
