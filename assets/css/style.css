@@ -250,6 +250,10 @@ body.viewing-content::before {
     font-weight: normal;
 }
 
+.site-title-small h1 {
+    font-size: 3rem;
+}
+
 .artist-name {
     font-family: var(--font-headline);
     font-size: 10rem;
