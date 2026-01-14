@@ -240,7 +240,7 @@ body.viewing-content::before {
 .site-title {
     text-align: center;
     animation: fadeIn 1s ease-in;
-    padding: 1rem;
+    padding: 5rem;
 }
 
 .site-title h1 {
