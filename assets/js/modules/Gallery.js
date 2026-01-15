@@ -52,7 +52,7 @@ export default class Gallery {
 
                 <!-- Nav -->
                 <div class="prev-arrow">
-                    <button class="gallery-nav-btn prev-btn" aria-label="Previous Slide"></button>
+                    <button class="gallery-nav-btn prev-btn" aria-label="Previous Slide"><</button>
                 </div>
 
                 <!-- Slides Container -->
@@ -63,7 +63,7 @@ export default class Gallery {
 
                 <!-- Nav -->
                 <div class="next-arrow">
-                    <button class="gallery-nav-btn next-btn" aria-label="Next Slide"></button>
+                    <button class="gallery-nav-btn next-btn" aria-label="Next Slide">></button>
                 </div>
 
                 <!-- Footer / Description -->
