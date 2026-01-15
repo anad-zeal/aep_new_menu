@@ -15,7 +15,7 @@
     inset: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--bg-body); /* Matches your theme */
+    background-color: transparent
     z-index: 100; /* Sit on top of everything */
 
     display: grid;
