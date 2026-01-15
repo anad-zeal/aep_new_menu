@@ -206,3 +206,39 @@
     .logo p { font-size: 1.8rem; padding-left: 10px;}
     .category p { font-size: 0.9rem; padding-right: 10px; }
 }
+
+.arrow-up,
+.arrow-right,
+.arrow-down,
+.arrow-left {
+  width: 0;
+  height: 0;
+}
+
+/* Up */
+.arrow-up {
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #333;
+}
+
+/* Right */
+.arrow-right {
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #333;
+}
+
+/* Down */
+.arrow-down {
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #333;
+}
+
+/* Left */
+.arrow-left {
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid #333;
+}
