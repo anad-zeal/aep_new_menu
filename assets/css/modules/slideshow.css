@@ -78,6 +78,7 @@
     align-items: center;
     color: var(--text-muted);
     transition: color 0.3s ease;
+    font-family: var(--font-nav);
     font-size: 3rem;
     font-weight: 100;
 }
