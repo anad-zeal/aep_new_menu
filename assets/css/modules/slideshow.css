@@ -94,8 +94,8 @@
     border-right: 2px solid currentColor;
 }
 
-/* .prev-btn::before { transform: rotate(-135deg); }
-.next-btn::before { transform: rotate(45deg); } */
+.prev-btn::before { transform: rotate(-135deg); }
+.next-btn::before { transform: rotate(45deg); }
 
 
 /* 5. The Slideshow Stage (Stacking Context) */
@@ -205,56 +205,4 @@
     
     .logo p { font-size: 1.8rem; padding-left: 10px;}
     .category p { font-size: 0.9rem; padding-right: 10px; }
-}
-
-.arrow-up,
-.arrow-right,
-.arrow-down,
-.arrow-left {
-  width: 0;
-  height: 0;
-}
-
-/* Up */
-.arrow-up {
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-bottom: 20px solid #333;
-}
-
-/* Right */
-.arrow-right {
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-left: 20px solid #333;
-}
-
-/* Down */
-.arrow-down {
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 20px solid #333;
-}
-
-/* Left */
-.arrow-left {
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-right: 20px solid #333;
-}
-
-.caret-right {
-  width: 0;
-  height: 0;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 6px solid #333; /* color of the caret */
-}
-
-.caret-left {
-  width: 0;
-  height: 0;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-right: 6px solid #333;
 }
