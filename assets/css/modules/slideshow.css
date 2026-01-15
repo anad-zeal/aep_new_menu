@@ -152,7 +152,7 @@
     margin-bottom: 2rem;
     margin-right: 2rem;
     position:absolute;
-    left: 90%;
+    right: 10vw;
     bottom: 2vh;
     z-index: 2000;
 }
