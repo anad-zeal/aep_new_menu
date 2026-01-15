@@ -152,8 +152,8 @@
     /* margin-bottom: 2rem;
     margin-right: 2rem; */
     position:absolute;
-    right: 10vw;
-    bottom: 2vh;
+    right: 2vw;
+    bottom: 4vh;
     z-index: 2000;
     width: 40vw;
 }
