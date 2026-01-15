@@ -84,7 +84,7 @@
     color: var(--accent);
 }
 
-/* Chevron Styling using CSS borders */
+/* Chevron Styling using CSS borders 
 .gallery-nav-btn::before {
     content: '';
     display: block;
@@ -92,7 +92,7 @@
     height: 20px;
     border-top: 2px solid currentColor;
     border-right: 2px solid currentColor;
-}
+}*/
 
 .prev-btn::before { transform: rotate(-135deg); }
 .next-btn::before { transform: rotate(45deg); }
