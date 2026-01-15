@@ -129,7 +129,7 @@ export default class Gallery {
 
     updateText(index) {
         const data = this.slidesData[index];
-        this.titleEl.textContent = data.title || '';
+        this.titleEl.textContent = data.title ;
     }
 
     next() {

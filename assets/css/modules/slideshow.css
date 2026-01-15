@@ -151,21 +151,17 @@
     backdrop-filter: blur(5px);
     margin-bottom: 2rem;
     margin-right: 2rem;
-    position: relative;
+    position:absolute;
+    left: 90%;
+    bottom: 2vh;
     z-index: 2000;
 }
 
-.description h3 {
+h3 .slide-title {
     color: var(--accent);
     font-size: 10rem;
     margin-bottom: 0.5rem;
     font-weight: 400;
-}
-
-.description p {
-    color: #ccc;
-    font-size: 0.85rem;
-    line-height: 1.4;
 }
 
 .return-arrow {
