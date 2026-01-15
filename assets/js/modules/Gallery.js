@@ -48,7 +48,7 @@ export default class Gallery {
             <div class="gallery-module">
                 <!-- Header -->
                 <div class="category">
-                    <p>The Life of an Artist</p>
+                    <p.logo>The Life of an Artist</p.logo>
                     <p>${this.categoryTitle}</p>
                 </div>
 

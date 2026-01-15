@@ -32,7 +32,7 @@
 
 /* 3. Header Areas */
 .logo {
-  grid-area: categoty;
+  grid-area: logo;
   align-self: start;      /* top */
   justify-self: center;   /* horizontal center */
 }
@@ -51,7 +51,7 @@
     color: var(--accent); /* Bronze color */
 }
 
-.logo p {
+p.logo  {
     font-family: 'Bonheur Royale', cursive;
     font-size: 2.5rem;
 }
