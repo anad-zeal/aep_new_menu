@@ -48,9 +48,14 @@ function handleNavigation(action, payload = null) {
         document.body.classList.remove('viewing-content');
 
         document.getElementById(rootElementId).innerHTML = `
-            <div class="site-title">
-                <h1>The Life of an Artist</h1>
-            </div>`;
+            <main id="app-root" class="app-container">
+        <div class="site-title">
+            <h1>The Life of an Artist</h1>
+        </div>
+        <div class="artist-name">
+            <p>Alexis Elza</p>
+        </div>
+    </main>`;
     }
     else {
         // CONTENT STATE: Add class to fade out image and turn text Gold
