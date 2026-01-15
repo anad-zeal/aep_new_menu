@@ -269,6 +269,19 @@ body.viewing-content::before {
     margin-top: -1rem;
     letter-spacing: 2px;
     text-align: center;
+
+    /* Animation Settings */
+    opacity: 0;                    /* Start invisible */
+    animation-name: fadeInStatic;  /* Use the new no-movement fade */
+    animation-duration: 3s;        /* Fade in takes 3 seconds */
+    animation-delay: 3s;           /* Wait 5s for zoomText to finish */
+    animation-fill-mode: forwards; /* Keep opacity: 1 after animation ends */
+}
+
+/* Add this to your animations section */
+@keyframes fadeInStatic {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Footer */
