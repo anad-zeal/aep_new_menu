@@ -78,7 +78,7 @@
     align-items: center;
     color: var(--text-muted);
     transition: color 0.3s ease;
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: 100;
 }
 
@@ -96,8 +96,8 @@
     border-right: 2px solid currentColor;
 }*/
 
-.prev-btn::before { transform: rotate(-135deg); }
-.next-btn::before { transform: rotate(45deg); }
+/* .prev-btn::before { transform: rotate(-135deg); }
+.next-btn::before { transform: rotate(45deg); } */
 
 
 /* 5. The Slideshow Stage (Stacking Context) */
