@@ -78,6 +78,7 @@
     align-items: center;
     color: var(--text-muted);
     transition: color 0.3s ease;
+    font-size: 20rem;
 }
 
 .gallery-nav-btn:hover {
