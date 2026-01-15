@@ -94,8 +94,8 @@
     border-right: 2px solid currentColor;
 }
 
-.prev-btn::before { transform: rotate(-135deg); }
-.next-btn::before { transform: rotate(45deg); }
+/* .prev-btn::before { transform: rotate(-135deg); }
+.next-btn::before { transform: rotate(45deg); } */
 
 
 /* 5. The Slideshow Stage (Stacking Context) */
