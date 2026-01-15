@@ -44,14 +44,14 @@
     text-align: right;
 }
 
-.logo p, .category p {
+p.logo, .category p {
     margin: 0;
     line-height: 1;
     white-space: nowrap;
     color: var(--accent); /* Bronze color */
 }
 
-p.logo  {
+p.logo {
     font-family: 'Bonheur Royale', cursive;
     font-size: 2.5rem;
 }
