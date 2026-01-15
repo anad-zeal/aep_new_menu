@@ -245,10 +245,9 @@ body.viewing-content::before {
     font-weight: normal;
     color: var(--text-main);
     line-height: 1; /* Prevents vertical jitter during zoom */
-    
     /* Animation Configuration */
     animation-name: zoomText;
-    animation-duration: 5s;
+    animation-duration: 3s;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards; /* Stays at 13rem after finishing */
 }
