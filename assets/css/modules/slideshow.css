@@ -15,7 +15,7 @@
     inset: 0;
     width: 100vw;
     height: 100vh;
-    background-color: transparent
+    background-color: transparent;
     z-index: 100; /* Sit on top of everything */
 
     display: grid;
@@ -37,26 +37,26 @@
   justify-self: center;   /* horizontal center */
 }
 
-.category {
+.category-wrapper{
     grid-area: category;
     align-self: start;
     justify-self: end;
     text-align: right;
 }
 
-p.logo, .category p {
+p.logo, p.category{
     margin: 0;
     line-height: 1;
     white-space: nowrap;
     color: var(--accent); /* Bronze color */
 }
 
-p.logo {
+p.logo{
     font-family: 'Bonheur Royale', cursive;
     font-size: 2.5rem;
 }
 
-.category p {
+p.category {
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 1.2rem;
     text-transform: uppercase;

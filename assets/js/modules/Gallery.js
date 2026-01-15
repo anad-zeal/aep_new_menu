@@ -47,9 +47,9 @@ export default class Gallery {
         this.container.innerHTML = `
             <div class="gallery-module">
                 <!-- Header -->
-                <div class="category">
+                <div class="category-wrapper">
                     <p class="logo">The Life of an Artist</p>
-                    <p>${this.categoryTitle}</p>
+                    <p class="category">${this.categoryTitle}</p>
                 </div>
 
                 <!-- Nav -->
