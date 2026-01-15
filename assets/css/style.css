@@ -247,7 +247,7 @@ body.viewing-content::before {
     line-height: 1; /* Prevents vertical jitter during zoom */
     /* Animation Configuration */
     animation-name: zoomText;
-    animation-duration: 1s;
+    animation-duration: 1.5s;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards; /* Stays at 13rem after finishing */
 }
@@ -274,7 +274,7 @@ body.viewing-content::before {
     opacity: 0;                    /* Start invisible */
     animation-name: fadeInStatic;  /* Use the new no-movement fade */
     animation-duration: 3s;        /* Fade in takes 3 seconds */
-    animation-delay: 2.5s;           /* Wait 5s for zoomText to finish */
+    animation-delay: 1.5s;           /* Wait 5s for zoomText to finish */
     animation-fill-mode: forwards; /* Keep opacity: 1 after animation ends */
 }
 
