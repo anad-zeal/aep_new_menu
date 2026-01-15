@@ -273,8 +273,8 @@ body.viewing-content::before {
     /* Animation Settings */
     opacity: 0;                    /* Start invisible */
     animation-name: fadeInStatic;  /* Use the new no-movement fade */
-    animation-duration: 3s;        /* Fade in takes 3 seconds */
-    animation-delay: 1.5s;           /* Wait 5s for zoomText to finish */
+    animation-duration: 1.5s;        /* Fade in takes 3 seconds */
+    animation-delay: 1.1s;           /* Wait 5s for zoomText to finish */
     animation-fill-mode: forwards; /* Keep opacity: 1 after animation ends */
 }
 
