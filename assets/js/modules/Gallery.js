@@ -55,9 +55,10 @@ export default class Gallery {
                 <!-- Header -->
                     <p class="logo">The Life of an Artist</p>
                     <p class="category">
-                    <h4>The</h4>
-                    ${this.categoryTitle}</p>
-                    <h4>Gallery</h4>
+                   <!-- <span><h4>The</h4></span> -->
+                    ${this.categoryTitle}
+                   <!-- <span><h4>Gallery</h4></span> -->
+                    </p>
 
                 <!-- Nav -->
                 <div class="prev-arrow">
