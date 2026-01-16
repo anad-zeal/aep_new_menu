@@ -141,7 +141,7 @@ p.category {
     align-self: end;
     justify-self: end;
     
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.9);
     border: 1px solid #333;
     padding: 1rem;
     max-width: 300px;
