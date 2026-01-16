@@ -64,6 +64,16 @@ p.category {
     letter-spacing: 2px;
 }
 
+.category-wrapper h4 {
+    font-family: var(--font-headline);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    margin: 0;
+    color: var(--accent); /* Bronze color */
+}
+
 /* 4. Navigation Arrows (Prev/Next) */
 .prev-arrow { grid-area: prev-arrow; }
 .next-arrow { grid-area: next-arrow; }

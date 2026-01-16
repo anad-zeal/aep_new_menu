@@ -278,7 +278,6 @@ body.viewing-content::before {
     animation-fill-mode: forwards; /* Keep opacity: 1 after animation ends */
 }
 
-/* Add this to your animations section */
 @keyframes fadeInStatic {
     from { opacity: 0; }
     to { opacity: 1; }
