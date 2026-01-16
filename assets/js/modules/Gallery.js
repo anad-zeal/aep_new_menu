@@ -4,8 +4,14 @@ export default class Gallery {
         this.slidesData = [];
         this.slideElements = [];
         this.currentIndex = 0;
+        
+        // Automation
         this.timer = null;
-        this.intervalTime = 5000; // 5 seconds per slide
+        this.intervalTime = 5000; 
+        
+        // Text Fade Timer
+        this.textTimer = null; 
+        
         this.categoryTitle = "";
     }
 
@@ -59,7 +65,6 @@ export default class Gallery {
 
                 <!-- Slides Container -->
                 <div class="gallery-stage" id="gallery-stage">
-
                     <!-- Images injected here -->
                 </div>
 
@@ -88,7 +93,8 @@ export default class Gallery {
             // The first image starts active
             if (index === 0) {
                 img.classList.add('active');
-                this.updateText(0);
+                // true = load text immediately (no fade in)
+                this.updateText(0, true);
             }
 
             stage.appendChild(img);
@@ -123,15 +129,42 @@ export default class Gallery {
         const nextImg = this.slideElements[newIndex];
         if (nextImg) nextImg.classList.add('active');
 
-        // Update Text
-        this.updateText(newIndex);
+        // Update Text (false = animate the fade)
+        this.updateText(newIndex, false);
 
         this.currentIndex = newIndex;
     }
 
-    updateText(index) {
+    /**
+     * Updates the title text with a fade out/in effect
+     * @param {number} index - Index of data
+     * @param {boolean} immediate - If true, skip fade (for first load)
+     */
+    updateText(index, immediate) {
         const data = this.slidesData[index];
-        this.titleEl.textContent = data.title ;
+        const newTitle = data.title || '';
+
+        // Immediate load (initial render)
+        if (immediate) {
+            this.titleEl.textContent = newTitle;
+            this.titleEl.style.opacity = '1';
+            return;
+        }
+
+        // --- Crossfade Logic ---
+        
+        // 1. Clear any pending timers
+        if (this.textTimer) clearTimeout(this.textTimer);
+
+        // 2. Fade Out
+        this.titleEl.style.opacity = '0';
+
+        // 3. Wait for fade out (500ms matches CSS transition)
+        this.textTimer = setTimeout(() => {
+            this.titleEl.textContent = newTitle;
+            // 4. Fade In
+            this.titleEl.style.opacity = '1';
+        }, 500);
     }
 
     next() {
@@ -162,6 +195,7 @@ export default class Gallery {
 
     destroy() {
         clearInterval(this.timer);
+        if (this.textTimer) clearTimeout(this.textTimer);
         document.removeEventListener('keydown', this.handleKeydown);
         this.container.innerHTML = '';
         this.slideElements = [];

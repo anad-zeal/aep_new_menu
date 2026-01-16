@@ -2,11 +2,10 @@
    Slideshow Module - Grid Layout & Crossfade
    ========================================= */
 
-/* 1. Global Override for Slideshow Mode
-   (Hides standard page elements if needed,
-   or ensures the module fills the screen) */
+/* 1. Global Override for Slideshow Mode */
 :root {
-    --slide-duration: 1s; /* Crossfade speed */
+    --slide-duration: 1s; /* Crossfade speed for images */
+    --text-fade-duration: 0.5s; /* Crossfade speed for title text */
 }
 
 /* 2. The Main Grid Container */
@@ -83,16 +82,11 @@ p.category {
     font-family: var(--font-nav);
     font-size: 6rem;
     font-weight: 100;
-
 }
 
 .gallery-nav-btn:hover {
     color: var(--accent);
 }
-
-/* .prev-btn::before { transform: rotate(-135deg); }
-.next-btn::before { transform: rotate(45deg); } */
-
 
 /* 5. The Slideshow Stage (Stacking Context) */
 .gallery-stage {
@@ -149,18 +143,22 @@ p.category {
     width: 40vw;
 }
 
+/* --- TEXT CROSSFADE LOGIC ADDED HERE --- */
 .slide-title {
     color: var(--accent);
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
     font-weight: 300;
     text-align: center;
+    
+    opacity: 1;
+    transition: opacity var(--text-fade-duration) ease-in-out;
 }
 
 .return-arrow {
     grid-area: return-arrow;
     align-self: end;
-    display: block; /* Hidden based on your new SPA nav, but kept for layout structure */
+    display: block; 
 }
 
 /* 7. Loading Spinner */
