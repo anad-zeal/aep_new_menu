@@ -65,7 +65,7 @@ p.category {
 }
 
 .category-wrapper h4 {
-    font-family: var(--font-headline);
+    font-family: var(--font-rounded);
     font-size: 1.2rem;
     text-transform: lowercase;
     font-style: italic;
