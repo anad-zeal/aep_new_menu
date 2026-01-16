@@ -12,6 +12,7 @@
 /* 2. The Main Grid Container */
 .gallery-module {
     position: fixed;
+    top: -4vh;
     inset: 0;
     width: 100vw;
     height: 100vh;
