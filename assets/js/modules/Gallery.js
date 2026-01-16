@@ -54,7 +54,10 @@ export default class Gallery {
             <div class="gallery-module">
                 <!-- Header -->
                     <p class="logo">The Life of an Artist</p>
-                    <p class="category">${this.categoryTitle}</p>
+                    <p class="category">
+                    <h4>The</h4>
+                    ${this.categoryTitle}</p>
+                    <h4>Gallery</h4>
 
                 <!-- Nav -->
                 <div class="prev-arrow">
