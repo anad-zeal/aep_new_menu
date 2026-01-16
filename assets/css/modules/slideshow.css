@@ -67,7 +67,8 @@ p.category {
 .category-wrapper h4 {
     font-family: var(--font-headline);
     font-size: 1.2rem;
-    text-transform: uppercase;
+    text-transform: lowercase;
+    font-style: italic s;
     text-align: center;
     letter-spacing: 2px;
     margin: 0;
