@@ -149,7 +149,7 @@ p.category {
     width: 40vw;
 }
 
-h3 #slide-title {
+#slide-title {
     color: var(--accent);
     font-size: 10rem;
     margin-bottom: 0.5rem;
