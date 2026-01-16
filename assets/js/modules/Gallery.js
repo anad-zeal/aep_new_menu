@@ -53,6 +53,9 @@ export default class Gallery {
         this.container.innerHTML = `
             <div class="gallery-module">
                 <!-- Header -->
+                <div class="logo-wrapper">
+                    <p class="logo">The Life of an Artist</p>
+                </div>
                 <div class="category-wrapper">
                     <h4>The</h4>
                     <p class="category">${this.categoryTitle}</p>
