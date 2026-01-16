@@ -54,6 +54,7 @@ p.logo, p.category{
 p.logo{
     font-family: 'Bonheur Royale', cursive;
     font-size: 2.5rem;
+    margin-bottom: 3vh;
 }
 
 p.category {
@@ -88,16 +89,6 @@ p.category {
 .gallery-nav-btn:hover {
     color: var(--accent);
 }
-
-/* Chevron Styling using CSS borders 
-.gallery-nav-btn::before {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 20px;
-    border-top: 2px solid currentColor;
-    border-right: 2px solid currentColor;
-}*/
 
 /* .prev-btn::before { transform: rotate(-135deg); }
 .next-btn::before { transform: rotate(45deg); } */
