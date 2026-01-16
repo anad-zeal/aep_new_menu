@@ -4,27 +4,26 @@ export default class Gallery {
         this.slidesData = [];
         this.slideElements = [];
         this.currentIndex = 0;
-        
-        // Automation
         this.timer = null;
-        this.intervalTime = 5000; 
-        
-        // Text Transition Timer
-        this.textTimer = null; 
-        
+        this.intervalTime = 5000; // 5 seconds per slide
         this.categoryTitle = "";
     }
 
+    /**
+     * Initialize the gallery
+     * @param {string} categorySlug - e.g. 'black-and-white'
+     */
     async init(categorySlug) {
+        // Pretty print title from slug
         this.categoryTitle = categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
         this.renderLoading();
-        
+
         try {
             const response = await fetch(`json-files/${categorySlug}-slideshow.json`);
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            
             this.slidesData = await response.json();
-            
+
             if (this.slidesData.length === 0) {
                 this.container.innerHTML = '<p style="text-align:center; padding:2rem;">No images found.</p>';
                 return;
@@ -44,53 +43,54 @@ export default class Gallery {
     }
 
     renderLayout() {
-        // 1. Create DOM Structure
+        // 1. Create the DOM Structure
         this.container.innerHTML = `
             <div class="gallery-module">
                 <!-- Header -->
-                <div class="logo"><p>The Life of an Artist</p></div>
-                <div class="category"><p>${this.categoryTitle}</p></div>
+                <div class="category-wrapper">
+                    <p class="logo">The Life of an Artist</p>
+                    <p class="category">${this.categoryTitle}</p>
+                </div>
 
                 <!-- Nav -->
                 <div class="prev-arrow">
-                    <button class="gallery-nav-btn prev-btn" aria-label="Previous Slide"></button>
+                    <button class="gallery-nav-btn prev-btn" aria-label="Previous Slide"><</button>
                 </div>
 
                 <!-- Slides Container -->
                 <div class="gallery-stage" id="gallery-stage">
-                    <div class="loader"></div>
+
                     <!-- Images injected here -->
                 </div>
 
                 <!-- Nav -->
                 <div class="next-arrow">
-                    <button class="gallery-nav-btn next-btn" aria-label="Next Slide"></button>
+                    <button class="gallery-nav-btn next-btn" aria-label="Next Slide">></button>
                 </div>
 
                 <!-- Footer / Description -->
                 <div class="description">
-                    <h3 id="slide-title"></h3>
+                    <h3 class="slide-title"></h3>
                 </div>
             </div>
         `;
 
         // 2. Cache Elements
         const stage = document.getElementById('gallery-stage');
-        this.titleEl = document.getElementById('slide-title');
+        this.titleEl = this.container.querySelector('.slide-title');
 
-        // 3. Create ALL Image Elements (Stacking)
+        // 3. Create ALL Image Elements immediately (Stacking)
         this.slidesData.forEach((data, index) => {
             const img = document.createElement('img');
             img.src = data.src;
             img.alt = data.alt || data.title;
-            
-            // First image starts active
+
+            // The first image starts active
             if (index === 0) {
                 img.classList.add('active');
-                // Pass true to load text immediately without fading
-                this.updateText(0, true);
+                this.updateText(0);
             }
-            
+
             stage.appendChild(img);
             this.slideElements.push(img);
         });
@@ -105,7 +105,8 @@ export default class Gallery {
             this.resetTimer();
             this.next();
         });
-        
+
+        // Keyboard Nav
         this.handleKeydown = (e) => {
             if (e.key === 'ArrowLeft') { this.resetTimer(); this.prev(); }
             if (e.key === 'ArrowRight') { this.resetTimer(); this.next(); }
@@ -114,49 +115,23 @@ export default class Gallery {
     }
 
     updateSlide(newIndex) {
-        // Image Crossfade
+        // Remove active class from current
         const currentImg = this.slideElements[this.currentIndex];
         if (currentImg) currentImg.classList.remove('active');
 
+        // Add active class to new
         const nextImg = this.slideElements[newIndex];
         if (nextImg) nextImg.classList.add('active');
 
-        // Text Crossfade (false = animate it)
-        this.updateText(newIndex, false);
+        // Update Text
+        this.updateText(newIndex);
 
         this.currentIndex = newIndex;
     }
 
-    /**
-     * Updates the title text with a fade out/in effect
-     * @param {number} index - Index of data
-     * @param {boolean} immediate - If true, skip fade (for first load)
-     */
-    updateText(index, immediate) {
+    updateText(index) {
         const data = this.slidesData[index];
-        const newTitle = data.title || '';
-
-        // If specific logic for first load (no fade)
-        if (immediate) {
-            this.titleEl.textContent = newTitle;
-            this.titleEl.style.opacity = '1';
-            return;
-        }
-
-        // --- Crossfade Logic ---
-        
-        // 1. Clear any pending fade timers if user clicks fast
-        if (this.textTimer) clearTimeout(this.textTimer);
-
-        // 2. Fade Out
-        this.titleEl.style.opacity = '0';
-
-        // 3. Wait for fade out (500ms matches CSS --text-fade-duration)
-        this.textTimer = setTimeout(() => {
-            this.titleEl.textContent = newTitle;
-            // 4. Fade In
-            this.titleEl.style.opacity = '1';
-        }, 500);
+        this.titleEl.textContent = data.title ;
     }
 
     next() {
@@ -170,6 +145,8 @@ export default class Gallery {
         if (newIndex < 0) newIndex = this.slidesData.length - 1;
         this.updateSlide(newIndex);
     }
+
+    // --- Automation Logic ---
 
     startSlideshow() {
         if (this.timer) clearInterval(this.timer);
@@ -185,7 +162,6 @@ export default class Gallery {
 
     destroy() {
         clearInterval(this.timer);
-        if (this.textTimer) clearTimeout(this.textTimer);
         document.removeEventListener('keydown', this.handleKeydown);
         this.container.innerHTML = '';
         this.slideElements = [];

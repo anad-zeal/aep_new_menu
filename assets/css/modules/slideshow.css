@@ -2,10 +2,11 @@
    Slideshow Module - Grid Layout & Crossfade
    ========================================= */
 
-/* 1. Global Override */
+/* 1. Global Override for Slideshow Mode
+   (Hides standard page elements if needed,
+   or ensures the module fills the screen) */
 :root {
-    --slide-duration: 1s; /* Crossfade speed for images */
-    --text-fade-duration: 0.5s; /* Speed for text fade (half of image speed works best) */
+    --slide-duration: 1s; /* Crossfade speed */
 }
 
 /* 2. The Main Grid Container */
@@ -14,54 +15,57 @@
     inset: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--bg-body);
-    z-index: 100;
-    
+    background-color: transparent;
+    z-index: 100; /* Sit on top of everything */
+
     display: grid;
-    grid-template-columns: 80px 1fr 80px; 
-    grid-template-rows: 80px 1fr auto;
+    grid-template-columns: 80px 1fr 80px; /* Left Nav | Image | Right Nav */
+    grid-template-rows: 80px 1fr auto;     /* Header | Image | Footer/Desc */
     grid-template-areas:
-        'logo . category'
+        '. logo category'
         'prev-arrow slideshow next-arrow'
         'return-arrow . description';
-    
+
     padding: 1rem;
     box-sizing: border-box;
 }
 
 /* 3. Header Areas */
 .logo {
-    grid-area: logo;
-    align-self: start;
-    justify-self: start;
+  grid-area: logo;
+  align-self: start;      /* top */
+  justify-self: center;   /* horizontal center */
 }
-.category {
+
+.category-wrapper{
     grid-area: category;
     align-self: start;
     justify-self: end;
     text-align: right;
 }
 
-.logo p, .category p {
+p.logo, p.category{
     margin: 0;
     line-height: 1;
     white-space: nowrap;
-    color: var(--brand-gold);
+    color: var(--accent); /* Bronze color */
 }
 
-.logo p {
+p.logo{
     font-family: 'Bonheur Royale', cursive;
     font-size: 2.5rem;
+    margin-bottom: 3vh;
 }
 
-.category p {
+p.category {
+    text-align: center;
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-/* 4. Navigation Arrows */
+/* 4. Navigation Arrows (Prev/Next) */
 .prev-arrow { grid-area: prev-arrow; }
 .next-arrow { grid-area: next-arrow; }
 
@@ -76,57 +80,57 @@
     align-items: center;
     color: var(--text-muted);
     transition: color 0.3s ease;
-    outline: none;
+    font-family: var(--font-nav);
+    font-size: 6rem;
+    font-weight: 100;
+
 }
 
 .gallery-nav-btn:hover {
-    color: var(--brand-gold);
+    color: var(--accent);
 }
 
-/* Chevron Styling */
-.gallery-nav-btn::before {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 20px;
-    border-top: 2px solid currentColor;
-    border-right: 2px solid currentColor;
-}
+/* .prev-btn::before { transform: rotate(-135deg); }
+.next-btn::before { transform: rotate(45deg); } */
 
-.prev-btn::before { transform: rotate(-135deg); }
-.next-btn::before { transform: rotate(45deg); }
 
-/* 5. The Slideshow Stage */
+/* 5. The Slideshow Stage (Stacking Context) */
 .gallery-stage {
     grid-area: slideshow;
     position: relative;
+    top: -5vh;
     width: 100%;
     height: 100%;
     display: grid;
     place-items: center;
-    overflow: hidden;
+    overflow: visible;
 }
 
+/*
+   THE CROSSFADE MAGIC:
+   All slides sit in the same grid cell (1/1).
+   They are stacked on top of each other.
+   We toggle opacity to show/hide them.
+*/
 .gallery-stage img {
-    grid-area: 1 / 1; 
+    grid-area: 1 / 1;
     max-width: 100%;
-    max-height: 100%;
+    max-height: 100vh;
     width: auto;
     height: auto;
-    object-fit: contain;
-    margin: auto;
-    
-    opacity: 0;
+    object-fit: none;
+
+    opacity: 0; /* Hidden by default */
     transition: opacity var(--slide-duration) ease-in-out;
     z-index: 1;
 }
 
 .gallery-stage img.active {
-    opacity: 1;
+    opacity: 1; /* Visible */
     z-index: 2;
 }
 
-/* 6. Description (Title) */
+/* 6. Description & Footer */
 .description {
     grid-area: description;
     align-self: end;
@@ -138,22 +142,25 @@
     max-width: 300px;
     border-radius: 4px;
     backdrop-filter: blur(5px);
-    margin-bottom: 2rem;
-    margin-right: 2rem;
+    position:absolute;
+    right: 2vw;
+    bottom: 6vh;
+    z-index: 2000;
+    width: 40vw;
 }
 
-.description h3 {
-    color: var(--brand-gold);
-    font-size: 1rem;
-    margin: 0;
-    font-weight: 400;
-    line-height: 1.4;
+.slide-title {
+    color: var(--accent);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+    text-align: center;
 }
 
-/* --- NEW: Text Cross-Fade Logic --- */
-#slide-title {
-    opacity: 1;
-    transition: opacity var(--text-fade-duration) ease-in-out;
+.return-arrow {
+    grid-area: return-arrow;
+    align-self: end;
+    display: block; /* Hidden based on your new SPA nav, but kept for layout structure */
 }
 
 /* 7. Loading Spinner */
@@ -163,7 +170,7 @@
     width: 40px;
     height: 40px;
     border: 3px solid #333;
-    border-top: 3px solid var(--brand-gold);
+    border-top: 3px solid var(--accent);
     border-radius: 50%;
     animation: spin 1s linear infinite;
     justify-self: center;
@@ -189,6 +196,7 @@
         margin: 0;
         border: none;
         border-top: 1px solid #333;
+        z-index: 2000;
     }
     
     .logo p { font-size: 1.8rem; padding-left: 10px;}
