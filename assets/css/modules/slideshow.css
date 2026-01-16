@@ -58,7 +58,7 @@ p.logo{
 
 p.category {
     text-align: center;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: var(--font-rounded);
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 2px;
