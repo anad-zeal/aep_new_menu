@@ -51,14 +51,10 @@ export default class Gallery {
     renderLayout() {
         // 1. Create the DOM Structure
         this.container.innerHTML = `
-            < class="gallery-module">
+            <div class="gallery-module">
                 <!-- Header -->
                     <p class="logo">The Life of an Artist</p>
-                <div class="category-wrapper">
-                    <h4>The</h4>
                     <p class="category">${this.categoryTitle}</p>
-                    <h4>Gallery</h4>
-                </div>
 
                 <!-- Nav -->
                 <div class="prev-arrow">
