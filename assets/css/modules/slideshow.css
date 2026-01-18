@@ -38,11 +38,12 @@
     font-size: 1.5rem;
 }
 
-.category{
+.category {
     grid-area: category;
     align-self: start;
     justify-self: end;
     text-align: right;
+    border: solid red 5px ;
 }
 
 p.logo, p.category{
