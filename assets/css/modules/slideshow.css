@@ -52,10 +52,6 @@ p.logo, p.category{
     color: var(--accent); /* Bronze color */
 }
 
-p.logo{
-  
-    /* margin-bottom: 3vh; */
-}
 
 p.category {
     text-align: center;
