@@ -43,7 +43,7 @@
     align-self: start;
     justify-self: end;
     text-align: right;
-    border: solid red 5px ;
+    width: 10vw;
 }
 
 p.logo, p.category{
