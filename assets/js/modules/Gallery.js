@@ -147,13 +147,13 @@ export default class Gallery {
 
         // Immediate load (initial render)
         if (immediate) {
-            this.titleEl.textContent = newTitle;
+            this.titleEl.innerHTML = newTitle;
             this.titleEl.style.opacity = '1';
             return;
         }
 
         // --- Crossfade Logic ---
-        
+
         // 1. Clear any pending timers
         if (this.textTimer) clearTimeout(this.textTimer);
 

@@ -42,7 +42,7 @@
     grid-area: category;
     align-self: start;
     justify-self: end;
-    text-align: right;
+    text-align: center;
     width: 10vw;
 }
 
@@ -52,7 +52,6 @@ p.logo, p.category{
     white-space: nowrap;
     color: var(--accent); /* Bronze color */
 }
-
 
 p.category {
     text-align: center;
