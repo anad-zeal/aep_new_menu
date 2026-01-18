@@ -37,7 +37,7 @@
    2. Body & Background Image Logic
    ========================================= */
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-rounded);
     
     /* Default Background Color (Revealed when image fades out) */
     background-color: var(--gallery-bg);
