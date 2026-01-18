@@ -55,9 +55,7 @@ export default class Gallery {
                 <!-- Header -->
                     <p class="logo">The Life of an Artist</p>
                     <p class="category">
-                  
                     ${this.categoryTitle}
-                  
                     </p>
 
                 <!-- Nav -->
