@@ -4,14 +4,14 @@ export default class Gallery {
         this.slidesData = [];
         this.slideElements = [];
         this.currentIndex = 0;
-        
+
         // Automation
         this.timer = null;
-        this.intervalTime = 5000; 
-        
+        this.intervalTime = 5000;
+
         // Text Fade Timer
-        this.textTimer = null; 
-        
+        this.textTimer = null;
+
         this.categoryTitle = "";
     }
 
@@ -21,7 +21,8 @@ export default class Gallery {
      */
     async init(categorySlug) {
         // Pretty print title from slug
-        this.categoryTitle = categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        this.categoryTitle = "<p>The</p><p>" + 
+        categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) + "</p><p>Gallery</p>";
 
         this.renderLoading();
 
@@ -54,9 +55,9 @@ export default class Gallery {
             <div class="gallery-module">
                 <!-- Header -->
                     <p class="logo">The Life of an Artist</p>
-                    <p class="category">
+                    <div class="category">
                     ${this.categoryTitle}
-                    </p>
+                    </div>
 
                 <!-- Nav -->
                 <div class="prev-arrow">
