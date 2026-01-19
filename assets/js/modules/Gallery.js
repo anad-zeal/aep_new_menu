@@ -117,7 +117,7 @@ export default class Gallery {
                 this.titleEl.textContent = firstData.title || '';
                 this.titleEl.style.opacity = '1';
             }
-        }, 500); // 50ms delay triggers the transition
+        }, 500``); // 50ms delay triggers the transition
 
         // 5. Bind Events
         this.container.querySelector('.prev-btn').addEventListener('click', () => {
