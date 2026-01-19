@@ -1,49 +1,109 @@
 [
   {
-    "id": "proj-1766448182703-0",
-    "title": "0800 o'clock",
-    "src": "assets/images/project-series/0800.jpg",
-    "description": "Description for 0800",
-    "medium": "Watercolor on canvas",
-    "dimensions": "65' X 65\""
-  },
-  {
-    "id": "proj-1766448182703-1",
-    "title": "Calliope",
-    "src": "assets/images/project-series/calliope.jpg",
-    "description": "Description for Calliope",
+    "id": "bw-1",
+    "title": "NM",
+    "src": "assets/images/black-and-white/nm.jpg",
+    "caption": "NM",
+    "description": "Description for NM",
     "medium": "Medium TBD",
     "dimensions": "00\" x 00\""
   },
   {
-    "id": "proj-1766448182703-2",
-    "title": "Magic Flute",
-    "src": "assets/images/project-series/magic-flute.jpg",
-    "description": "Description for Magic Flute",
+    "id": "bw-2",
+    "title": "Serengeti",
+    "src": "assets/images/black-and-white/serengeti.jpg",
+    "caption": "Serengeti",
+    "description": "Description for Serengeti",
     "medium": "Medium TBD",
     "dimensions": "00\" x 00\""
   },
   {
-    "id": "proj-1766448182704-3",
-    "title": "Morphean",
-    "src": "assets/images/project-series/morphean.jpg",
-    "description": "Description for Morphean",
+    "id": "bw-3",
+    "title": "Tsunami",
+    "src": "assets/images/black-and-white/tsunami.jpg",
+    "caption": "Tsunami",
+    "description": "Description for Tsunami",
     "medium": "Medium TBD",
     "dimensions": "00\" x 00\""
   },
   {
-    "id": "proj-1766448182704-4",
-    "title": "Radish",
-    "src": "assets/images/project-series/radish.jpg",
-    "description": "Description for Radish",
+    "id": "bw-4",
+    "title": "Close Encounter",
+    "src": "assets/images/black-and-white/close-encounter.jpg",
+    "caption": "Close Encounter",
+    "description": "Description for Close Encounter",
     "medium": "Medium TBD",
     "dimensions": "00\" x 00\""
   },
   {
-    "id": "proj-1766448182704-5",
-    "title": "Tui",
-    "src": "assets/images/project-series/tui.jpg",
-    "description": "Description for Tui",
+    "id": "bw-5",
+    "title": "Earth, Wind And Fire",
+    "src": "assets/images/black-and-white/earth-wind-and-fire.jpg",
+    "caption": "Earth, Wind And Fire",
+    "description": "Description for Earth, Wind And Fire",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "bw-7",
+    "title": "Evidence Of An Iron Horse",
+    "src": "assets/images/black-and-white/evidence-of-an-iron-horse.jpg",
+    "caption": "Evidence Of An Iron Horse",
+    "description": "Description for Evidence Of An Iron Horse",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "bw-8",
+    "title": "Green Pond",
+    "src": "assets/images/black-and-white/green-pond.jpg",
+    "caption": "Green Pond",
+    "description": "Description for Green Pond",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "bw-9",
+    "title": "How I Imagine Minnesota",
+    "src": "assets/images/black-and-white/how-i-imagine-minnesota.jpg",
+    "caption": "How I Imagine Minnesota",
+    "description": "Description for How I Imagine Minnesota",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "bw-10",
+    "title": "Low Tide Somasian Shore",
+    "src": "assets/images/black-and-white/low-tide-somasian-shore.jpg",
+    "caption": "Low Tide Somasian Shore",
+    "description": "Description for Low Tide Somasian Shore",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "bw-11",
+    "title": "North By Northwest",
+    "src": "assets/images/black-and-white/north-by-northwest.jpg",
+    "caption": "North By Northwest",
+    "description": "Description for North By Northwest",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "bw-12",
+    "title": "Spartobranchus Tenuis",
+    "src": "assets/images/black-and-white/spartobranchus-tenuis.jpg",
+    "caption": "Spartobranchus Tenuis",
+    "description": "Description for Spartobranchus Tenuis",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "bw-13",
+    "title": "The Big Island",
+    "src": "assets/images/black-and-white/the-big-island.jpg",
+    "caption": "The Big Island",
+    "description": "Description for The Big Island",
     "medium": "Medium TBD",
     "dimensions": "00\" x 00\""
   }
