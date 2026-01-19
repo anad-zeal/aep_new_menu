@@ -153,10 +153,9 @@ p.category {
     grid-area: description;
     align-self: end;
     justify-self: end;
-    
     background-color: rgba(0, 0, 0, 0.9);
     border: 1px solid #333;
-    padding: 1rem;
+    padding: 0.5rem;
     max-width: 300px;
     border-radius: 4px;
     backdrop-filter: blur(5px);
@@ -173,7 +172,6 @@ p.category {
     margin-bottom: 0.5rem;
     font-weight: 300;
     text-align: center;
-    
     /* Start hidden for fade-in */
     opacity: 0; 
     transition: opacity var(--text-fade-duration) ease-in-out;
