@@ -4,14 +4,14 @@ export default class Gallery {
         this.slidesData = [];
         this.slideElements = [];
         this.currentIndex = 0;
-        
+
         // Automation
         this.timer = null;
-        this.intervalTime = 5000; 
-        
+        this.intervalTime = 5000;
+
         // Text Fade Timer
-        this.textTimer = null; 
-        
+        this.textTimer = null;
+
         this.categoryTitle = "";
     }
 
@@ -50,12 +50,12 @@ export default class Gallery {
 
     renderLayout() {
         // 1. Create the DOM Structure
-        // Updates: 
+        // Updates:
         // - Separated .logo and .category divs to match grid-template-areas
         // - Added <h4> tags for "collection" and "series"
         this.container.innerHTML = `
             <div class="gallery-module">
-                
+
                 <!-- Logo Area -->
                 <div class="logo">
                     <p class="logo">The Life of an Artist</p>
@@ -64,7 +64,7 @@ export default class Gallery {
                 <!-- Category Area -->
                 <div class="category">
                     <div class="category-wrapper">
-                        <h4>collection</h4>
+                        <h4>the</h4>
                         <p class="category">${this.categoryTitle}</p>
                         <h4>series</h4>
                     </div>
