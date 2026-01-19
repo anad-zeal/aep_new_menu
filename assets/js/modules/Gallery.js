@@ -4,14 +4,14 @@ export default class Gallery {
         this.slidesData = [];
         this.slideElements = [];
         this.currentIndex = 0;
-
+        
         // Automation
         this.timer = null;
-        this.intervalTime = 5000;
-
+        this.intervalTime = 5000; 
+        
         // Text Fade Timer
-        this.textTimer = null;
-
+        this.textTimer = null; 
+        
         this.categoryTitle = "";
     }
 
@@ -21,8 +21,7 @@ export default class Gallery {
      */
     async init(categorySlug) {
         // Pretty print title from slug
-        this.categoryTitle = "<p>The</p><p>" + 
-        categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) + "</p><p>Gallery</p>";
+        this.categoryTitle = categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
         this.renderLoading();
 
@@ -46,7 +45,7 @@ export default class Gallery {
     }
 
     renderLoading() {
-        this.container.innerHTML = '<div class="gallery-module-wrapper"><div class="loader"></div></div>';
+        this.container.innerHTML = '<div style="display:flex;height:100vh;justify-content:center;align-items:center;"><div class="loader"></div></div>';
     }
 
     renderLayout() {
@@ -54,10 +53,10 @@ export default class Gallery {
         this.container.innerHTML = `
             <div class="gallery-module">
                 <!-- Header -->
+                <div class="category-wrapper">
                     <p class="logo">The Life of an Artist</p>
-                    <div class="category">
-                    ${this.categoryTitle}
-                    </div>
+                    <p class="category">${this.categoryTitle}</p>
+                </div>
 
                 <!-- Nav -->
                 <div class="prev-arrow">
@@ -90,19 +89,27 @@ export default class Gallery {
             const img = document.createElement('img');
             img.src = data.src;
             img.alt = data.alt || data.title;
-
-            // The first image starts active
-            if (index === 0) {
-                img.classList.add('active');
-                // true = load text immediately (no fade in)
-                this.updateText(0, true);
-            }
-
+            // Note: We do NOT add the active class here. We wait for the DOM to paint.
             stage.appendChild(img);
             this.slideElements.push(img);
         });
 
-        // 4. Bind Events
+        // 4. Trigger First Slide Fade-In
+        // We use a small timeout to ensure the browser has rendered the images at opacity:0
+        // before we add the active class, triggering the CSS transition.
+        setTimeout(() => {
+            if (this.slideElements[0]) {
+                this.slideElements[0].classList.add('active');
+                
+                // Trigger Title Fade-In
+                // We manually set content first, then fade in
+                const firstData = this.slidesData[0];
+                this.titleEl.textContent = firstData.title || '';
+                this.titleEl.style.opacity = '1';
+            }
+        }, 50); // 50ms delay is enough to register the transition
+
+        // 5. Bind Events
         this.container.querySelector('.prev-btn').addEventListener('click', () => {
             this.resetTimer();
             this.prev();
@@ -145,27 +152,27 @@ export default class Gallery {
         const data = this.slidesData[index];
         const newTitle = data.title || '';
 
-        // Immediate load (initial render)
+        // Immediate load
         if (immediate) {
-            this.titleEl.innerHTML = newTitle;
+            this.titleEl.textContent = newTitle;
             this.titleEl.style.opacity = '1';
             return;
         }
 
         // --- Crossfade Logic ---
-
+        
         // 1. Clear any pending timers
         if (this.textTimer) clearTimeout(this.textTimer);
 
         // 2. Fade Out
         this.titleEl.style.opacity = '0';
 
-        // 3. Wait for fade out (500ms matches CSS transition)
+        // 3. Wait for fade out (matches CSS transition time)
         this.textTimer = setTimeout(() => {
             this.titleEl.textContent = newTitle;
             // 4. Fade In
             this.titleEl.style.opacity = '1';
-        }, 500);
+        }, 500); 
     }
 
     next() {

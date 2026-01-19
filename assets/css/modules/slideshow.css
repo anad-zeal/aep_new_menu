@@ -4,8 +4,8 @@
 
 /* 1. Global Override for Slideshow Mode */
 :root {
-    --slide-duration: 1s; /* Crossfade speed for images */
-    --text-fade-duration: 0.5s; /* Crossfade speed for title text */
+    --slide-duration: 0.5s; /* Faster crossfade (0.5s) */
+    --text-fade-duration: 0.5s; 
 }
 
 /* 2. The Main Grid Container */
@@ -32,47 +32,39 @@
 /* 3. Header Areas */
 .logo {
   grid-area: logo;
-  align-self: start;      /* top */
-  justify-self: center;   /* horizontal center */
-    font-family: 'Bonheur Royale', cursive;
-    font-size: 1.5rem;
+  align-self: start;      
+  justify-self: center;   
 }
 
-.category {
+.category-wrapper{
     grid-area: category;
     align-self: start;
     justify-self: end;
-    text-align: center;
-    width: 10vw;
+    text-align: right;
 }
 
 p.logo, p.category{
     margin: 0;
     line-height: 1;
     white-space: nowrap;
-    color: var(--accent); /* Bronze color */
+    color: var(--accent); 
+}
+
+p.logo{
+    font-family: 'Bonheur Royale', cursive;
+    font-size: 2.5rem;
+    margin-bottom: 3vh;
 }
 
 p.category {
     text-align: center;
-    font-family: var(--font-rounded);
+    font-family: 'Helvetica Neue', sans-serif;
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-.category-wrapper h4 {
-    font-family: var(--font-rounded);
-    font-size: 1.2rem;
-    text-transform: lowercase;
-    font-style: italic;
-    text-align: center;
-    letter-spacing: 2px;
-    margin: 0;
-    color: var(--accent); /* Bronze color */
-}
-
-/* 4. Navigation Arrows (Prev/Next) */
+/* 4. Navigation Arrows */
 .prev-arrow { grid-area: prev-arrow; }
 .next-arrow { grid-area: next-arrow; }
 
@@ -96,13 +88,6 @@ p.category {
     color: var(--accent);
 }
 
-.gallery-module-wrapper {
-	display: fllex;
-	height: 100vh:
-	justify-content:center;
-	align-items:center;
-}
-
 /* 5. The Slideshow Stage (Stacking Context) */
 .gallery-stage {
     grid-area: slideshow;
@@ -118,8 +103,7 @@ p.category {
 /*
    THE CROSSFADE MAGIC:
    All slides sit in the same grid cell (1/1).
-   They are stacked on top of each other.
-   We toggle opacity to show/hide them.
+   Opacity 0 -> 1 over 0.5s
 */
 .gallery-stage img {
     grid-area: 1 / 1;
@@ -145,7 +129,7 @@ p.category {
     align-self: end;
     justify-self: end;
     
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.6);
     border: 1px solid #333;
     padding: 1rem;
     max-width: 300px;
@@ -158,7 +142,6 @@ p.category {
     width: 40vw;
 }
 
-/* --- TEXT CROSSFADE LOGIC ADDED HERE --- */
 .slide-title {
     color: var(--accent);
     font-size: 1.5rem;
@@ -166,7 +149,8 @@ p.category {
     font-weight: 300;
     text-align: center;
     
-    opacity: 1;
+    /* Ensure title starts hidden so it can fade in */
+    opacity: 0; 
     transition: opacity var(--text-fade-duration) ease-in-out;
 }
 
