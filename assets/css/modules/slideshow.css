@@ -124,7 +124,7 @@ p.category {
     width: 100%;
     display: grid;
     place-items: center;
-     height: 90vh;
+     height: 85vh;
   overflow: hidden;
 }
 
