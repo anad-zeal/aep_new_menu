@@ -96,6 +96,13 @@ p.category {
     color: var(--accent);
 }
 
+.gallery-module-wrapper {
+	display: fllex;
+	height: 100vh:
+	justify-content:center;
+	align-items:center;
+}
+
 /* 5. The Slideshow Stage (Stacking Context) */
 .gallery-stage {
     grid-area: slideshow;

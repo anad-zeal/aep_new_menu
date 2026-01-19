@@ -46,7 +46,7 @@ export default class Gallery {
     }
 
     renderLoading() {
-        this.container.innerHTML = '<div style="display:flex;height:100vh;justify-content:center;align-items:center;"><div class="loader"></div></div>';
+        this.container.innerHTML = '<div class="gallery-module-wrapper"><div class="loader"></div></div>';
     }
 
     renderLayout() {
