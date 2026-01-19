@@ -111,13 +111,13 @@ export default class Gallery {
         setTimeout(() => {
             if (this.slideElements[0]) {
                 this.slideElements[0].classList.add('active');
-                
+
                 // Trigger Title Fade-In
                 const firstData = this.slidesData[0];
                 this.titleEl.textContent = firstData.title || '';
                 this.titleEl.style.opacity = '1';
             }
-        }, 50); // 50ms delay triggers the transition
+        }, 500); // 50ms delay triggers the transition
 
         // 5. Bind Events
         this.container.querySelector('.prev-btn').addEventListener('click', () => {
