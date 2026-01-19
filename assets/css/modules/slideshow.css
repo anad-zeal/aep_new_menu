@@ -4,8 +4,8 @@
 
 /* 1. Global Override */
 :root {
-    --slide-duration: 0.5s; /* Faster crossfade for initial load */
-    --text-fade-duration: 0.5s;
+    --slide-duration: 0.5s; /* Crossfade speed (images) */
+    --text-fade-duration: 0.5s; /* Crossfade speed (text) */
 }
 
 /* 2. The Main Grid Container */
@@ -36,7 +36,6 @@
     align-self: start;      
     justify-self: center;   
     font-family: 'Bonheur Royale', cursive;
-    /* Font size handled by p.logo, but keeping container style if needed */
     font-size: 1.5rem; 
 }
 
@@ -45,7 +44,7 @@
     align-self: start;
     justify-self: end;
     text-align: center;
-    width: 15vw; /* Increased slightly to prevent wrapping */
+    width: 15vw; 
     position: relative;
     right: 1rem;
 }
@@ -65,13 +64,13 @@ p.logo {
 
 p.category {
     text-align: center;
-    font-family: 'Helvetica Neue', sans-serif; /* Fallback to standard if var missing */
+    font-family: 'Helvetica Neue', sans-serif;
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-/* Styling for the text before/after category */
+/* Styling for the text before/after category (the / series) */
 .category-wrapper h4 {
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 1rem;
@@ -82,6 +81,7 @@ p.category {
     margin: 2px 0;
     color: var(--accent);
     opacity: 0.8;
+    font-weight: 400;
 }
 
 /* 4. Navigation Arrows */
@@ -102,14 +102,15 @@ p.category {
     /* Using large font for arrows */
     font-size: 6rem;
     font-weight: 100;
-    font-family: 'Helvetica Neue', sans-serif; /* Ensure renders consistently */
+    font-family: 'Helvetica Neue', sans-serif;
+    outline: none;
 }
 
 .gallery-nav-btn:hover {
     color: var(--accent);
 }
 
-/* Optional wrapper for loading state centering */
+/* Wrapper for loading state centering */
 .gallery-module-wrapper {
     display: flex;
     height: 100vh;
@@ -121,7 +122,7 @@ p.category {
 .gallery-stage {
     grid-area: slideshow;
     position: relative;
-    top: -5vh; /* Slight offset per your design */
+    top: -5vh; /* Custom offset */
     width: 100%;
     height: 100%;
     display: grid;
@@ -136,9 +137,11 @@ p.category {
     max-height: 100vh;
     width: auto;
     height: auto;
-    object-fit: contain; /* Changed to contain so art isn't cropped */
+    
+    /* Important: Contain ensures the whole art is visible */
+    object-fit: contain; 
 
-    opacity: 0; /* Hidden by default */
+    opacity: 0; /* Hidden by default for fade-in */
     transition: opacity var(--slide-duration) ease-in-out;
     z-index: 1;
 }
@@ -225,5 +228,5 @@ p.category {
     
     .logo p { font-size: 1.8rem; }
     .category p { font-size: 0.9rem; }
-    .category-wrapper h4 { display: none; } /* Hide decoration on mobile to save space */
+    .category-wrapper h4 { display: none; }
 }

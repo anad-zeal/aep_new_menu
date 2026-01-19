@@ -50,9 +50,7 @@ export default class Gallery {
 
     renderLayout() {
         // 1. Create the DOM Structure
-        // Updates: 
-        // - Separated .logo and .category divs to match grid-template-areas
-        // - Added <h4> tags for "collection" and "series"
+        // Includes your 'the' and 'series' h4 tags
         this.container.innerHTML = `
             <div class="gallery-module">
 
@@ -97,17 +95,18 @@ export default class Gallery {
         this.titleEl = this.container.querySelector('.slide-title');
 
         // 3. Create ALL Image Elements immediately (Stacking)
+        // Note: They start with opacity: 0 via CSS
         this.slidesData.forEach((data, index) => {
             const img = document.createElement('img');
             img.src = data.src;
             img.alt = data.alt || data.title;
-            // NOTE: We do NOT add .active here. We wait for DOM paint.
             stage.appendChild(img);
             this.slideElements.push(img);
         });
 
         // 4. Trigger First Slide Fade-In
-        // We use a small timeout to ensure the browser registers opacity:0 first.
+        // We use a small timeout to ensure the browser has rendered the image at opacity:0
+        // BEFORE we add the .active class. This forces the 0.5s transition to play.
         setTimeout(() => {
             if (this.slideElements[0]) {
                 this.slideElements[0].classList.add('active');
@@ -117,7 +116,7 @@ export default class Gallery {
                 this.titleEl.textContent = firstData.title || '';
                 this.titleEl.style.opacity = '1';
             }
-        }, 50); // 50ms delay triggers the transition
+        }, 50);
 
         // 5. Bind Events
         this.container.querySelector('.prev-btn').addEventListener('click', () => {
