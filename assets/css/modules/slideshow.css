@@ -2,10 +2,10 @@
    Slideshow Module - Grid Layout & Crossfade
    ========================================= */
 
-/* 1. Global Override for Slideshow Mode */
+/* 1. Global Override */
 :root {
-    --slide-duration: 0.5s; /* Faster crossfade (0.5s) */
-    --text-fade-duration: 0.5s; 
+    --slide-duration: 0.5s; /* Faster crossfade for initial load */
+    --text-fade-duration: 0.5s;
 }
 
 /* 2. The Main Grid Container */
@@ -15,11 +15,12 @@
     width: 100vw;
     height: 100vh;
     background-color: transparent;
-    z-index: 100; /* Sit on top of everything */
+    z-index: 100;
 
     display: grid;
-    grid-template-columns: 80px 1fr 80px; /* Left Nav | Image | Right Nav */
-    grid-template-rows: 80px 1fr auto;     /* Header | Image | Footer/Desc */
+    /* Grid Columns: Left Nav | Center Stage | Right Nav/Category */
+    grid-template-columns: 80px 1fr 80px; 
+    grid-template-rows: 80px 1fr auto;
     grid-template-areas:
         '. logo category'
         'prev-arrow slideshow next-arrow'
@@ -31,26 +32,32 @@
 
 /* 3. Header Areas */
 .logo {
-  grid-area: logo;
-  align-self: start;      
-  justify-self: center;   
+    grid-area: logo;
+    align-self: start;      
+    justify-self: center;   
+    font-family: 'Bonheur Royale', cursive;
+    /* Font size handled by p.logo, but keeping container style if needed */
+    font-size: 1.5rem; 
 }
 
-.category-wrapper{
+.category {
     grid-area: category;
     align-self: start;
     justify-self: end;
-    text-align: right;
+    text-align: center;
+    width: 15vw; /* Increased slightly to prevent wrapping */
+    position: relative;
+    right: 1rem;
 }
 
-p.logo, p.category{
+p.logo, p.category {
     margin: 0;
     line-height: 1;
     white-space: nowrap;
-    color: var(--accent); 
+    color: var(--accent); /* Bronze color */
 }
 
-p.logo{
+p.logo {
     font-family: 'Bonheur Royale', cursive;
     font-size: 2.5rem;
     margin-bottom: 3vh;
@@ -58,10 +65,23 @@ p.logo{
 
 p.category {
     text-align: center;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Helvetica Neue', sans-serif; /* Fallback to standard if var missing */
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 2px;
+}
+
+/* Styling for the text before/after category */
+.category-wrapper h4 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+    text-transform: lowercase;
+    font-style: italic;
+    text-align: center;
+    letter-spacing: 2px;
+    margin: 2px 0;
+    color: var(--accent);
+    opacity: 0.8;
 }
 
 /* 4. Navigation Arrows */
@@ -79,20 +99,29 @@ p.category {
     align-items: center;
     color: var(--text-muted);
     transition: color 0.3s ease;
-    font-family: var(--font-nav);
+    /* Using large font for arrows */
     font-size: 6rem;
     font-weight: 100;
+    font-family: 'Helvetica Neue', sans-serif; /* Ensure renders consistently */
 }
 
 .gallery-nav-btn:hover {
     color: var(--accent);
 }
 
-/* 5. The Slideshow Stage (Stacking Context) */
+/* Optional wrapper for loading state centering */
+.gallery-module-wrapper {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 5. The Slideshow Stage */
 .gallery-stage {
     grid-area: slideshow;
     position: relative;
-    top: -5vh;
+    top: -5vh; /* Slight offset per your design */
     width: 100%;
     height: 100%;
     display: grid;
@@ -100,18 +129,14 @@ p.category {
     overflow: visible;
 }
 
-/*
-   THE CROSSFADE MAGIC:
-   All slides sit in the same grid cell (1/1).
-   Opacity 0 -> 1 over 0.5s
-*/
+/* Crossfade Logic */
 .gallery-stage img {
     grid-area: 1 / 1;
     max-width: 100%;
     max-height: 100vh;
     width: auto;
     height: auto;
-    object-fit: none;
+    object-fit: contain; /* Changed to contain so art isn't cropped */
 
     opacity: 0; /* Hidden by default */
     transition: opacity var(--slide-duration) ease-in-out;
@@ -129,13 +154,13 @@ p.category {
     align-self: end;
     justify-self: end;
     
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.9);
     border: 1px solid #333;
     padding: 1rem;
     max-width: 300px;
     border-radius: 4px;
     backdrop-filter: blur(5px);
-    position:absolute;
+    position: absolute;
     right: 2vw;
     bottom: 6vh;
     z-index: 2000;
@@ -149,7 +174,7 @@ p.category {
     font-weight: 300;
     text-align: center;
     
-    /* Ensure title starts hidden so it can fade in */
+    /* Start hidden for fade-in */
     opacity: 0; 
     transition: opacity var(--text-fade-duration) ease-in-out;
 }
@@ -184,18 +209,23 @@ p.category {
         padding: 0;
     }
     
+    .logo { grid-area: logo; justify-self: start; padding-left: 10px; }
+    .category { grid-area: category; width: auto; justify-self: end; padding-right: 10px; }
+    
     .description {
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
         max-width: 100%;
+        width: 100%;
         margin: 0;
         border: none;
         border-top: 1px solid #333;
         z-index: 2000;
     }
     
-    .logo p { font-size: 1.8rem; padding-left: 10px;}
-    .category p { font-size: 0.9rem; padding-right: 10px; }
+    .logo p { font-size: 1.8rem; }
+    .category p { font-size: 0.9rem; }
+    .category-wrapper h4 { display: none; } /* Hide decoration on mobile to save space */
 }
