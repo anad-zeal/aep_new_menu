@@ -45,17 +45,29 @@ export default class Gallery {
     }
 
     renderLoading() {
-        this.container.innerHTML = '<div style="display:flex;height:100vh;justify-content:center;align-items:center;"><div class="loader"></div></div>';
+        this.container.innerHTML = '<div class="gallery-module-wrapper"><div class="loader"></div></div>';
     }
 
     renderLayout() {
         // 1. Create the DOM Structure
+        // Updates: 
+        // - Separated .logo and .category divs to match grid-template-areas
+        // - Added <h4> tags for "collection" and "series"
         this.container.innerHTML = `
             <div class="gallery-module">
-                <!-- Header -->
-                <div class="category-wrapper">
+                
+                <!-- Logo Area -->
+                <div class="logo">
                     <p class="logo">The Life of an Artist</p>
-                    <p class="category">${this.categoryTitle}</p>
+                </div>
+
+                <!-- Category Area -->
+                <div class="category">
+                    <div class="category-wrapper">
+                        <h4>collection</h4>
+                        <p class="category">${this.categoryTitle}</p>
+                        <h4>series</h4>
+                    </div>
                 </div>
 
                 <!-- Nav -->
@@ -89,25 +101,23 @@ export default class Gallery {
             const img = document.createElement('img');
             img.src = data.src;
             img.alt = data.alt || data.title;
-            // Note: We do NOT add the active class here. We wait for the DOM to paint.
+            // NOTE: We do NOT add .active here. We wait for DOM paint.
             stage.appendChild(img);
             this.slideElements.push(img);
         });
 
         // 4. Trigger First Slide Fade-In
-        // We use a small timeout to ensure the browser has rendered the images at opacity:0
-        // before we add the active class, triggering the CSS transition.
+        // We use a small timeout to ensure the browser registers opacity:0 first.
         setTimeout(() => {
             if (this.slideElements[0]) {
                 this.slideElements[0].classList.add('active');
                 
                 // Trigger Title Fade-In
-                // We manually set content first, then fade in
                 const firstData = this.slidesData[0];
                 this.titleEl.textContent = firstData.title || '';
                 this.titleEl.style.opacity = '1';
             }
-        }, 50); // 50ms delay is enough to register the transition
+        }, 50); // 50ms delay triggers the transition
 
         // 5. Bind Events
         this.container.querySelector('.prev-btn').addEventListener('click', () => {
@@ -160,17 +170,14 @@ export default class Gallery {
         }
 
         // --- Crossfade Logic ---
-        
-        // 1. Clear any pending timers
         if (this.textTimer) clearTimeout(this.textTimer);
 
-        // 2. Fade Out
+        // 1. Fade Out
         this.titleEl.style.opacity = '0';
 
-        // 3. Wait for fade out (matches CSS transition time)
+        // 2. Wait for fade out, Swap text, Fade In
         this.textTimer = setTimeout(() => {
             this.titleEl.textContent = newTitle;
-            // 4. Fade In
             this.titleEl.style.opacity = '1';
         }, 500); 
     }
@@ -186,8 +193,6 @@ export default class Gallery {
         if (newIndex < 0) newIndex = this.slidesData.length - 1;
         this.updateSlide(newIndex);
     }
-
-    // --- Automation Logic ---
 
     startSlideshow() {
         if (this.timer) clearInterval(this.timer);
