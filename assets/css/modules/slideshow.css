@@ -33,11 +33,11 @@
 /* 3. Header Areas */
 .logo {
     grid-area: logo;
-    align-self: start;      
-    justify-self: center;   
+    align-self: start;
+    justify-self: center;
     font-family: 'Bonheur Royale', cursive;
     /* Font size handled by p.logo, but keeping container style if needed */
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
 }
 
 .category {
