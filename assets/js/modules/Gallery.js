@@ -62,9 +62,9 @@ export default class Gallery {
                 </div>
 
                 <!-- Category Area -->
-                <div class="category-wrapper">
+                <div class="category">
                     <h4>the</h4>
-                    <p class="category">${this.categoryTitle}</p>
+                    <p class="category-title">${this.categoryTitle}</p>
                     <h4>series</h4>
                 </div>
 
