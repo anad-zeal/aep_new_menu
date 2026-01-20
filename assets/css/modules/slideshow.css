@@ -22,7 +22,7 @@
     grid-template-columns: 80px 1fr 80px; 
     grid-template-rows: 80px 1fr auto;
     grid-template-areas:
-        '. logo category'
+        '. logo category-wrapper'
         'prev-arrow slideshow next-arrow'
         'return-arrow . description';
 
