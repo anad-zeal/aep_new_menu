@@ -4,12 +4,13 @@
 :root {
   /* Dark Theme Colors */
   --bg-body: #121212;
-  --bg-body-light: #FFFFFF;
+  --bg-body-dark: #000000;
   --bg-nav: #0a0a0a;
   --accent: #d4a373;
   --border-color: #333333;
 
   /* Light Theme / Brand Colors */
+  --bg-body-light: #FFFFFF;
   --menu-bg: #eae7df;
   --text-main: #3b569e;
   --text-muted: #555555;
