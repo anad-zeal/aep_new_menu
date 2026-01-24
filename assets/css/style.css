@@ -1,16 +1,16 @@
+
 /* =========================================
    1. Variables & Reset
    ========================================= */
 :root {
   /* Dark Theme Colors */
   --bg-body: #121212;
-  --bg-body-dark: #000000;
+  --bg-body-light: #FFFFFF;
   --bg-nav: #0a0a0a;
   --accent: #d4a373;
   --border-color: #333333;
 
   /* Light Theme / Brand Colors */
-  --bg-body-light: #FFFFFF;
   --menu-bg: #eae7df;
   --text-main: #3b569e;
   --text-muted: #555555;
@@ -38,7 +38,7 @@
    2. Body & Background Image Logic
    ========================================= */
 body {
-    font-family: var(--font-rounded);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     
     /* Default Background Color (Revealed when image fades out) */
     background-color: var(--gallery-bg);
@@ -120,13 +120,14 @@ body.viewing-content::before {
     display: block;
     width: 100%;
     height: 3px;
-    background-color: var(--brand-gold);
+    background-color: var(--text-main);
     transition: all 0.3s ease;
     border-radius: 1px;
+    /* box-shadow: 0 1px 4px rgba(0,0,0,0.8); */
 }
 
 .hamburger-btn:hover span {
-    background-color: var(--menu-bg);
+    background-color: var(--brand-gold);
 }
 
 /* =========================================
@@ -189,18 +190,22 @@ body.viewing-content::before {
     letter-spacing: 1em;
 }
 
+
+
 .left-panel-nav button {
-    background: none;
+     background: none;
     border: none;
     color: var(--brand-gold);
     font-family: inherit;
-    font-size: 0.95rem;
-    font-weight: 400;
+    font-size: 1.1rem;
+    font-weight: 500;
     cursor: pointer;
     text-align: left;
     transition: color 0.3s ease, transform 0.3s ease;
     padding: 0;
     width: 100%;
+    font-size: 0.95rem;
+    font-weight: 400;
 }
 
 .main-nav hr {
@@ -210,7 +215,7 @@ body.viewing-content::before {
     opacity: 0.5;
 }
 
-.left-panel-nav button:hover,
+.left-panel-nav  button:hover,
 .left-panel-nav button:focus {
     color: var(--menu-bg);
     transform: translateX(5px);
@@ -222,66 +227,35 @@ body.viewing-content::before {
    ========================================= */
 .app-container {
     width: 100%;
-    min-height: 100vh; /* Changed from max-height to min-height for safety */
-    height: 100vh;
+    min-height: 100vh;
     padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centers Vertical */
-    align-items: center;     /* Centers Horizontal */
+    justify-content: center;
+    align-items: center;
 }
 
 /* Welcome Message */
 .site-title {
     text-align: center;
+    animation: fadeIn 1s ease-in;
     padding: 1rem;
-    /* Ensure title container doesn't block flex centering */
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .site-title h1 {
-    font-family: var(--font-script);
-    font-weight: normal;
-    color: var(--text-main);
-    line-height: 1; /* Prevents vertical jitter during zoom */
-    /* Animation Configuration */
-    animation-name: zoomText;
-    animation-duration: 1.5s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards; /* Stays at 13rem after finishing */
-}
-
-/* Legacy/Fallback class if needed, merged logic above */
-.site-title-small h1 {
-    font-family: var(--font-script);
+    font-family: 'Bonheur Royale', cursive;
+    font-size: 13rem; /* Adjust based on preference */
     color: var(--text-main);
     font-weight: normal;
-    /* Removed fixed top/positioning to allow Flexbox centering */
-    font-size: 3rem; 
 }
 
 .artist-name {
-    font-family: var(--font-headline);
+    font-family: 'Roboto', sans-serif;
     font-size: 10rem;
     font-weight: 100;
     color: var(--text-muted);
     margin-top: -1rem;
     letter-spacing: 2px;
-    text-align: center;
-
-    /* Animation Settings */
-    opacity: 0;                    /* Start invisible */
-    animation-name: fadeInStatic;  /* Use the new no-movement fade */
-    animation-duration: 1.5s;        /* Fade in takes 3 seconds */
-    animation-delay: 1.1s;           /* Wait 5s for zoomText to finish */
-    animation-fill-mode: forwards; /* Keep opacity: 1 after animation ends */
-}
-
-@keyframes fadeInStatic {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }
 
 /* Footer */
@@ -295,22 +269,9 @@ body.viewing-content::before {
     z-index: 10;
 }
 
-/* =========================================
-   8. Animations
-   ========================================= */
-
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes zoomText {
-    0% {
-        font-size: 3rem;
-    }
-    100% {
-        font-size: 13rem;
-    }
 }
 
 /* Mobile Adjustments */
@@ -318,12 +279,7 @@ body.viewing-content::before {
     :root {
         --sidebar-width: 85vw;
     }
-    /* Override animation for mobile so it fits screen */
     .site-title h1 {
         font-size: 2.5rem;
-        animation: none; /* Disable massive zoom on tiny screens */
-    }
-    .artist-name {
-        font-size: 4rem;
     }
 }
