@@ -1,5 +1,5 @@
 /* =========================================
-   1. Variables
+   1. VARIABLES
    ========================================= */
 :root {
   /* Dark Theme Colors */
@@ -34,7 +34,7 @@
 }
 
 /* =========================================
-   2. Standard Reset (Safe Mode)
+   2. STANDARD RESET
    ========================================= */
 * {
     box-sizing: border-box;
@@ -46,7 +46,6 @@ html, body {
     width: 100%;
     height: 100%;
     -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
 }
 
 img, iframe, video {
@@ -59,7 +58,7 @@ input, button, textarea, select {
 }
 
 /* =========================================
-   3. Global Body & Background Logic
+   3. GLOBAL BODY & BACKGROUND
    ========================================= */
 body {
     font-family: var(--font-rounded);
@@ -88,12 +87,12 @@ body::before {
     background-position: center;
     background-repeat: no-repeat;
     
-    /* HOME STATE: Image is visible */
+    /* Home State: Image is visible */
     opacity: 0.3;
     transition: opacity 1s ease;
 }
 
-/* "Viewing Content" State (Applied via JS) */
+/* Viewing Content State (Applied via JS) */
 body.viewing-content {
     color: var(--brand-gold);
 }
@@ -103,7 +102,7 @@ body.viewing-content::before {
 }
 
 /* =========================================
-   4. Navigation (Sidebar & Toggle)
+   4. NAVIGATION (SIDEBAR)
    ========================================= */
 .hamburger-btn {
     position: fixed;
@@ -135,7 +134,6 @@ body.viewing-content::before {
     background-color: var(--menu-bg);
 }
 
-/* Slide-Out Sidebar */
 .main-nav {
     position: fixed;
     top: 0;
@@ -175,7 +173,6 @@ body.viewing-content::before {
     color: var(--brand-gold);
 }
 
-/* Menu Links */
 .main-nav ul {
     list-style: none;
     margin-bottom: 1.5rem;
@@ -216,7 +213,7 @@ body.viewing-content::before {
 }
 
 /* =========================================
-   5. Home / Landing Layout
+   5. HOME / LANDING LAYOUT
    ========================================= */
 .app-container {
     width: 100%;
@@ -262,7 +259,6 @@ body.viewing-content::before {
     margin-top: -1rem;
     letter-spacing: 2px;
     text-align: center;
-    
     opacity: 0; 
     animation-name: fadeInStatic; 
     animation-duration: 1.5s; 
@@ -281,16 +277,16 @@ body.viewing-content::before {
 }
 
 /* =========================================
-   6. Module: Slideshow / Gallery
+   6. MODULE: SLIDESHOW / GALLERY
    ========================================= */
 .gallery-module {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 90vh; /* Keeps it strictly within view */
+    height: 90vh;
     margin: 0 auto;
-    background-color: var(--gallery-bg); /* Enforces Black */
+    background-color: var(--gallery-bg);
     overflow: hidden;
     position: relative;
 }
@@ -306,18 +302,12 @@ body.viewing-content::before {
     padding: 0 10px;
 }
 
-/* Image Logic - Strict Centering */
 .gallery-stage img {
     flex: 0 1 auto;
-    
-    /* Ensure intrinsic sizing rules */
     width: auto;
     height: auto;
-    
-    /* Never exceed container */
     max-width: 100%;
     max-height: 100%;
-    
     margin: 0 auto;
     object-fit: contain; 
     opacity: 0;
@@ -329,7 +319,6 @@ body.viewing-content::before {
     opacity: 1;
 }
 
-/* Navigation Arrows */
 .gallery-nav-btn {
     flex: 0 0 var(--nav-arrow-width);
     height: 100%;
@@ -352,7 +341,6 @@ body.viewing-content::before {
     background: rgba(255, 255, 255, 0.03);
 }
 
-/* Overlay Info */
 .gallery-info {
     position: absolute;
     bottom: 0;
@@ -383,7 +371,6 @@ body.viewing-content::before {
     color: #ccc;
 }
 
-/* Loader */
 .loader {
     position: absolute;
     top: 50%;
@@ -404,7 +391,7 @@ body.viewing-content::before {
 }
 
 /* =========================================
-   7. Module: Text Pages & Forms
+   7. MODULE: TEXT PAGES & FORMS
    ========================================= */
 .text-module {
     max-width: 800px;
@@ -431,7 +418,6 @@ body.viewing-content::before {
     margin-bottom: 1.5rem;
 }
 
-/* Contact Form */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -493,7 +479,7 @@ body.viewing-content::before {
 }
 
 /* =========================================
-   8. Global Animations
+   8. ANIMATIONS & MEDIA QUERIES
    ========================================= */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
@@ -510,11 +496,7 @@ body.viewing-content::before {
     100% { font-size: 13rem; }
 }
 
-/* =========================================
-   9. Media Queries
-   ========================================= */
 @media (max-width: 768px) {
-    /* Gallery Mobile */
     .gallery-nav-btn {
         position: absolute;
         width: 60px;
