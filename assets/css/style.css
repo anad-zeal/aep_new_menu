@@ -19,7 +19,7 @@
   --arrow-red: #8b0000;
   --body-font-color: #3b569e;
 
-  /* Slideshow Specifics */
+  /* Slideshow Specifics (From your slideshow.css) */
   --gallery-bg: #000000;
   --nav-arrow-width: 80px;
 
@@ -92,7 +92,7 @@ body::before {
     transition: opacity 1s ease;
 }
 
-/* Viewing Content State (Applied via JS) */
+/* Viewing Content State */
 body.viewing-content {
     color: var(--brand-gold);
 }
@@ -278,38 +278,52 @@ body.viewing-content::before {
 
 /* =========================================
    6. MODULE: SLIDESHOW / GALLERY
+   (Restored strictly to your original code)
    ========================================= */
+
+/* 1. Module Container */
 .gallery-module {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 90vh;
+    height: 90vh; /* Maximize vertical height */
     margin: 0 auto;
     background-color: var(--gallery-bg);
     overflow: hidden;
-    position: relative;
 }
 
+/* 2. Main Stage - Flex Row */
 .gallery-stage {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
     height: 100%;
     position: relative;
-    padding: 0 10px;
+    padding: 0 10px; /* Safety padding from screen edges */
 }
 
+/* 3. The Image Logic */
 .gallery-stage img {
+    /* Stop Flexbox from forcing the size */
     flex: 0 1 auto;
+
+    /* Reset dimensions to native/intrinsic */
     width: auto;
     height: auto;
+
+    /* Constrain it so it never overflows the screen */
     max-width: 100%;
     max-height: 100%;
+
+    /* Center the image and push buttons to the edges */
     margin: 0 auto;
+
+    /* Ensure aspect ratio is preserved */
     object-fit: contain; 
+
+    /* Fade Transition */
     opacity: 0;
     transition: opacity 0.4s ease-in-out;
     z-index: 1;
@@ -319,11 +333,12 @@ body.viewing-content::before {
     opacity: 1;
 }
 
+/* 4. The Navigation Arrows (Prev/Next) */
 .gallery-nav-btn {
-    flex: 0 0 var(--nav-arrow-width);
+    flex: 0 0 var(--nav-arrow-width); /* Fixed width */
     height: 100%;
     background: transparent;
-    color: rgba(255, 255, 255, 0.5); 
+    color: #444;
     border: none;
     font-size: 3rem;
     cursor: pointer;
@@ -337,10 +352,11 @@ body.viewing-content::before {
 }
 
 .gallery-nav-btn:hover {
-    color: var(--accent);
+    color: #d4a373; /* Bronze accent */
     background: rgba(255, 255, 255, 0.03);
 }
 
+/* 5. Overlay Info (Title & Caption) */
 .gallery-info {
     position: absolute;
     bottom: 0;
@@ -348,7 +364,7 @@ body.viewing-content::before {
     right: 0;
     background: rgba(0, 0, 0, 0.85);
     padding: 1rem;
-    transform: translateY(100%);
+    transform: translateY(100%); /* Hidden by default */
     transition: transform 0.3s ease;
     text-align: center;
     z-index: 20;
@@ -356,11 +372,11 @@ body.viewing-content::before {
 }
 
 .gallery-stage:hover .gallery-info {
-    transform: translateY(0);
+    transform: translateY(0); /* Slide up on hover */
 }
 
 .gallery-info h3 {
-    color: var(--accent);
+    color: #d4a373;
     margin-bottom: 0.25rem;
     font-weight: 400;
     font-size: 1.1rem;
@@ -371,13 +387,14 @@ body.viewing-content::before {
     color: #ccc;
 }
 
+/* 6. Loading Spinner */
 .loader {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 3px solid var(--border-color);
-    border-top: 3px solid var(--accent);
+    border: 3px solid #333;
+    border-top: 3px solid #d4a373;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -497,6 +514,7 @@ body.viewing-content::before {
 }
 
 @media (max-width: 768px) {
+    /* Gallery Mobile */
     .gallery-nav-btn {
         position: absolute;
         width: 60px;
