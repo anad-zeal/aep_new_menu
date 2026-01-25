@@ -70,8 +70,8 @@ body::before {
     z-index: -1; /* Puts image BEHIND text */
     
     /* Image Settings */
-    background-image: url("../images/project-series/0800.jpg");
-    background-size: 100%;
+    background-image: url("../images/project-series/tui.jpg");
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     
