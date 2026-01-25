@@ -21,12 +21,15 @@
 
   /* Layout */
   --sidebar-width: 300px;
+  --gallery-bg: #b71d1d;  /* Pure black for maximum contrast */
+  --nav-arrow-width: 80px; /* Width for the prev/next click zones */
 
   /* Typography */
   --font-headline: 'Roboto', sans-serif;
   --font-script: 'Bonheur Royale', cursive;
   --font-rounded: 'Comfortaa', sans-serif;
   --font-nav: 'Google Sans Flex', sans-serif;
+
 }
 * {
     box-sizing: border-box;
@@ -257,8 +260,7 @@ body.viewing-content::before {
 .site-title-small h1 {
     font-family: var(--font-script);
     color: var(--text-main);
-    font-weight: normal;
-    /* Removed fixed top/positioning to allow Flexbox centering */
+    font-weight: 300;
     font-size: 3rem; 
 }
 
