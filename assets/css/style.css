@@ -191,6 +191,13 @@ body.viewing-content::before {
     top: 2vh;
    }
 
+   .category {
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: center;
+   }
+
 /* 1. Main Container: White Background */
 .gallery-module {
     position: relative;
