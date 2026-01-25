@@ -185,6 +185,8 @@ body.viewing-content::before {
 
    .logo {
     font-family: var(--font-script);
+    font-size: 1.5rem;
+    color: var(--accent)
    }
 
 /* 1. Main Container: White Background */
