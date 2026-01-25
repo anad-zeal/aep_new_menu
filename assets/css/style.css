@@ -71,7 +71,7 @@ body::before {
     
     /* Image Settings */
     background-image: url("../images/project-series/0800.jpg");
-    background-size: cover;
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
     
