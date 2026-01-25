@@ -1,30 +1,22 @@
-/* =========================================
+* =========================================
    1. VARIABLES
    ========================================= */
 :root {
-  /* Dark Theme Colors */
+  /* Dark Theme Colors (Default) */
   --bg-body: #121212;
   --bg-body-dark: #000000;
   --bg-nav: #0a0a0a;
   --accent: #d4a373;
   --border-color: #333333;
 
-  /* Light Theme / Brand Colors */
-  --bg-body-light: #FFFFFF;
-  --menu-bg: #eae7df;
-  --text-main: #3b569e;
-  --text-muted: #555555;
-  --brand-gold: #c19a6b;
-  --arrow-blue: #000080;
-  --arrow-red: #8b0000;
-  --body-font-color: #3b569e;
-
-  /* Slideshow Specifics (From your slideshow.css) */
-  --gallery-bg: #000000;
-  --nav-arrow-width: 80px;
+  /* Light Theme / Gallery Colors */
+  --gallery-bg: #FFFFFF;      /* Pure White from screenshot */
+  --gallery-text: #000000;    /* Pure Black from screenshot */
+  --gallery-caption: #333333;
 
   /* Layout */
   --sidebar-width: 300px;
+  --nav-arrow-width: 80px;
 
   /* Typography */
   --font-headline: 'Roboto', sans-serif;
@@ -69,10 +61,9 @@ body {
     min-height: 100vh;
     position: relative;
     z-index: 0;
-    transition: color 1s ease, background-color 1s ease;
 }
 
-/* Background Image Layer */
+/* Background Image Layer (Home Page) */
 body::before {
     content: "";
     position: fixed;
@@ -81,20 +72,12 @@ body::before {
     width: 100%;
     height: 100%;
     z-index: -1; 
-    
     background-image: url("../images/project-series/tui.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
-    /* Home State: Image is visible */
     opacity: 0.3;
     transition: opacity 1s ease;
-}
-
-/* Viewing Content State */
-body.viewing-content {
-    color: var(--brand-gold);
 }
 
 body.viewing-content::before {
@@ -102,7 +85,7 @@ body.viewing-content::before {
 }
 
 /* =========================================
-   4. NAVIGATION (SIDEBAR)
+   4. NAVIGATION (HAMBURGER)
    ========================================= */
 .hamburger-btn {
     position: fixed;
@@ -121,17 +104,18 @@ body.viewing-content::before {
     outline: none;
 }
 
+/* Default Red/Dark lines from screenshot */
 .hamburger-btn span {
     display: block;
     width: 100%;
     height: 3px;
-    background-color: var(--brand-gold);
+    background-color: #8b0000; /* Dark Red */
     transition: all 0.3s ease;
     border-radius: 1px;
 }
 
 .hamburger-btn:hover span {
-    background-color: var(--menu-bg);
+    background-color: var(--accent);
 }
 
 .main-nav {
@@ -145,11 +129,9 @@ body.viewing-content::before {
     display: flex;
     flex-direction: column;
     border-right: 1px solid var(--border-color);
-    box-shadow: 5px 0 20px rgba(0,0,0,0.6);
     transform: translateX(-100%);
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: transform 0.4s ease;
     z-index: 1500;
-    overflow-y: auto;
 }
 
 .main-nav.open {
@@ -162,55 +144,13 @@ body.viewing-content::before {
     right: 15px;
     background: none;
     border: none;
-    color: var(--text-muted);
+    color: #fff;
     font-size: 2rem;
     cursor: pointer;
-    line-height: 1;
-    transition: color 0.2s;
 }
 
-.close-btn:hover {
-    color: var(--brand-gold);
-}
-
-.main-nav ul {
-    list-style: none;
-    margin-bottom: 1.5rem;
-}
-
-.main-nav li {
-    margin-bottom: 1rem;
-    font-family: var(--font-rounded);
-    letter-spacing: 1em;
-}
-
-.main-nav hr {
-    border: 0;
-    border-top: 1px solid var(--border-color);
-    margin: 1.5rem 0;
-    opacity: 0.5;
-}
-
-.left-panel-nav button {
-    background: none;
-    border: none;
-    color: var(--brand-gold);
-    font-family: inherit;
-    font-size: 0.95rem;
-    font-weight: 400;
-    cursor: pointer;
-    text-align: left;
-    transition: color 0.3s ease, transform 0.3s ease;
-    padding: 0;
-    width: 100%;
-}
-
-.left-panel-nav button:hover,
-.left-panel-nav button:focus {
-    color: var(--menu-bg);
-    transform: translateX(5px);
-    outline: none;
-}
+.main-nav ul { list-style: none; margin-bottom: 1.5rem; }
+.main-nav li { margin-bottom: 1rem; color: #fff; }
 
 /* =========================================
    5. HOME / LANDING LAYOUT
@@ -218,207 +158,141 @@ body.viewing-content::before {
 .app-container {
     width: 100%;
     min-height: 100vh;
-    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.site-title {
-    text-align: center;
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .site-title h1 {
     font-family: var(--font-script);
+    color: #fff; /* White on Home */
+    font-size: 5rem;
     font-weight: normal;
-    color: var(--text-main);
-    line-height: 1; 
-    animation-name: zoomText;
-    animation-duration: 1.5s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
-}
-
-.site-title-small h1 {
-    font-family: var(--font-script);
-    color: var(--text-main);
-    font-weight: normal;
-    font-size: 3rem; 
 }
 
 .artist-name {
     font-family: var(--font-headline);
-    font-size: 10rem;
+    font-size: 8rem;
+    color: #ccc;
     font-weight: 100;
-    color: var(--text-muted);
-    margin-top: -1rem;
-    letter-spacing: 2px;
-    text-align: center;
-    opacity: 0; 
-    animation-name: fadeInStatic; 
-    animation-duration: 1.5s; 
-    animation-delay: 1.1s; 
-    animation-fill-mode: forwards; 
-}
-
-.site-footer {
-    position: fixed;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    z-index: 10;
 }
 
 /* =========================================
-   6. MODULE: SLIDESHOW / GALLERY
-   (Rebuilt based on screenshots)
+   6. MODULE: SLIDESHOW / GALLERY 
+   (Rebuilt from White Screenshot)
    ========================================= */
 
-/* Main Container - Full Screen Black */
+/* 1. Main Container: White Background */
 .gallery-module {
     position: relative;
     width: 100%;
     height: 100vh;
-    background-color: #000000;
+    background-color: var(--gallery-bg); /* White */
+    color: var(--gallery-text);          /* Black */
     overflow: hidden;
-    color: var(--brand-gold); /* Default text color for UI */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* The Image Stage - Centered */
+/* 2. Top Bar Area */
+/* Top Center: Script Title */
+.gallery-title-overlay { 
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-script);
+    font-size: 2.5rem;
+    color: #000;
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+}
+
+/* Top Right: "the Encaustic series" */
+.gallery-category-label {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    text-align: right;
+    font-family: var(--font-headline);
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    z-index: 10;
+}
+
+/* 3. The Image Stage */
 .gallery-stage {
     width: 100%;
-    height: 100%;
+    height: 80vh; /* Occupy most height */
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    z-index: 1;
 }
 
 .gallery-stage img {
-    max-width: 80%; /* Leave room for text on sides */
-    max-height: 80vh;
+    /* Limit size to fit nicely between header and footer */
+    max-height: 80%;
+    max-width: 80%;
     width: auto;
     height: auto;
     object-fit: contain;
+    
+    /* Visual shadow from screenshot style */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15); 
+    
     opacity: 0;
     transition: opacity 0.5s ease;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 .gallery-stage img.loaded {
     opacity: 1;
 }
 
-/* --- UI ELEMENTS (Positioning Rebuilt) --- */
-
-/* 1. Top Left Logo/Title ("The Life of an Artist") */
-.logo {
-    position: absolute;
-    top: 30px;
-    left: 40px;
-    z-index: 10;
-    font-family: var(--font-script); /* Assuming script font based on screenshot */
-    font-size: 1.5rem;
-    color: var(--brand-gold);
-    pointer-events: none; /* Let clicks pass through */
-}
-
-/* 2. Left Side: Category ("the Drip Series") */
-.gallery-category {
-    position: absolute;
-    top: 50%;
-    left: 40px;
-    transform: translateY(-50%);
-    z-index: 10;
-    text-align: left;
-    max-width: 150px;
-}
-
-.gallery-category h3, 
-.gallery-category span {
-    display: block;
-    font-family: var(--font-rounded);
-    font-size: 1.2rem;
-    line-height: 1.4;
-    color: var(--brand-gold);
-}
-
-/* 3. Right Side: Info/Counter ("Drips 06 0") */
-.gallery-info-block {
-    position: absolute;
-    top: 50%;
-    right: 40px;
-    transform: translateY(-50%);
-    z-index: 10;
-    text-align: right;
-    max-width: 150px;
-}
-
-.gallery-info-block h3 {
-    font-family: var(--font-headline);
-    font-size: 1.2rem;
-    color: var(--brand-gold);
-    margin-bottom: 5px;
-}
-
-.gallery-info-block .counter {
-    font-family: monospace; /* Or your preferred font */
-    font-size: 1rem;
-    color: #888;
-}
-
-/* 4. Navigation Arrows */
-/* General Button Reset */
+/* 4. Arrows (< >) */
 .gallery-nav-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: transparent;
+    background: none;
     border: none;
     cursor: pointer;
+    font-size: 4rem; /* Large size */
+    font-weight: 100; /* Thin font weight */
+    font-family: sans-serif; /* Clean chevron look */
+    color: #000; /* Black arrows */
+    padding: 0 30px;
     z-index: 20;
-    padding: 20px;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    outline: none;
+    transition: transform 0.2s;
 }
 
 .gallery-nav-btn:hover {
-    transform: translateY(-50%) scale(1.1);
-    opacity: 1;
+    transform: translateY(-50%) scale(1.2);
 }
 
-/* SVG or Text inside button */
-.gallery-nav-btn svg,
-.gallery-nav-btn span {
-    width: 40px;
-    height: 40px;
-    fill: #555; /* Default Dark Grey */
-    font-size: 3rem; /* If using text arrows < > */
-    color: #555;
-    transition: fill 0.3s, color 0.3s;
+.prev-btn { left: 0; }
+.next-btn { right: 0; }
+
+/* 5. Caption / Info (Bottom Right: "Close Encounter") */
+.gallery-info {
+    position: absolute;
+    bottom: 40px;
+    right: 15%; /* Align somewhat with right edge of image area */
+    text-align: right;
+    z-index: 10;
 }
 
-.gallery-nav-btn:hover svg,
-.gallery-nav-btn:hover span {
-    fill: var(--brand-gold);
-    color: var(--brand-gold);
-}
-
-/* Specific Positions */
-.prev-btn {
-    left: 180px; /* Pushed inward from the Category text */
-}
-
-.next-btn {
-    right: 180px; /* Pushed inward from the Info text */
+.gallery-info h3 {
+    font-family: var(--font-headline);
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--gallery-caption);
+    margin: 0;
 }
 
 /* Loader */
@@ -427,237 +301,28 @@ body.viewing-content::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 3px solid #333;
-    border-top: 3px solid var(--brand-gold);
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #000;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     animation: spin 1s linear infinite;
-    z-index: 0;
 }
 
 @keyframes spin { 
     0% { transform: translate(-50%, -50%) rotate(0deg); } 
     100% { transform: translate(-50%, -50%) rotate(360deg); } 
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .gallery-stage img {
-        max-width: 100%;
-        max-height: 60vh;
-    }
-
-    /* Move text out of the way on mobile */
-    .logo {
-        top: 10px;
-        left: 10px;
-        font-size: 1rem;
-    }
-
-    .gallery-category, 
-    .gallery-info-block {
-        display: none; /* Often cleaner to hide side text on mobile */
-    }
-
-    .prev-btn { left: 10px; }
-    .next-btn { right: 10px; }
-}/* =========================================
-   6. MODULE: SLIDESHOW / GALLERY
-   (Rebuilt based on screenshots)
-   ========================================= */
-
-/* Main Container - Full Screen Black */
-.gallery-module {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background-color: #000000;
-    overflow: hidden;
-    color: var(--brand-gold); /* Default text color for UI */
-}
-
-/* The Image Stage - Centered */
-.gallery-stage {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-}
-
-.gallery-stage img {
-    max-width: 80%; /* Leave room for text on sides */
-    max-height: 80vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-.gallery-stage img.loaded {
-    opacity: 1;
-}
-
-/* --- UI ELEMENTS (Positioning Rebuilt) --- */
-
-/* 1. Top Left Logo/Title ("The Life of an Artist") */
-.logo {
-    position: absolute;
-    top: 30px;
-    left: 40px;
-    z-index: 10;
-    font-family: var(--font-script); /* Assuming script font based on screenshot */
-    font-size: 1.5rem;
-    color: var(--brand-gold);
-    pointer-events: none; /* Let clicks pass through */
-}
-
-/* 2. Left Side: Category ("the Drip Series") */
-.gallery-category {
-    position: absolute;
-    top: 50%;
-    left: 40px;
-    transform: translateY(-50%);
-    z-index: 10;
-    text-align: left;
-    max-width: 150px;
-}
-
-.gallery-category h3, 
-.gallery-category span {
-    display: block;
-    font-family: var(--font-rounded);
-    font-size: 1.2rem;
-    line-height: 1.4;
-    color: var(--brand-gold);
-}
-
-/* 3. Right Side: Info/Counter ("Drips 06 0") */
-.gallery-info-block {
-    position: absolute;
-    top: 50%;
-    right: 40px;
-    transform: translateY(-50%);
-    z-index: 10;
-    text-align: right;
-    max-width: 150px;
-}
-
-.gallery-info-block h3 {
-    font-family: var(--font-headline);
-    font-size: 1.2rem;
-    color: var(--brand-gold);
-    margin-bottom: 5px;
-}
-
-.gallery-info-block .counter {
-    font-family: monospace; /* Or your preferred font */
-    font-size: 1rem;
-    color: #888;
-}
-
-/* 4. Navigation Arrows */
-/* General Button Reset */
-.gallery-nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 20;
-    padding: 20px;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    outline: none;
-}
-
-.gallery-nav-btn:hover {
-    transform: translateY(-50%) scale(1.1);
-    opacity: 1;
-}
-
-/* SVG or Text inside button */
-.gallery-nav-btn svg,
-.gallery-nav-btn span {
-    width: 40px;
-    height: 40px;
-    fill: #555; /* Default Dark Grey */
-    font-size: 3rem; /* If using text arrows < > */
-    color: #555;
-    transition: fill 0.3s, color 0.3s;
-}
-
-.gallery-nav-btn:hover svg,
-.gallery-nav-btn:hover span {
-    fill: var(--brand-gold);
-    color: var(--brand-gold);
-}
-
-/* Specific Positions */
-.prev-btn {
-    left: 180px; /* Pushed inward from the Category text */
-}
-
-.next-btn {
-    right: 180px; /* Pushed inward from the Info text */
-}
-
-/* Loader */
-.loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 3px solid #333;
-    border-top: 3px solid var(--brand-gold);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    z-index: 0;
-}
-
-@keyframes spin { 
-    0% { transform: translate(-50%, -50%) rotate(0deg); } 
-    100% { transform: translate(-50%, -50%) rotate(360deg); } 
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .gallery-stage img {
-        max-width: 100%;
-        max-height: 60vh;
-    }
-
-    /* Move text out of the way on mobile */
-    .logo {
-        top: 10px;
-        left: 10px;
-        font-size: 1rem;
-    }
-
-    .gallery-category, 
-    .gallery-info-block {
-        display: none; /* Often cleaner to hide side text on mobile */
-    }
-
-    .prev-btn { left: 10px; }
-    .next-btn { right: 10px; }
 }
 
 /* =========================================
-   7. MODULE: TEXT PAGES & FORMS
+   7. MODULE: TEXT PAGES (About, Contact)
    ========================================= */
 .text-module {
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
     animation: fadeIn 0.5s ease;
+    background: #fff; /* Ensure readability */
 }
 
 .text-module h2 {
@@ -674,114 +339,38 @@ body.viewing-content::before {
     font-family: var(--font-rounded);
     font-size: 1.1rem;
     line-height: 1.8;
-    color: var(--bg-body-dark);
+    color: #000;
     margin-bottom: 1.5rem;
 }
 
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.form-group label {
-    color: var(--accent);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.form-group input,
-.form-group textarea {
-    background: var(--bg-body-light);
-    border: 1px solid var(--border-color);
-    color: var(--bg-body-dark); 
-    padding: 1rem;
-    font-size: 1rem;
-    font-family: inherit;
-    border-radius: 4px;
-    transition: border-color 0.3s;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-}
-
-.btn-submit {
-    background: var(--accent);
-    color: var(--bg-body-dark);
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    align-self: flex-start;
-    transition: background 0.3s;
-}
-
-.btn-submit:hover {
-    background: var(--bg-body-light);
-}
-
-.contact-info {
-    margin-top: 3rem;
-    border-top: 1px solid var(--border-color);
-    padding-top: 2rem;
-    color: #888;
-}
-
 /* =========================================
-   8. ANIMATIONS & MEDIA QUERIES
+   8. MEDIA QUERIES
    ========================================= */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInStatic {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes zoomText {
-    0% { font-size: 3rem; }
-    100% { font-size: 13rem; }
-}
-
 @media (max-width: 768px) {
-    /* Gallery Mobile */
-    .gallery-nav-btn {
-        position: absolute;
-        width: 60px;
-        background: rgba(0,0,0,0.1);
+    /* Stack elements on mobile */
+    .gallery-title-overlay {
+        font-size: 1.8rem;
+        width: 100%;
+        top: 15px;
     }
-    .prev-btn { left: 0; }
-    .next-btn { right: 0; }
+    
+    .gallery-category-label {
+        display: none; /* Hide series name on small screens to save space */
+    }
     
     .gallery-stage img {
-        margin: auto;
-    }
-}
-
-@media (max-width: 480px) {
-    :root {
-        --sidebar-width: 85vw;
+        max-width: 95%;
+        max-height: 60%;
     }
     
-    .site-title h1 {
-        font-size: 2.5rem;
-        animation: none;
+    .gallery-info {
+        bottom: 20px;
+        right: 20px;
+        font-size: 1rem;
     }
     
-    .artist-name {
-        font-size: 4rem;
+    .gallery-nav-btn {
+        padding: 0 10px;
+        font-size: 3rem;
     }
 }
