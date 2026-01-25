@@ -320,7 +320,7 @@ body.viewing-content::before {
 /* --- UI ELEMENTS (Positioning Rebuilt) --- */
 
 /* 1. Top Left Logo/Title ("The Life of an Artist") */
-.gallery-logo {
+.logo {
     position: absolute;
     top: 30px;
     left: 40px;
@@ -449,7 +449,7 @@ body.viewing-content::before {
     }
 
     /* Move text out of the way on mobile */
-    .gallery-logo {
+    .logo {
         top: 10px;
         left: 10px;
         font-size: 1rem;
@@ -506,7 +506,7 @@ body.viewing-content::before {
 /* --- UI ELEMENTS (Positioning Rebuilt) --- */
 
 /* 1. Top Left Logo/Title ("The Life of an Artist") */
-.gallery-logo {
+.logo {
     position: absolute;
     top: 30px;
     left: 40px;
@@ -635,7 +635,7 @@ body.viewing-content::before {
     }
 
     /* Move text out of the way on mobile */
-    .gallery-logo {
+    .logo {
         top: 10px;
         left: 10px;
         font-size: 1rem;
