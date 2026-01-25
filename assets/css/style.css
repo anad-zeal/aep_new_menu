@@ -1,4 +1,4 @@
-* =========================================
+/* =========================================
    1. Variables
    ========================================= */
 :root {
@@ -19,9 +19,12 @@
   --arrow-red: #8b0000;
   --body-font-color: #3b569e;
 
+  /* Slideshow Specifics */
+  --gallery-bg: #000000;
+  --nav-arrow-width: 80px;
+
   /* Layout */
   --sidebar-width: 300px;
-  --nav-arrow-width: 80px;
 
   /* Typography */
   --font-headline: 'Roboto', sans-serif;
@@ -31,40 +34,39 @@
 }
 
 /* =========================================
-   2. Modern Reset
+   2. Standard Reset (Safe Mode)
    ========================================= */
-*, *::before, *::after {
+* {
     box-sizing: border-box;
-    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
 }
 
-* { padding: 0; margin: 0; }
-
-html {
-    -webkit-text-size-adjust: none;
-    text-size-adjust: none;
-    line-height: 1.5;
+html, body {
+    width: 100%;
+    height: 100%;
+    -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
 }
 
-img, iframe, audio, video, canvas {
+img, iframe, video {
     display: block;
     max-width: 100%;
 }
 
-input, button, textarea, select { font: inherit; }
+input, button, textarea, select {
+    font: inherit;
+}
 
 /* =========================================
    3. Global Body & Background Logic
    ========================================= */
 body {
     font-family: var(--font-rounded);
-    /* Default Background Color */
-    background-color: var(--bg-body); 
+    background-color: var(--bg-body);
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
-    width: 100%;
     min-height: 100vh;
     position: relative;
     z-index: 0;
@@ -103,7 +105,6 @@ body.viewing-content::before {
 /* =========================================
    4. Navigation (Sidebar & Toggle)
    ========================================= */
-/* Hamburger Toggle */
 .hamburger-btn {
     position: fixed;
     top: 20px;
@@ -193,7 +194,6 @@ body.viewing-content::before {
     opacity: 0.5;
 }
 
-/* Left Panel Button Style */
 .left-panel-nav button {
     background: none;
     border: none;
@@ -221,7 +221,6 @@ body.viewing-content::before {
 .app-container {
     width: 100%;
     min-height: 100vh;
-    height: 100vh;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -289,29 +288,36 @@ body.viewing-content::before {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 90vh;
+    height: 90vh; /* Keeps it strictly within view */
     margin: 0 auto;
-    background-color: var(--bg-body-dark);
+    background-color: var(--gallery-bg); /* Enforces Black */
     overflow: hidden;
+    position: relative;
 }
 
 .gallery-stage {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
     height: 100%;
     position: relative;
     padding: 0 10px;
 }
 
-/* Image Logic */
+/* Image Logic - Strict Centering */
 .gallery-stage img {
     flex: 0 1 auto;
+    
+    /* Ensure intrinsic sizing rules */
     width: auto;
     height: auto;
+    
+    /* Never exceed container */
     max-width: 100%;
     max-height: 100%;
+    
     margin: 0 auto;
     object-fit: contain; 
     opacity: 0;
@@ -328,7 +334,6 @@ body.viewing-content::before {
     flex: 0 0 var(--nav-arrow-width);
     height: 100%;
     background: transparent;
-    /* Updated for visibility on dark background */
     color: rgba(255, 255, 255, 0.5); 
     border: none;
     font-size: 3rem;
@@ -450,7 +455,6 @@ body.viewing-content::before {
 .form-group textarea {
     background: var(--bg-body-light);
     border: 1px solid var(--border-color);
-    /* FIXED: Text was white on white background */
     color: var(--bg-body-dark); 
     padding: 1rem;
     font-size: 1rem;
@@ -509,8 +513,8 @@ body.viewing-content::before {
 /* =========================================
    9. Media Queries
    ========================================= */
-/* Tablet/Mobile Gallery Adjustments */
 @media (max-width: 768px) {
+    /* Gallery Mobile */
     .gallery-nav-btn {
         position: absolute;
         width: 60px;
@@ -524,7 +528,6 @@ body.viewing-content::before {
     }
 }
 
-/* Mobile Layout Adjustments */
 @media (max-width: 480px) {
     :root {
         --sidebar-width: 85vw;
@@ -532,7 +535,7 @@ body.viewing-content::before {
     
     .site-title h1 {
         font-size: 2.5rem;
-        animation: none; /* Disable zoom on mobile */
+        animation: none;
     }
     
     .artist-name {
