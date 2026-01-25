@@ -278,123 +278,157 @@ body.viewing-content::before {
 
 /* =========================================
    6. MODULE: SLIDESHOW / GALLERY
-   (Restored strictly to your original code)
+   (Rebuilt based on screenshots)
    ========================================= */
 
-/* 1. Module Container */
+/* Main Container - Full Screen Black */
 .gallery-module {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #000000;
+    overflow: hidden;
+    color: var(--brand-gold); /* Default text color for UI */
+}
+
+/* The Image Stage - Centered */
+.gallery-stage {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 90vh; /* Maximize vertical height */
-    margin: 0 auto;
-    background-color: var(--gallery-bg);
-    overflow: hidden;
-}
-
-/* 2. Main Stage - Flex Row */
-.gallery-stage {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    height: 100%;
     position: relative;
-    padding: 0 10px; /* Safety padding from screen edges */
+    z-index: 1;
 }
 
-/* 3. The Image Logic */
 .gallery-stage img {
-    /* Stop Flexbox from forcing the size */
-    flex: 0 1 auto;
-
-    /* Reset dimensions to native/intrinsic */
+    max-width: 80%; /* Leave room for text on sides */
+    max-height: 80vh;
     width: auto;
     height: auto;
-
-    /* Constrain it so it never overflows the screen */
-    max-width: 100%;
-    max-height: 100%;
-
-    /* Center the image and push buttons to the edges */
-    margin: 0 auto;
-
-    /* Ensure aspect ratio is preserved */
-    object-fit: contain; 
-
-    /* Fade Transition */
+    object-fit: contain;
     opacity: 0;
-    transition: opacity 0.4s ease-in-out;
-    z-index: 1;
+    transition: opacity 0.5s ease;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 .gallery-stage img.loaded {
     opacity: 1;
 }
 
-/* 4. The Navigation Arrows (Prev/Next) */
-.gallery-nav-btn {
-    flex: 0 0 var(--nav-arrow-width); /* Fixed width */
-    height: 100%;
-    background: transparent;
-    color: #444;
-    border: none;
-    font-size: 3rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.2s ease, background 0.2s ease;
+/* --- UI ELEMENTS (Positioning Rebuilt) --- */
+
+/* 1. Top Left Logo/Title ("The Life of an Artist") */
+.gallery-logo {
+    position: absolute;
+    top: 30px;
+    left: 40px;
     z-index: 10;
+    font-family: var(--font-script); /* Assuming script font based on screenshot */
+    font-size: 1.5rem;
+    color: var(--brand-gold);
+    pointer-events: none; /* Let clicks pass through */
+}
+
+/* 2. Left Side: Category ("the Drip Series") */
+.gallery-category {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    z-index: 10;
+    text-align: left;
+    max-width: 150px;
+}
+
+.gallery-category h3, 
+.gallery-category span {
+    display: block;
+    font-family: var(--font-rounded);
+    font-size: 1.2rem;
+    line-height: 1.4;
+    color: var(--brand-gold);
+}
+
+/* 3. Right Side: Info/Counter ("Drips 06 0") */
+.gallery-info-block {
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%);
+    z-index: 10;
+    text-align: right;
+    max-width: 150px;
+}
+
+.gallery-info-block h3 {
+    font-family: var(--font-headline);
+    font-size: 1.2rem;
+    color: var(--brand-gold);
+    margin-bottom: 5px;
+}
+
+.gallery-info-block .counter {
+    font-family: monospace; /* Or your preferred font */
+    font-size: 1rem;
+    color: #888;
+}
+
+/* 4. Navigation Arrows */
+/* General Button Reset */
+.gallery-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 20;
+    padding: 20px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
     outline: none;
-    padding: 0;
 }
 
 .gallery-nav-btn:hover {
-    color: #d4a373; /* Bronze accent */
-    background: rgba(255, 255, 255, 0.03);
+    transform: translateY(-50%) scale(1.1);
+    opacity: 1;
 }
 
-/* 5. Overlay Info (Title & Caption) */
-.gallery-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.85);
-    padding: 1rem;
-    transform: translateY(100%); /* Hidden by default */
-    transition: transform 0.3s ease;
-    text-align: center;
-    z-index: 20;
-    border-top: 1px solid #222;
+/* SVG or Text inside button */
+.gallery-nav-btn svg,
+.gallery-nav-btn span {
+    width: 40px;
+    height: 40px;
+    fill: #555; /* Default Dark Grey */
+    font-size: 3rem; /* If using text arrows < > */
+    color: #555;
+    transition: fill 0.3s, color 0.3s;
 }
 
-.gallery-stage:hover .gallery-info {
-    transform: translateY(0); /* Slide up on hover */
+.gallery-nav-btn:hover svg,
+.gallery-nav-btn:hover span {
+    fill: var(--brand-gold);
+    color: var(--brand-gold);
 }
 
-.gallery-info h3 {
-    color: #d4a373;
-    margin-bottom: 0.25rem;
-    font-weight: 400;
-    font-size: 1.1rem;
+/* Specific Positions */
+.prev-btn {
+    left: 180px; /* Pushed inward from the Category text */
 }
 
-.gallery-info p {
-    font-size: 0.9rem;
-    color: #ccc;
+.next-btn {
+    right: 180px; /* Pushed inward from the Info text */
 }
 
-/* 6. Loading Spinner */
+/* Loader */
 .loader {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 3px solid #333;
-    border-top: 3px solid #d4a373;
+    border-top: 3px solid var(--brand-gold);
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -405,6 +439,215 @@ body.viewing-content::before {
 @keyframes spin { 
     0% { transform: translate(-50%, -50%) rotate(0deg); } 
     100% { transform: translate(-50%, -50%) rotate(360deg); } 
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .gallery-stage img {
+        max-width: 100%;
+        max-height: 60vh;
+    }
+
+    /* Move text out of the way on mobile */
+    .gallery-logo {
+        top: 10px;
+        left: 10px;
+        font-size: 1rem;
+    }
+
+    .gallery-category, 
+    .gallery-info-block {
+        display: none; /* Often cleaner to hide side text on mobile */
+    }
+
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
+}/* =========================================
+   6. MODULE: SLIDESHOW / GALLERY
+   (Rebuilt based on screenshots)
+   ========================================= */
+
+/* Main Container - Full Screen Black */
+.gallery-module {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #000000;
+    overflow: hidden;
+    color: var(--brand-gold); /* Default text color for UI */
+}
+
+/* The Image Stage - Centered */
+.gallery-stage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.gallery-stage img {
+    max-width: 80%; /* Leave room for text on sides */
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.gallery-stage img.loaded {
+    opacity: 1;
+}
+
+/* --- UI ELEMENTS (Positioning Rebuilt) --- */
+
+/* 1. Top Left Logo/Title ("The Life of an Artist") */
+.gallery-logo {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    z-index: 10;
+    font-family: var(--font-script); /* Assuming script font based on screenshot */
+    font-size: 1.5rem;
+    color: var(--brand-gold);
+    pointer-events: none; /* Let clicks pass through */
+}
+
+/* 2. Left Side: Category ("the Drip Series") */
+.gallery-category {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    z-index: 10;
+    text-align: left;
+    max-width: 150px;
+}
+
+.gallery-category h3, 
+.gallery-category span {
+    display: block;
+    font-family: var(--font-rounded);
+    font-size: 1.2rem;
+    line-height: 1.4;
+    color: var(--brand-gold);
+}
+
+/* 3. Right Side: Info/Counter ("Drips 06 0") */
+.gallery-info-block {
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%);
+    z-index: 10;
+    text-align: right;
+    max-width: 150px;
+}
+
+.gallery-info-block h3 {
+    font-family: var(--font-headline);
+    font-size: 1.2rem;
+    color: var(--brand-gold);
+    margin-bottom: 5px;
+}
+
+.gallery-info-block .counter {
+    font-family: monospace; /* Or your preferred font */
+    font-size: 1rem;
+    color: #888;
+}
+
+/* 4. Navigation Arrows */
+/* General Button Reset */
+.gallery-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 20;
+    padding: 20px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    outline: none;
+}
+
+.gallery-nav-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+    opacity: 1;
+}
+
+/* SVG or Text inside button */
+.gallery-nav-btn svg,
+.gallery-nav-btn span {
+    width: 40px;
+    height: 40px;
+    fill: #555; /* Default Dark Grey */
+    font-size: 3rem; /* If using text arrows < > */
+    color: #555;
+    transition: fill 0.3s, color 0.3s;
+}
+
+.gallery-nav-btn:hover svg,
+.gallery-nav-btn:hover span {
+    fill: var(--brand-gold);
+    color: var(--brand-gold);
+}
+
+/* Specific Positions */
+.prev-btn {
+    left: 180px; /* Pushed inward from the Category text */
+}
+
+.next-btn {
+    right: 180px; /* Pushed inward from the Info text */
+}
+
+/* Loader */
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #333;
+    border-top: 3px solid var(--brand-gold);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    z-index: 0;
+}
+
+@keyframes spin { 
+    0% { transform: translate(-50%, -50%) rotate(0deg); } 
+    100% { transform: translate(-50%, -50%) rotate(360deg); } 
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .gallery-stage img {
+        max-width: 100%;
+        max-height: 60vh;
+    }
+
+    /* Move text out of the way on mobile */
+    .gallery-logo {
+        top: 10px;
+        left: 10px;
+        font-size: 1rem;
+    }
+
+    .gallery-category, 
+    .gallery-info-block {
+        display: none; /* Often cleaner to hide side text on mobile */
+    }
+
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
 }
 
 /* =========================================
