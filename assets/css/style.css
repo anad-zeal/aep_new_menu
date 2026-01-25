@@ -183,6 +183,10 @@ body.viewing-content::before {
    (Rebuilt from White Screenshot)
    ========================================= */
 
+   .logo {
+    font-family: var(--font-script);
+   }
+
 /* 1. Main Container: White Background */
 .gallery-module {
     position: relative;
