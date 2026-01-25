@@ -4,7 +4,7 @@
    ========================================= */
 
 :root {
-    --gallery-bg: #000000;  /* Pure black for maximum contrast */
+  /*   --gallery-bg: #000000;  Pure black for maximum contrast */
     --nav-arrow-width: 80px; /* Width for the prev/next click zones */
 }
 
