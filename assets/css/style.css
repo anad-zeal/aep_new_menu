@@ -579,3 +579,207 @@ body.slideshow-active #dynamic-page-wrapper {
   word-wrap: break-word;
   margin: 0;
 }
+
+/* ==========================================================================
+   Slideshow Global State
+   ========================================================================== */
+
+body.slideshow-active {
+  overflow: hidden;
+}
+
+body.slideshow-active .site-header,
+body.slideshow-active .content,
+body.slideshow-active .site-footer {
+  display: none !important;
+}
+
+body.slideshow-active main,
+body.slideshow-active #dynamic-content-area,
+body.slideshow-active #dynamic-page-wrapper {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ==========================================================================
+   Slideshow Grid
+   ========================================================================== */
+
+.gallery-module {
+  position: fixed;
+  inset: 0;
+  display: grid;
+
+  grid-template-columns: 4vw 90vw 4vw;
+  grid-template-rows: 7vh 90vh 3vh;
+  grid-template-areas:
+    ". logo category"
+    "prev-arrow slideshow next-arrow"
+    "return-arrow . description";
+
+  background-color: var(--menu-bg);
+  padding: 1rem;
+  box-sizing: border-box;
+
+  z-index: 1000;
+}
+
+/* Grid Areas */
+.logo         { grid-area: logo; }
+.category     { grid-area: category; }
+.prev-arrow   { grid-area: prev-arrow; }
+.next-arrow   { grid-area: next-arrow; }
+.slideshow    { grid-area: slideshow; }
+.return-arrow { grid-area: return-arrow; }
+.description  { grid-area: description; }
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.logo p {
+  font-family: var(--font-script);
+  font-size: 3.25rem;
+  margin: 0;
+  color: var(--brand-gold);
+}
+
+.category {
+  text-align: right;
+}
+
+.category h4 {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+}
+
+.category-title {
+  font-family: var(--font-rounded);
+  font-size: 1.5rem;
+  color: var(--brand-gold);
+  margin: 0.2rem 0;
+}
+
+/* ==========================================================================
+   Slideshow Area
+   ========================================================================== */
+
+.slideshow {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.slideshow .slide {
+  grid-area: 1 / 1;
+  width: 120%;
+  height: 120%;
+  object-fit: contain;
+
+  opacity: 0;
+  transition: opacity 0.8s ease;
+
+  pointer-events: none;
+}
+
+.slideshow .slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
+.prev-arrow,
+.next-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev-arrow button,
+.next-arrow button {
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.prev-arrow button::before,
+.next-arrow button::before {
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  border-top: 2px solid var(--brand-gold);
+  border-right: 2px solid var(--brand-gold);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0.7;
+}
+
+.prev-arrow button::before {
+  transform: translate(-25%, -50%) rotate(-135deg);
+}
+
+.next-arrow button::before {
+  transform: translate(-75%, -50%) rotate(45deg);
+}
+
+.prev-arrow button:focus-visible,
+.next-arrow button:focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 4px;
+}
+
+/* ==========================================================================
+   Description
+   ========================================================================== */
+
+.description {
+  align-self: end;
+  justify-self: end;
+  width: 260px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.description .slide-title {
+  font-family: var(--font-rounded);
+  font-size: 1rem;
+  color: var(--brand-gold);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .gallery-module {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto auto;
+    grid-template-areas:
+      "logo"
+      "slideshow"
+      "prev-arrow"
+      "description";
+  }
+
+  .category {
+    display: none;
+  }
+
+  .description {
+    width: 100%;
+  }
+}
