@@ -33,6 +33,7 @@ body.slideshow-active #dynamic-page-wrapper {
   background-color: var(--soft);
   padding: 1rem;
   box-sizing: border-box;
+  opacity: 0;
 }
 
 /* --- Grid Area Assignments --- */
