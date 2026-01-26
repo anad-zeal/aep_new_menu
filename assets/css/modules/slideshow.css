@@ -20,7 +20,7 @@ body.slideshow-active #dynamic-page-wrapper {
 /* ==========================================================================
    Main Slideshow Grid Layout
    ========================================================================== */
-.container {
+.gallery-module{
   position: fixed;
   inset: 0;
   display: grid;
