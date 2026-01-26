@@ -96,7 +96,7 @@ body.slideshow-active #dynamic-page-wrapper {
 
 .slideshow .slide {
   grid-area: 1 / 1;
-  width: 1920;
+  width: 1920px;
   height: 1200px;
   object-fit: contain;
   opacity: 0;
