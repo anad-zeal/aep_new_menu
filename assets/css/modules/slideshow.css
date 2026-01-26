@@ -87,7 +87,7 @@ body.slideshow-active #dynamic-page-wrapper {
    ========================================================================== */
 
 .slideshow {
-  position: absolute;
+  position: relative;
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -95,6 +95,7 @@ body.slideshow-active #dynamic-page-wrapper {
 }
 
 .slideshow .slide {
+  position: absolute;
   grid-area: 1 / 1;
   width: 1920px;
   height: 1200px;
