@@ -4,7 +4,8 @@
 body.slideshow-active .site-header,
 body.slideshow-active .content,
 body.slideshow-active .site-footer {
-  display: none !important;
+  /* display: none !important; */
+  opacity: 1;
 }
 
 body.slideshow-active main,
