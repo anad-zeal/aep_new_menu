@@ -20,7 +20,7 @@ body.slideshow-active #dynamic-page-wrapper {
 /* ==========================================================================
    Main Slideshow Grid Layout
    ========================================================================== */
-.gallery-module{
+.gallery-module {
   position: fixed;
   inset: 0;
   display: grid;
@@ -45,7 +45,7 @@ body.slideshow-active #dynamic-page-wrapper {
 .prev-arrow {
   grid-area: prev-arrow;
 }
-.slideshow {
+.gallery-stage {
   grid-area: slideshow;
 }
 .next-arrow {
@@ -95,7 +95,7 @@ body.slideshow-active #dynamic-page-wrapper {
 /* ==========================================================================
    Slideshow Area & Slides
    ========================================================================== */
-.slideshow {
+.gallery-stage {
   display: grid;
   place-items: center; /* Centers content */
   position: relative;
@@ -107,8 +107,8 @@ body.slideshow-active #dynamic-page-wrapper {
   z-index: 999;
 }
 
-.slideshow .slide,
-.slideshow img.slide {
+.gallery-stage .slide,
+.gallery-stage img.slide {
   /* Grid Stacking Method: This places all slides in the same cell
      so they stack on top of each other without needing position: absolute */
   grid-area: 1 / 1;
