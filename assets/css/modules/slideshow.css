@@ -1,6 +1,11 @@
 /* ==========================================================================
-   Global State Resets
+   Slideshow Mode — Global State Resets
    ========================================================================== */
+
+body.slideshow-active {
+  overflow: hidden; /* Prevent background scroll */
+}
+
 body.slideshow-active .site-header,
 body.slideshow-active .content,
 body.slideshow-active .site-footer {
@@ -20,64 +25,54 @@ body.slideshow-active #dynamic-page-wrapper {
 /* ==========================================================================
    Main Slideshow Grid Layout
    ========================================================================== */
+
 .gallery-module {
   position: fixed;
   inset: 0;
   display: grid;
+
   grid-template-columns: 4vw 90vw 4vw;
   grid-template-rows: 7vh 90vh 3vh;
   grid-template-areas:
-    '. logo category'
-    'prev-arrow slideshow next-arrow'
-    'return-arrow . description';
-  background-color: var(--soft);
+    ". logo category"
+    "prev-arrow slideshow next-arrow"
+    "return-arrow . description";
+
+  background-color: var(--soft, #f4f4f4);
   padding: 1rem;
   box-sizing: border-box;
-}
 
-/* --- Grid Area Assignments --- */
-.logo {
-  grid-area: logo;
-}
-.category {
-  grid-area: category;
-}
-.prev-arrow {
-  grid-area: prev-arrow;
-}
-.slideshow {
-  grid-area: slideshow;
-}
-.next-arrow {
-  grid-area: next-arrow;
-}
-.return-arrow {
-  grid-area: return-arrow;
-}
-.description {
-  grid-area: description;
+  z-index: 1000; /* Above site chrome, below modal layers */
 }
 
 /* ==========================================================================
-   Header Elements (Logo & Category)
+   Grid Area Assignments
    ========================================================================== */
+
+.logo         { grid-area: logo; }
+.category     { grid-area: category; }
+.prev-arrow   { grid-area: prev-arrow; }
+.slideshow    { grid-area: slideshow; }
+.next-arrow   { grid-area: next-arrow; }
+.return-arrow { grid-area: return-arrow; }
+.description  { grid-area: description; }
+
+/* ==========================================================================
+   Header Elements
+   ========================================================================== */
+
 .logo,
 .category {
-  /* Alignment within their grid cells */
   background-color: transparent;
 }
 
-.logo {
-  justify-self: start;
-}
-.category {
-  justify-self: end;
-}
+.logo { justify-self: start; }
+.category { justify-self: end; }
 
 .logo p,
 .category p {
-  line-height: 1;
   margin: 0;
+  line-height: 1;
   white-space: nowrap;
   color: var(--brand);
 }
@@ -95,33 +90,46 @@ body.slideshow-active #dynamic-page-wrapper {
 /* ==========================================================================
    Slideshow Area & Slides
    ========================================================================== */
+
 .slideshow {
   display: grid;
-  place-items: center; /* Centers content */
+  place-items: center;
   position: relative;
+
   width: 100%;
   height: 100%;
   min-height: 0;
-  border: none;
+
   overflow: hidden;
-  z-index: 999;
+  border: none;
+
+  z-index: 900;
 }
 
+/* Slides stacked via grid — JS toggles opacity / classes */
 .slideshow .slide,
 .slideshow img.slide {
-  /* Grid Stacking Method: This places all slides in the same cell
-     so they stack on top of each other without needing position: absolute */
   grid-area: 1 / 1;
-  width: 150%;
-  height: 150%;
+
+  width: 120%;
+  height: 120%;
   object-fit: contain;
+
   padding: 2px;
   box-sizing: border-box;
+
+  pointer-events: none; /* Prevent accidental image dragging */
+}
+
+/* JS-controlled state hooks */
+.slideshow .slide.is-active {
+  pointer-events: auto;
 }
 
 /* ==========================================================================
-   Navigation Arrows
+   Navigation Arrows — Pointer & Keyboard Accessible
    ========================================================================== */
+
 .prev-arrow,
 .next-arrow {
   display: flex;
@@ -134,30 +142,38 @@ body.slideshow-active #dynamic-page-wrapper {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 10px; /* Merged padding */
+
   width: 50px;
   height: 50px;
+  padding: 10px;
+
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* -- Option A: If using CSS Shapes (::before) -- */
+/* Visible focus for keyboard users */
+.prev-arrow button:focus-visible,
+.next-arrow button:focus-visible {
+  outline: 2px solid var(--brand-gold, #c19a6b);
+  outline-offset: 4px;
+}
+
+/* Chevron arrows via CSS */
 .prev-arrow button::before,
 .next-arrow button::before {
   content: '';
-  display: block;
-  width: 1rem; /* Adjust size of chevron */
-  height: 1rem;
-  border-top: 2px solid var(--ink, #000); /* Fallback to black if var undefined */
-  border-right: 2px solid var(--ink, #000);
-  opacity: 0.7;
-  transition: opacity 0.3s;
-  /* Centering logic for the pseudo-element */
   position: absolute;
-  top: 50%;
-  left: 50%;
+
+  width: 1rem;
+  height: 1rem;
+
+  border-top: 2px solid var(--ink, #000);
+  border-right: 2px solid var(--ink, #000);
+
+  opacity: 0.7;
+  transition: opacity 0.25s ease;
 }
 
 .prev-arrow button:hover::before,
@@ -167,19 +183,23 @@ body.slideshow-active #dynamic-page-wrapper {
 
 .prev-arrow button::before {
   transform: translate(-25%, -50%) rotate(-135deg);
-}
-.next-arrow button::before {
-  transform: translate(-75%, -50%) rotate(45deg);
+  top: 50%;
+  left: 50%;
 }
 
-/* -- Option B: If using Images (<img>) inside buttons -- */
-/* These styles ensure <img> arrows also look good if present */
+.next-arrow button::before {
+  transform: translate(-75%, -50%) rotate(45deg);
+  top: 50%;
+  left: 50%;
+}
+
+/* Image arrow fallback */
 .prev-arrow img,
 .next-arrow img {
-  width: 100%; /* Fill the button */
+  width: 100%;
   height: auto;
   opacity: 0.7;
-  transition: opacity 0.3s;
+  transition: opacity 0.25s ease;
 }
 
 .prev-arrow img:hover,
@@ -188,17 +208,25 @@ body.slideshow-active #dynamic-page-wrapper {
 }
 
 /* ==========================================================================
-   Footer Elements (Return & Description)
+   Footer Elements
    ========================================================================== */
+
 .return-arrow {
   align-self: end;
   justify-self: start;
   padding: 1rem;
 }
 
+.return-arrow a,
+.return-arrow button {
+  display: inline-flex;
+  align-items: center;
+}
+
 .return-arrow img {
   width: 40px;
   height: auto;
+
   opacity: 0.8;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -208,36 +236,51 @@ body.slideshow-active #dynamic-page-wrapper {
   opacity: 1;
 }
 
+.return-arrow a:focus-visible,
+.return-arrow button:focus-visible {
+  outline: 2px solid var(--brand-gold, #c19a6b);
+  outline-offset: 4px;
+}
+
+/* ==========================================================================
+   Description Panel
+   ========================================================================== */
+
 .description {
-  /* Positioning */
   position: relative;
-  grid-area: description;
+
   align-self: end;
   justify-self: end;
+
   left: -2vw;
   top: 2rem;
-  z-index: 99;
 
-  /* Sizing & Box Model */
+  z-index: 800;
+
   width: 250px;
+  max-height: 40vh;
+
   padding: 1.5rem;
   box-sizing: border-box;
-  overflow-y: auto; /* Scroll if content is too long */
 
-  /* Visuals */
+  overflow-y: auto;
+
   background-color: transparent;
-  border: 1px solid var(--ink-muted, #ddd); /* Prefer variable, fallback to hex */
+  border: 1px solid var(--ink-muted, #ddd);
   border-radius: 5px;
 }
 
 .description #caption-text {
   font-family: var(--font-display);
-  font-weight: 500; /* Merged bold/500 */
+  font-weight: 500;
   font-size: 1.1rem;
+
   text-transform: uppercase;
   letter-spacing: 0.05em;
+
   margin: 0 0 1rem 0;
   color: var(--ink);
+
   word-wrap: break-word;
 }
 
@@ -245,7 +288,54 @@ body.slideshow-active #dynamic-page-wrapper {
   font-family: var(--font-body);
   font-size: 0.9rem;
   line-height: 1.6;
-  color: var(--ink-muted);
-  word-wrap: break-word;
+
   margin: 0;
+  color: var(--ink-muted);
+
+  word-wrap: break-word;
+}
+
+/* ==========================================================================
+   Mobile Breakpoints
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .gallery-module {
+    grid-template-columns: 10vw 80vw 10vw;
+    grid-template-rows: auto 1fr auto auto;
+    grid-template-areas:
+      "logo logo logo"
+      "slideshow slideshow slideshow"
+      "prev-arrow . next-arrow"
+      "return-arrow description description";
+  }
+
+  .logo p {
+    font-size: 2.2rem;
+  }
+
+  .category {
+    display: none; /* Prevent header crowding */
+  }
+
+  .description {
+    width: 100%;
+    left: 0;
+    top: 0;
+    max-height: 30vh;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .prev-arrow button,
+  .next-arrow button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .slideshow .slide {
+    width: 110%;
+    height: 110%;
+  }
 }
