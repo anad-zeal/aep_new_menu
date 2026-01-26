@@ -20,7 +20,6 @@ export default class Gallery {
      * @param {string} categorySlug - e.g. 'black-and-white'
      */
     async init(categorySlug) {
-        alert(`Loading gallery for category: ${categorySlug}`);
         // Pretty print title from slug
         this.categoryTitle = categorySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
