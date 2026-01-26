@@ -579,3 +579,7 @@ body.slideshow-active #dynamic-page-wrapper {
   word-wrap: break-word;
   margin: 0;
 }
+
+.gallery-stage {
+    display: none;
+}
