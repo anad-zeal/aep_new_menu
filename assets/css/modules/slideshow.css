@@ -96,8 +96,8 @@ body.slideshow-active #dynamic-page-wrapper {
 
 .slideshow .slide {
   grid-area: 1 / 1;
-  width: 90%;
-  height: 90%;
+  width: 1920;
+  height: 1200px;
   object-fit: contain;
   opacity: 0;
   transition: opacity 0.8s ease;
