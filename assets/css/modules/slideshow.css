@@ -91,6 +91,7 @@ body.slideshow-active #dynamic-page-wrapper {
   display: grid;
   place-items: center;
   overflow: hidden;
+  background-color: aquamarine;
 }
 
 .slideshow .slide {
@@ -98,10 +99,8 @@ body.slideshow-active #dynamic-page-wrapper {
   width: 90%;
   height: 90%;
   object-fit: contain;
-
   opacity: 0;
   transition: opacity 0.8s ease;
-
   pointer-events: none;
 }
 
