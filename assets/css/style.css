@@ -417,10 +417,13 @@ body.slideshow-active #dynamic-page-wrapper {
   font-size: 3.25rem;
 }
 
+.category h4 {
+  text-align: left;
+}
+
 .category p {
   font-family: var(--font-display);
   font-size: 1.75rem;
-  text-align: left;
 }
 
 /* ==========================================================================
