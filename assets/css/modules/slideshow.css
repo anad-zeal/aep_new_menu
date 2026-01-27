@@ -241,8 +241,8 @@ body.viewing-content::before {
     
     /* Flexbox to center the image inside the slide */
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start
     
     /* Hide non-active slides (JS usually toggles opacity or display) */
     opacity: 0; 
