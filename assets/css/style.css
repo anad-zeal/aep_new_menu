@@ -323,7 +323,7 @@ body.slideshow-active #dynamic-page-wrapper {
 
 .category {
     position: relative;
-    width: 15vw;
+    width: 12vw;
     justify-self: end;
     text-align: left;
     z-index: 1000;
@@ -460,7 +460,7 @@ body.slideshow-active #dynamic-page-wrapper {
   grid-area: description;
   align-self: end;
   justify-self: end;
-  left: -2vw;
+ 
   top: 0; /* Adjusted from 2rem to keep it on screen */
   z-index: 1001;
 
@@ -468,11 +468,11 @@ body.slideshow-active #dynamic-page-wrapper {
   width: 250px;
   padding: 1.5rem;
   box-sizing: border-box;
-  max-height: 20vh;
+  max-height: 10vh;
   overflow-y: auto; 
 
   /* Visuals */
-  background-color: transparent;
+  background-color: var(--bg-body-light);
   border: 1px solid var(--border-color);
   border-radius: 5px;
 }
