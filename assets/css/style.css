@@ -322,7 +322,7 @@ body.slideshow-active #dynamic-page-wrapper {
 }
 
 .category {
-    width: 4vw  ;
+    width: 10vw;
     justify-self: end;
     text-align: left;
 }
