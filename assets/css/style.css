@@ -327,7 +327,7 @@ body.slideshow-active #dynamic-page-wrapper {
     justify-self: end;
     text-align: left;
     z-index: 1000;
-    border: solid redt 2px;
+    border: solid red 2px;
 }
 
 .category h4 {
@@ -371,7 +371,7 @@ body.slideshow-active #dynamic-page-wrapper {
   max-height:  920px; 
   
   object-fit: contain;
-  padding: 4vh 0 2vh 0;
+  padding: 6vh 0 2vh 0;
   box-sizing: border-box;
   
   opacity: 0;
