@@ -295,7 +295,7 @@ body.slideshow-active #dynamic-page-wrapper {
 
 /* Grid Area Assignments */
 .logo         { grid-area: logo; }
-.category     { grid-area: category; }
+.category     { grid-area: category; overflow-x: visible;}
 .prev-arrow   { grid-area: prev-arrow; }
 .next-arrow   { grid-area: next-arrow; }
 .slideshow    { grid-area: slideshow; }
