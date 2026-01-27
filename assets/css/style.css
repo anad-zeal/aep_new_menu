@@ -398,7 +398,7 @@ body.slideshow-active #dynamic-page-wrapper {
 }
 
 .logo {
-  justify-self: start;
+  justify-self: center;
 }
 .category {
   justify-self: end;
