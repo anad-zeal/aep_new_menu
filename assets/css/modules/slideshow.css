@@ -1,203 +1,372 @@
-/* ==========================================================================
-   Slideshow Global State
-   ========================================================================== */
+/* =========================================
+   1. VARIABLES
+   ========================================= */
+:root {
+  /* Dark Theme Colors */
+  --bg-body: #121212;
+  --bg-nav: #0a0a0a;
+  --accent: #d4a373;
+  --border-color: #333333;
 
-body.slideshow-active {
-  overflow: hidden;
+  /* Slideshow Colors */
+  --gallery-bg: #FFFFFF;
+  --gallery-text: #000000;
+  --gallery-caption: #333333;
+
+  /* Layout */
+  --sidebar-width: 300px;
+
+  /* Typography */
+  --font-headline: 'Roboto', sans-serif;
+  --font-script: 'Bonheur Royale', cursive;
+  --font-rounded: 'Comfortaa', sans-serif;
+  --font-nav: 'Google Sans Flex', sans-serif;
 }
 
-body.slideshow-active .site-header,
-body.slideshow-active .content,
-body.slideshow-active .site-footer {
-  display: none !important;
+/* =========================================
+   2. STANDARD RESET
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body.slideshow-active main,
-body.slideshow-active #dynamic-content-area,
-body.slideshow-active #dynamic-page-wrapper {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* ==========================================================================
-   Slideshow Grid
-   ========================================================================== */
-
-.gallery-module {
-  position: fixed;
-  inset: 0;
-  display: grid;
-
-  grid-template-columns: 5% 90% 5%;
-  grid-template-rows: 5% 90% 5%;
-  grid-template-areas:
-    ". logo category"
-    "prev-arrow slideshow next-arrow"
-    "return-arrow . description";
-
-  background-color: var(--menu-bg);
-  padding: 1rem;
-  box-sizing: border-box;
-
-  z-index: 1000;
-}
-
-/* Grid Areas */
-.logo         { grid-area: logo; }
-.category     { grid-area: category; }
-.prev-arrow   { grid-area: prev-arrow; }
-.next-arrow   { grid-area: next-arrow; }
-.slideshow    { grid-area: slideshow; }
-.return-arrow { grid-area: return-arrow; }
-.description  { grid-area: description; }
-
-/* ==========================================================================
-   Header
-   ========================================================================== */
-
-.logo p {
-  font-family: var(--font-script);
-  font-size: 3.25rem;
-  margin: 0;
-  color: var(--brand-gold);
-}
-
-.category {
-  text-align: right;
-}
-
-.category h4 {
-  margin: 0;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  letter-spacing: 0.2em;
-}
-
-.category-title {
-  font-family: var(--font-rounded);
-  font-size: 1.5rem;
-  color: var(--brand-gold);
-  margin: 0.2rem 0;
-}
-
-/* ==========================================================================
-   Slideshow Area
-   ========================================================================== */
-
-.slideshow {
-  position: relative;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  background-color: aquamarine;
-}
-
-.slideshow .slide {
-  position: absolute;
-  grid-area: 1 / 1;
-  width:auto;
-  height: auto;
-  /* object-fit: contain; */
-  opacity: 0;
-  transition: opacity 0.8s ease;
-  pointer-events: none;
-}
-
-.slideshow .slide.is-active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* ==========================================================================
-   Navigation
-   ========================================================================== */
-
-.prev-arrow,
-.next-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.prev-arrow button,
-.next-arrow button {
-  width: 50px;
-  height: 50px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: relative;
-}
-
-.prev-arrow button::before,
-.next-arrow button::before {
-  content: '';
-  width: 1rem;
-  height: 1rem;
-  border-top: 2px solid var(--brand-gold);
-  border-right: 2px solid var(--brand-gold);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  opacity: 0.7;
-}
-
-.prev-arrow button::before {
-  transform: translate(-25%, -50%) rotate(-135deg);
-}
-
-.next-arrow button::before {
-  transform: translate(-75%, -50%) rotate(45deg);
-}
-
-.prev-arrow button:focus-visible,
-.next-arrow button:focus-visible {
-  outline: 2px solid var(--brand-gold);
-  outline-offset: 4px;
-}
-
-/* ==========================================================================
-   Description
-   ========================================================================== */
-
-.description {
-  align-self: end;
-  justify-self: end;
-  width: 260px;
-  padding: 1.5rem;
-  border: 1px solid var(--border-color);
-}
-
-.description .slide-title {
-  font-family: var(--font-rounded);
-  font-size: 1rem;
-  color: var(--brand-gold);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-/* ==========================================================================
-   Mobile
-   ========================================================================== */
-
-@media (max-width: 768px) {
-  .gallery-module {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto auto;
-    grid-template-areas:
-      "logo"
-      "slideshow"
-      "prev-arrow"
-      "description";
-  }
-
-  .category {
-    display: none;
-  }
-
-  .description {
+html, body {
     width: 100%;
-  }
+    height: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+img, iframe, video {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+/* =========================================
+   3. GLOBAL BODY
+   ========================================= */
+body {
+    font-family: var(--font-rounded);
+    background-color: var(--bg-body);
+    color: #3b569e;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+    z-index: 0;
+}
+
+/* Background Image Layer (Home) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    background-image: url("../images/project-series/tui.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    transition: opacity 1s ease;
+}
+
+body.viewing-content::before {
+    opacity: 0;
+}
+
+/* =========================================
+   4. NAVIGATION
+   ========================================= */
+.hamburger-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 2000;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 35px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    outline: none;
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #8b0000;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+}
+
+.hamburger-btn:hover span {
+    background-color: var(--accent);
+}
+
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--bg-nav);
+    padding: 4rem 2rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-color);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+    z-index: 1500;
+}
+
+.main-nav.open {
+    transform: translateX(0);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.main-nav ul { list-style: none; margin-bottom: 1.5rem; }
+.main-nav li { margin-bottom: 1rem; color: #fff; }
+
+/* =========================================
+   5. HOME / LANDING
+   ========================================= */
+.app-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-title h1 {
+    font-family: var(--font-script);
+    color: #fff;
+    font-size: 5rem;
+    font-weight: normal;
+}
+
+.artist-name {
+    font-family: var(--font-headline);
+    font-size: 8rem;
+    color: #ccc;
+    font-weight: 100;
+}
+
+/* =========================================
+   6. MODULE: SLIDESHOW / GALLERY
+   (Fixed Constraint Logic)
+   ========================================= */
+
+/* 1. Main Container (The "Slideshow") */
+.gallery-module, 
+.slideshow { 
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Fixed viewport height */
+    background-color: var(--gallery-bg);
+    color: var(--gallery-text);
+    overflow: hidden; /* CRITICAL: Cuts off anything larger than screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. Text Overlays */
+.gallery-title-overlay {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-script);
+    font-size: 2.5rem;
+    color: #000;
+    z-index: 20; /* Higher than slides */
+    text-align: center;
+    pointer-events: none;
+}
+
+.gallery-category, 
+.gallery-category-label {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    text-align: right;
+    font-family: var(--font-headline);
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    z-index: 20;
+    color: #000;
+}
+
+/* 3. The Stage (Wrapper) */
+.gallery-stage {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+/* 4. The Slide (Container for Image) */
+/* This forces all slides to stack on top of each other */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Flexbox to center the image inside the slide */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Hide non-active slides (JS usually toggles opacity or display) */
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none; /* Allows clicking through invisible slides */
+}
+
+/* Active Class (Add this via JS to the current slide) */
+.slide.active,
+.slide.current {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 15;
+}
+
+/* 5. The Image Itself */
+.slide img, 
+.gallery-stage img {
+    /* Hard Constraints */
+    max-width: 90%; 
+    max-height: 80vh; 
+    
+    width: auto;
+    height: auto;
+    
+    /* Ensure aspect ratio fits within constraints */
+    object-fit: contain; 
+    
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15); 
+}
+
+/* 6. Navigation Arrows */
+.gallery-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 4rem;
+    font-weight: 100; 
+    font-family: sans-serif;
+    color: #000;
+    padding: 0 30px;
+    z-index: 30; /* Highest Priority */
+    transition: transform 0.2s;
+}
+
+.gallery-nav-btn:hover {
+    transform: translateY(-50%) scale(1.2);
+    color: var(--accent);
+}
+
+.prev-btn { left: 0; }
+.next-btn { right: 0; }
+
+/* 7. Caption */
+.gallery-info {
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
+    text-align: right;
+    z-index: 20;
+}
+
+.gallery-info h3, 
+.gallery-info p {
+    font-family: var(--font-headline);
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--gallery-caption);
+    margin: 0;
+}
+
+/* =========================================
+   7. TEXT PAGES
+   ========================================= */
+.text-module {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+}
+
+.text-module h2 {
+    font-family: var(--font-headline);
+    font-size: 2.5rem;
+    color: var(--accent);
+    border-bottom: 1px solid #333;
+    margin-bottom: 1rem;
+}
+
+.body-paragraphs p {
+    font-family: var(--font-rounded);
+    font-size: 1.1rem;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+/* =========================================
+   8. MEDIA QUERIES
+   ========================================= */
+@media (max-width: 768px) {
+    .gallery-title-overlay {
+        font-size: 1.8rem;
+        top: 15px;
+        width: 100%;
+    }
+    .gallery-category { display: none; }
+    
+    .slide img, 
+    .gallery-stage img {
+        max-width: 95%;
+        max-height: 60vh;
+    }
+    
+    .gallery-info {
+        bottom: 20px;
+        right: 20px;
+        font-size: 1rem;
+    }
+    
+    .gallery-nav-btn {
+        padding: 0 10px;
+        font-size: 3rem;
+    }
 }
