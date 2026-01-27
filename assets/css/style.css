@@ -420,7 +420,7 @@ body.slideshow-active #dynamic-page-wrapper {
 .category p {
   font-family: var(--font-display);
   font-size: 1.75rem;
-  text-align: right;
+  text-align: left;
 }
 
 /* ==========================================================================
