@@ -358,9 +358,8 @@ body.slideshow-active #dynamic-page-wrapper {
   background-color: var(--brand-gold);
 }
 
-/* The Individual Slide */
-.slideshow .slide,
-.slideshow img.slide {
+/* The Individual Slide .slideshow img.slide */
+.slideshow .slide {
   grid-area: 1 / 1; /* Stacks all slides on top of each other */
   
   /* FIXED: Changed from 150% to 100% to fit the container */
