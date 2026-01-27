@@ -353,6 +353,7 @@ body.slideshow-active #dynamic-page-wrapper {
   min-height: 0;
   overflow: hidden; /* Ensures nothing spills out */
   z-index: 999;
+  background-color: var(--bg-body-light);
 }
 
 /* The Individual Slide */
