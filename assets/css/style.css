@@ -341,6 +341,7 @@ body.slideshow-active #dynamic-page-wrapper {
     color: var(--brand-gold);
     margin: 0.2rem 0;
     line-height: 1;
+    background-color: var(--menu-bg);
 }
 
 /* --- Slideshow Stage --- */
