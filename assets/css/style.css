@@ -368,7 +368,7 @@ body.slideshow-active #dynamic-page-wrapper {
   max-height:  920px; 
   
   object-fit: contain;
-  padding: 2px;
+  padding: 2vh 0;
   box-sizing: border-box;
   
   opacity: 0;
