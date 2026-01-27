@@ -322,9 +322,11 @@ body.slideshow-active #dynamic-page-wrapper {
 }
 
 .category {
+    position: relative;
     width: 10vw;
     justify-self: end;
     text-align: left;
+    z-index: 1000;
 }
 
 .category h4 {
