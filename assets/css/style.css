@@ -323,10 +323,11 @@ body.slideshow-active #dynamic-page-wrapper {
 
 .category {
     position: relative;
-    width: 20vw;
+    width: 15vw;
     justify-self: end;
     text-align: left;
     z-index: 1000;
+    border: solid redt 2px;
 }
 
 .category h4 {
@@ -343,7 +344,6 @@ body.slideshow-active #dynamic-page-wrapper {
     color: var(--brand-gold);
     margin: 0.2rem 0;
     line-height: 1;
-    background-color: var(--menu-bg);
 }
 
 /* --- Slideshow Stage --- */
@@ -371,7 +371,7 @@ body.slideshow-active #dynamic-page-wrapper {
   max-height:  920px; 
   
   object-fit: contain;
-  padding: 2vh 0;
+  padding: 4vh 0 2vh 0;
   box-sizing: border-box;
   
   opacity: 0;
