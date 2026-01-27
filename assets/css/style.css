@@ -462,7 +462,7 @@ body.slideshow-active #dynamic-page-wrapper {
   justify-self: end;
   left: -2vw;
   top: 0; /* Adjusted from 2rem to keep it on screen */
-  z-index: 1001
+  z-index: 1001;
 
   /* Sizing */
   width: 250px;
