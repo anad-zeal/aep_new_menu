@@ -323,7 +323,7 @@ body.slideshow-active #dynamic-page-wrapper {
 
 .category {
     position: relative;
-    width: 10vw;
+    width: 20vw;
     justify-self: end;
     text-align: left;
     z-index: 1000;
@@ -462,7 +462,7 @@ body.slideshow-active #dynamic-page-wrapper {
   justify-self: end;
   left: -2vw;
   top: 0; /* Adjusted from 2rem to keep it on screen */
-  z-index: 99;
+  z-index: 1001
 
   /* Sizing */
   width: 250px;
