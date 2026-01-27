@@ -363,7 +363,8 @@ body.slideshow-active #dynamic-page-wrapper {
   grid-area: 1 / 1; /* Stacks all slides on top of each other */
   
   /* FIXED: Changed from 150% to 100% to fit the container */
-  width: auto;
+  /* width:auto; */
+  height: auto;
   max-height:  920px; 
   
   object-fit: contain;
