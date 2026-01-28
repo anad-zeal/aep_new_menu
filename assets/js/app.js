@@ -129,3 +129,28 @@ if (yearSpan) {
 }
 
 console.log("App Initialized");
+
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Define the path to your image folder
+    const basePath = "../images/project-series/";
+
+    // 2. List ALL file names available in that folder
+    // (JavaScript cannot read the folder automatically, you must list them)
+    const imageFiles = [
+        "0800.jpg",
+        "tui.jpg",
+        "encaustic.jpg",
+        "another-image.jpg", 
+        "slide-5.jpg"
+        // Add all your file names here
+    ];
+
+    // 3. Select a random index
+    const randomIndex = Math.floor(Math.random() * imageFiles.length);
+    
+    // 4. Build the full URL string
+    const selectedImage = `url('${basePath}${imageFiles[randomIndex]}')`;
+
+    // 5. Assign to the CSS Variable on the body
+    document.body.style.setProperty('--bg-image', selectedImage);
+});
