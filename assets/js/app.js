@@ -132,16 +132,13 @@ console.log("App Initialized");
 
 document.addEventListener("DOMContentLoaded", function() {
     // 1. Define the path to your image folder
-    const basePath = "../images/project-series/";
+    const basePath = "../images/landing-bg-images/";
 
     // 2. List ALL file names available in that folder
     // (JavaScript cannot read the folder automatically, you must list them)
     const imageFiles = [
         "0800.jpg",
         "tui.jpg",
-        "encaustic.jpg",
-        "another-image.jpg", 
-        "slide-5.jpg"
         // Add all your file names here
     ];
 
