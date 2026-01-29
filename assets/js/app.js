@@ -139,7 +139,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const imageFiles = [
         "0800.jpg",
         "tui.jpg",
-        // Add all your file names here
+        "calliope.jpg",
+        "magic-flute.jpg",
+        "morphean.jpg",
+        "radish.jpg",
     ];
 
     // 3. Select a random index
